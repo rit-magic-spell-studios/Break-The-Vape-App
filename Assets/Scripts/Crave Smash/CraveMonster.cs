@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CraveMonster : MonoBehaviour, IPointerClickHandler {
 	[SerializeField] private CraveSmashManager craveSmashManager;
-	[Space]
+	[SerializeField] private Canvas canvas;
 	[SerializeField] private RectTransform rectTransform;
 	[SerializeField] private RectTransform healthBarBackground;
 	[SerializeField] private RectTransform healthBarFill;
+	[SerializeField] private GameObject indicatorTextPrefab;
 	[Space]
 	[SerializeField, Range(0, 1000)] private float _minMonsterSize = 200;
 	[SerializeField, Range(0, 1000)] private float _maxMonsterSize = 700;
@@ -78,7 +80,7 @@ public class CraveMonster : MonoBehaviour, IPointerClickHandler {
 	/// <summary>
 	/// Update the health bar size based on the current health percentage
 	/// </summary>
-	private void UpdateHealthBar () {
+	private void UpdateHealthBar ( ) {
 		// Set the size of the health bar fill based on the health percentage
 		float size = healthBarBackground.rect.width * HealthPercentage;
 		healthBarFill.anchoredPosition = new Vector3(size / 2f, 0f, 0f);
@@ -93,5 +95,11 @@ public class CraveMonster : MonoBehaviour, IPointerClickHandler {
 		// This means that larger monsters will be harder to destroy than smaller monsters
 		float damageModifier = 1f - ((MonsterSize - MinMonsterSize) / (1.05f * MaxMonsterSize));
 		HealthPercentage -= damageAmount * damageModifier;
+
+		// Spawn some indicator text when the player does damage
+		Vector3 indicatorPosition = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Quaternion indicatorRotation = Quaternion.Euler(0f, 0f, Random.Range(-20f, 20f));
+		TextMeshProUGUI indicatorText = Instantiate(indicatorTextPrefab, indicatorPosition, indicatorRotation, transform.parent.parent).GetComponent<TextMeshProUGUI>( );
+		indicatorText.text = "Tap!";
 	}
 }

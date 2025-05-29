@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -959.82184}
+  m_AnchoredPosition: {x: 540, y: -959.8219}
   m_SizeDelta: {x: 940, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9216330
@@ -813,9 +813,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craveSmashManager: {fileID: 805432891}
+  canvas: {fileID: 739218473}
   rectTransform: {fileID: 493018954}
   healthBarBackground: {fileID: 763528805}
   healthBarFill: {fileID: 2106300927}
+  indicatorTextPrefab: {fileID: 1515907045313169586, guid: aa4d48a7c9c51904a82786d91001edf0, type: 3}
   _minMonsterSize: 200
   _maxMonsterSize: 700
   damageAmount: 0.1
@@ -1357,7 +1359,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
