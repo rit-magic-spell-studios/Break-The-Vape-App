@@ -10,7 +10,7 @@
         </engine:VisualElement>
         <engine:VisualElement name="GameContainer" class="container" style="justify-content: space-around;">
             <engine:Label text="Tap to destroy the monster!" name="TutorialText" style="width: 100%; -unity-text-align: middle-center; font-size: 50px;" />
-            <engine:VisualElement name="Monster" style="flex-grow: 0; height: 300px; width: 300px; flex-shrink: 0; background-color: rgb(192, 0, 255);" />
+            <engine:Button name="Monster" style="width: 500px; height: 500px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
             <engine:ProgressBar value="45.5" title="Monster Health" name="MonsterHealthBar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 100%;" />
         </engine:VisualElement>
         <engine:VisualElement name="EndContainer" class="container container-hidden">

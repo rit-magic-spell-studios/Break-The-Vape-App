@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CraveSmashGameState {
-	FORM, GAME, END
-}
 
 public class CraveSmashManager : MonoBehaviour {
 	[SerializeField] private GameObject formUIContainer;
