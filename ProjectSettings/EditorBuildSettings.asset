@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4035e6a7c4976c441b39ce7ab7ce540c
+  - enabled: 1
     path: Assets/Scenes/CraveSmash.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
