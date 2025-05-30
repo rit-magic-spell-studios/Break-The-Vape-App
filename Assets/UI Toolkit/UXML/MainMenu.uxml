@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#MainMenu" />
-    <ui:VisualElement name="MainMenu" style="flex-grow: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; background-color: rgb(35, 35, 35);">
-        <ui:VisualElement name="Container" style="flex-grow: 1; flex-shrink: 1; align-self: center; width: 100%; max-width: 650px; justify-content: center; align-items: center;">
-            <ui:Label text="UofR Games" name="Title" style="font-size: 70px; -unity-font-style: bold; -unity-text-align: middle-center; margin-top: 15px; margin-right: 0; margin-bottom: 40px; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(102, 182, 255); height: 75px; width: 500px;">
-                <ui:Label text="v0.2.0" name="Version" style="position: absolute; top: auto; right: 19px; bottom: -26px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 25px; left: auto; -unity-text-align: middle-right;" />
+    <Style src="project://database/Assets/UI%20Toolkit/USS/Main.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#Main" />
+    <ui:VisualElement name="Panel" class="panel">
+        <ui:VisualElement name="Container" class="container">
+            <ui:Label text="UofR Games" name="Title" class="unity-label" style="margin-bottom: 40px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 70px; width: 475px; height: 90px;">
+                <ui:Label text="v0.2.0" name="Version" style="position: absolute; right: 4px; bottom: -38px; font-size: 30px; -unity-font-style: normal; width: auto; height: auto;" />
             </ui:Label>
             <ui:Button text="Crave Smash" name="CraveSmashButton" />
             <ui:Button text="Puff Dodge" name="PuffDodgeButton" class="unity-button-disabled" />
