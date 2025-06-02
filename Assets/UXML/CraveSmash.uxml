@@ -1,21 +1,21 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/USS/Main.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#Main" />
+    <Style src="project://database/Assets/USS/Main.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#Main" />
     <engine:VisualElement name="Panel" class="panel">
-        <engine:VisualElement name="FormContainer" class="container container-hidden">
-            <engine:Label text="How strong is your craving right now?" name="CraveText" style="-unity-text-align: middle-center; width: 100%; font-size: 50px;" />
-            <engine:SliderInt label="0" value="0" high-value="10" name="CraveSlider" low-value="1" show-input-field="false" style="width: 100%; -unity-text-align: middle-center; margin-top: 15px; margin-right: 0; margin-bottom: 15px; margin-left: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
-            <engine:Label text="What made you want to vape?" name="TriggerText" style="-unity-text-align: middle-center; width: 100%; font-size: 50px;" />
-            <engine:DropdownField name="TriggerDropdown" choices="Stress,Boredom,Friends,Habit,Other" index="0" style="margin-top: 15px; margin-right: 0; margin-bottom: 15px; margin-left: 0; width: 100%;" />
-            <engine:Button text="Submit" name="SubmitButton" />
+        <engine:VisualElement name="FormContainer" class="container">
+            <engine:Label text="How strong is your craving right now?" name="CraveText" style="-unity-text-align: middle-center; width: 75%; font-size: 60px;" />
+            <engine:SliderInt label="0" value="0" high-value="10" name="CraveSlider" low-value="1" show-input-field="false" style="width: 75%; -unity-text-align: middle-center; margin-top: 15px; margin-right: 0; margin-bottom: 15px; margin-left: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            <engine:Label text="What made you want to vape?" name="TriggerText" style="-unity-text-align: middle-center; width: 75%; font-size: 60px; margin-top: 105px;" />
+            <engine:DropdownField name="TriggerDropdown" choices="Stress,Boredom,Friends,Habit,Other" index="0" style="margin-top: 15px; margin-right: 0; margin-bottom: 15px; margin-left: 0; width: 75%;" />
+            <engine:Button text="Submit" name="SubmitButton" style="margin-top: 104px;" />
         </engine:VisualElement>
-        <engine:VisualElement name="GameContainer" class="container" style="justify-content: space-around;">
-            <engine:Label text="Tap to destroy the monster!" name="TutorialText" style="width: 100%; -unity-text-align: middle-center; font-size: 50px;" />
+        <engine:VisualElement name="GameContainer" class="container container-hidden" style="justify-content: space-around;">
+            <engine:Label text="Tap to destroy the monster!" name="TutorialText" style="width: 75%; -unity-text-align: middle-center; font-size: 120px;" />
             <engine:Button name="Monster" style="width: 500px; height: 500px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-color: rgb(221, 0, 255); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:ProgressBar value="1" title="Monster Health" name="MonsterHealthBar" high-value="1" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 100%; white-space: nowrap;" />
+            <engine:ProgressBar value="1" title="Monster Health" name="MonsterHealthBar" high-value="1" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 75%; white-space: nowrap; height: 100px;" />
         </engine:VisualElement>
         <engine:VisualElement name="EndContainer" class="container container-hidden">
-            <engine:Label text="Nice Job!" name="RewardLabel" style="font-size: 50px;" />
-            <engine:Button text="Main Menu" name="MainMenuButton" />
+            <engine:Label text="Nice Job!" name="RewardLabel" style="font-size: 120px;" />
+            <engine:Button text="Main Menu" name="MainMenuButton" style="margin-top: 174px;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

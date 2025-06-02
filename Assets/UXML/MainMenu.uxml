@@ -1,16 +1,17 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/USS/Main.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#Main" />
+    <Style src="project://database/Assets/USS/Main.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#Main" />
     <ui:VisualElement name="Panel" class="panel">
         <ui:VisualElement name="Container" class="container">
-            <ui:Label text="UofR Games" name="Title" class="unity-label" style="margin-bottom: 40px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 70px; width: 475px; height: 90px;">
-                <ui:Label text="v0.2.0" name="Version" style="position: absolute; right: 4px; bottom: -38px; font-size: 30px; -unity-font-style: normal; width: auto; height: auto;" />
+            <ui:Label text="UofR Games" name="Title" class="unity-label" style="margin-bottom: 103px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 120px; width: 800px; height: 200px;">
+                <ui:Label text="v0.2.0" name="Version" style="position: absolute; right: 4px; bottom: -38px; font-size: 50px; -unity-font-style: normal; width: auto; height: auto;" />
             </ui:Label>
-            <ui:Button text="Crave Smash" name="CraveSmashButton" />
-            <ui:Button text="Puff Dodge" name="PuffDodgeButton" class="unity-button-disabled" />
-            <ui:Button text="Blow It Off" name="BlowItOffButton" class="unity-button-disabled" />
-            <ui:Button text="Not So Tasty" name="NotSoTastyButton" class="unity-button-disabled" />
-            <ui:Button text="Match And Catch" name="MatchAndCatchButton" class="unity-button-disabled" />
-            <ui:Button text="Quit" name="QuitButton" style="margin-top: 40px;" />
+            <ui:Button text="Crave Smash" name="CraveSmashButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Puff Dodge" name="PuffDodgeButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Blow It Off" name="BlowItOffButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Not So Tasty" name="NotSoTastyButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Match And Catch" name="MatchAndCatchButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Daily Check-in" name="FormButton" class="unity-button-disabled" style="margin-top: 139px; margin-bottom: 5px;" />
+            <ui:Button text="Quit" name="QuitButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
