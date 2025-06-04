@@ -1,7 +1,8 @@
 # App Changelog
 
-## *Unreleased*
+## v0.1.1 - June 4th, 2025
 * Updated test UI to function better on mobile resolutions
+* Match And Catch updated to [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/Changelogs/MATCHANDCATCH_CHANGELOG.md)
 
 ## v0.1.0 - June 2nd, 2025
 * Changed project Unity version to 2023.2.20f1 to get access to the latest updates of the Unity UI Toolkit

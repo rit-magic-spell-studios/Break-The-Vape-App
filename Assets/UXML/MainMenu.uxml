@@ -9,7 +9,7 @@
             <ui:Button text="Puff Dodge" name="PuffDodgeButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
             <ui:Button text="Blow It Off" name="BlowItOffButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
             <ui:Button text="Not So Tasty" name="NotSoTastyButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
-            <ui:Button text="Match And Catch" name="MatchAndCatchButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Match And Catch" name="MatchAndCatchButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
             <ui:Button text="Daily Check-in" name="FormButton" class="unity-button-disabled" style="margin-top: 139px; margin-bottom: 5px;" />
             <ui:Button text="Quit" name="QuitButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
         </ui:VisualElement>
