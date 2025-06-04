@@ -11,3 +11,5 @@ This is a repository for the MAGIC Spell Studios collaboration with the Universi
 ## Controls
 ### Crave Smash
 Tap/click the monster to damage its health
+### Match and Catch
+Tap cards to flip them over. Once two cards are flipped over, they are checked to make sure they match. If they do not match, they are flipped back over. Once all cards are flipped over in matching pairs, you win!
