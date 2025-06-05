@@ -1,5 +1,8 @@
 # Crave Smash Changelog
 
+## *Unreleased*
+* Implemented first pass of UI
+
 ## v0.3.0 - June 4th, 2025
 * Removed form at the start of the game
   * This will instead be put on the main app home page
