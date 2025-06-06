@@ -28,8 +28,8 @@ public class CraveSmashController : GameController {
             // Update the size of the monster
             // The reason we are updating the width and the top padding is to keep a 1:1 aspect ratio
             // The measurements are also in terms
-            craveMonsterVisual.style.width = Length.Percent(craveMonsterHealth);
-            craveMonsterVisual.style.paddingTop = Length.Percent(craveMonsterHealth);
+            craveMonsterVisual.style.width = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
+            craveMonsterVisual.style.paddingTop = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
 
             // If the monster has run out of health, then go to the end state
             if (craveMonsterHealth == 0) {
@@ -39,5 +39,14 @@ public class CraveSmashController : GameController {
 
         // Make sure the crave monster starts at the max health
         craveMonsterHealth = 100;
+    }
+
+    protected override void OnGameControllerStateChanged( ) {
+        base.OnGameControllerStateChanged( );
+
+        // For some reason the crave monster visual does not update properly at 100% padding
+        // Need to do more testing to figure out how to get around that
+        craveMonsterVisual.style.width = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
+        craveMonsterVisual.style.paddingTop = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
     }
 }

@@ -38,7 +38,10 @@ public abstract class GameController : MonoBehaviour {
             pauseScreen.style.display = (_gameControllerState == GameControllerState.PAUSE ? DisplayStyle.Flex : DisplayStyle.None);
             winScreen.style.display = (_gameControllerState == GameControllerState.WIN ? DisplayStyle.Flex : DisplayStyle.None);
 
-            OnGameControllerStateChanged( );
+            // Only call this function when the controller state is actually changed
+            if (lastControllerState != _gameControllerState) {
+                OnGameControllerStateChanged( );
+            }
         }
     }
     private GameControllerState _gameControllerState;
