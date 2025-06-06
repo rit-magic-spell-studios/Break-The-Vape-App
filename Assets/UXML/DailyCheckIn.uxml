@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement name="VapeScreen" class="uofr-screen" style="display: flex;">
+    <engine:VisualElement name="VapeScreen" class="uofr-screen" style="display: none;">
         <engine:VisualElement class="uofr-vert-list uofr-section-medium">
             <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first" />
             <engine:Label text="Have you vaped in the last 24 hours?" class="uofr-text-large uofr-vert-list-last" />
@@ -8,14 +8,14 @@
         <engine:VisualElement style="flex-grow: 1;" />
         <engine:VisualElement class="uofr-hori-list uofr-section-small">
             <engine:Button text="Yes" class="uofr-button uofr-hori-list-first" style="flex-grow: 1;" />
-            <engine:Button text="No" class="uofr-button uofr-hori-list-last uofr-button-selected" />
+            <engine:Button text="No" class="uofr-button uofr-hori-list-last uofr-button-selected" style="flex-grow: 1;" />
         </engine:VisualElement>
         <engine:VisualElement class="uofr-vert-list" style="align-items: flex-end;">
             <engine:Button text="Next" class="uofr-button-discreet uofr-vert-list-first" />
             <engine:ProgressBar value="0.25" high-value="1" class="uofr-progress-bar uofr-vert-list-last" />
         </engine:VisualElement>
     </engine:VisualElement>
-    <engine:VisualElement name="CraveScreen" class="uofr-screen" style="flex-grow: 1; display: none;">
+    <engine:VisualElement name="CraveScreen" class="uofr-screen" style="flex-grow: 1; display: flex;">
         <engine:VisualElement class="uofr-vert-list uofr-section-medium">
             <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first" />
             <engine:Label text="What is your craving level?" class="uofr-text-large uofr-vert-list-last" />

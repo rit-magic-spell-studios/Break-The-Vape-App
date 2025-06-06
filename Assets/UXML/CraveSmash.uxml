@@ -1,5 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <Style src="project://database/Assets/USS/CraveSmash.uss?fileID=7433441132597879392&amp;guid=8b9794395f2c32f46bbdabaed81ea606&amp;type=3#CraveSmash" />
     <engine:VisualElement name="GameScreen" class="uofr-screen" style="flex-grow: 1; display: flex;">
         <engine:VisualElement class="uofr-vert-list uofr-section-small" style="justify-content: flex-end;">
             <engine:VisualElement class="uofr-hori-list uofr-vert-list-first">
@@ -11,12 +12,14 @@
             <engine:Label text="Score: &lt;b&gt;320&lt;/b&gt;" name="ScoreLabel" class="uofr-text-small uofr-vert-list-last" />
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 1;">
-            <engine:VisualElement name="TutorialContainer" class="uofr-vert-list uofr-subscreen" style="align-items: center;">
+            <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center;">
                 <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: url(&quot;project://database/Assets/Sprites/FingerIcon.png?fileID=2800000&amp;guid=87bb5bd2daa6a2546a91f1b9fa8891f3&amp;type=3#FingerIcon&quot;); height: 0; padding-top: 65%;" />
                 <engine:Label text="Tap to defeat you craving!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
             </engine:VisualElement>
-            <engine:VisualElement name="GameContainer" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">
-                <engine:VisualElement name="CraveMonster" style="width: 100%; background-image: url(&quot;project://database/Assets/Sprites/CraveSmashMonster.png?fileID=2800000&amp;guid=2238b66cba194e14781dcce00de1c732&amp;type=3#CraveSmashMonster&quot;); height: 0; padding-top: 100%;" />
+            <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">
+                <engine:Button name="CraveMonsterButton" class="cs-monster-button">
+                    <engine:VisualElement name="CraveMonsterVisual" class="cs-monster-visual" />
+                </engine:Button>
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:VisualElement class="uofr-section-small" />
