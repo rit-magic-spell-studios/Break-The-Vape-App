@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 2238b66cba194e14781dcce00de1c732
+guid: 742b3459cdad41449b1021024c6b0f16
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 835526535336044671
-    second: CraveSmashMonster_0
+      213: -5117189264103049798
+    second: SmokeMonster2_Square_0
+  - first:
+      213: 8124690881994994278
+    second: SmokeMonster2_Square_1
+  - first:
+      213: 4063141175984582740
+    second: SmokeMonster2_Square_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,14 +52,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -152,13 +158,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CraveSmashMonster_0
+      name: SmokeMonster2_Square_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1465
-        height: 1553
+        x: 78
+        y: 140
+        width: 447
+        height: 458
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +172,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f782e1305f2689b00800000000000000
-      internalID: 835526535336044671
+      spriteID: ab5f1b0f9771cf8b0800000000000000
+      internalID: -5117189264103049798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_Square_1
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 295
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662ba2b8f43b0c070800000000000000
+      internalID: 8124690881994994278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_Square_2
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 219
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 450f2d24f5d236830800000000000000
+      internalID: 4063141175984582740
       vertices: []
       indices: 
       edges: []
@@ -175,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -183,7 +231,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CraveSmashMonster_0: 835526535336044671
+      SmokeMonster2_Square_0: -5117189264103049798
+      SmokeMonster2_Square_1: 8124690881994994278
+      SmokeMonster2_Square_2: 4063141175984582740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

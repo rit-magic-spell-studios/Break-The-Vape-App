@@ -1,13 +1,28 @@
 fileFormatVersion: 2
-guid: bee2404f4685eed4baf6068a8203dffe
+guid: 6382bab6ddc782f4bb8efa0fc97c1c99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2073137460773038770
-    second: PauseIcon_0
+      213: -4342072926714408230
+    second: SmokeMonster2_0
   - first:
-      213: -55275091272315038
-    second: PauseIcon_1
+      213: 6181116110404484131
+    second: SmokeMonster2_1
+  - first:
+      213: -5868328251162613783
+    second: SmokeMonster2_2
+  - first:
+      213: 1033355062445651154
+    second: SmokeMonster2_3
+  - first:
+      213: -8234572606723010811
+    second: SmokeMonster2_4
+  - first:
+      213: 6309337073423007156
+    second: SmokeMonster2_5
+  - first:
+      213: 7368470592639697258
+    second: SmokeMonster2_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,14 +64,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -155,13 +170,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PauseIcon_0
+      name: SmokeMonster2_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 19
-        width: 18
-        height: 58
+        x: 370
+        y: 627
+        width: 28
+        height: 67
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e455110a67cba33e0800000000000000
-      internalID: -2073137460773038770
+      spriteID: ad2d85eadabddb3c0800000000000000
+      internalID: -4342072926714408230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PauseIcon_1
+      name: SmokeMonster2_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 19
-        width: 18
-        height: 58
+        x: 78
+        y: 171
+        width: 447
+        height: 385
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +205,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26f49cbe89f9b3ff0800000000000000
-      internalID: -55275091272315038
+      spriteID: 32c7a1c7a5cb7c550800000000000000
+      internalID: 6181116110404484131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_2
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 326
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e7201c1c828f8ea0800000000000000
+      internalID: -5868328251162613783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_3
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 250
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d4bcef44f6375e00800000000000000
+      internalID: 1033355062445651154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_4
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 67
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50fcc13c7dbe8bd80800000000000000
+      internalID: -8234572606723010811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_5
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 65
+        width: 319
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bdb495d3a44f8750800000000000000
+      internalID: 6309337073423007156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmokeMonster2_6
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 51
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a618334d6f0124660800000000000000
+      internalID: 7368470592639697258
       vertices: []
       indices: 
       edges: []
@@ -199,7 +319,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -207,8 +327,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PauseIcon_0: -2073137460773038770
-      PauseIcon_1: -55275091272315038
+      SmokeMonster2_0: -4342072926714408230
+      SmokeMonster2_1: 6181116110404484131
+      SmokeMonster2_2: -5868328251162613783
+      SmokeMonster2_3: 1033355062445651154
+      SmokeMonster2_4: -8234572606723010811
+      SmokeMonster2_5: 6309337073423007156
+      SmokeMonster2_6: 7368470592639697258
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

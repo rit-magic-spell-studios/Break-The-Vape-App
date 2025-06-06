@@ -318,7 +318,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialTime: 3
+  menuTransitionTime: 0.5
   clickDamage: 10
+  craveMonsterStages:
+  - {fileID: 21300000, guid: e7e1418c0008efa4b8c039513ca00748, type: 3}
+  - {fileID: 21300000, guid: 742b3459cdad41449b1021024c6b0f16, type: 3}
+  - {fileID: 21300000, guid: 25d63055891ed6b4b8c6cff33fd7eb2f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

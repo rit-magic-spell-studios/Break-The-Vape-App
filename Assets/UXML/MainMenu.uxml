@@ -3,9 +3,9 @@
     <ui:VisualElement name="Panel" class="panel">
         <ui:VisualElement name="Container" class="container">
             <ui:Label text="UofR Games" name="Title" class="unity-label" style="margin-bottom: 103px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 120px; width: 800px; height: 200px;">
-                <ui:Label text="v0.1.1" name="Version" style="position: absolute; right: 4px; bottom: -38px; font-size: 50px; -unity-font-style: normal; width: auto; height: auto;" />
+                <ui:Label text="v0.1.2" name="Version" style="position: absolute; right: 4px; bottom: -38px; font-size: 50px; -unity-font-style: normal; width: auto; height: auto;" />
             </ui:Label>
-            <ui:Button text="Crave Smash v0.3.0" name="CraveSmashButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+            <ui:Button text="Crave Smash v0.4.0" name="CraveSmashButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
             <ui:Button text="Puff Dodge v0.0.0" name="PuffDodgeButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
             <ui:Button text="Blow It Off v0.0.0" name="BlowItOffButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
             <ui:Button text="Not So Tasty v0.0.0" name="NotSoTastyButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />

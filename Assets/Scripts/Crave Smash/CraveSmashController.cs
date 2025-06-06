@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class CraveSmashController : GameController {
     [Header("CraveSmashController")]
     [SerializeField, Range(0, 100)] private int clickDamage;
+    [SerializeField] private List<Sprite> craveMonsterStages;
 
     private Button craveMonsterButton;
     private VisualElement craveMonsterVisual;
@@ -25,11 +24,17 @@ public class CraveSmashController : GameController {
             // Deal damage to the monster
             craveMonsterHealth -= clickDamage;
 
+            // Set the crave monster stage image
+            int craveMonsterStage = Mathf.Clamp(Mathf.CeilToInt(craveMonsterHealth / 100f * craveMonsterStages.Count), 1, 3);
+            craveMonsterVisual.style.backgroundImage = new StyleBackground(craveMonsterStages[craveMonsterStage - 1]);
+
             // Update the size of the monster
             // The reason we are updating the width and the top padding is to keep a 1:1 aspect ratio
-            // The measurements are also in terms
-            craveMonsterVisual.style.width = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
-            craveMonsterVisual.style.paddingTop = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
+            // The measurements are also in terms of percentages to make sure the monster
+            int craveMonsterSize = (craveMonsterHealth / 2) + 50;
+            craveMonsterVisual.style.width = new StyleLength(Length.Percent(craveMonsterSize));
+            craveMonsterVisual.style.paddingTop = new StyleLength(Length.Percent(craveMonsterSize / 2f));
+            craveMonsterVisual.style.paddingBottom = new StyleLength(Length.Percent(craveMonsterSize / 2f));
 
             // If the monster has run out of health, then go to the end state
             if (craveMonsterHealth == 0) {
@@ -39,14 +44,5 @@ public class CraveSmashController : GameController {
 
         // Make sure the crave monster starts at the max health
         craveMonsterHealth = 100;
-    }
-
-    protected override void OnGameControllerStateChanged( ) {
-        base.OnGameControllerStateChanged( );
-
-        // For some reason the crave monster visual does not update properly at 100% padding
-        // Need to do more testing to figure out how to get around that
-        craveMonsterVisual.style.width = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
-        craveMonsterVisual.style.paddingTop = Length.Percent(Mathf.Clamp(craveMonsterHealth, 0, 99));
     }
 }

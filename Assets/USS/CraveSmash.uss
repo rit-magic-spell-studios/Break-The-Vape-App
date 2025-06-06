@@ -21,6 +21,9 @@
 .cs-monster-visual {
     width: 100%;
     height: 0;
-    padding-top: 100%;
-    background-image: url("project://database/Assets/Sprites/CraveSmashMonster.png?fileID=2800000&guid=2238b66cba194e14781dcce00de1c732&type=3#CraveSmashMonster");
+    background-image: url("project://database/Assets/Sprites/Crave%20Smash/SmokeMonster1_Square.png?fileID=2800000&guid=25d63055891ed6b4b8c6cff33fd7eb2f&type=3#SmokeMonster1_Square");
+    padding-top: 50%;
+    padding-bottom: 50%;
+    padding-right: 0;
+    padding-left: 0;
 }

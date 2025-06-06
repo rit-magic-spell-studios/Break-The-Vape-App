@@ -1,7 +1,11 @@
 # Crave Smash Changelog
 
-## *Unreleased*
-* Implemented first pass of UI
+## v0.4.0 - June 6th, 2025
+* Added first pass of UI implementation to the game
+  * Tutorial screen, pause screen, win screen, and game screen
+* Added first pass of art implementation for the Crave Monster
+  * 3 stages of the Crave Monster based on its health as you tap it
+* General code optimizations and improvements
 
 ## v0.3.0 - June 4th, 2025
 * Removed form at the start of the game
