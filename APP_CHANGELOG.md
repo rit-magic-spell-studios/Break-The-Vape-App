@@ -4,6 +4,7 @@
 * Added first pass of main menu UI implementation
 * Added screen transitions to all UI
 * Large overhauls to backend code to make all UI controller scripts more organized and easier to develop with
+* Updated game name and company within Unity settings
 
 ## v0.1.2 - June 6th, 2025
 * **Game Versions**
