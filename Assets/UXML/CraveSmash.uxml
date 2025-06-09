@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <Style src="project://database/Assets/USS/CraveSmash.uss?fileID=7433441132597879392&amp;guid=8b9794395f2c32f46bbdabaed81ea606&amp;type=3#CraveSmash" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="GameScreen" class="uofr-screen" style="flex-grow: 1;">
+        <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: none; opacity: 0;">
             <engine:VisualElement class="uofr-vert-list uofr-section-small" style="justify-content: flex-end;">
                 <engine:VisualElement class="uofr-hori-list uofr-vert-list-first">
                     <engine:Label text="Crave Smash" class="uofr-text-large" style="flex-grow: 1;" />
@@ -13,11 +13,11 @@
                 <engine:Label text="Score: &lt;b&gt;320&lt;/b&gt;" name="ScoreLabel" class="uofr-text-small uofr-vert-list-last" />
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center;">
+                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; opacity: 1; display: flex;">
                     <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: url(&quot;project://database/Assets/Sprites/FingerIcon.png?fileID=2800000&amp;guid=87bb5bd2daa6a2546a91f1b9fa8891f3&amp;type=3#FingerIcon&quot;); height: 0; padding-top: 65%;" />
-                    <engine:Label text="Tap to defeat you craving!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
+                    <engine:Label text="Tap to defeat your craving!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
                 </engine:VisualElement>
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">
+                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; opacity: 1;">
                     <engine:Button name="CraveMonsterButton" class="cs-monster-button">
                         <engine:VisualElement name="CraveMonsterVisual" class="cs-monster-visual" />
                     </engine:Button>
@@ -25,17 +25,20 @@
             </engine:VisualElement>
             <engine:VisualElement class="uofr-section-small" />
         </engine:VisualElement>
-        <engine:VisualElement name="PauseScreen" class="uofr-screen uofr-vert-list" style="flex-grow: 1;">
+        <engine:VisualElement name="PauseScreen" class="uofr-screen uofr-vert-list" style="display: none; opacity: 0;">
             <engine:Label text="Paused" class="uofr-text-large uofr-vert-list-first uofr-section-small" style="-unity-text-align: middle-center;" />
             <engine:Button text="Resume" name="ResumeButton" class="uofr-button uofr-button-selected uofr-vert-list-middle" />
             <engine:Button text="Quit" name="QuitButton" class="uofr-button uofr-vert-list-last" />
         </engine:VisualElement>
-        <engine:VisualElement name="WinScreen" class="uofr-screen" style="flex-grow: 1; justify-content: center;">
+        <engine:VisualElement name="WinScreen" class="uofr-screen" style="display: none; opacity: 1;">
             <engine:VisualElement class="uofr-vert-list uofr-section-medium">
-                <engine:Label text="Nice Job!" class="uofr-text-large uofr-vert-list-first" style="-unity-text-align: middle-center;" />
-                <engine:Label text="Score: &lt;b&gt;320&lt;/b&gt;" name="FinalScoreLabel" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: middle-center;" />
+                <engine:Label text="Final Score:" class="uofr-text-medium uofr-vert-list-first" style="-unity-text-align: middle-center;" />
+                <engine:Label text="320 points" name="FinalScoreLabel" class="uofr-vert-list-last uofr-text-medium" style="-unity-text-align: middle-center; -unity-font-style: bold;" />
             </engine:VisualElement>
-            <engine:Button text="Main Menu" name="MainMenuButton" class="uofr-button uofr-button-selected" />
+            <engine:VisualElement class="uofr-vert-list">
+                <engine:Button text="Play Again" name="PlayAgainButton" class="uofr-button uofr-button-selected uofr-vert-list-first" />
+                <engine:Button text="Home" name="HomeButton" class="uofr-button uofr-vert-list-last" />
+            </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

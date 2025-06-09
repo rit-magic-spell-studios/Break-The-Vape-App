@@ -1,5 +1,12 @@
 # Crave Smash Changelog
 
+## v0.5.0 - June 9th, 2025
+* Fixed typo in tutorial text
+* Crave Monster now takes 20 hits instead of 10
+* Player now scores 10 points every time they tap the Crave Monster
+* Updated the win screen with new layout and buttons
+* Added menu fade transitions between different screens
+
 ## v0.4.0 - June 6th, 2025
 * Added first pass of UI implementation to the game
   * Tutorial screen, pause screen, win screen, and game screen
