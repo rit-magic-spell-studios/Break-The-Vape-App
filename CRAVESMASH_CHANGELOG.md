@@ -5,7 +5,8 @@
 * Crave Monster now takes 20 hits instead of 10
 * Player now scores 10 points every time they tap the Crave Monster
 * Updated the win screen with new layout and buttons
-* Added menu fade transitions between different screens
+* Updated all UI screens with transitions
+	* This doubles as a slight delay between screens as to not accidentally press a button while tapping the Crave Monster
 
 ## v0.4.0 - June 6th, 2025
 * Added first pass of UI implementation to the game

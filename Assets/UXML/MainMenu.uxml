@@ -1,17 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/USS/Main.uss?fileID=7433441132597879392&amp;guid=d54dadf19f32ac84897566b98728ab1b&amp;type=3#Main" />
-    <ui:VisualElement name="Panel" class="panel">
-        <ui:VisualElement name="Container" class="container">
-            <ui:Label text="UofR Games" name="Title" class="unity-label" style="margin-bottom: 103px; -unity-font-style: bold; -unity-text-align: middle-center; font-size: 120px; width: 800px; height: 200px;">
-                <ui:Label text="v0.1.2" name="Version" style="position: absolute; right: 4px; bottom: -38px; font-size: 50px; -unity-font-style: normal; width: auto; height: auto;" />
-            </ui:Label>
-            <ui:Button text="Crave Smash v0.4.0" name="CraveSmashButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
-            <ui:Button text="Puff Dodge v0.0.0" name="PuffDodgeButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
-            <ui:Button text="Blow It Off v0.0.0" name="BlowItOffButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
-            <ui:Button text="Not So Tasty v0.0.0" name="NotSoTastyButton" class="unity-button-disabled" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
-            <ui:Button text="Match And Catch v0.1.0" name="MatchAndCatchButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
-            <ui:Button text="Daily Check-in" name="FormButton" class="unity-button-disabled" style="margin-top: 139px; margin-bottom: 5px;" />
-            <ui:Button text="Quit" name="QuitButton" style="margin-top: 5px; margin-right: 0; margin-bottom: 5px; margin-left: 0;" />
+    <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <ui:VisualElement class="uofr-background">
+        <ui:VisualElement name="MainScreen" class="uofr-screen">
+            <ui:VisualElement class="uofr-vert-list uofr-section-large">
+                <ui:Label text="Break The Vape" class="uofr-text-large" style="-unity-text-align: middle-center;" />
+                <ui:Label text="v0.1.2" class="uofr-text-small" style="-unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="uofr-vert-list">
+                <ui:Button text="Crave Smash v0.5.0" name="CraveSmashButton" class="uofr-button uofr-vert-list-first uofr-button-selected" />
+                <ui:Button text="Puff Dodge v0.0.0" name="PuffDodgeButton" class="uofr-button uofr-vert-list-middle" />
+                <ui:Button text="Blow It Off v0.0.0" name="BlowItOffButton" class="uofr-button uofr-vert-list-middle" />
+                <ui:Button text="Not So Tasty v0.0.0" name="NotSoTastyButton" class="uofr-button uofr-vert-list-middle" />
+                <ui:Button text="Match And Catch v0.1.0" name="MatchAndCatchButton" class="uofr-button uofr-button-selected uofr-vert-list-middle" />
+                <ui:Button text="Check-In Form" name="CheckInButton" class="uofr-button uofr-vert-list-last" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

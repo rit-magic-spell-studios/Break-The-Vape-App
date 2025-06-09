@@ -1,5 +1,10 @@
 # App Changelog
 
+## Unreleased
+* Added first pass of main menu UI implementation
+* Added screen transitions to all UI
+* Large overhauls to backend code to make all UI controller scripts more organized and easier to develop with
+
 ## v0.1.2 - June 6th, 2025
 * **Game Versions**
   * Crave Smash [v0.4.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 6th, 2025)

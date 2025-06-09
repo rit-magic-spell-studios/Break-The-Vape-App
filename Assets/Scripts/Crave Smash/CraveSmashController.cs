@@ -8,9 +8,10 @@ public class CraveSmashController : GameController {
     [SerializeField, Range(0, 100)] private int clickDamage;
     [SerializeField] private List<Sprite> craveMonsterStages;
 
+    private int craveMonsterHealth;
+
     private Button craveMonsterButton;
     private VisualElement craveMonsterVisual;
-    private int craveMonsterHealth;
 
     protected override void Awake( ) {
         base.Awake( );
@@ -41,11 +42,18 @@ public class CraveSmashController : GameController {
 
             // If the monster has run out of health, then go to the end state
             if (craveMonsterHealth == 0) {
-                GameControllerState = GameControllerState.WIN;
+                UIControllerState = UIState.WIN;
             }
         });
 
         // Make sure the crave monster starts at the max health
         craveMonsterHealth = 100;
+    }
+
+    protected override void Start( ) {
+        base.Start( );
+
+        // When the game starts, the tutorial should be shown first
+        UIControllerState = UIState.TUTORIAL;
     }
 }

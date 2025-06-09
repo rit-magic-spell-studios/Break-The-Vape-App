@@ -13,11 +13,11 @@
                 <engine:Label text="Score: &lt;b&gt;320&lt;/b&gt;" name="ScoreLabel" class="uofr-text-small uofr-vert-list-last" />
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; opacity: 1; display: flex;">
+                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; opacity: 0; display: none;">
                     <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: url(&quot;project://database/Assets/Sprites/FingerIcon.png?fileID=2800000&amp;guid=87bb5bd2daa6a2546a91f1b9fa8891f3&amp;type=3#FingerIcon&quot;); height: 0; padding-top: 65%;" />
                     <engine:Label text="Tap to defeat your craving!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
                 </engine:VisualElement>
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; opacity: 1;">
+                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: none; opacity: 0;">
                     <engine:Button name="CraveMonsterButton" class="cs-monster-button">
                         <engine:VisualElement name="CraveMonsterVisual" class="cs-monster-visual" />
                     </engine:Button>
@@ -30,7 +30,7 @@
             <engine:Button text="Resume" name="ResumeButton" class="uofr-button uofr-button-selected uofr-vert-list-middle" />
             <engine:Button text="Quit" name="QuitButton" class="uofr-button uofr-vert-list-last" />
         </engine:VisualElement>
-        <engine:VisualElement name="WinScreen" class="uofr-screen" style="display: none; opacity: 1;">
+        <engine:VisualElement name="WinScreen" class="uofr-screen" style="display: none; opacity: 0;">
             <engine:VisualElement class="uofr-vert-list uofr-section-medium">
                 <engine:Label text="Final Score:" class="uofr-text-medium uofr-vert-list-first" style="-unity-text-align: middle-center;" />
                 <engine:Label text="320 points" name="FinalScoreLabel" class="uofr-vert-list-last uofr-text-medium" style="-unity-text-align: middle-center; -unity-font-style: bold;" />

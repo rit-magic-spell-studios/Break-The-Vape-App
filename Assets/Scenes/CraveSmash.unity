@@ -317,8 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ae1c0f3223bad4dbdfed416bc66a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialTime: 2.5
-  menuTransitionTime: 0.2
+  screenFadeTransitionTime: 0.1
+  tutorialTime: 2
   clickDamage: 5
   craveMonsterStages:
   - {fileID: 21300000, guid: e7e1418c0008efa4b8c039513ca00748, type: 3}
