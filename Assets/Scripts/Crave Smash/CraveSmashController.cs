@@ -22,6 +22,11 @@ public class CraveSmashController : GameController {
 
         // When monster is clicked, deal damage and display indicator text
         craveMonsterButton.RegisterCallback<ClickEvent>((e) => {
+            // Make sure the crave monster health does not go below 0
+            if (craveMonsterHealth <= 0) {
+                return;
+            }
+
             // Deal damage to the monster
             craveMonsterHealth -= clickDamage;
 
@@ -42,7 +47,12 @@ public class CraveSmashController : GameController {
 
             // If the monster has run out of health, then go to the end state
             if (craveMonsterHealth == 0) {
-                UIControllerState = UIState.WIN;
+                // Set the monster to be invisible
+                craveMonsterVisual.style.visibility = Visibility.Hidden;
+
+                // Delay a bit after the health is 0 to allow the player to stop tapping the screen
+                // Players were accidentally pressing buttons on the win screen so this delay should hopefully prevent that
+                DelayAction(( ) => { UIControllerState = UIState.WIN; }, 1f);
             }
         });
 

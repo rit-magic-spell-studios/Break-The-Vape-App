@@ -6,7 +6,7 @@
 * Player now scores 10 points every time they tap the Crave Monster
 * Updated the win screen with new layout and buttons
 * Updated all UI screens with transitions
-	* This doubles as a slight delay between screens as to not accidentally press a button while tapping the Crave Monster
+* Added a delay between when the Crave Monster gets defeated and the win screen to prevent accidental button presses
 
 ## v0.4.0 - June 6th, 2025
 * Added first pass of UI implementation to the game

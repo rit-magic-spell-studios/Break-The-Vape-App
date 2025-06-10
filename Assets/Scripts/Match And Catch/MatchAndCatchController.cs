@@ -95,7 +95,8 @@ public class MatchAndCatchController : GameController {
     /// <returns></returns>
     private IEnumerator FlipCardAnimation(Button card, bool faceVisible) {
         // If there was an even number of cards flipped over, make sure all cards have a match
-        if (flippedCards.Count > 0 && flippedCards.Count % 2 == 0) {
+        // Also make sure that the cards face is being turned to visible since this method is reused for flipping the cards back over
+        if (faceVisible && flippedCards.Count > 0 && flippedCards.Count % 2 == 0) {
             checkMatchCoroutine = StartCoroutine(CheckMatches( ));
         }
 

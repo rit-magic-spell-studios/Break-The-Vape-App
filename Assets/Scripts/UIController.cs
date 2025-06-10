@@ -236,4 +236,19 @@ public abstract class UIController : MonoBehaviour {
         element.style.opacity = toOpacity;
         element.style.display = (fadeIn ? DisplayStyle.Flex : DisplayStyle.None);
     }
+
+    /// <summary>
+    /// Delay an action by a specific amount of seconds
+    /// </summary>
+    /// <param name="action">The function to be called after a delay</param>
+    /// <param name="delaySeconds">The delay in seconds after which to call the function</param>
+    protected void DelayAction (Action action, float delaySeconds) {
+        StartCoroutine(DelayActionSeconds(action, delaySeconds));
+    }
+
+    private IEnumerator DelayActionSeconds (Action action, float delaySeconds) {
+        yield return new WaitForSeconds(delaySeconds);
+
+        action?.Invoke( );
+    }
 }
