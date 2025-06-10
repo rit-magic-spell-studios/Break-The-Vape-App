@@ -1,7 +1,7 @@
 # UofR Games
 This is a repository for the MAGIC Spell Studios collaboration with the University of Rochester for developing anti-vaping minigames for children in middle school and high school.
 
-## App Version [v0.1.2](https://github.com/qusr08/UofR-Games/blob/main/APP_CHANGELOG.md) (June 6th, 2025)
+## App Version [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/APP_CHANGELOG.md) (June 10th, 2025)
 * Crave Smash [v0.5.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 9th, 2025)
 * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
 * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
