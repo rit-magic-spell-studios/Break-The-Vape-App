@@ -1,10 +1,16 @@
 # App Changelog
 
-## Unreleased
+## v0.2.0 - June 10th, 2025
 * Added first pass of main menu UI implementation
 * Added screen transitions to all UI
 * Large overhauls to backend code to make all UI controller scripts more organized and easier to develop with
 * Updated game name and company within Unity settings
+* **Game Versions**
+  * Crave Smash [v0.5.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 9th, 2025)
+  * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
+  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
+  * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
+  * Match And Catch [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 10th, 2025)
 
 ## v0.1.2 - June 6th, 2025
 * **Game Versions**

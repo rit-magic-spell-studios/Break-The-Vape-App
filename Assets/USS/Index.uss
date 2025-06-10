@@ -7,12 +7,11 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    font-size: 90px;
+    font-size: 80px;
     white-space: normal;
     color: rgb(0, 0, 0);
     -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/OTF/Switzer-Medium.otf?fileID=12800000&guid=31e0ec6fcd8cd5c4394f158ddef37e20&type=3#Switzer-Medium");
     -unity-text-align: middle-left;
-    -unity-font-style: bold;
 }
 
 .uofr-text-medium {
@@ -353,22 +352,26 @@
 .uofr-section-large {
     height: 35%;
     min-height: 35%;
+    width: 100%;
 }
 
 .uofr-section-medium {
     height: 25%;
     min-height: 25%;
+    width: 100%;
 }
 
 .uofr-section-small {
     height: 10%;
     min-height: 10%;
+    width: 100%;
 }
 
 .uofr-hori-list {
     flex-direction: row;
     flex-grow: 0;
     align-items: center;
+    width: 100%;
 }
 
 .uofr-hori-list-first {
@@ -402,16 +405,16 @@
     margin-left: 0;
 }
 
-.uofr-vert-list-last {
-    margin-top: 10px;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-}
-
 .uofr-vert-list-middle {
     margin-top: 10px;
     margin-right: 0;
     margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.uofr-vert-list-last {
+    margin-top: 10px;
+    margin-right: 0;
+    margin-bottom: 0;
     margin-left: 0;
 }

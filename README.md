@@ -6,7 +6,7 @@ This is a repository for the MAGIC Spell Studios collaboration with the Universi
 * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
 * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
 * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
-* Match And Catch [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 4th, 2025)
+* Match And Catch [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 10th, 2025)
 
 ### Version Format: vX.Y.Z
 * X: Released version

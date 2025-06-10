@@ -4,47 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class MatchAndCatchController : MonoBehaviour {
-    private VisualElement ui;
-    private VisualElement gameContainer;
-    private VisualElement endContainer;
+public class MatchAndCatchController : GameController {
+    [Header("MatchAndCatchController")]
+    [SerializeField, Range(0f, 2f)] private float cardFlipTime;
+    [SerializeField, Range(0f, 2f)] private float cardCheckDelay;
+    [SerializeField] private Color cardFaceColor;
+    [SerializeField] private Color cardBackColor;
 
     private List<Button> cards;
     private List<Button> flippedCards;
     private List<int> numbers;
 
+    private Label matchesLabel;
+
     private Coroutine checkMatchCoroutine;
 
-    /// <summary>
-    /// Whether or not the player has won
-    /// </summary>
-    public bool HasWon {
-        get => _hasWon;
-        set {
-            _hasWon = value;
-
-            // Enabled/disable UI based on if the player has won or not
-            if (_hasWon) {
-                gameContainer.AddToClassList("container-hidden");
-                endContainer.RemoveFromClassList("container-hidden");
-            } else {
-                gameContainer.RemoveFromClassList("container-hidden");
-                endContainer.AddToClassList("container-hidden");
-            }
-        }
-    }
-    private bool _hasWon;
-
-    private void Awake( ) {
-        ui = GetComponent<UIDocument>( ).rootVisualElement;
-        gameContainer = ui.Q<VisualElement>("GameContainer");
-        endContainer = ui.Q<VisualElement>("EndContainer");
+    protected override void Awake( ) {
+        base.Awake( );
 
         // Get a list of all the cards in the UI
         cards = ui.Query<Button>("Card").ToList( );
         flippedCards = new List<Button>( );
-
-        ui.Q<Button>("MainMenuButton").clicked += ( ) => { SceneManager.LoadScene(0); };
 
         // Generate the list of matches
         numbers = new List<int>( );
@@ -61,41 +41,38 @@ public class MatchAndCatchController : MonoBehaviour {
         // Set up the on-click functions for each of the cards
         for (int i = 0; i < cards.Count; i++) {
             cards[i].clickable.clickedWithEventInfo += FlipCard;
+            cards[i].style.backgroundColor = cardBackColor;
+
+            // Set the card label to not be visible
+            // Also make sure it displays the right number
+            Label cardLabel = cards[i].Q<Label>( );
+            cardLabel.style.display = DisplayStyle.None;
+            cardLabel.text = $"{numbers[i]}";
         }
 
-        HasWon = false;
+        // Get references to other important UI elements
+        matchesLabel = ui.Q<Label>("MatchesLabel");
+        matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
+    }
+
+    protected override void Start( ) {
+        base.Start( );
+
+        // When the game starts, the tutorial should be shown first
+        UIControllerState = UIState.TUTORIAL;
     }
 
     /// <summary>
-    /// Unflip a card that has already been flipped
+    /// Flip a card over to see what it has written on its face
     /// </summary>
-    /// <param name="card">The card to unflip</param>
-    public void UnflipCard(Button card) {
-        // Get a reference to the card index
-        int cardIndex = cards.IndexOf(card);
-
-        // Get a reference to the card label
-        Label cardLabel = card.Q<Label>( );
-
-        // Update the card label appearance
-        cardLabel.style.visibility = Visibility.Hidden;
-
-        // Since this card was flipped over, increment the cards flipped
-        flippedCards.Remove(card);
-    }
-
-    /// <summary>
-    /// Flip a card over to reveal its number
-    /// </summary>
-    /// <param name="e">The card button click even information</param>
-    public void FlipCard(EventBase e) {
+    /// <param name="e">Event data about the click event from the card button</param>
+    private void FlipCard(EventBase e) {
         // If the game is currently checking for a match, then do not flip a card
         // Need to wait until after the match is checked to flip a new card
         if (checkMatchCoroutine != null) {
             return;
         }
 
-        // Get a reference to this card
         Button card = (Button) e.target;
 
         // If this card is currently flipped, then return and do not try to flip it again
@@ -103,49 +80,89 @@ public class MatchAndCatchController : MonoBehaviour {
             return;
         }
 
-        // Get a reference to the card index
-        int cardIndex = cards.IndexOf(card);
-
-        // Get a reference to the card label
-        Label cardLabel = card.Q<Label>( );
-
-        // Update the card label appearance
-        cardLabel.text = $"{numbers[cardIndex]}";
-        cardLabel.style.visibility = Visibility.Visible;
-
-        // Since this card was flipped over, increment the cards flipped
+        // Since this card is now flipped over, add it to the flipped cards list
         flippedCards.Add(card);
 
+        // Play an animation of the card flipping over
+        StartCoroutine(FlipCardAnimation(card, true));
+    }
+
+    /// <summary>
+    /// An animation that plays of the card flipping over
+    /// </summary>
+    /// <param name="card">The card button element to flip over</param>
+    /// <param name="faceVisible">Whether or not the face of the card is visible after the animation</param>
+    /// <returns></returns>
+    private IEnumerator FlipCardAnimation(Button card, bool faceVisible) {
         // If there was an even number of cards flipped over, make sure all cards have a match
         if (flippedCards.Count > 0 && flippedCards.Count % 2 == 0) {
-            checkMatchCoroutine = StartCoroutine(CheckMatch( ));
+            checkMatchCoroutine = StartCoroutine(CheckMatches( ));
         }
+
+        float scale = 1f;
+        bool setFlipStyles = false;
+
+        while (scale > -1f) {
+            scale -= Time.deltaTime / (cardFlipTime / 2f);
+            card.style.scale = new StyleScale(new Vector2(Mathf.Abs(scale), 1f));
+
+            // Once the card has flipped over, change the background color to give the illusion that the card has flipped
+            if (scale <= 0f && !setFlipStyles) {
+                // Whether or not the card is now visible, set the label and background color of the card
+                if (faceVisible) {
+                    card.style.backgroundColor = cardFaceColor;
+                    card.Q<Label>( ).style.display = DisplayStyle.Flex;
+                } else {
+                    card.style.backgroundColor = cardBackColor;
+                    card.Q<Label>( ).style.display = DisplayStyle.None;
+                }
+
+                // Ensure that this if statement is not called multiple times within the while loop, only when the card is initially turned over
+                setFlipStyles = true;
+            }
+
+            yield return null;
+        }
+
+        card.style.scale = new StyleScale(Vector2.one);
     }
 
     /// <summary>
     /// Check for a match after 2 cards have been turned over (with a slight delay)
     /// </summary>
     /// <returns></returns>
-    private IEnumerator CheckMatch( ) {
+    private IEnumerator CheckMatches( ) {
         // Get the index of the last two cards
-        Button card1 = flippedCards[flippedCards.Count - 1];
-        Button card2 = flippedCards[flippedCards.Count - 2];
+        Button card1 = flippedCards[^1];
+        Button card2 = flippedCards[^2];
 
         // If the numbers of the last two cards do not match, then flip them back over
         if (numbers[cards.IndexOf(card1)] != numbers[cards.IndexOf(card2)]) {
             // Wait before checking the card match so the player can see what they turned over
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(cardCheckDelay);
 
-            UnflipCard(card1);
-            UnflipCard(card2);
-        }
+            // Since this card is now not flipped over, remove it from the flipped cards
+            flippedCards.Remove(card1);
+            flippedCards.Remove(card2);
 
-        // If all of the cards have been flipped over, then the player has won
-        if (flippedCards.Count == cards.Count) {
-            // Wait before checking the card match so the player can see what they turned over
-            yield return new WaitForSeconds(1f);
+            // Flip both of the cards over
+            // We only need to wait for the second card to be finished because the card animations take the same amount of time
+            StartCoroutine(FlipCardAnimation(card1, false));
+            yield return StartCoroutine(FlipCardAnimation(card2, false));
+        } else {
+            // Update the matches left label
+            matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
 
-            HasWon = true;
+            // Add points for the game
+            Score += 20;
+
+            // If all of the cards have been flipped over, then the player has won
+            if (flippedCards.Count == cards.Count) {
+                // Wait a second to give the player a chance to look at the cards
+                yield return new WaitForSeconds(cardCheckDelay);
+
+                UIControllerState = UIState.WIN;
+            }
         }
 
         checkMatchCoroutine = null;
@@ -155,14 +172,15 @@ public class MatchAndCatchController : MonoBehaviour {
     /// <summary>
 	/// Shuffles the element order of the specified list.
 	/// </summary>
-	private void Shuffle(IList ts) {
-        var count = ts.Count;
+    /// <param name="list">The list to shuffle</param>
+	private void Shuffle(IList list) {
+        var count = list.Count;
         var last = count - 1;
         for (var i = 0; i < last; ++i) {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
+            var randomIndex = Random.Range(i, count);
+            var tmp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = tmp;
         }
     }
 }
