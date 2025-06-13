@@ -1,5 +1,10 @@
 # Match and Catch Changelog
 
+## v0.2.1 - June 13th, 2025
+* Points now add to a cumulative total points value that saves across all games
+* Added total points label on win screen
+* Players now score 100 points per correct match
+
 ## v0.2.0 - June 10th, 2025
 * Implemented first pass of the UI
 	* This includes screen transitions, the pause screen, and the win screen that have already been implemented in other minigames

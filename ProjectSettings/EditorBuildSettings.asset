@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MatchAndCatch.unity
     guid: f4208a9f4557fa944a6729850026e8a5
+  - enabled: 1
+    path: Assets/Scenes/DailyCheckIn.unity
+    guid: 3c1154eb6285c91448da975333baf210
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: db9bf42084ebe154ca9e27030fb696d9, type: 2}
   m_UseUCBPForAssetBundles: 0

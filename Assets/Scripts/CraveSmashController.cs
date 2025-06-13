@@ -43,7 +43,7 @@ public class CraveSmashController : GameController {
             craveMonsterVisual.style.paddingBottom = new StyleLength(Length.Percent(craveMonsterSize / 2f));
 
             // Increase the player's score
-            Score += 10;
+            AddPoints(10);
 
             // If the monster has run out of health, then go to the end state
             if (craveMonsterHealth == 0) {

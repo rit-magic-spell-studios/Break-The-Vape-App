@@ -10,9 +10,11 @@ public abstract class GameController : UIController {
     [SerializeField, Range(0f, 10f)] private float tutorialTime;
 
     private float tutorialTimer;
+    private int currentPoints;
 
     protected Label scoreLabel;
     protected Label finalScoreLabel;
+    protected Label totalScoreLabel;
 
     protected VisualElement gameScreen;
     protected VisualElement pauseScreen;
@@ -20,21 +22,6 @@ public abstract class GameController : UIController {
 
     protected VisualElement gameSubscreen;
     protected VisualElement tutorialSubscreen;
-
-    /// <summary>
-    /// The current score of the game
-    /// </summary>
-    public int Score {
-        get => _score;
-        set {
-            _score = value;
-
-            // Update the score label text based on the new score value
-            scoreLabel.text = $"Score: <b>{_score} points</b>";
-            finalScoreLabel.text = $"{_score} points";
-        }
-    }
-    private int _score;
 
     protected override void Awake( ) {
         base.Awake( );
@@ -67,10 +54,13 @@ public abstract class GameController : UIController {
         // Get references to other important UI elements
         scoreLabel = ui.Q<Label>("ScoreLabel");
         finalScoreLabel = ui.Q<Label>("FinalScoreLabel");
+        totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
 
         // Set default values for some of the variables
         tutorialTimer = 0f;
-        Score = 0;
+
+        // Update the score labels for the beginning of the game
+        AddPoints(0);
     }
 
     protected virtual void Update( ) {
@@ -91,23 +81,18 @@ public abstract class GameController : UIController {
     /// Update all of the subscreens in this game controller based on the current game controller state
     /// </summary>
     protected override void UpdateSubscreens( ) {
-        switch (UIControllerState) {
-            case UIState.TUTORIAL:
-                gameSubscreen.style.opacity = 0f;
-                gameSubscreen.style.display = DisplayStyle.None;
+        SetSubscreenVisibility(gameSubscreen, UIControllerState == UIState.GAME);
+        SetSubscreenVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);
+    }
 
-                tutorialSubscreen.style.opacity = 1f;
-                tutorialSubscreen.style.display = DisplayStyle.Flex;
+    protected void AddPoints (int points) {
+        // Add the points to the total values
+        currentPoints += points;
+        playerData.TotalPoints += points;
 
-                break;
-            case UIState.GAME:
-                gameSubscreen.style.opacity = 1f;
-                gameSubscreen.style.display = DisplayStyle.Flex;
-
-                tutorialSubscreen.style.opacity = 0f;
-                tutorialSubscreen.style.display = DisplayStyle.None;
-
-                break;
-        }
+        // Update the score label text based on the new score value
+        scoreLabel.text = $"Score: <b>{currentPoints} points</b>";
+        finalScoreLabel.text = $"{currentPoints} points";
+        totalScoreLabel.text = $"{playerData.TotalPoints} points";
     }
 }

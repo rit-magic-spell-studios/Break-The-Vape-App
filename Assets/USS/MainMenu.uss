@@ -1,0 +1,14 @@
+.mm-button-game {
+    height: 180px;
+    min-height: 180px;
+}
+
+.mm-game-thumbnail {
+    position: absolute;
+    background-image: url("project://database/Assets/Sprites/GameCircleIcon.png?fileID=2800000&guid=fd2ffd28f7581c6448eda780e130e44b&type=3#GameCircleIcon");
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 170px;
+    min-width: 170px;
+}

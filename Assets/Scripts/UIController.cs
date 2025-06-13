@@ -16,6 +16,7 @@ public enum UIState {
 
 public abstract class UIController : MonoBehaviour {
     [Header("UIController")]
+    [SerializeField] protected PlayerData playerData;
     [SerializeField, Range(0f, 2f)] protected float screenFadeTransitionTime;
 
     private Coroutine menuTransition;
@@ -122,6 +123,16 @@ public abstract class UIController : MonoBehaviour {
     /// Update all of the subscreens in this controller based on the current controller state
     /// </summary>
     protected virtual void UpdateSubscreens( ) { }
+
+    /// <summary>
+    /// Set a subscreen's visibility
+    /// </summary>
+    /// <param name="subscreen">The subscreen to set the visibility of</param>
+    /// <param name="isVisible">Whether or not the subscreen should be visible</param>
+    protected void SetSubscreenVisibility (VisualElement subscreen, bool isVisible) {
+        subscreen.style.opacity = (isVisible ? 1f : 0f);
+        subscreen.style.display = (isVisible ? DisplayStyle.Flex : DisplayStyle.None);
+    }
 
     /// <summary>
     /// Transition from one screen to another by fading one out and the other in

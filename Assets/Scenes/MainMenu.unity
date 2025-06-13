@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cfd2c9549c72442ad3509d03229905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

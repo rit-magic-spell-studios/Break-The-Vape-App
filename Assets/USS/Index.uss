@@ -10,7 +10,7 @@
     font-size: 80px;
     white-space: normal;
     color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/OTF/Switzer-Medium.otf?fileID=12800000&guid=31e0ec6fcd8cd5c4394f158ddef37e20&type=3#Switzer-Medium");
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
     -unity-text-align: middle-left;
 }
 
@@ -25,7 +25,7 @@
     padding-bottom: 0;
     white-space: normal;
     color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/OTF/Switzer-Medium.otf?fileID=12800000&guid=31e0ec6fcd8cd5c4394f158ddef37e20&type=3#Switzer-Medium");
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
     font-size: 60px;
 }
 
@@ -40,8 +40,12 @@
     padding-bottom: 0;
     font-size: 40px;
     white-space: normal;
+    color: rgb(0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
+}
+
+.uofr-text-gray {
     color: rgb(112, 112, 112);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/OTF/Switzer-Regular.otf?fileID=12800000&guid=323fa69df02b5ee40ab52f7725f7e19e&type=3#Switzer-Regular");
 }
 
 .uofr-button {
@@ -49,28 +53,28 @@
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 60px;
     height: 120px;
-    border-left-width: 5px;
-    border-right-width: 5px;
-    border-top-width: 5px;
-    border-bottom-width: 5px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
     flex-basis: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border-left-color: rgb(229, 229, 229);
-    border-right-color: rgb(229, 229, 229);
-    border-top-color: rgb(229, 229, 229);
-    border-bottom-color: rgb(229, 229, 229);
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
     background-color: rgba(0, 0, 0, 0);
     color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/WEB/fonts/Switzer-Medium.ttf?fileID=12800000&guid=fd8eb907f96031842a5f34e048c6dac9&type=3#Switzer-Medium");
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
     min-height: 120px;
     flex-grow: 0;
 }
@@ -361,21 +365,11 @@
     width: 100%;
 }
 
-.uofr-section-small {
-    height: 10%;
-    min-height: 10%;
-    width: 100%;
-}
-
 .uofr-hori-list {
     flex-direction: row;
     flex-grow: 0;
     align-items: center;
     width: 100%;
-}
-
-.uofr-hori-list-first {
-    margin-right: 10px;
 }
 
 .uofr-hori-list-middle {
@@ -405,6 +399,12 @@
     margin-left: 0;
 }
 
+.uofr-section-small {
+    height: 10%;
+    min-height: 10%;
+    width: 100%;
+}
+
 .uofr-vert-list-middle {
     margin-top: 10px;
     margin-right: 0;
@@ -430,4 +430,8 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.uofr-hori-list-first {
+    margin-right: 10px;
 }

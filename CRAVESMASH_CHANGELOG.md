@@ -1,5 +1,9 @@
 # Crave Smash Changelog
 
+## v0.5.1 - June 13th, 2025
+* Points now add to a cumulative total points value that saves across all games
+* Added total points label on win screen
+
 ## v0.5.0 - June 9th, 2025
 * Fixed typo in tutorial text
 * Crave Monster now takes 20 hits instead of 10

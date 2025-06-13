@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,16 +15,12 @@ public class CheckInController : UIController {
     private Label checkInLabel;
     private Button nextButton;
     private ProgressBar checkInProgressBar;
-    private Button finishButton;
 
     private List<Button> vapeButtons;
     private List<Button> craveLevelButtons;
     private List<Button> craveCauseButtons;
 
     private List<Button> selectedButtons;
-    private bool hasVapedInLast24Hours;
-    private int cravingLevel;
-    private List<string> cravingCauses;
 
     protected override void Awake( ) {
         base.Awake( );
@@ -47,22 +44,48 @@ public class CheckInController : UIController {
         subscreens[(int) UIState.CAUSE] = causeSubscreen;
         subscreens[(int) UIState.COMPLETE] = completeSubscreen;
 
+        selectedButtons = new List<Button>( );
+
         // Set up all buttons in the check in
         checkInLabel = ui.Q<Label>("CheckInLabel");
-        nextButton = ui.Q<Button>("NextButton");
+
         checkInProgressBar = ui.Q<ProgressBar>("CheckInProgressBar");
+        checkInProgressBar.value = checkInProgressBar.lowValue;
+
+        nextButton = ui.Q<Button>("NextButton");
+        nextButton.clicked += ( ) => {
+            // Only go to the next UI controller state if a button is selected
+            if (selectedButtons.Count > 0) {
+                // This only works if the UIStates for each of the subscreens of the check in are right next to each other in the enum list
+                UIControllerState = UIControllerState + 1;
+            }
+        };
 
         // Set up all elements on the vape subscreen
         vapeButtons = ui.Q<VisualElement>("VapeOptions").Query<Button>( ).ToList( );
+        for (int i = 0; i < vapeButtons.Count; i++) {
+            vapeButtons[i].RegisterCallback<ClickEvent>((e) => { SelectOption(vapeButtons, vapeButtons.IndexOf((Button) e.target)); });
+        }
 
         // Set up all elements on the crave level subscreen
         craveLevelButtons = ui.Q<VisualElement>("CraveOptions").Query<Button>( ).ToList( );
+        for (int i = 0; i < craveLevelButtons.Count; i++) {
+            craveLevelButtons[i].RegisterCallback<ClickEvent>((e) => { SelectOption(craveLevelButtons, craveLevelButtons.IndexOf((Button) e.target)); });
+        }
 
         // Set up all elements on the crave cause subscreen
         craveCauseButtons = ui.Q<VisualElement>("CauseOptions").Query<Button>( ).ToList( );
+        for (int i = 0; i < craveCauseButtons.Count; i++) {
+            craveCauseButtons[i].RegisterCallback<ClickEvent>((e) => { ToggleSelectOption(craveCauseButtons, craveCauseButtons.IndexOf((Button) e.target)); });
+        }
 
         // Set up all elements on the completed subscreen
-        ui.Q<Button>("FinishButton").clicked += ( ) => { FadeToScene(0); };
+        ui.Q<Button>("FinishButton").clicked += ( ) => {
+            playerData.HasCompletedInitialCheckIn = true;
+            Debug.Log($"VAPE? - {playerData.HasVapedRecently} | CRAVE LVL - {playerData.InitialCravingLevel} | CRAVE CAUSES - {playerData.CravingCauses.ToCommaSeparatedString( )}");
+
+            FadeToScene(0);
+        };
     }
 
     protected override void Start( ) {
@@ -76,10 +99,35 @@ public class CheckInController : UIController {
     /// Select a button option out of a list of options
     /// </summary>
     /// <param name="options">The option list to select from</param>
-    /// <param name="selectOption">The index within the options list to select</param>
-    /// <param name="onlyOneOptionSelected">Whether or not multiple options can be selected at once. If this is true, then selecting a new option will automatically deselect the currently selected option</param>
-    private void SelectOption(List<VisualElement> options, int selectOption, bool onlyOneOptionSelected) {
+    /// <param name="selectOptionIndex">The index within the options list to select</param>
+    private void SelectOption(List<Button> options, int selectOptionIndex) {
+        // Remove the current selected button if there is one selected
+        if (selectedButtons.Count > 0) {
+            selectedButtons[0].RemoveFromClassList("uofr-button-selected");
+            selectedButtons.RemoveAt(0);
+        }
 
+        // Select the new option at the specified index
+        selectedButtons.Add(options[selectOptionIndex]);
+        selectedButtons[0].AddToClassList("uofr-button-selected");
+    }
+
+    /// <summary>
+    /// Toggle a button option out of a list of options. This will allow multiple options to be selected at one time
+    /// </summary>
+    /// <param name="options">The option list to select from</param>
+    /// <param name="toggleOptionIndex">The index within hte options list to toggle</param>
+    private void ToggleSelectOption(List<Button> options, int toggleOptionIndex) {
+        Button toggledOption = options[toggleOptionIndex];
+
+        // Toggle the class on the option as well as remove/add it from the selected buttons list
+        if (toggledOption.ClassListContains("uofr-button-selected")) {
+            toggledOption.RemoveFromClassList("uofr-button-selected");
+            selectedButtons.Remove(toggledOption);
+        } else {
+            toggledOption.AddToClassList("uofr-button-selected");
+            selectedButtons.Add(toggledOption);
+        }
     }
 
     /// <summary>
@@ -88,22 +136,36 @@ public class CheckInController : UIController {
     private void DeselectAllOptions( ) {
         // Based on the last controller state, save the selected button data to variables so it can be tracked
         switch (LastUIControllerState) {
+            case UIState.NULL:
+                // Set the check in label for the next subscreen
+                checkInLabel.text = "Have you vaped in the last 24 hours?";
+
+                break;
             case UIState.VAPE:
+                // Set the check in label for the next subscreen
+                checkInLabel.text = "What is your craving level?";
+
                 // There should only be one option selected for the vape screen
-                hasVapedInLast24Hours = (selectedButtons[0].text == "Yes");
+                playerData.HasVapedRecently = (selectedButtons[0].text == "Yes");
 
                 break;
             case UIState.CRAVE:
+                // Set the check in label for the next subscreen
+                checkInLabel.text = "What is causing your craving?";
+
                 // There should only be one option selected for the crave level screen
                 // The text should also always be a number
-                cravingLevel = int.Parse(selectedButtons[0].text);
+                playerData.InitialCravingLevel = int.Parse(selectedButtons[0].text);
 
                 break;
             case UIState.CAUSE:
+                // Set the check in label for the next subscreen
+                checkInLabel.text = "Complete!";
+
                 // There could be multiple selected options for the craving cause
-                cravingCauses = new List<string>( );
+                playerData.CravingCauses = new List<string>( );
                 for (int i = 0; i < selectedButtons.Count; i++) {
-                    cravingCauses.Add(selectedButtons[i].text);
+                    playerData.CravingCauses.Add(selectedButtons[i].text);
                 }
 
                 break;
@@ -111,5 +173,18 @@ public class CheckInController : UIController {
 
         // Clear the selected buttons to allow new options to be selected
         selectedButtons.Clear( );
+    }
+
+    protected override void UpdateSubscreens( ) {
+        SetSubscreenVisibility(vapeSubscreen, UIControllerState == UIState.VAPE);
+        SetSubscreenVisibility(craveSubscreen, UIControllerState == UIState.CRAVE);
+        SetSubscreenVisibility(causeSubscreen, UIControllerState == UIState.CAUSE);
+        SetSubscreenVisibility(completeSubscreen, UIControllerState == UIState.COMPLETE);
+
+        // On the last complete screen of the check in form, make sure the next button is not visible anymore
+        nextButton.style.display = (UIControllerState == UIState.COMPLETE ? DisplayStyle.None : DisplayStyle.Flex);
+
+        // Deselect all of the options on each subscreen
+        DeselectAllOptions( );
     }
 }

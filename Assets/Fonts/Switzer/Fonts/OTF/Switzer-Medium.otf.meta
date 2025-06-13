@@ -10,7 +10,38 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Switzer
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 537ded4012050814787ce8ed2c9d314e, type: 3}
+  - {fileID: 12800000, guid: 955042d5a4721c34ab6b9ee792c5da5a, type: 3}
+  - {fileID: 12800000, guid: 34dadc8cd408e8844b781392146fd998, type: 3}
+  - {fileID: 12800000, guid: 3b29690cff415aa4491bb6dc8c352e23, type: 3}
+  - {fileID: 12800000, guid: 77943ebb334b9014faade6ad7d9b3f47, type: 3}
+  - {fileID: 12800000, guid: 47508d044d098994f9b48297f59cdefd, type: 3}
+  - {fileID: 12800000, guid: 0274ec543decad54d94abcef9db92258, type: 3}
+  - {fileID: 12800000, guid: 323fa69df02b5ee40ab52f7725f7e19e, type: 3}
+  - {fileID: 12800000, guid: 9235e13f9e1cd7841bffb33d3ab63216, type: 3}
+  - {fileID: 12800000, guid: eda6339747f183c468c037d3556f1380, type: 3}
+  - {fileID: 12800000, guid: c414e8f4e59bb514aa0c093beb6ae14b, type: 3}
+  - {fileID: 12800000, guid: aa0c777aebe5d454c970f223fd6a2c0c, type: 3}
+  - {fileID: 12800000, guid: f03c77d48485b1b479248daba256561b, type: 3}
+  - {fileID: 12800000, guid: fd8eb907f96031842a5f34e048c6dac9, type: 3}
+  - {fileID: 12800000, guid: d88f454c212e87b4ebd43a8b460f3896, type: 3}
+  - {fileID: 12800000, guid: 5bdbad758b89db74598060bd0e8200ff, type: 3}
+  - {fileID: 12800000, guid: 9d243b1249d105a4cb07e5b58a1ca3b4, type: 3}
+  - {fileID: 12800000, guid: cb560953633641143ad2c4d3c4e5bf79, type: 3}
+  - {fileID: 12800000, guid: 60907dca196b205428362027cc398c66, type: 3}
+  - {fileID: 12800000, guid: 289d51873a4b7d44586ffde6eba23792, type: 3}
+  - {fileID: 12800000, guid: 19e2226f87047c8419992545f4986a1c, type: 3}
+  - {fileID: 12800000, guid: 369731d0b3c86ba4dbae89e706f13782, type: 3}
+  - {fileID: 12800000, guid: 0c63f84333142a94c8275c7328e729a1, type: 3}
+  - {fileID: 12800000, guid: 501ce5221d24dad4d9888368e24448f6, type: 3}
+  - {fileID: 12800000, guid: 49665f7f743888a4fafcf13ad2384d9e, type: 3}
+  - {fileID: 12800000, guid: 35a3b777b50d02047b38b15c49017562, type: 3}
+  - {fileID: 12800000, guid: 1f894673b162c834f89c8b76e896defd, type: 3}
+  - {fileID: 12800000, guid: 2f703c457024fb74e934e9ec0611f603, type: 3}
+  - {fileID: 12800000, guid: afb262cda2714304684eda89ed1a3904, type: 3}
+  - {fileID: 12800000, guid: a71ec842f418f5740b8285662625371a, type: 3}
+  - {fileID: 12800000, guid: 01864ca7b0b461d4193f0a2ab6c62280, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

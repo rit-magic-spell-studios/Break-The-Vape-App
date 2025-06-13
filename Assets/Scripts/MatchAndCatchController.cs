@@ -154,8 +154,8 @@ public class MatchAndCatchController : GameController {
             // Update the matches left label
             matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
 
-            // Add points for the game
-            Score += 20;
+            // Add points for the correct match
+            AddPoints(100);
 
             // If all of the cards have been flipped over, then the player has won
             if (flippedCards.Count == cards.Count) {

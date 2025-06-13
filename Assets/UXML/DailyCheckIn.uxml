@@ -3,7 +3,7 @@
     <engine:VisualElement class="uofr-background" style="flex-grow: 1;">
         <engine:VisualElement name="CheckInScreen" class="uofr-screen uofr-vert-list" style="display: flex; opacity: 1;">
             <engine:VisualElement class="uofr-vert-list uofr-section-medium uofr-vert-list-first">
-                <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first" />
+                <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first uofr-text-gray" />
                 <engine:Label text="Have you vaped in the last 24 hours?" name="CheckInLabel" class="uofr-text-large uofr-vert-list-last" />
             </engine:VisualElement>
             <engine:VisualElement class="uofr-vert-list-middle" style="flex-grow: 1;">
@@ -39,9 +39,9 @@
                         <engine:Button text="Other" class="uofr-button uofr-vert-list-last" />
                     </engine:VisualElement>
                 </engine:VisualElement>
-                <engine:VisualElement name="CompleteSubscreen" class="uofr-subscreen" style="display: none;">
+                <engine:VisualElement name="CompleteSubscreen" class="uofr-subscreen" style="display: flex;">
                     <engine:VisualElement class="uofr-vert-list" style="flex-grow: 1; align-items: center;">
-                        <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/SmileIcon.png?fileID=2800000&amp;guid=1fd552cf82729fe4c90975df63624d6c&amp;type=3#SmileIcon&quot;); width: 40%; padding-top: 40%;" />
+                        <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/SmileIcon.png?fileID=2800000&amp;guid=1fd552cf82729fe4c90975df63624d6c&amp;type=3#SmileIcon&quot;); width: 40%; padding-top: 40%; -unity-background-image-tint-color: rgb(0, 104, 255);" />
                         <engine:Label text="Thanks for taking the time to check in." class="uofr-text-large" style="-unity-text-align: middle-center;" />
                     </engine:VisualElement>
                     <engine:Button text="Finish" name="FinishButton" class="uofr-button uofr-button-selected" />
