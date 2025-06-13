@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CheckInController : UIController {
+    [Header("CheckInController")]
+    [SerializeField, Range(0f, 2f)] private float progressBarTransitionTime;
+
     private VisualElement checkInScreen;
 
     private VisualElement vapeSubscreen;
@@ -14,7 +17,9 @@ public class CheckInController : UIController {
 
     private Label checkInLabel;
     private Button nextButton;
+
     private ProgressBar checkInProgressBar;
+    private Coroutine progressBarCoroutine;
 
     private List<Button> vapeButtons;
     private List<Button> craveLevelButtons;
@@ -58,6 +63,12 @@ public class CheckInController : UIController {
             if (selectedButtons.Count > 0) {
                 // This only works if the UIStates for each of the subscreens of the check in are right next to each other in the enum list
                 UIControllerState = UIControllerState + 1;
+
+                // Update the progress bar values since the player has just completed a screen
+                if (progressBarCoroutine != null) {
+                    StopCoroutine(progressBarCoroutine);
+                }
+                progressBarCoroutine = StartCoroutine(ProgressBarTransition(checkInProgressBar.value + 0.3333f));
             }
         };
 
@@ -173,6 +184,25 @@ public class CheckInController : UIController {
 
         // Clear the selected buttons to allow new options to be selected
         selectedButtons.Clear( );
+    }
+
+    /// <summary>
+    /// Smoothly transition the progress bar to a new value
+    /// </summary>
+    /// <param name="toValue">The value to set the progress bar to</param>
+    /// <returns></returns>
+    private IEnumerator ProgressBarTransition(float toValue) {
+        float fromValue = checkInProgressBar.value;
+        float elapsed = 0f;
+
+        while (elapsed < 1f) {
+            elapsed += Time.deltaTime / progressBarTransitionTime;
+            checkInProgressBar.value = Mathf.Lerp(fromValue, toValue, elapsed);
+
+            yield return null;
+        }
+
+        checkInProgressBar.value = toValue;
     }
 
     protected override void UpdateSubscreens( ) {

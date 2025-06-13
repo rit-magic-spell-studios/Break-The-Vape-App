@@ -37,7 +37,8 @@ public class CraveSmashController : GameController {
             // Update the size of the monster
             // The reason we are updating the width and the top padding is to keep a 1:1 aspect ratio
             // The measurements are also in terms of percentages to make sure the monster
-            int craveMonsterSize = (craveMonsterHealth / 2) + 50;
+            // Adding 49 here because adding 50 (for a total of 100% at full health) the crave monster appears stretched in the UI
+            int craveMonsterSize = (craveMonsterHealth / 2) + 49;
             craveMonsterVisual.style.width = new StyleLength(Length.Percent(craveMonsterSize));
             craveMonsterVisual.style.paddingTop = new StyleLength(Length.Percent(craveMonsterSize / 2f));
             craveMonsterVisual.style.paddingBottom = new StyleLength(Length.Percent(craveMonsterSize / 2f));

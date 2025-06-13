@@ -5,6 +5,7 @@
 * Added check-in form to the main menu
 	* Has 3 questions for the player to answer before they can play any games
 	* Check in button is changed based on if the player has done the check-in form
+	* Progress bar at the bottom of the screen updates with how far along the player is in the form
 * Added framework for saving user data per playtesting session
 * Greeting at the top of the screen is adjusted based on the current time of day
 	* Between 5am and 12pm it will say good morning

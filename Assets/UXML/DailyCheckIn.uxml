@@ -16,7 +16,7 @@
                 </engine:VisualElement>
                 <engine:VisualElement name="CraveSubscreen" class="uofr-subscreen" style="display: none;">
                     <engine:VisualElement style="flex-grow: 1;" />
-                    <engine:ScrollView touch-scroll-type="Elastic" name="CraveOptions" class="uofr-scroll-view uofr-vert-list-first uofr-section-large">
+                    <engine:ScrollView touch-scroll-type="Elastic" name="CraveOptions" mouse-wheel-scroll-size="6" class="uofr-scroll-view uofr-vert-list-first uofr-section-large">
                         <engine:Button text="0" class="uofr-button" />
                         <engine:Button text="1" class="uofr-button" />
                         <engine:Button text="2" class="uofr-button" />
