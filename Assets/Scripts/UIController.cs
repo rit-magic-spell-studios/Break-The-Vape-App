@@ -9,7 +9,9 @@ using UnityEngine.UIElements;
 /// A full list of all states that the UI can be. This includes the main menu and all of the games. Each state is not guarenteed to be used for each type of controller
 /// </summary>
 public enum UIState {
-    NULL, MAIN, TUTORIAL, GAME, PAUSE, WIN
+    NULL, MAIN, 
+    TUTORIAL, GAME, PAUSE, WIN,
+    VAPE, CRAVE, CAUSE, COMPLETE
 }
 
 public abstract class UIController : MonoBehaviour {

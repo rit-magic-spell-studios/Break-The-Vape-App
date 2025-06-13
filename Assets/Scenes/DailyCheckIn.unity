@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686321335}
   - component: {fileID: 686321334}
+  - component: {fileID: 686321336}
   m_Layer: 5
   m_Name: Daily Check-In UI
   m_TagString: Untagged
@@ -167,6 +168,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &686321336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686321333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5b67499cf9ee54c8da1c6a38324946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenFadeTransitionTime: 0.1
 --- !u!1 &1122808035
 GameObject:
   m_ObjectHideFlags: 0

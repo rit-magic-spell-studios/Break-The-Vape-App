@@ -1,42 +1,56 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement name="VapeScreen" class="uofr-screen" style="display: none;">
-        <engine:VisualElement class="uofr-vert-list uofr-section-medium">
-            <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first" />
-            <engine:Label text="Have you vaped in the last 24 hours?" class="uofr-text-large uofr-vert-list-last" />
-        </engine:VisualElement>
-        <engine:VisualElement style="flex-grow: 1;" />
-        <engine:VisualElement class="uofr-hori-list uofr-section-small">
-            <engine:Button text="Yes" class="uofr-button uofr-hori-list-first" style="flex-grow: 1;" />
-            <engine:Button text="No" class="uofr-button uofr-hori-list-last uofr-button-selected" style="flex-grow: 1;" />
-        </engine:VisualElement>
-        <engine:VisualElement class="uofr-vert-list" style="align-items: flex-end;">
-            <engine:Button text="Next" class="uofr-button-discreet uofr-vert-list-first" />
-            <engine:ProgressBar value="0.25" high-value="1" class="uofr-progress-bar uofr-vert-list-last" />
-        </engine:VisualElement>
-    </engine:VisualElement>
-    <engine:VisualElement name="CraveScreen" class="uofr-screen" style="flex-grow: 1; display: flex;">
-        <engine:VisualElement class="uofr-vert-list uofr-section-medium">
-            <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first" />
-            <engine:Label text="What is your craving level?" class="uofr-text-large uofr-vert-list-last" />
-        </engine:VisualElement>
-        <engine:VisualElement style="flex-grow: 1;" />
-        <engine:ScrollView touch-scroll-type="Elastic" class="uofr-scroll-view uofr-vert-list-first uofr-section-large">
-            <engine:Button text="0" class="uofr-button" />
-            <engine:Button text="1" class="uofr-button uofr-button-selected" />
-            <engine:Button text="2" class="uofr-button" />
-            <engine:Button text="3" class="uofr-button" />
-            <engine:Button text="4" class="uofr-button" />
-            <engine:Button text="5" class="uofr-button" />
-            <engine:Button text="6" class="uofr-button" />
-            <engine:Button text="7" class="uofr-button" />
-            <engine:Button text="8" class="uofr-button" />
-            <engine:Button text="9" class="uofr-button" />
-            <engine:Button text="10" class="uofr-button" />
-        </engine:ScrollView>
-        <engine:VisualElement class="uofr-vert-list" style="align-items: flex-end;">
-            <engine:Button text="Next" class="uofr-button-discreet uofr-vert-list-middle" />
-            <engine:ProgressBar value="-2.03" high-value="1" class="uofr-progress-bar uofr-vert-list-last" />
+    <engine:VisualElement class="uofr-background" style="flex-grow: 1;">
+        <engine:VisualElement name="CheckInScreen" class="uofr-screen uofr-vert-list" style="display: flex; opacity: 1;">
+            <engine:VisualElement class="uofr-vert-list uofr-section-medium uofr-vert-list-first">
+                <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first" />
+                <engine:Label text="Have you vaped in the last 24 hours?" name="CheckInLabel" class="uofr-text-large uofr-vert-list-last" />
+            </engine:VisualElement>
+            <engine:VisualElement class="uofr-vert-list-middle" style="flex-grow: 1;">
+                <engine:VisualElement name="VapeSubscreen" class="uofr-subscreen" style="display: flex;">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 1;" />
+                    <engine:VisualElement name="VapeOptions" class="uofr-hori-list uofr-section-small">
+                        <engine:Button text="Yes" name="VapeYesButton" class="uofr-button uofr-hori-list-first" style="flex-grow: 1;" />
+                        <engine:Button text="No" name="VapeNoButton" class="uofr-button uofr-hori-list-last" style="flex-grow: 1;" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="CraveSubscreen" class="uofr-subscreen" style="display: none;">
+                    <engine:VisualElement style="flex-grow: 1;" />
+                    <engine:ScrollView touch-scroll-type="Elastic" name="CraveOptions" class="uofr-scroll-view uofr-vert-list-first uofr-section-large">
+                        <engine:Button text="0" class="uofr-button" />
+                        <engine:Button text="1" class="uofr-button" />
+                        <engine:Button text="2" class="uofr-button" />
+                        <engine:Button text="3" class="uofr-button" />
+                        <engine:Button text="4" class="uofr-button" />
+                        <engine:Button text="5" class="uofr-button" />
+                        <engine:Button text="6" class="uofr-button" />
+                        <engine:Button text="7" class="uofr-button" />
+                        <engine:Button text="8" class="uofr-button" />
+                        <engine:Button text="9" class="uofr-button" />
+                        <engine:Button text="10" class="uofr-button" />
+                    </engine:ScrollView>
+                </engine:VisualElement>
+                <engine:VisualElement name="CauseSubscreen" class="uofr-subscreen" style="display: none;">
+                    <engine:VisualElement name="CauseOptions" class="uofr-vert-list">
+                        <engine:Button text="Stress" class="uofr-button uofr-vert-list-first" />
+                        <engine:Button text="Boredom" class="uofr-button uofr-vert-list-middle" />
+                        <engine:Button text="Friends" class="uofr-button uofr-vert-list-middle" />
+                        <engine:Button text="Habit" class="uofr-button uofr-vert-list-middle" />
+                        <engine:Button text="Other" class="uofr-button uofr-vert-list-last" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="CompleteSubscreen" class="uofr-subscreen" style="display: none;">
+                    <engine:VisualElement class="uofr-vert-list" style="flex-grow: 1; align-items: center;">
+                        <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/SmileIcon.png?fileID=2800000&amp;guid=1fd552cf82729fe4c90975df63624d6c&amp;type=3#SmileIcon&quot;); width: 40%; padding-top: 40%;" />
+                        <engine:Label text="Thanks for taking the time to check in." class="uofr-text-large" style="-unity-text-align: middle-center;" />
+                    </engine:VisualElement>
+                    <engine:Button text="Finish" name="FinishButton" class="uofr-button uofr-button-selected" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement class="uofr-vert-list uofr-vert-list-last" style="align-items: flex-end;">
+                <engine:Button text="Next" name="NextButton" class="uofr-button-discreet uofr-vert-list-first" />
+                <engine:ProgressBar value="0.25" high-value="1" name="CheckInProgressBar" class="uofr-progress-bar uofr-vert-list-last" />
+            </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>
