@@ -125,6 +125,11 @@ public abstract class UIController : MonoBehaviour {
     protected virtual void UpdateSubscreens( ) { }
 
     /// <summary>
+    /// Called when a screen has finished transitioning
+    /// </summary>
+    protected virtual void OnScreenChange( ) { }
+
+    /// <summary>
     /// Set a subscreen's visibility
     /// </summary>
     /// <param name="subscreen">The subscreen to set the visibility of</param>
@@ -160,6 +165,7 @@ public abstract class UIController : MonoBehaviour {
             yield return StartCoroutine(FadeVisualElementOpacity(CurrentScreen, screenFadeTransitionTime, true));
         }
 
+        OnScreenChange( );
         menuTransition = null;
     }
 
@@ -188,6 +194,7 @@ public abstract class UIController : MonoBehaviour {
             yield return StartCoroutine(FadeVisualElementOpacity(CurrentSubscreen, screenFadeTransitionTime, true));
         }
 
+        OnScreenChange( );
         menuTransition = null;
     }
 

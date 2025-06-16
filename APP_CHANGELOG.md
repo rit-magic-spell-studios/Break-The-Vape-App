@@ -1,5 +1,8 @@
 # App Changelog
 
+## Unreleased
+* Fixed greeting showing wrong text at certain times
+
 ## v0.3.0 - June 13th, 2025
 * Added first pass of the UI implementation
 * Added check-in form to the main menu

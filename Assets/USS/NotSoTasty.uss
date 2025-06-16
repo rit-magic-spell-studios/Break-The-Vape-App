@@ -1,0 +1,27 @@
+.nst-fruit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("project://database/Assets/Sprites/CheckIcon.png?fileID=2800000&guid=cb45ccb5cb0127f4ba08dcd1ac95f089&type=3#CheckIcon");
+    -unity-background-image-tint-color: rgb(255, 0, 0);
+}
+
+.nst-tile {
+    width: 16.66%;
+    background-color: rgb(238, 238, 238);
+    padding-top: 16.66%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    overflow: visible;
+}
