@@ -4,13 +4,11 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: url("project://database/Assets/Sprites/CheckIcon.png?fileID=2800000&guid=cb45ccb5cb0127f4ba08dcd1ac95f089&type=3#CheckIcon");
-    -unity-background-image-tint-color: rgb(255, 0, 0);
+    background-image: url("project://database/Assets/Sprites/Not%20So%20Tasty/NOT%20SO%20TASTY_BLUEBERRY1_v.2.png?fileID=2800000&guid=3fb2ed0c7101e3a48b74797aa51718f3&type=3#NOT SO TASTY_BLUEBERRY1_v.2");
 }
 
 .nst-tile {
     width: 16.66%;
-    background-color: rgb(238, 238, 238);
     padding-top: 16.66%;
     border-left-width: 0;
     border-right-width: 0;
@@ -24,4 +22,13 @@
     padding-bottom: 0;
     padding-left: 0;
     overflow: visible;
+}
+
+.nst-tile-back {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    bottom: 10%;
+    right: 10%;
+    background-color: rgb(238, 238, 238);
 }

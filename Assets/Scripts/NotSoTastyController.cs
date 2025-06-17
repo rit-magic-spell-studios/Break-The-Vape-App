@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class NotSoTastyController : GameController {
     [Header("NotSoTastyController")]
     [SerializeField] private Vector2Int boardSize;
     [SerializeField, Range(0f, 2f)] private float fruitFallSpeed;
+    [SerializeField] private List<Sprite> fruitSprites;
 
-    private List<Button> tiles;
+    private List<VisualElement> tiles;
     private List<VisualElement> fruits;
     private float calculatedTileSize;
+
+    private VisualElement lineElement;
 
     public bool CanMatchFruit {
         get {
@@ -35,27 +39,42 @@ public class NotSoTastyController : GameController {
         base.Awake( );
 
         // Get all of the tiles and fruit that are on the board
-        tiles = ui.Query<Button>("Tile").ToList( );
+        tiles = ui.Query<VisualElement>("Tile").ToList( );
         fruits = ui.Query<VisualElement>("Fruit").ToList( );
 
         // Add clicked events for all of the tiles on the board
         for (int i = 0; i < tiles.Count; i++) {
-            tiles[i].RegisterCallback<ClickEvent>((e) => {
-                // Get a reference to this tile
-                Button tile = (Button) e.target;
-                
+            tiles[i].RegisterCallback<MouseDownEvent>((e) => {
                 // If the player can match fruit, then delete the fruit and update the board
                 // This is just to test the board updating
                 if (CanMatchFruit) {
-                    fruits[tiles.IndexOf(tile)].style.display = DisplayStyle.None;
+                    fruits[tiles.IndexOf((VisualElement) e.currentTarget)].style.display = DisplayStyle.None;
                     UpdateBoard( );
                 }
             });
 
             tiles[i].RegisterCallback<MouseOverEvent>((e) => {
-
             });
+
+            tiles[i].RegisterCallback<MouseUpEvent>((e) => {
+            });
+
+            // Set each fruit to a random fruit image at the start of the game
+            // The tile and fruit array should be the same in length, each tile has a fruit attached to it
+            fruits[i].style.backgroundImage = new StyleBackground(fruitSprites[Random.Range(0, fruitSprites.Count)]);
         }
+
+        lineElement = new VisualElement {
+            style = {
+                position = Position.Absolute,
+                left = 0f,
+                top = 0f,
+                width = 20,
+                height = 20,
+                backgroundColor = new StyleColor(Color.black)
+            }
+        };
+        gameSubscreen.Add(lineElement);
     }
 
     protected override void Start( ) {
@@ -63,8 +82,19 @@ public class NotSoTastyController : GameController {
 
         // When the game starts, the tutorial should be shown first
         UIControllerState = UIState.GAME;
+    }
 
-        DelayAction(UpdateBoard, 1f);
+    protected override void Update( ) {
+        base.Update( );
+
+        Vector2 mousePosition = Mouse.current.position.ReadValue( );
+        Rect subscreenRect = gameSubscreen.worldBound;
+        Rect screenRect = gameScreen.worldBound;
+        Debug.Log(mousePosition + " | " + gameSubscreen.worldBound + " | " + gameScreen.worldBound);
+        lineElement.style.left = mousePosition.x * (screenRect.width / Screen.width) - subscreenRect.x;
+        lineElement.style.top = -mousePosition.y * (screenRect.height / Screen.height) + subscreenRect.height;
+        Debug.Log(lineElement.resolvedStyle.top);
+        //lineElement.style.translate = new StyleTranslate(new Translate(new Length(scaledMousePosition.x), new Length(-scaledMousePosition.y)));
     }
 
     protected override void OnScreenChange( ) {
@@ -114,7 +144,7 @@ public class NotSoTastyController : GameController {
                 if (fruit.resolvedStyle.display == DisplayStyle.Flex) {
                     if (missingFruits.Count > 0) {
                         // Get the earliest missing fruit in the queue
-                        StartFruitAnimation(missingFruits.Dequeue( ), y);
+                        StartFallingFruitAnimation(missingFruits.Dequeue( ), fruit.resolvedStyle.backgroundImage.sprite, y);
 
                         // Since this fruit has been transferred to another tile, this tile is now missing
                         missingFruits.Enqueue(fruit);
@@ -130,22 +160,30 @@ public class NotSoTastyController : GameController {
             // If there are still fruits left in the missing queue, then that means new fruits need to be generated above the board
             int i = 0;
             while (missingFruits.Count > 0) {
-                StartFruitAnimation(missingFruits.Dequeue( ), boardSize.y + i);
+                StartFallingFruitAnimation(missingFruits.Dequeue( ), fruitSprites[Random.Range(0, fruitSprites.Count)], boardSize.y + i);
+
                 i++;
             }
         }
     }
 
-    private void StartFruitAnimation(VisualElement fruit, int fruitSpawnTileY) {
+    /// <summary>
+    /// Start a fruit animation of it falling
+    /// </summary>
+    /// <param name="animatingFruit">The fruit element to animate</param>
+    /// <param name="fruitSprite">The sprite that the animating fruit should be</param>
+    /// <param name="tileFallHeight">The height from which the fruit should fall</param>
+    private void StartFallingFruitAnimation(VisualElement animatingFruit, Sprite fruitSprite, int tileFallHeight) {
         // Get the difference in heights of the earliest empty fruit and this current fruit
-        int heightDifference = fruitSpawnTileY - Get2DIndex(fruits, fruit).y;
+        int heightDifference = tileFallHeight - Get2DIndex(fruits, animatingFruit).y;
 
         // Set the translate position of that fruit to the position of this fruit
         // This will create the illusion that the fruit is falling between the tiles, when in reality it is always the same fruit object on each tile
-        fruit.style.translate = new StyleTranslate(new Translate(new Length(0), new Length(heightDifference * -calculatedTileSize)));
+        animatingFruit.style.translate = new StyleTranslate(new Translate(new Length(0), new Length(heightDifference * -calculatedTileSize)));
+        animatingFruit.style.backgroundImage = new StyleBackground(fruitSprite);
 
         // Start the fruit animation
-        StartCoroutine(FallingFruitAnimation(fruit));
+        StartCoroutine(FallingFruitAnimation(animatingFruit));
     }
 
     /// <summary>
