@@ -8,13 +8,18 @@ public class NotSoTastyController : GameController {
     [Header("NotSoTastyController")]
     [SerializeField] private Vector2Int boardSize;
     [SerializeField, Range(0f, 2f)] private float fruitFallSpeed;
+    [SerializeField, Range(1, 3)] private int minFruitChainLength;
     [SerializeField] private List<Sprite> fruitSprites;
 
     private List<VisualElement> tiles;
+    private List<VisualElement> tileBounds;
     private List<VisualElement> fruits;
     private float calculatedTileSize;
 
-    private VisualElement lineElement;
+    private List<VisualElement> lineElements;
+    private List<VisualElement> chainedFruits;
+    private Vector2 lastChainPosition;
+    private bool isChainingFruits;
 
     public bool CanMatchFruit {
         get {
@@ -40,23 +45,64 @@ public class NotSoTastyController : GameController {
 
         // Get all of the tiles and fruit that are on the board
         tiles = ui.Query<VisualElement>("Tile").ToList( );
+        tileBounds = ui.Query<VisualElement>("TileBounds").ToList( );
         fruits = ui.Query<VisualElement>("Fruit").ToList( );
 
         // Add clicked events for all of the tiles on the board
         for (int i = 0; i < tiles.Count; i++) {
-            tiles[i].RegisterCallback<MouseDownEvent>((e) => {
-                // If the player can match fruit, then delete the fruit and update the board
-                // This is just to test the board updating
-                if (CanMatchFruit) {
-                    fruits[tiles.IndexOf((VisualElement) e.currentTarget)].style.display = DisplayStyle.None;
-                    UpdateBoard( );
+            fruits[i].RegisterCallback<MouseDownEvent>((e) => {
+                // If for some reason the player is already chaining fruits, do not start the chain again
+                if (isChainingFruits) {
+                    return;
+                }
+
+                // Since a fruit was pressed down, the player is starting to chain fruits
+                isChainingFruits = true;
+
+                // Add this fruit to the chained fruits
+                AddToFruitChain((VisualElement) e.currentTarget);
+            });
+
+            tileBounds[i].RegisterCallback<MouseOverEvent>((e) => {
+                // If fruits are not being chained, then return and do nothing
+                if (!isChainingFruits) {
+                    return;
+                }
+
+                // Get a reference to the fruit that was hovered over
+                VisualElement tileBound = (VisualElement) e.currentTarget;
+                int tileBoundIndex = tileBounds.IndexOf(tileBound);
+                VisualElement fruit = fruits[tileBoundIndex];
+
+                // Check to make sure the fruit is next to the previous fruit
+                // If they are adjacent to each other, add the fruit to the chained fruits
+                Vector2Int fruitPosition = Get2DIndex(fruits, fruit);
+                Vector2Int lastFruitPosition = Get2DIndex(fruits, chainedFruits[^1]);
+                if (Mathf.Abs(fruitPosition.x - lastFruitPosition.x) <= 1 && Mathf.Abs(fruitPosition.y - lastFruitPosition.y) <= 1) {
+                    AddToFruitChain(fruits[tileBoundIndex]);
                 }
             });
 
-            tiles[i].RegisterCallback<MouseOverEvent>((e) => {
-            });
+            gameSubscreen.RegisterCallback<MouseUpEvent>((e) => {
+                // If the player was not already chaining fruits, then return and do nothing
+                if (!isChainingFruits) {
+                    return;
+                }
 
-            tiles[i].RegisterCallback<MouseUpEvent>((e) => {
+                // Since the mouse was lifted up, the player is no longer chaining fruits
+                isChainingFruits = false;
+
+                // Set the display of all the fruits to be invisible
+                if (chainedFruits.Count >= minFruitChainLength) {
+                    for (int i = 0; i < chainedFruits.Count; i++) {
+                        chainedFruits[i].style.display = DisplayStyle.None;
+                    }
+
+                    // Update the board and have the fruits fall to fill in the gaps
+                    UpdateBoard( );
+                }
+
+                chainedFruits.Clear( );
             });
 
             // Set each fruit to a random fruit image at the start of the game
@@ -64,17 +110,9 @@ public class NotSoTastyController : GameController {
             fruits[i].style.backgroundImage = new StyleBackground(fruitSprites[Random.Range(0, fruitSprites.Count)]);
         }
 
-        lineElement = new VisualElement {
-            style = {
-                position = Position.Absolute,
-                left = 0f,
-                top = 0f,
-                width = 20,
-                height = 20,
-                backgroundColor = new StyleColor(Color.black)
-            }
-        };
-        gameSubscreen.Add(lineElement);
+        lineElements = new List<VisualElement>( );
+        chainedFruits = new List<VisualElement>( );
+        isChainingFruits = false;
     }
 
     protected override void Start( ) {
@@ -87,14 +125,12 @@ public class NotSoTastyController : GameController {
     protected override void Update( ) {
         base.Update( );
 
-        Vector2 mousePosition = Mouse.current.position.ReadValue( );
-        Rect subscreenRect = gameSubscreen.worldBound;
-        Rect screenRect = gameScreen.worldBound;
-        Debug.Log(mousePosition + " | " + gameSubscreen.worldBound + " | " + gameScreen.worldBound);
-        lineElement.style.left = mousePosition.x * (screenRect.width / Screen.width) - subscreenRect.x;
-        lineElement.style.top = -mousePosition.y * (screenRect.height / Screen.height) + subscreenRect.height;
-        Debug.Log(lineElement.resolvedStyle.top);
-        //lineElement.style.translate = new StyleTranslate(new Translate(new Length(scaledMousePosition.x), new Length(-scaledMousePosition.y)));
+        // Set the position of the current line element
+        //Vector2 mousePosition = Mouse.current.position.ReadValue( );
+        //Rect subscreenRect = gameSubscreen.worldBound;
+        //Rect screenRect = gameScreen.worldBound;
+        //lineElements[^1].style.left = mousePosition.x * (screenRect.width / Screen.width) - subscreenRect.x;
+        //lineElements[^1].style.top = -mousePosition.y * (screenRect.height / Screen.height) + (screenRect.height - subscreenRect.y);
     }
 
     protected override void OnScreenChange( ) {
@@ -104,6 +140,47 @@ public class NotSoTastyController : GameController {
         if (UIControllerState == UIState.GAME) {
             calculatedTileSize = tiles[0].resolvedStyle.width;
         }
+    }
+
+    /// <summary>
+    /// Add a fruit to the current fruit chain
+    /// </summary>
+    /// <param name="fruit">The fruit to add</param>
+    /// <returns>Whether or not adding the fruit was successful</returns>
+    private bool AddToFruitChain(VisualElement fruit) {
+        // If the chained fruits list already contains the fruit, then do not add it again
+        if (chainedFruits.Contains(fruit)) {
+            return false;
+        }
+
+        // If there is more than one fruit in the chained fruit
+        if (chainedFruits.Count > 0 && chainedFruits[^1].resolvedStyle.backgroundImage.sprite != fruit.resolvedStyle.backgroundImage.sprite) {
+            return false;
+        }
+
+        lastChainPosition = fruit.worldBound.center;
+        chainedFruits.Add(fruit);
+
+        return true;
+    }
+
+    /// <summary>
+    /// Create a new line element that will show the connection between two fruits
+    /// </summary>
+    private void CreateNewLineElement( ) {
+        VisualElement lineElement = new VisualElement {
+            style = {
+                position = Position.Absolute,
+                left = 0f,
+                top = 0f,
+                width = 20,
+                height = 20,
+                backgroundColor = new StyleColor(Color.black)
+            }
+        };
+
+        lineElements.Add(lineElement);
+        gameSubscreen.Add(lineElement);
     }
 
     /// <summary>

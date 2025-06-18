@@ -185,6 +185,7 @@ MonoBehaviour:
   tutorialTime: 2
   boardSize: {x: 6, y: 8}
   fruitFallSpeed: 0.2
+  minFruitChainLength: 2
   fruitSprites:
   - {fileID: 21300000, guid: 3fb2ed0c7101e3a48b74797aa51718f3, type: 3}
   - {fileID: 21300000, guid: d16d107eefae2a648b206520cde0c309, type: 3}
