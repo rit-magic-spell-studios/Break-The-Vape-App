@@ -1,7 +1,15 @@
 # App Changelog
 
-## Unreleased
+## v0.3.1 - June 20th, 2025
 * Fixed greeting showing wrong text at certain times
+* Changed layouts and styles of game buttons to show which games are not currently developed yet
+* Added a reset button that resets the player's points when pressed
+* **Game Versions**
+  * Crave Smash [v0.5.2](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 20th, 2025)
+  * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
+  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
+  * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
+  * Match And Catch [v0.2.2](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 20th, 2025)
 
 ## v0.3.0 - June 13th, 2025
 * Added first pass of the UI implementation

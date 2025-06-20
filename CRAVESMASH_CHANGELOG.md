@@ -1,5 +1,10 @@
 # Crave Smash Changelog
 
+## v0.5.2 - June 20th, 2025
+* Player now gets 20 points per click, for a total of 400 points if they play through the entire game
+* Added tutorial animation that plays before the game starts
+	* Increased the length the tutorial screen at the start of the game to 5 seconds so the entire tutorial animation plays
+
 ## v0.5.1 - June 13th, 2025
 * Points now add to a cumulative total points value that saves across all games
 * Added total points label on win screen

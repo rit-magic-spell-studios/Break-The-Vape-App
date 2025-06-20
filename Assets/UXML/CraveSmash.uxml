@@ -14,7 +14,7 @@
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; opacity: 0; display: none;">
-                    <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: url(&quot;project://database/Assets/Sprites/FingerIcon.png?fileID=2800000&amp;guid=87bb5bd2daa6a2546a91f1b9fa8891f3&amp;type=3#FingerIcon&quot;); height: 0; padding-top: 65%;" />
+                    <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: resource(&apos;CraveSmashTutorial&apos;); height: 0; padding-top: 65%;" />
                     <engine:Label text="Tap to defeat your craving!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
                 </engine:VisualElement>
                 <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">

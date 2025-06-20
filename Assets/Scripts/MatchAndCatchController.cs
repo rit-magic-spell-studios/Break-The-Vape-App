@@ -8,8 +8,7 @@ public class MatchAndCatchController : GameController {
     [Header("MatchAndCatchController")]
     [SerializeField, Range(0f, 2f)] private float cardFlipTime;
     [SerializeField, Range(0f, 2f)] private float cardCheckDelay;
-    [SerializeField] private Color cardFaceColor;
-    [SerializeField] private Color cardBackColor;
+    [SerializeField] private List<Sprite> cardFrontSprites;
 
     private List<Button> cards;
     private List<Button> flippedCards;
@@ -28,7 +27,7 @@ public class MatchAndCatchController : GameController {
 
         // Generate the list of matches
         numbers = new List<int>( );
-        for (int i = 1; i <= cards.Count / 2; i++) {
+        for (int i = 0; i < cards.Count / 2; i++) {
             // Each card needs a match, so add two of the same number to the list
             numbers.Add(i);
             numbers.Add(i);
@@ -41,13 +40,16 @@ public class MatchAndCatchController : GameController {
         // Set up the on-click functions for each of the cards
         for (int i = 0; i < cards.Count; i++) {
             cards[i].clickable.clickedWithEventInfo += FlipCard;
-            cards[i].style.backgroundColor = cardBackColor;
 
-            // Set the card label to not be visible
-            // Also make sure it displays the right number
-            Label cardLabel = cards[i].Q<Label>( );
-            cardLabel.style.display = DisplayStyle.None;
-            cardLabel.text = $"{numbers[i]}";
+            // Set the card back to be visible
+            VisualElement cardBack = cards[i].Q<VisualElement>("CardBack");
+            cardBack.style.display = DisplayStyle.Flex;
+
+            // Set the card front to not be visible
+            // Also make sure it displays the right sprite
+            VisualElement cardFront = cards[i].Q<VisualElement>("CardFront");
+            cardFront.style.display = DisplayStyle.None;
+            cardFront.style.backgroundImage = new StyleBackground(cardFrontSprites[numbers[i]]);
         }
 
         // Get references to other important UI elements
@@ -111,11 +113,11 @@ public class MatchAndCatchController : GameController {
             if (scale <= 0f && !setFlipStyles) {
                 // Whether or not the card is now visible, set the label and background color of the card
                 if (faceVisible) {
-                    card.style.backgroundColor = cardFaceColor;
-                    card.Q<Label>( ).style.display = DisplayStyle.Flex;
+                    card.Q<VisualElement>("CardBack").style.display = DisplayStyle.None;
+                    card.Q<VisualElement>("CardFront").style.display = DisplayStyle.Flex;
                 } else {
-                    card.style.backgroundColor = cardBackColor;
-                    card.Q<Label>( ).style.display = DisplayStyle.None;
+                    card.Q<VisualElement>("CardBack").style.display = DisplayStyle.Flex;
+                    card.Q<VisualElement>("CardFront").style.display = DisplayStyle.None;
                 }
 
                 // Ensure that this if statement is not called multiple times within the while loop, only when the card is initially turned over

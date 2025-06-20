@@ -122,6 +122,14 @@
     max-height: 100px;
 }
 
+.uofr-button-disabled {
+    background-color: rgb(167, 167, 167);
+}
+
+.uofr-button-disabled .unity-label {
+    color: rgb(93, 93, 93);
+}
+
 .uofr-progress-bar {
     padding-left: 0;
     padding-right: 0;

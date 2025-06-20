@@ -13,54 +13,66 @@
                 <engine:Label text="Score: &lt;b&gt;320&lt;/b&gt;" name="ScoreLabel" class="uofr-text-small uofr-vert-list-last uofr-text-gray" />
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; opacity: 0; display: none;">
-                    <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: url(&quot;project://database/Assets/Sprites/FingerIcon.png?fileID=2800000&amp;guid=87bb5bd2daa6a2546a91f1b9fa8891f3&amp;type=3#FingerIcon&quot;); height: 0; padding-top: 65%;" />
+                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">
+                    <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: resource(&apos;MatchAndCatchTutorial&apos;); height: 0; padding-top: 65%;" />
                     <engine:Label text="Match all pairs of cards to learn more!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
                 </engine:VisualElement>
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; opacity: 1;">
+                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: none;">
                     <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-text-medium uofr-section-small" style="-unity-text-align: middle-center;" />
                     <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
-                        </engine:Button>
-                    </engine:VisualElement>
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-middle">
-                        <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
-                        </engine:Button>
-                        <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
-                        </engine:Button>
-                        <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                     </engine:VisualElement>
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-middle">
+                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                     </engine:VisualElement>
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-last">
+                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                         <engine:Button name="Card" class="mandc-card">
-                            <engine:Label text="Label" class="mandc-card-text uofr-text-small" />
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
+                        </engine:Button>
+                    </engine:VisualElement>
+                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
+                        <engine:Button name="Card" class="mandc-card">
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
+                        </engine:Button>
+                        <engine:Button name="Card" class="mandc-card">
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
+                        </engine:Button>
+                        <engine:Button name="Card" class="mandc-card">
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                     </engine:VisualElement>
                 </engine:VisualElement>

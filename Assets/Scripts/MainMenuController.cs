@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
     private VisualElement mainScreen;
+    private VisualElement resetScreen;
 
     private Label greetingLabel;
 
@@ -16,14 +17,25 @@ public class MainMenuController : UIController {
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
+        resetScreen = ui.Q<VisualElement>("ResetScreen");
 
         // Set the states of the screens and subscreens based on what game controller state is active
         screens[(int) UIState.MAIN] = mainScreen;
+        screens[(int) UIState.RESET] = resetScreen;
 
         // Set up menu button functionality
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
         ui.Q<Button>("CheckInButton").clicked += ( ) => { FadeToScene(3); };
+        ui.Q<Button>("ResetButton").clicked += ( ) => { UIControllerState = UIState.RESET; };
+        ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
+        ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
+            // Reset the total points value
+            playerData.TotalPoints = 0;
+            ui.Q<Label>("TotalScoreLabel").text = $"{playerData.TotalPoints} points";
+
+            UIControllerState = UIState.MAIN;
+        };
 
         // Update UI elements based on the player's score and check-in actions
         ui.Q<Label>("CheckInLabel").text = (playerData.HasCompletedInitialCheckIn ? "Check-in completed!" : "Complete your check-in!");

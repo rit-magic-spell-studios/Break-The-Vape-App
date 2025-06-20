@@ -12,3 +12,7 @@
     width: 170px;
     min-width: 170px;
 }
+
+.uofr-button-disabled .mm-game-thumbnail {
+    display: none;
+}

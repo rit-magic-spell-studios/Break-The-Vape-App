@@ -1,5 +1,11 @@
 # Match and Catch Changelog
 
+## v0.2.2 - June 20th, 2025
+* Added card backs with the Match And Catch logo
+* Replaced card numbers with images to make each of the cards more recognizable
+* Added tutorial animation that plays before the game starts
+	* Increased the length the tutorial screen at the start of the game to 5 seconds so the entire tutorial animation plays
+
 ## v0.2.1 - June 13th, 2025
 * Points now add to a cumulative total points value that saves across all games
 * Added total points label on win screen
