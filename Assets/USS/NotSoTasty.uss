@@ -23,12 +23,3 @@
     padding-left: 0;
     overflow: visible;
 }
-
-.nst-tile-back {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    bottom: 10%;
-    right: 10%;
-    background-color: rgb(238, 238, 238);
-}

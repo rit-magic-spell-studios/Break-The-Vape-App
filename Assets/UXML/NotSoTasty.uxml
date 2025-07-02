@@ -22,258 +22,162 @@
                     <engine:VisualElement style="overflow: hidden;">
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                         <engine:VisualElement class="uofr-hori-list mandc-card-row" style="justify-content: center;">
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                             <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="TileBounds" class="nst-tile-back">
-                                    <engine:VisualElement name="Fruit" class="nst-fruit" />
-                                </engine:VisualElement>
+                                <engine:VisualElement name="Fruit" class="nst-fruit" />
                             </engine:VisualElement>
                         </engine:VisualElement>
                     </engine:VisualElement>

@@ -11,15 +11,17 @@ public class NotSoTastyController : GameController {
     [SerializeField] private Vector2Int boardSize;
     [SerializeField, Range(0f, 2f)] private float fruitFallSpeed;
     [SerializeField, Range(1, 3)] private int minFruitChainLength;
+    [SerializeField, Range(10f, 200f)] private float minFruitHoverDistance;
     [SerializeField] private List<Sprite> fruitSprites;
 
-    private List<VisualElement> tileBounds;
+    private List<VisualElement> tiles;
     private List<VisualElement> fruits;
     private float calculatedTileSize;
 
     private List<VisualElement> lineElements;
     private List<VisualElement> chainedFruits;
     private VisualElement lastDragFruit;
+    private Vector2 lastMousePosition;
     private bool isChainingFruits;
     private int lineElementIndex;
 
@@ -46,65 +48,68 @@ public class NotSoTastyController : GameController {
         base.Awake( );
 
         // Get all of the tiles and fruit that are on the board
-        tileBounds = ui.Query<VisualElement>("TileBounds").ToList( );
+        tiles = ui.Query<VisualElement>("Tile").ToList( );
         fruits = ui.Query<VisualElement>("Fruit").ToList( );
 
         // Add clicked events for all of the tiles on the board
-        for (int i = 0; i < tileBounds.Count; i++) {
-            tileBounds[i].RegisterCallback<MouseDownEvent>((e) => {
-                Debug.Log("DOWN");
-
+        for (int i = 0; i < tiles.Count; i++) {
+            gameScreen.RegisterCallback<MouseDownEvent>((e) => {
                 // If for some reason the player is already chaining fruits, do not start the chain again
                 if (isChainingFruits) {
+                    return;
+                }
+
+                // Get a reference to the fruit that was closest to the mouse position
+                VisualElement fruit = GetClosestFruit(e.mousePosition);
+                lastMousePosition = e.localMousePosition;
+
+                // If there was no fruit close to the mouse position, then return and do not start a chain
+                if (fruit == null) {
                     return;
                 }
 
                 // Since a fruit was pressed down, the player is starting to chain fruits
                 isChainingFruits = true;
 
-                // Get a reference to the fruit that was pressed over
-                VisualElement tileBound = (VisualElement) e.currentTarget;
-                int tileBoundIndex = tileBounds.IndexOf(tileBound);
-                VisualElement fruit = fruits[tileBoundIndex];
-
                 // Add this fruit to the chained fruits
                 AddToFruitChain(fruit);
+                lastDragFruit = fruit;
             });
 
-            tileBounds[i].RegisterCallback<MouseOverEvent>((e) => {
-                Debug.Log("DRAG");
-
+            gameScreen.RegisterCallback<MouseMoveEvent>((e) => {
                 // If fruits are not being chained, then return and do nothing
                 if (!isChainingFruits) {
                     return;
                 }
 
-                // Get a reference to the fruit that was hovered over
-                VisualElement tileBound = (VisualElement) e.currentTarget;
-                int tileBoundIndex = tileBounds.IndexOf(tileBound);
-                VisualElement fruit = fruits[tileBoundIndex];
+                // Get a reference to the fruit that was closest to the mouse position
+                VisualElement fruit = GetClosestFruit(e.mousePosition);
+                lastMousePosition = e.localMousePosition;
 
                 // Make sure the same fruit does not get dragged over again before the mouse leaves
-                if (fruit == lastDragFruit) {
+                // Also make sure there is a closest fruit to add to the chain
+                if (fruit == null || fruit == lastDragFruit) {
                     return;
                 }
-                lastDragFruit = fruit;
 
                 // Check to make sure the fruit is next to the previous fruit
                 // If they are adjacent to each other, add the fruit to the chained fruits
                 Vector2Int fruitPosition = Get2DIndex(fruits, fruit);
                 Vector2Int lastFruitPosition = Get2DIndex(fruits, chainedFruits[^1]);
 
-                Debug.Log(fruitPosition + " | " + lastFruitPosition);
-
                 if (Mathf.Abs(fruitPosition.x - lastFruitPosition.x) <= 1 && Mathf.Abs(fruitPosition.y - lastFruitPosition.y) <= 1) {
-                    AddToFruitChain(fruits[tileBoundIndex]);
+                    AddToFruitChain(fruit);
+                    lastDragFruit = fruit;
+
+                    // Chained fruits can be removed when adding if the added fruit is last in the chain
+                    // In this case, stop chaining fruits
+                    if (chainedFruits.Count == 0) {
+                        isChainingFruits = false;
+                    }
                 }
             });
 
             gameScreen.RegisterCallback<MouseUpEvent>((e) => {
-                Debug.Log("UP");
-
                 // If the player was not already chaining fruits, then return and do nothing
                 if (!isChainingFruits) {
                     return;
@@ -175,18 +180,11 @@ public class NotSoTastyController : GameController {
             gameSubscreen.Remove(lineElements[^1]);
             lineElements.Remove(lineElements[^1]);
         } else if (lineElementIndex == lineElements.Count - 1 && lineElementIndex != -1) {
-            // Calculate the position of the mouse on the screen
-            Vector2 mousePosition = Mouse.current.position.ReadValue( );
-            Vector2 scaledMousePosition = new Vector2(
-                mousePosition.x * (screenRect.width / Screen.width) - subscreenRect.x,
-                -mousePosition.y * (screenRect.height / Screen.height) + (screenRect.height - subscreenRect.y)
-            );
-
             // Get the position of the last fruit in the chain
-            Vector2 chainedFruitPosition = chainedFruits[^1].worldBound.center - subscreenRect.position;
+             Vector2 chainedFruitPosition = chainedFruits[^1].worldBound.center - subscreenRect.position;
 
             // Set the last line element's size, position, and rotation
-            SetLineElementStyles(lineElements[lineElementIndex], chainedFruitPosition, scaledMousePosition);
+            SetLineElementStyles(lineElements[lineElementIndex], chainedFruitPosition, lastMousePosition - subscreenRect.position);
         }
     }
 
@@ -200,6 +198,31 @@ public class NotSoTastyController : GameController {
     }
 
     /// <summary>
+    /// Get the closest fruit to the input position
+    /// </summary>
+    /// <param name="position">The position on the UI screen</param>
+    /// <returns>A reference to the closest fruit if it is closer than the minimum fruit hover distance, false otherwise</returns>
+    private VisualElement GetClosestFruit (Vector2 position) {
+        float minDistance = Mathf.Infinity;
+        VisualElement closestFruit = null;
+        
+        // Get the minimum distance to a fruit from the input position
+        for (int i = 0; i < fruits.Count; i++) {
+            // Get the distance to the current fruit
+            float distance = Vector2.Distance(fruits[i].worldBound.center, position);
+
+            // Check to see if a new minimum distance was found
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestFruit = fruits[i];
+            }
+        }
+      
+        // If the minimum distance is not lower than the minimum fruit hover distance, then the position is too far away from any fruit
+        return (minDistance <= minFruitHoverDistance ? closestFruit : null);
+    }
+
+    /// <summary>
     /// Add a fruit to the current fruit chain
     /// </summary>
     /// <param name="fruit">The fruit to add</param>
@@ -209,11 +232,11 @@ public class NotSoTastyController : GameController {
         if (chainedFruits.Contains(fruit)) {
             // If the last fruit in the chain is hovered over, remove it from the list
             // This will allow the player to backtrack and redo their chain
-            //if (chainedFruits[^1] == fruit && chainedFruits.Count > 1) {
-            //    // Also remove the line element that was connected to that fruit
-            //    lineElementIndex--;
-            //    chainedFruits.Remove(fruit);
-            //}
+            if (chainedFruits.Count > 1 && chainedFruits[^2] == fruit) {
+                // Also remove the line element that was connected to that fruit
+                lineElementIndex--;
+                chainedFruits.Remove(chainedFruits[^1]);
+            }
 
             return false;
         }
