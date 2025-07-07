@@ -1,5 +1,10 @@
 # Crave Smash Changelog
 
+## v0.5.3 - July 7th, 2025
+* Player now gets between 10-15 points per click, depending on how fast they are clicking the crave monster
+* The crave monster how takes 40 total clicks to win the game
+* The crave monster will start to heal back health when the player has not clicked on it for a couple of seconds
+
 ## v0.5.2 - June 20th, 2025
 * Player now gets 20 points per click, for a total of 400 points if they play through the entire game
 * Added tutorial animation that plays before the game starts

@@ -320,7 +320,12 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
   tutorialTime: 5
-  clickDamage: 5
+  clickDamage: 2.5
+  clickPoints: 10
+  maxClickPoints: 45
+  rapidClickPointIncrease: 1.5
+  craveMonsterHealDelay: 2
+  craveMonsterHealSpeed: 4
   craveMonsterStages:
   - {fileID: 21300000, guid: e7e1418c0008efa4b8c039513ca00748, type: 3}
   - {fileID: 21300000, guid: 742b3459cdad41449b1021024c6b0f16, type: 3}
