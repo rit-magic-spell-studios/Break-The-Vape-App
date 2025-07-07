@@ -6,4 +6,5 @@
 	* Drag between 2 or more fruits to clear them off the board
 	* Fruit falls to fill in gaps when cleared from the board
 	* Secret images are slowly uncovered in the background of the game as you matches are made
+	* Player scores points per fruit matched and image uncovered
 	* Find all of the secret images to win

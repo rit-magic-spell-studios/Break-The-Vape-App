@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class NotSoTastyController : GameController {
@@ -12,11 +9,17 @@ public class NotSoTastyController : GameController {
     [SerializeField, Range(0f, 2f)] private float fruitFallSpeed;
     [SerializeField, Range(1, 3)] private int minFruitChainLength;
     [SerializeField, Range(10f, 200f)] private float minFruitHoverDistance;
+    [SerializeField, Range(1, 6)] private int maxSecretTileCount;
+    [SerializeField, Range(1, 4)] private int minSecretTileSize;
+    [SerializeField, Range(1, 4)] private int maxSecretTileSize;
     [SerializeField] private List<Sprite> fruitSprites;
+    [SerializeField] private List<Sprite> secretTileSprites;
 
     private List<VisualElement> tiles;
     private List<VisualElement> fruits;
     private float calculatedTileSize;
+
+    private List<Rect> secretTiles;
 
     private List<VisualElement> lineElements;
     private List<VisualElement> chainedFruits;
@@ -51,94 +54,152 @@ public class NotSoTastyController : GameController {
         tiles = ui.Query<VisualElement>("Tile").ToList( );
         fruits = ui.Query<VisualElement>("Fruit").ToList( );
 
-        // Add clicked events for all of the tiles on the board
-        for (int i = 0; i < tiles.Count; i++) {
-            gameScreen.RegisterCallback<MouseDownEvent>((e) => {
-                // If for some reason the player is already chaining fruits, do not start the chain again
-                if (isChainingFruits) {
-                    return;
-                }
+        // Add clicked events for the game to function
+        gameScreen.RegisterCallback<MouseDownEvent>((e) => {
+            // If for some reason the player is already chaining fruits, do not start the chain again
+            if (isChainingFruits) {
+                return;
+            }
 
-                // Get a reference to the fruit that was closest to the mouse position
-                VisualElement fruit = GetClosestFruit(e.mousePosition);
-                lastMousePosition = e.localMousePosition;
+            // Get a reference to the fruit that was closest to the mouse position
+            VisualElement fruit = GetClosestFruit(e.mousePosition);
+            lastMousePosition = e.localMousePosition;
 
-                // If there was no fruit close to the mouse position, then return and do not start a chain
-                if (fruit == null) {
-                    return;
-                }
+            // If there was no fruit close to the mouse position, then return and do not start a chain
+            if (fruit == null) {
+                return;
+            }
 
-                // Since a fruit was pressed down, the player is starting to chain fruits
-                isChainingFruits = true;
+            // Since a fruit was pressed down, the player is starting to chain fruits
+            isChainingFruits = true;
 
-                // Add this fruit to the chained fruits
+            // Add this fruit to the chained fruits
+            AddToFruitChain(fruit);
+            lastDragFruit = fruit;
+        });
+
+        gameScreen.RegisterCallback<MouseMoveEvent>((e) => {
+            // If fruits are not being chained, then return and do nothing
+            if (!isChainingFruits) {
+                return;
+            }
+
+            // Get a reference to the fruit that was closest to the mouse position
+            VisualElement fruit = GetClosestFruit(e.mousePosition);
+            lastMousePosition = e.localMousePosition;
+
+            // Make sure the same fruit does not get dragged over again before the mouse leaves
+            // Also make sure there is a closest fruit to add to the chain
+            if (fruit == null || fruit == lastDragFruit) {
+                return;
+            }
+
+            // Check to make sure the fruit is next to the previous fruit
+            // If they are adjacent to each other, add the fruit to the chained fruits
+            Vector2Int fruitPosition = Get2DIndex(fruits, fruit);
+            Vector2Int lastFruitPosition = Get2DIndex(fruits, chainedFruits[^1]);
+
+            if (Mathf.Abs(fruitPosition.x - lastFruitPosition.x) <= 1 && Mathf.Abs(fruitPosition.y - lastFruitPosition.y) <= 1) {
                 AddToFruitChain(fruit);
                 lastDragFruit = fruit;
-            });
 
-            gameScreen.RegisterCallback<MouseMoveEvent>((e) => {
-                // If fruits are not being chained, then return and do nothing
-                if (!isChainingFruits) {
-                    return;
+                // Chained fruits can be removed when adding if the added fruit is last in the chain
+                // In this case, stop chaining fruits
+                if (chainedFruits.Count == 0) {
+                    isChainingFruits = false;
                 }
+            }
+        });
 
-                // Get a reference to the fruit that was closest to the mouse position
-                VisualElement fruit = GetClosestFruit(e.mousePosition);
-                lastMousePosition = e.localMousePosition;
+        gameScreen.RegisterCallback<MouseUpEvent>((e) => {
+            // If the player was not already chaining fruits, then return and do nothing
+            if (!isChainingFruits) {
+                return;
+            }
 
-                // Make sure the same fruit does not get dragged over again before the mouse leaves
-                // Also make sure there is a closest fruit to add to the chain
-                if (fruit == null || fruit == lastDragFruit) {
-                    return;
+            // Since the mouse was lifted up, the player is no longer chaining fruits
+            isChainingFruits = false;
+
+            // If the chain was long enough, destroy the fruit that were in the chain
+            if (chainedFruits.Count >= minFruitChainLength) {
+                // Add points for each of the chained fruits that were connected
+                AddPoints(chainedFruits.Count * 5);
+
+                // Set the display of all the fruits to be invisible
+                for (int i = 0; i < chainedFruits.Count; i++) {
+                    chainedFruits[i].style.display = DisplayStyle.None;
                 }
+                chainedFruits.Clear( );
 
-                // Check to make sure the fruit is next to the previous fruit
-                // If they are adjacent to each other, add the fruit to the chained fruits
-                Vector2Int fruitPosition = Get2DIndex(fruits, fruit);
-                Vector2Int lastFruitPosition = Get2DIndex(fruits, chainedFruits[^1]);
+                // Update the board and have the fruits fall to fill in the gaps
+                UpdateBoard( );
+            }
 
-                if (Mathf.Abs(fruitPosition.x - lastFruitPosition.x) <= 1 && Mathf.Abs(fruitPosition.y - lastFruitPosition.y) <= 1) {
-                    AddToFruitChain(fruit);
-                    lastDragFruit = fruit;
+            // Destroy all of the line elements that were created for the fruit chain
+            lineElementIndex = -1;
+            lastDragFruit = null;
+        });
 
-                    // Chained fruits can be removed when adding if the added fruit is last in the chain
-                    // In this case, stop chaining fruits
-                    if (chainedFruits.Count == 0) {
-                        isChainingFruits = false;
-                    }
-                }
-            });
-
-            gameScreen.RegisterCallback<MouseUpEvent>((e) => {
-                // If the player was not already chaining fruits, then return and do nothing
-                if (!isChainingFruits) {
-                    return;
-                }
-
-                // Since the mouse was lifted up, the player is no longer chaining fruits
-                isChainingFruits = false;
-
-                // If the chain was long enough, destroy the fruit that were in the chain
-                if (chainedFruits.Count >= minFruitChainLength) {
-                    // Set the display of all the fruits to be invisible
-                    for (int i = 0; i < chainedFruits.Count; i++) {
-                        chainedFruits[i].style.display = DisplayStyle.None;
-                    }
-                    chainedFruits.Clear( );
-
-                    // Update the board and have the fruits fall to fill in the gaps
-                    UpdateBoard( );
-                }
-
-                // Destroy all of the line elements that were created for the fruit chain
-                lineElementIndex = -1;
-                lastDragFruit = null;
-            });
-
-            // Set each fruit to a random fruit image at the start of the game
-            // The tile and fruit array should be the same in length, each tile has a fruit attached to it
+        // Set each fruit to a random fruit image at the start of the game
+        // The tile and fruit array should be the same in length, each tile has a fruit attached to it
+        for (int i = 0; i < fruits.Count; i++) {
             fruits[i].style.backgroundImage = new StyleBackground(fruitSprites[Random.Range(0, fruitSprites.Count)]);
         }
+
+        // The total area that the secret tiles take up should not exceed 3/4 the size of the game board
+        int totalAreaCount = Mathf.FloorToInt(boardSize.x * boardSize.y * 0.75f);
+
+        // Generate all secret tiles on the board
+        secretTiles = new List<Rect>( );
+        List<int> unavailableSizes = new List<int>( );
+        for (int i = 0; i < maxSecretTileCount; i++) {
+            // Get a list of all the available sizes that the secret tile can be
+            List<int> availableSizes = new List<int>( );
+            for (int j = minSecretTileSize; j <= maxSecretTileSize; j++) {
+                // If the current size 
+
+                // If the area of the secret tile, when added to the board, does not exceed 3/4 of the total game board area, then it can be chosen as a secret tile size
+                if (totalAreaCount - (j * j) >= 0) {
+                    availableSizes.Add(j);
+                }
+            }
+
+            // Get a random size for the secret tile based on the sizes available
+            int size = availableSizes[Random.Range(0, availableSizes.Count)];
+
+            // Get a list of all the available positions a secret tile can spawn at
+            List<Vector2> availablePositions = new List<Vector2>( );
+            // Loop through all of the possible positions on the board that the tile could fit on
+            for (int x = 0; x < boardSize.x - size; x++) {
+                for (int y = 0; y < boardSize.y - size; y++) {
+                    // Check to see if the current position interferes with already placed secret tiles
+                    for (int k = 0; k < secretTiles.Count; k++) {
+                        
+                    }
+                }
+            }
+
+            // If there are no available positions, then add the size to the unavailable size list
+            // This prevents that size from being generated again
+            if (availablePositions.Count == 0) {
+                unavailableSizes.Add(size);
+                i--;
+
+                // If the amount of unavailable sizes is equal to the total number of possible sizes, then no more secret tiles can be created
+                if (unavailableSizes.Count == maxSecretTileSize - minSecretTileSize + 1) {
+                    break;
+                }
+            }
+        }
+
+        int textureWidth = Mathf.FloorToInt(secretTileSprites[0].textureRect.width);
+        int textureHeight = Mathf.FloorToInt(secretTileSprites[0].textureRect.height);
+
+        Texture2D secretTileTexture = new Texture2D(textureWidth / 2, textureHeight / 2);
+        secretTileTexture.SetPixels(secretTileSprites[0].texture.GetPixels(0, 0, textureWidth / 2, textureHeight / 2));
+        secretTileTexture.Apply( );
+
+        tiles[0].style.backgroundImage = new StyleBackground(secretTileTexture);
 
         lineElements = new List<VisualElement>( );
         chainedFruits = new List<VisualElement>( );
@@ -160,7 +221,6 @@ public class NotSoTastyController : GameController {
         // Get the world bounds of the screens that the game takes place in
         // This will be used for repositioning and scaling in the calculations below
         Rect subscreenRect = gameSubscreen.worldBound;
-        Rect screenRect = gameScreen.worldBound;
 
         // If the line element index is equal to the size of the line elements list, then a new line element needs to be added
         // If the line element index is less than the last index in the line elements list, then the last line element needs to be removed
@@ -181,7 +241,7 @@ public class NotSoTastyController : GameController {
             lineElements.Remove(lineElements[^1]);
         } else if (lineElementIndex == lineElements.Count - 1 && lineElementIndex != -1) {
             // Get the position of the last fruit in the chain
-             Vector2 chainedFruitPosition = chainedFruits[^1].worldBound.center - subscreenRect.position;
+            Vector2 chainedFruitPosition = chainedFruits[^1].worldBound.center - subscreenRect.position;
 
             // Set the last line element's size, position, and rotation
             SetLineElementStyles(lineElements[lineElementIndex], chainedFruitPosition, lastMousePosition - subscreenRect.position);
@@ -202,10 +262,10 @@ public class NotSoTastyController : GameController {
     /// </summary>
     /// <param name="position">The position on the UI screen</param>
     /// <returns>A reference to the closest fruit if it is closer than the minimum fruit hover distance, false otherwise</returns>
-    private VisualElement GetClosestFruit (Vector2 position) {
+    private VisualElement GetClosestFruit(Vector2 position) {
         float minDistance = Mathf.Infinity;
         VisualElement closestFruit = null;
-        
+
         // Get the minimum distance to a fruit from the input position
         for (int i = 0; i < fruits.Count; i++) {
             // Get the distance to the current fruit
@@ -217,7 +277,7 @@ public class NotSoTastyController : GameController {
                 closestFruit = fruits[i];
             }
         }
-      
+
         // If the minimum distance is not lower than the minimum fruit hover distance, then the position is too far away from any fruit
         return (minDistance <= minFruitHoverDistance ? closestFruit : null);
     }
@@ -402,5 +462,9 @@ public class NotSoTastyController : GameController {
 
         // Set the final translation of the fruit
         fruit.style.translate = new StyleTranslate(new Translate(new Length(0), new Length(0)));
+    }
+
+    private void SetTileBackground( ) {
+
     }
 }

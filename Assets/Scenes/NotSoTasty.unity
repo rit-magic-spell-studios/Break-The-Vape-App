@@ -184,9 +184,12 @@ MonoBehaviour:
   screenFadeTransitionTime: 0.1
   tutorialTime: 2
   boardSize: {x: 6, y: 8}
-  fruitFallSpeed: 0.2
+  fruitFallSpeed: 0.25
   minFruitChainLength: 2
   minFruitHoverDistance: 40
+  secretTileCount: 4
+  minSecretTileSize: 2
+  maxSecretTileSize: 4
   fruitSprites:
   - {fileID: 21300000, guid: 3fb2ed0c7101e3a48b74797aa51718f3, type: 3}
   - {fileID: 21300000, guid: d16d107eefae2a648b206520cde0c309, type: 3}
@@ -194,6 +197,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2e2822c2b4426ac46bd6b7690eb3eb7f, type: 3}
   - {fileID: 21300000, guid: d6b29b523ce30604d898270f7809a31e, type: 3}
   - {fileID: 21300000, guid: b5cefc411047cbc4d8a9087ff298abea, type: 3}
+  secretTileSprites:
+  - {fileID: 21300000, guid: 3e0992fc6372a8b49968ecfaea9f2246, type: 3}
 --- !u!1 &1428559950
 GameObject:
   m_ObjectHideFlags: 0
