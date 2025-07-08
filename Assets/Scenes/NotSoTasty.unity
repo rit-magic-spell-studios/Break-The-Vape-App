@@ -187,7 +187,6 @@ MonoBehaviour:
   fruitFallSpeed: 0.25
   minFruitChainLength: 2
   minFruitHoverDistance: 40
-  maxSecretTileCount: 1
   minSecretTileSize: 2
   maxSecretTileSize: 4
   fruitSprites:
@@ -198,7 +197,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d6b29b523ce30604d898270f7809a31e, type: 3}
   - {fileID: 21300000, guid: b5cefc411047cbc4d8a9087ff298abea, type: 3}
   secretTileSprites:
-  - {fileID: 21300000, guid: 3e0992fc6372a8b49968ecfaea9f2246, type: 3}
+  - {fileID: 21300000, guid: 8ec49e1324aca364699f762ed6cff3cc, type: 3}
 --- !u!1 &1428559950
 GameObject:
   m_ObjectHideFlags: 0

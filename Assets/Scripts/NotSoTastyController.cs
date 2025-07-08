@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,9 +17,11 @@ public class NotSoTastyController : GameController {
 
 	private List<VisualElement> tiles;
 	private List<VisualElement> fruits;
+	private Label remainingSecretTilesLabel;
 	private float calculatedTileSize;
 
 	private List<Rect> secretTiles;
+	private List<int> secretTileClearCount;
 
 	private List<VisualElement> lineElements;
 	private List<VisualElement> chainedFruits;
@@ -52,6 +55,7 @@ public class NotSoTastyController : GameController {
 		// Get all of the tiles and fruit that are on the board
 		tiles = ui.Query<VisualElement>("Tile").ToList( );
 		fruits = ui.Query<VisualElement>("Fruit").ToList( );
+		remainingSecretTilesLabel = ui.Q<Label>("SecretLabel");
 
 		// Add clicked events for the game to function
 		gameScreen.RegisterCallback<MouseDownEvent>((e) => {
@@ -126,13 +130,66 @@ public class NotSoTastyController : GameController {
 
 				// Set the display of all the fruits to be invisible
 				for (int i = 0; i < chainedFruits.Count; i++) {
+					// Get the position of the fruit on the board
+					Vector2Int fruitPosition = Get2DIndex(fruits, chainedFruits[i]);
+					VisualElement fruitTile = tiles[Get1DIndex(fruitPosition.x, fruitPosition.y)];
+
+					// If a secret tile contains the fruits position, then display that section of the secret tile
+					if (fruitTile.resolvedStyle.backgroundImage == null) {
+						for (int j = 0; j < secretTiles.Count; j++) {
+							// Translate the fruit position so it uses the secret tile rect coordinates
+							// Right now the fruit (0, 0) position is at the bottom right corner of the screen due to how the lists are set up
+							// The secret tiles have their (0, 0) at the top left position of the board
+							Vector2Int fruitTilePosition = boardSize - Vector2Int.one - fruitPosition;
+							if (secretTiles[j].Contains(fruitTilePosition)) {
+								// Get secret tile variables
+								float secretTileSize = secretTiles[j].width;
+								Vector2 secretTilePosition = secretTiles[j].position;
+
+								// Get the position and size of the new texture
+								int textureWidth = Mathf.FloorToInt(secretTileSprites[0].texture.width / secretTileSize);
+								int textureHeight = Mathf.FloorToInt(secretTileSprites[0].texture.height / secretTileSize);
+								int textureX = (fruitTilePosition.x - (int) secretTilePosition.x) * textureWidth;
+								// Texture's have (0, 0) in the bottom left corner (so confusing)
+								int textureY = ((int) (secretTilePosition.y + secretTileSize - 1) - fruitTilePosition.y) * textureHeight;
+
+								// Create the new texture that is a chunk of the secret tile image based on the fruit's position
+								Texture2D secretTileTexture = new Texture2D(textureWidth, textureHeight);
+								secretTileTexture.SetPixels(secretTileSprites[0].texture.GetPixels(textureX, textureY, textureWidth, textureHeight));
+								secretTileTexture.Apply( );
+
+								// Set the style of the tile background
+								fruitTile.style.backgroundImage = new StyleBackground(secretTileTexture);
+
+								// Since this is a new tile that has been set, check to see if all of the tiles with this secret tile have been cleared
+								if (++secretTileClearCount[j] >= secretTileSize * secretTileSize) {
+									// Remove the secret tile from the list
+									secretTiles.RemoveAt(j);
+									secretTileClearCount.RemoveAt(j);
+
+									// Decrease the amount of secret tiles remaining
+									remainingSecretTilesLabel.text = $"{secretTiles.Count} secret tiles left!";
+
+									// Give the player more points for getting an entire secret tile
+									AddPoints(50);
+								}
+								break;
+							}
+						}
+					}
+
+					// Set the fruit to be invisible so the board knows to have the fruit above this one fall down
 					chainedFruits[i].style.display = DisplayStyle.None;
 				}
-				chainedFruits.Clear( );
 
 				// Update the board and have the fruits fall to fill in the gaps
 				UpdateBoard( );
+
+				if (secretTiles.Count == 0) {
+					UIControllerState = UIState.WIN;
+				}
 			}
+			chainedFruits.Clear( );
 
 			// Destroy all of the line elements that were created for the fruit chain
 			lineElementIndex = -1;
@@ -145,88 +202,9 @@ public class NotSoTastyController : GameController {
 			fruits[i].style.backgroundImage = new StyleBackground(fruitSprites[Random.Range(0, fruitSprites.Count)]);
 		}
 
-		// The total area that the secret tiles take up should not exceed 3/4 the size of the game board
-		int totalAreaCount = Mathf.FloorToInt(boardSize.x * boardSize.y * 0.75f);
-
-		// Generate all secret tiles on the board
-		secretTiles = new List<Rect>( );
-		List<int> unavailableSizes = new List<int>( );
-		List<int> availableSizes = new List<int>( );
-		List<Vector2> availablePositions = new List<Vector2>( );
-
-		// The loop that generates the secret tiles onto the board has a chance of infinitely looping depending on starting variables, so put a limit on the number of iterations that can take place
-		int iterationCount = 0;
-		for (; iterationCount < 20; iterationCount++) {
-			availableSizes.Clear( );
-			availablePositions.Clear( );
-
-			// Get a list of all the available sizes that the secret tile can be
-			for (int j = minSecretTileSize; j <= maxSecretTileSize; j++) {
-				// If the area of the secret tile, when added to the board, does not exceed 3/4 of the total game board area, then it can be chosen as a secret tile size
-				if (totalAreaCount - (j * j) >= 0 && !unavailableSizes.Contains(j)) {
-					availableSizes.Add(j);
-				}
-			}
-
-			// If there are no more available sizes, then break from the loop and stop generating tiles
-			if (availableSizes.Count == 0) {
-				break;
-			}
-
-			// Get a random size for the secret tile based on the sizes available
-			int size = availableSizes[Random.Range(0, availableSizes.Count)];
-
-			// Get a list of all the available positions a secret tile can spawn at
-			// Loop through all of the possible positions on the board that the tile could fit on
-			for (int x = 0; x < boardSize.x - (size - 1); x++) {
-				for (int y = 0; y < boardSize.y - (size - 1); y++) {
-					// Check to see if the current position interferes with already placed secret tiles
-					bool hasOverlappingTile = false;
-					for (int k = 0; k < secretTiles.Count; k++) {
-						Rect tempRect = new Rect(x, y, size, size);
-
-						// If the temp rect (where the new secret tile would be placed) overlaps with another tile, then the position is not valid
-						if (tempRect.Overlaps(secretTiles[k])) {
-							hasOverlappingTile = true;
-							break;
-						}
-					}
-
-					// After checking all of the currently placed secret tiles, if there are none that overlap the current position, then add the position to the available positions list
-					if (!hasOverlappingTile) {
-						availablePositions.Add(new Vector2(x, y));
-					}
-				}
-			}
-
-			// If there are no available positions, then add the size to the unavailable size list
-			// This prevents that size from being generated again
-			if (availablePositions.Count == 0) {
-				unavailableSizes.Add(size);
-				continue;
-			}
-
-			// Get a random position from the list of available positions
-			Vector2 position = availablePositions[Random.Range(0, availablePositions.Count)];
-
-			// Now that we have a position and a size, create a new secret tile
-			secretTiles.Add(new Rect(position.x, position.y, size, size));
-			totalAreaCount -= size * size;
-		}
-
-		// Log a warning to the console if the iteration count exceeded 20 and broke out of the loop
-		if (iterationCount >= 20) {
-			Debug.LogWarning("Secret tile generation loop exceeded 20 iterations");
-		}
-
-		//int textureWidth = Mathf.FloorToInt(secretTileSprites[0].textureRect.width);
-		//int textureHeight = Mathf.FloorToInt(secretTileSprites[0].textureRect.height);
-
-		//Texture2D secretTileTexture = new Texture2D(textureWidth / 2, textureHeight / 2);
-		//secretTileTexture.SetPixels(secretTileSprites[0].texture.GetPixels(0, 0, textureWidth / 2, textureHeight / 2));
-		//secretTileTexture.Apply( );
-
-		//tiles[0].style.backgroundImage = new StyleBackground(secretTileTexture);
+		// Generate all of the secret tiles on the board
+		GenerateSecretTiles( );
+		remainingSecretTilesLabel.text = $"{secretTiles.Count} secret tiles left!";
 
 		lineElements = new List<VisualElement>( );
 		chainedFruits = new List<VisualElement>( );
@@ -281,6 +259,87 @@ public class NotSoTastyController : GameController {
 		// Get the width of the tiles in pixels after the game screen has been updated
 		if (UIControllerState == UIState.GAME) {
 			calculatedTileSize = ui.Q<VisualElement>("Tile").resolvedStyle.width;
+		}
+	}
+
+	/// <summary>
+	/// Generate all of the secret tiles that will be on the board
+	/// </summary>
+	private void GenerateSecretTiles ( ) {
+		// The total area that the secret tiles take up should not exceed 1/2 the size of the game board
+		int totalAreaCount = Mathf.FloorToInt(boardSize.x * boardSize.y * 0.5f);
+
+		// Generate all secret tiles on the board
+		secretTiles = new List<Rect>( );
+		secretTileClearCount = new List<int>( );
+		List<int> unavailableSizes = new List<int>( );
+		List<int> availableSizes = new List<int>( );
+		List<Vector2> availablePositions = new List<Vector2>( );
+
+		// The loop that generates the secret tiles onto the board has a chance of infinitely looping depending on starting variables, so put a limit on the number of iterations that can take place
+		int iterationCount = 0;
+		for (; iterationCount < 20; iterationCount++) {
+			availableSizes.Clear( );
+			availablePositions.Clear( );
+
+			// Get a list of all the available sizes that the secret tile can be
+			for (int j = minSecretTileSize; j <= maxSecretTileSize; j++) {
+				// If the area of the secret tile, when added to the board, does not exceed 1/2 of the total game board area, then it can be chosen as a secret tile size
+				if (totalAreaCount - (j * j) >= 0 && !unavailableSizes.Contains(j)) {
+					availableSizes.Add(j);
+				}
+			}
+
+			// If there are no more available sizes, then break from the loop and stop generating tiles
+			if (availableSizes.Count == 0) {
+				break;
+			}
+
+			// Get a random size for the secret tile based on the sizes available
+			int size = availableSizes[Random.Range(0, availableSizes.Count)];
+
+			// Get a list of all the available positions a secret tile can spawn at
+			// Loop through all of the possible positions on the board that the tile could fit on
+			for (int x = 0; x < boardSize.x - (size - 1); x++) {
+				for (int y = 0; y < boardSize.y - (size - 1); y++) {
+					// Check to see if the current position interferes with already placed secret tiles
+					bool hasOverlappingTile = false;
+					for (int k = 0; k < secretTiles.Count; k++) {
+						Rect tempRect = new Rect(x, y, size, size);
+
+						// If the temp rect (where the new secret tile would be placed) overlaps with another tile, then the position is not valid
+						if (tempRect.Overlaps(secretTiles[k])) {
+							hasOverlappingTile = true;
+							break;
+						}
+					}
+
+					// After checking all of the currently placed secret tiles, if there are none that overlap the current position, then add the position to the available positions list
+					if (!hasOverlappingTile) {
+						availablePositions.Add(new Vector2(x, y));
+					}
+				}
+			}
+
+			// If there are no available positions, then add the size to the unavailable size list
+			// This prevents that size from being generated again
+			if (availablePositions.Count == 0) {
+				unavailableSizes.Add(size);
+				continue;
+			}
+
+			// Get a random position from the list of available positions
+			Vector2 position = availablePositions[Random.Range(0, availablePositions.Count)];
+
+			// Now that we have a position and a size, create a new secret tile
+			secretTiles.Add(new Rect(position.x, position.y, size, size));
+			secretTileClearCount.Add(0);
+			totalAreaCount -= size * size;
+		}
+
+		// Log a warning to the console if the iteration count exceeded 20 and broke out of the loop
+		if (iterationCount >= 20) {
+			Debug.LogWarning("Secret tile generation loop exceeded 20 iterations");
 		}
 	}
 
@@ -391,7 +450,7 @@ public class NotSoTastyController : GameController {
 	/// <returns>The 1D index that corresponds to the 2D position in the list</returns>
 	private int Get1DIndex (int x, int y) {
 		// (0, 0) is the bottom right corner of the list
-		return x + ((boardSize.y - y - 1) * boardSize.x);
+		return (boardSize.x - x - 1) + ((boardSize.y - y - 1) * boardSize.x);
 	}
 
 	/// <summary>
