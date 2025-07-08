@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DailyCheckIn.unity
     guid: 3c1154eb6285c91448da975333baf210
+  - enabled: 1
+    path: Assets/Scenes/NotSoTasty.unity
+    guid: d16617452b1133744a440934f4d03a63
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: db9bf42084ebe154ca9e27030fb696d9, type: 2}
   m_UseUCBPForAssetBundles: 0

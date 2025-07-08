@@ -26,8 +26,9 @@ public class MainMenuController : UIController {
         // Set up menu button functionality
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
-        ui.Q<Button>("CheckInButton").clicked += ( ) => { FadeToScene(3); };
-        ui.Q<Button>("ResetButton").clicked += ( ) => { UIControllerState = UIState.RESET; };
+		ui.Q<Button>("CheckInButton").clicked += ( ) => { FadeToScene(3); };
+		ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { FadeToScene(4); };
+		ui.Q<Button>("ResetButton").clicked += ( ) => { UIControllerState = UIState.RESET; };
         ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
         ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
             // Reset the total points value

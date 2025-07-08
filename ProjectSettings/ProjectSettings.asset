@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: MAGIC Spell Studios
-  productName: Break The Vape
+  productName: Escape The Vape
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -137,7 +137,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.3.1
+  bundleVersion: 0.3.2
   preloadedAssets:
   - {fileID: 11400000, guid: db9bf42084ebe154ca9e27030fb696d9, type: 2}
   metroInputSource: 0

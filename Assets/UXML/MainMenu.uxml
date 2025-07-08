@@ -23,7 +23,7 @@
             <ui:VisualElement class="uofr-vert-list" style="flex-grow: 1; justify-content: flex-start;">
                 <ui:Button name="CraveSmashButton" class="uofr-button uofr-vert-list-first mm-button-game">
                     <ui:Label text="Crave Smash" class="uofr-text-medium" style="-unity-text-align: middle-left;" />
-                    <ui:Label text="v0.5.2" class="uofr-text-gray uofr-text-small" style="-unity-text-align: middle-left;" />
+                    <ui:Label text="v0.5.3" class="uofr-text-gray uofr-text-small" style="-unity-text-align: middle-left;" />
                     <ui:VisualElement class="mm-game-thumbnail" style="-unity-background-image-tint-color: rgb(255, 200, 0);" />
                 </ui:Button>
                 <ui:Button name="MatchAndCatchButton" class="uofr-button uofr-vert-list-middle mm-button-game">
@@ -41,13 +41,13 @@
                     <ui:Label text="v0.0.0 | In Development" class="uofr-text-gray uofr-text-small" style="-unity-text-align: middle-left;" />
                     <ui:VisualElement class="mm-game-thumbnail" style="-unity-background-image-tint-color: rgb(255, 0, 0);" />
                 </ui:Button>
-                <ui:Button name="NotSoTastyButton" class="uofr-button uofr-vert-list-middle mm-button-game uofr-button-disabled">
+                <ui:Button name="NotSoTastyButton" class="uofr-button uofr-vert-list-middle mm-button-game">
                     <ui:Label text="Not So Tasty" class="uofr-text-medium" style="-unity-text-align: middle-left;" />
-                    <ui:Label text="v0.0.0 | In Development" class="uofr-text-gray uofr-text-small" style="-unity-text-align: middle-left;" />
+                    <ui:Label text="v0.1.0" class="uofr-text-gray uofr-text-small" style="-unity-text-align: middle-left;" />
                     <ui:VisualElement class="mm-game-thumbnail" style="-unity-background-image-tint-color: rgb(64, 0, 255);" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:Label text="Break The Vape v0.3.1&#10;MAGIC Spell Studios" class="uofr-text-small uofr-text-gray" style="-unity-text-align: upper-center;" />
+            <ui:Label text="Escape The Vape v0.3.2&#10;MAGIC Spell Studios" class="uofr-text-small uofr-text-gray" style="-unity-text-align: upper-center;" />
         </ui:VisualElement>
         <ui:VisualElement name="ResetScreen" class="uofr-screen uofr-vert-list" style="display: none;">
             <ui:VisualElement class="uofr-vert-list uofr-section-medium">
