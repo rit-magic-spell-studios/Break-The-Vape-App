@@ -66,10 +66,7 @@ public class CraveSmashController : GameController {
             }
 
             // Make sure the player does not get a huge amount of points per click
-            gainedPoints = Mathf.Min(gainedPoints, maxClickPoints);
-
-            // Increase the player's score
-            AddPoints(gainedPoints);
+            GamePoints += Mathf.Min(gainedPoints, maxClickPoints);
             lastClickTime = Time.time;
 
             // If the monster has run out of health, then go to the end state
@@ -86,6 +83,8 @@ public class CraveSmashController : GameController {
         // Make sure the crave monster starts at the max health
         CraveMonsterHealth = 100f;
         lastClickTime = -1;
+
+        gameData.Name = "Crave Smash";
     }
 
     protected override void Start( ) {

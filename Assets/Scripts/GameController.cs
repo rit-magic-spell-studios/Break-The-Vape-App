@@ -9,8 +9,26 @@ public abstract class GameController : UIController {
     [Header("GameController")]
     [SerializeField, Range(0f, 10f)] private float tutorialTime;
 
+    /// <summary>
+    /// The current game points for this game
+    /// </summary>
+    public int GamePoints {
+        get => gameData.Points;
+        set {
+            // Make sure to add the points that were gained to the total app session points
+            playerData.CurrentAppSession.Points += value - gameData.Points;
+            gameData.Points = value;
+
+            // Update the score label text based on the new score value
+            scoreLabel.text = $"Score: <b>{gameData.Points} points</b>";
+            finalScoreLabel.text = $"{gameData.Points} points";
+            totalScoreLabel.text = $"{playerData.CurrentAppSession.Points} points";
+        }
+    }
+
+    protected GameSessionData gameData;
+
     private float tutorialTimer;
-    private int currentPoints;
 
     protected Label scoreLabel;
     protected Label finalScoreLabel;
@@ -22,6 +40,7 @@ public abstract class GameController : UIController {
 
     protected VisualElement gameSubscreen;
     protected VisualElement tutorialSubscreen;
+
 
     protected override void Awake( ) {
         base.Awake( );
@@ -56,11 +75,12 @@ public abstract class GameController : UIController {
         finalScoreLabel = ui.Q<Label>("FinalScoreLabel");
         totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
 
+        // Create a new game session data entry for this game
+        gameData = new GameSessionData( );
+
         // Set default values for some of the variables
         tutorialTimer = 0f;
-
-        // Update the score labels for the beginning of the game
-        AddPoints(0);
+        GamePoints = 0;
     }
 
     protected virtual void Update( ) {
@@ -77,22 +97,19 @@ public abstract class GameController : UIController {
         }
     }
 
+    protected override void FadeToScene(int sceneBuildIndex) {
+        // Add the game data from this game to the current app session
+        gameData.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(gameData.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
+        playerData.CurrentAppSession.GameSessionData.Add(gameData);
+
+        base.FadeToScene(sceneBuildIndex);
+    }
+
     /// <summary>
     /// Update all of the subscreens in this game controller based on the current game controller state
     /// </summary>
     protected override void UpdateSubscreens( ) {
         SetSubscreenVisibility(gameSubscreen, UIControllerState == UIState.GAME);
         SetSubscreenVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);
-    }
-
-    protected void AddPoints (int points) {
-        // Add the points to the total values
-        currentPoints += points;
-        playerData.TotalPoints += points;
-
-        // Update the score label text based on the new score value
-        scoreLabel.text = $"Score: <b>{currentPoints} points</b>";
-        finalScoreLabel.text = $"{currentPoints} points";
-        totalScoreLabel.text = $"{playerData.TotalPoints} points";
     }
 }

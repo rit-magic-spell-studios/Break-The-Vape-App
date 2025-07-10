@@ -8,23 +8,23 @@ public class CheckInController : UIController {
     [Header("CheckInController")]
     [SerializeField, Range(0f, 2f)] private float progressBarTransitionTime;
 
+    protected CheckInSessionData checkInData;
+
     private VisualElement checkInScreen;
 
-    private VisualElement vapeSubscreen;
     private VisualElement craveSubscreen;
+    private List<Button> craveLevelButtons;
+
     private VisualElement causeSubscreen;
+    private List<Button> craveCauseButtons;
+
     private VisualElement completeSubscreen;
 
     private Label checkInLabel;
     private Button nextButton;
-
     private ProgressBar checkInProgressBar;
+
     private Coroutine progressBarCoroutine;
-
-    private List<Button> vapeButtons;
-    private List<Button> craveLevelButtons;
-    private List<Button> craveCauseButtons;
-
     private List<Button> selectedButtons;
 
     protected override void Awake( ) {
@@ -32,19 +32,16 @@ public class CheckInController : UIController {
 
         // Get a reference to all the screens and subscreens
         checkInScreen = ui.Q<VisualElement>("CheckInScreen");
-        vapeSubscreen = ui.Q<VisualElement>("VapeSubscreen");
         craveSubscreen = ui.Q<VisualElement>("CraveSubscreen");
         causeSubscreen = ui.Q<VisualElement>("CauseSubscreen");
         completeSubscreen = ui.Q<VisualElement>("CompleteSubscreen");
 
         // The screen is the same for all of the questions in the check in form
-        screens[(int) UIState.VAPE] = checkInScreen;
         screens[(int) UIState.CRAVE] = checkInScreen;
         screens[(int) UIState.CAUSE] = checkInScreen;
         screens[(int) UIState.COMPLETE] = checkInScreen;
 
         // Each subscreen has a different UI state
-        subscreens[(int) UIState.VAPE] = vapeSubscreen;
         subscreens[(int) UIState.CRAVE] = craveSubscreen;
         subscreens[(int) UIState.CAUSE] = causeSubscreen;
         subscreens[(int) UIState.COMPLETE] = completeSubscreen;
@@ -68,15 +65,9 @@ public class CheckInController : UIController {
                 if (progressBarCoroutine != null) {
                     StopCoroutine(progressBarCoroutine);
                 }
-                progressBarCoroutine = StartCoroutine(ProgressBarTransition(checkInProgressBar.value + 0.3333f));
+                progressBarCoroutine = StartCoroutine(ProgressBarTransition(checkInProgressBar.value + 0.5f));
             }
         };
-
-        // Set up all elements on the vape subscreen
-        vapeButtons = ui.Q<VisualElement>("VapeOptions").Query<Button>( ).ToList( );
-        for (int i = 0; i < vapeButtons.Count; i++) {
-            vapeButtons[i].RegisterCallback<ClickEvent>((e) => { SelectOption(vapeButtons, vapeButtons.IndexOf((Button) e.target)); });
-        }
 
         // Set up all elements on the crave level subscreen
         craveLevelButtons = ui.Q<VisualElement>("CraveOptions").Query<Button>( ).ToList( );
@@ -91,19 +82,14 @@ public class CheckInController : UIController {
         }
 
         // Set up all elements on the completed subscreen
-        ui.Q<Button>("FinishButton").clicked += ( ) => {
-            playerData.HasCompletedInitialCheckIn = true;
-            Debug.Log($"VAPE? - {playerData.HasVapedRecently} | CRAVE LVL - {playerData.InitialCravingLevel} | CRAVE CAUSES - {playerData.CravingCauses.ToCommaSeparatedString( )}");
-
-            FadeToScene(0);
-        };
+        ui.Q<Button>("FinishButton").clicked += ( ) => { FadeToScene(0); };
     }
 
     protected override void Start( ) {
         base.Start( );
 
         // The check in controller will always start with the vape question first
-        UIControllerState = UIState.VAPE;
+        UIControllerState = UIState.CRAVE;
     }
 
     /// <summary>
@@ -149,15 +135,7 @@ public class CheckInController : UIController {
         switch (LastUIControllerState) {
             case UIState.NULL:
                 // Set the check in label for the next subscreen
-                checkInLabel.text = "Have you vaped in the last 24 hours?";
-
-                break;
-            case UIState.VAPE:
-                // Set the check in label for the next subscreen
                 checkInLabel.text = "What is your craving level?";
-
-                // There should only be one option selected for the vape screen
-                playerData.HasVapedRecently = (selectedButtons[0].text == "Yes");
 
                 break;
             case UIState.CRAVE:
@@ -166,7 +144,7 @@ public class CheckInController : UIController {
 
                 // There should only be one option selected for the crave level screen
                 // The text should also always be a number
-                playerData.InitialCravingLevel = int.Parse(selectedButtons[0].text);
+                checkInData.Intensity = int.Parse(selectedButtons[0].text);
 
                 break;
             case UIState.CAUSE:
@@ -174,9 +152,8 @@ public class CheckInController : UIController {
                 checkInLabel.text = "Complete!";
 
                 // There could be multiple selected options for the craving cause
-                playerData.CravingCauses = new List<string>( );
                 for (int i = 0; i < selectedButtons.Count; i++) {
-                    playerData.CravingCauses.Add(selectedButtons[i].text);
+                    checkInData.Triggers.Add(selectedButtons[i].text);
                 }
 
                 break;
@@ -206,7 +183,6 @@ public class CheckInController : UIController {
     }
 
     protected override void UpdateSubscreens( ) {
-        SetSubscreenVisibility(vapeSubscreen, UIControllerState == UIState.VAPE);
         SetSubscreenVisibility(craveSubscreen, UIControllerState == UIState.CRAVE);
         SetSubscreenVisibility(causeSubscreen, UIControllerState == UIState.CAUSE);
         SetSubscreenVisibility(completeSubscreen, UIControllerState == UIState.COMPLETE);

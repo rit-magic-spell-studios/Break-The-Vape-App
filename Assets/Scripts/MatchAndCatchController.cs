@@ -55,6 +55,8 @@ public class MatchAndCatchController : GameController {
         // Get references to other important UI elements
         matchesLabel = ui.Q<Label>("MatchesLabel");
         matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
+
+        gameData.Name = "Match And Catch";
     }
 
     protected override void Start( ) {
@@ -157,7 +159,7 @@ public class MatchAndCatchController : GameController {
             matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
 
             // Add points for the correct match
-            AddPoints(100);
+            GamePoints += 100;
 
             // If all of the cards have been flipped over, then the player has won
             if (flippedCards.Count == cards.Count) {

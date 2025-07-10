@@ -12,7 +12,7 @@ public enum UIState {
     NULL, 
     MAIN, RESET,
     TUTORIAL, GAME, PAUSE, WIN,
-    VAPE, CRAVE, CAUSE, COMPLETE
+    CRAVE, CAUSE, COMPLETE
 }
 
 public abstract class UIController : MonoBehaviour {
@@ -203,7 +203,7 @@ public abstract class UIController : MonoBehaviour {
     /// Fade from the current screen to another Unity scene
     /// </summary>
     /// <param name="sceneBuildIndex">The build index of the scene to transition to</param>
-    protected void FadeToScene(int sceneBuildIndex) {
+    protected virtual void FadeToScene(int sceneBuildIndex) {
         // If the UI is currently transitioning, then return and do not fade the screen
         if (IsTransitioningUI) {
             return;
