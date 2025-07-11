@@ -212,7 +212,7 @@ public class NotSoTastyController : GameController {
         lineElementIndex = -1;
         lastDragFruit = null;
 
-        gameData.Name = "Not So Tasty";
+        jsonManager.ActiveGameSession.Name = "Not So Tasty";
     }
 
     protected override void Start( ) {

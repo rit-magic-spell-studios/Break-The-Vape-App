@@ -56,7 +56,7 @@ public class MatchAndCatchController : GameController {
         matchesLabel = ui.Q<Label>("MatchesLabel");
         matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
 
-        gameData.Name = "Match And Catch";
+        jsonManager.ActiveGameSession.Name = "Match And Catch";
     }
 
     protected override void Start( ) {

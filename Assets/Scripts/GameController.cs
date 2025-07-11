@@ -13,20 +13,18 @@ public abstract class GameController : UIController {
     /// The current game points for this game
     /// </summary>
     public int GamePoints {
-        get => gameData.Points;
+        get => jsonManager.ActiveGameSession.Points;
         set {
             // Make sure to add the points that were gained to the total app session points
-            jsonManager.CurrentAppSession.Points += value - gameData.Points;
-            gameData.Points = value;
+            jsonManager.ActiveAppSession.TotalPoints += value - jsonManager.ActiveGameSession.Points;
+            jsonManager.ActiveGameSession.Points = value;
 
             // Update the score label text based on the new score value
-            scoreLabel.text = $"Score: <b>{gameData.Points} points</b>";
-            finalScoreLabel.text = $"{gameData.Points} points";
-            totalScoreLabel.text = $"{jsonManager.CurrentAppSession.Points} points";
+            scoreLabel.text = $"Score: <b>{jsonManager.ActiveGameSession.Points} points</b>";
+            finalScoreLabel.text = $"{jsonManager.ActiveGameSession.Points} points";
+            totalScoreLabel.text = $"{jsonManager.ActiveAppSession.TotalPoints} points";
         }
     }
-
-    protected GameSessionData gameData;
 
     private float tutorialTimer;
 
@@ -76,7 +74,7 @@ public abstract class GameController : UIController {
         totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
 
         // Create a new game session data entry for this game
-        gameData = new GameSessionData( );
+        jsonManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
 
         // Set default values for some of the variables
         tutorialTimer = 0f;
@@ -98,9 +96,6 @@ public abstract class GameController : UIController {
     }
 
     protected override void FadeToScene(int sceneBuildIndex) {
-        // Add the game data from this game to the current app session
-        gameData.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(gameData.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
-        jsonManager.CurrentAppSession.GameSessionData.Add(gameData);
         jsonManager.SavePlayerData( );
 
         base.FadeToScene(sceneBuildIndex);

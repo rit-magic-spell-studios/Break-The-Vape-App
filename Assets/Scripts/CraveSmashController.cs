@@ -84,7 +84,7 @@ public class CraveSmashController : GameController {
         CraveMonsterHealth = 100f;
         lastClickTime = -1;
 
-        gameData.Name = "Crave Smash";
+        jsonManager.ActiveGameSession.Name = "Crave Smash";
     }
 
     protected override void Start( ) {

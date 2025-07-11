@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,8 +8,6 @@ using UnityEngine.UIElements;
 public class CheckInController : UIController {
     [Header("CheckInController")]
     [SerializeField, Range(0f, 2f)] private float progressBarTransitionTime;
-
-    protected CheckInSessionData checkInData;
 
     private VisualElement checkInScreen;
 
@@ -148,7 +147,7 @@ public class CheckInController : UIController {
 
                 // There should only be one option selected for the crave level screen
                 // The text should also always be a number
-                checkInData.Intensity = int.Parse(selectedButtons[0].text);
+                jsonManager.ActiveCheckInSession.Intensity = int.Parse(selectedButtons[0].text);
 
                 break;
             case UIState.CAUSE:
@@ -157,7 +156,7 @@ public class CheckInController : UIController {
 
                 // There could be multiple selected options for the craving cause
                 for (int i = 0; i < selectedButtons.Count; i++) {
-                    checkInData.Triggers.Add(selectedButtons[i].text);
+                    jsonManager.ActiveCheckInSession.Triggers.Add(selectedButtons[i].text);
                 }
 
                 break;

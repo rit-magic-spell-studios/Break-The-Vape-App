@@ -20,7 +20,7 @@ public class AppSessionData {
     public string AppVersion;
     public string SessionID;
     public string StartTimeUTC;
-    public int Points;
+    public int TotalPoints;
     public float PlaytimeSeconds;
 
     public List<GameSessionData> GameSessionData;
@@ -30,7 +30,7 @@ public class AppSessionData {
         AppVersion = appVersion;
         SessionID = GUID.Generate( ).ToString( );
         StartTimeUTC = DateTime.UtcNow.ToString("o");
-        Points = 0;
+        TotalPoints = 0;
         PlaytimeSeconds = 0;
 
         GameSessionData = new List<GameSessionData>( );
@@ -43,11 +43,13 @@ public class CheckInSessionData {
     public string StartTimeUTC;
     public int Intensity;
     public List<string> Triggers;
+    public float PlaytimeSeconds;
 
     public CheckInSessionData( ) {
         StartTimeUTC = DateTime.UtcNow.ToString("o");
         Intensity = 0;
         Triggers = new List<string>( );
+        PlaytimeSeconds = 0;
     }
 }
 

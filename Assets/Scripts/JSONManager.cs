@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JSONManager : Singleton<JSONManager> {
     [HideInInspector] public PlayerData PlayerData;
 
     public string RITchCode { get => PlayerData.RITchCode; private set => PlayerData.RITchCode = value; }
     public List<AppSessionData> AppSessionData { get => PlayerData.AppSessionData; private set => PlayerData.AppSessionData = value; }
-    public AppSessionData CurrentAppSession => AppSessionData[^1];
+    public AppSessionData ActiveAppSession => AppSessionData[^1];
+    public GameSessionData ActiveGameSession => ActiveAppSession.GameSessionData[^1];
+    public CheckInSessionData ActiveCheckInSession => ActiveAppSession.CheckInSessionData[^1];
 
     /// <summary>
     /// The data path to where all json files will be saving
@@ -29,7 +32,7 @@ public class JSONManager : Singleton<JSONManager> {
         PlayerData = new PlayerData( );
 
         // Load the default RITch code at the start of the game
-        LoadNewRITchCode("FA4931");
+        LoadNewRITchCode("NONE00");
     }
 
     private void OnDisable( ) {
@@ -68,8 +71,15 @@ public class JSONManager : Singleton<JSONManager> {
             return;
         }
 
+        // Update the active game session or check in session if specified
+        if (SceneManager.GetActiveScene( ).name == "CheckIn") {
+            ActiveCheckInSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveCheckInSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
+        } else if (SceneManager.GetActiveScene( ).name != "MainMenu") {
+            ActiveGameSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveGameSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
+        }
+
         // Set the final playtime since the play session for the current RITch code is finished
-        CurrentAppSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(CurrentAppSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
+        ActiveAppSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveAppSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
 
         // Check to see if there is a file at the data path
         CheckForFile(DataPath);
