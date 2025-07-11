@@ -16,13 +16,13 @@ public abstract class GameController : UIController {
         get => gameData.Points;
         set {
             // Make sure to add the points that were gained to the total app session points
-            playerData.CurrentAppSession.Points += value - gameData.Points;
+            jsonManager.CurrentAppSession.Points += value - gameData.Points;
             gameData.Points = value;
 
             // Update the score label text based on the new score value
             scoreLabel.text = $"Score: <b>{gameData.Points} points</b>";
             finalScoreLabel.text = $"{gameData.Points} points";
-            totalScoreLabel.text = $"{playerData.CurrentAppSession.Points} points";
+            totalScoreLabel.text = $"{jsonManager.CurrentAppSession.Points} points";
         }
     }
 
@@ -100,7 +100,8 @@ public abstract class GameController : UIController {
     protected override void FadeToScene(int sceneBuildIndex) {
         // Add the game data from this game to the current app session
         gameData.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(gameData.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
-        playerData.CurrentAppSession.GameSessionData.Add(gameData);
+        jsonManager.CurrentAppSession.GameSessionData.Add(gameData);
+        jsonManager.SavePlayerData( );
 
         base.FadeToScene(sceneBuildIndex);
     }

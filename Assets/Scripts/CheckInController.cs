@@ -82,7 +82,11 @@ public class CheckInController : UIController {
         }
 
         // Set up all elements on the completed subscreen
-        ui.Q<Button>("FinishButton").clicked += ( ) => { FadeToScene(0); };
+        ui.Q<Button>("FinishButton").clicked += ( ) => {
+            jsonManager.SavePlayerData( );
+
+            FadeToScene(0);
+        };
     }
 
     protected override void Start( ) {

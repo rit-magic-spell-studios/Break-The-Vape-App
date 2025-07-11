@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ae1c0f3223bad4dbdfed416bc66a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
+  jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
   tutorialTime: 5
   clickDamage: 2.5

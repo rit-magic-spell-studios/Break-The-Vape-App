@@ -17,7 +17,7 @@ public enum UIState {
 
 public abstract class UIController : MonoBehaviour {
     [Header("UIController")]
-    [SerializeField] protected PlayerData playerData;
+    [SerializeField] protected JSONManager jsonManager;
     [SerializeField, Range(0f, 2f)] protected float screenFadeTransitionTime;
 
     private Coroutine menuTransition;
@@ -100,6 +100,8 @@ public abstract class UIController : MonoBehaviour {
         // Create arrays that hold references to the screens and subscreens of each UI state
         screens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
         subscreens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
+
+        jsonManager = FindFirstObjectByType<JSONManager>( );
     }
 
     protected virtual void Start( ) {

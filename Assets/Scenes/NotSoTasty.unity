@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc969acd52a0aec4aba7f5d6cead6fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
+  jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
   tutorialTime: 2
   boardSize: {x: 6, y: 8}
