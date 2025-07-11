@@ -1,5 +1,9 @@
 # App Changelog
 
+## Unreleased
+* Added first prototype of telemetry and player data tracking across the app and minigames
+	* Tracks points, what games were played, total playtime, and more
+
 ## v0.3.2 - July 8th, 2025
 * Added link from main menu to Not So Tasty
 * Changed project title to "Escape The Vape"

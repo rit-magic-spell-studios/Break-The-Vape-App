@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 
-// https://discussions.unity.com/t/write-save-and-read-load-data-to-and-from-json-file-on-android/785302/3
-
 [Serializable]
 public class PlayerData {
     public string RITchCode;
