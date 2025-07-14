@@ -1,51 +1,44 @@
-.uofr-text-large {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-size: 80px;
-    white-space: normal;
-    color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
-    -unity-text-align: middle-left;
-}
-
-.uofr-text-medium {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    white-space: normal;
-    color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
-    font-size: 60px;
-}
-
-.uofr-text-small {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+.uofr-text {
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
     font-size: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     white-space: normal;
-    color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
 }
 
-.uofr-text-gray {
-    color: rgb(112, 112, 112);
+.uofr-title {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Fuzzy_Bubbles/FuzzyBubbles-Regular%20SDF.asset?fileID=11400000&guid=c12a350cfc623d740bd959a59f213402&type=2#FuzzyBubbles-Regular SDF");
+    font-size: 80px;
+    -unity-font-style: bold;
+    letter-spacing: -8px;
+}
+
+.uofr-subtitle {
+    color: rgb(97, 97, 97);
+    font-size: 40px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .uofr-button {
@@ -53,81 +46,53 @@
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 60px;
-    height: 120px;
-    border-left-width: 3px;
-    border-right-width: 3px;
-    border-top-width: 3px;
-    border-bottom-width: 3px;
-    flex-basis: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-left-color: rgb(238, 238, 238);
-    border-right-color: rgb(238, 238, 238);
-    border-top-color: rgb(238, 238, 238);
-    border-bottom-color: rgb(238, 238, 238);
-    background-color: rgba(0, 0, 0, 0);
+    font-size: 50px;
+    height: 140px;
+    border-left-width: 6px;
+    border-right-width: 6px;
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-color: rgb(79, 130, 255);
+    border-right-color: rgb(79, 130, 255);
+    border-top-color: rgb(79, 130, 255);
+    border-bottom-color: rgb(79, 130, 255);
+    background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Switzer-Medium%20SDF.asset?fileID=11400000&guid=6f2528c3495a0f8448cbc5bdd9622e37&type=2#Switzer-Medium SDF");
-    min-height: 120px;
-    flex-grow: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Fuzzy_Bubbles/FuzzyBubbles-Regular%20SDF.asset?fileID=11400000&guid=c12a350cfc623d740bd959a59f213402&type=2#FuzzyBubbles-Regular SDF");
+    min-height: 140px;
+    -unity-font-style: bold;
+    letter-spacing: -8px;
+    -unity-text-align: middle-center;
 }
 
-.uofr-button-discreet {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 40px;
-    color: rgb(112, 112, 112);
+.uofr-button-highlight {
+    background-color: rgb(255, 223, 47);
     border-left-width: 0;
     border-right-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/OTF/Switzer-Regular.otf?fileID=12800000&guid=323fa69df02b5ee40ab52f7725f7e19e&type=3#Switzer-Regular");
 }
 
-.uofr-button-selected {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    -unity-font-definition: url("project://database/Assets/Fonts/Switzer/Fonts/OTF/Switzer-Semibold.otf?fileID=12800000&guid=eda6339747f183c468c037d3556f1380&type=3#Switzer-Semibold");
-}
-
-.uofr-button-pause {
+.uofr-button-square {
     width: 100px;
     height: 100px;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     flex-grow: 0;
     min-height: 100px;
     min-width: 100px;
     max-width: 100px;
     max-height: 100px;
-}
-
-.uofr-button-disabled {
-    background-color: rgb(167, 167, 167);
-}
-
-.uofr-button-disabled .unity-label {
-    color: rgb(93, 93, 93);
 }
 
 .uofr-progress-bar {
@@ -315,9 +280,9 @@
 
 .uofr-screen {
     flex-grow: 1;
-    padding-top: 90px;
+    padding-top: 120px;
     padding-right: 60px;
-    padding-bottom: 90px;
+    padding-bottom: 120px;
     padding-left: 60px;
     margin-left: 0;
     margin-right: 0;
@@ -367,7 +332,6 @@
 }
 
 .uofr-background {
-    background-color: rgb(255, 255, 255);
     flex-grow: 1;
     margin-left: 0;
     margin-right: 0;
@@ -432,4 +396,41 @@
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
+}
+
+.uofr-hr {
+    height: 6px;
+    max-height: 6px;
+    min-height: 6px;
+    width: 95%;
+    align-self: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(238, 238, 238);
+}
+
+.uofr-container {
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgb(255, 255, 255);
 }
