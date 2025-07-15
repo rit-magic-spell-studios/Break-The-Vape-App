@@ -17,8 +17,9 @@
                 </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement class="uofr-vert-list uofr-container">
-                <ui:VisualElement class="uofr-section-small">
-                    <ui:Label text="Total Score" class="uofr-text-small" />
+                <ui:Button class="uofr-button" />
+                <ui:VisualElement class="uofr-hori-list">
+                    <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); width: 60px; padding-top: 60px;" />
                     <ui:Label text="300 points" name="TotalScoreLabel" class="uofr-text-medium" />
                 </ui:VisualElement>
                 <ui:Button name="CraveSmashButton" class="uofr-button uofr-vert-list-first mm-button-game">
