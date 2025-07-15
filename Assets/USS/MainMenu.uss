@@ -1,11 +1,12 @@
 .mm-button-game {
-    height: 180px;
-    min-height: 180px;
+    height: 250px;
+    min-height: 250px;
+    justify-content: center;
 }
 
 .mm-game-thumbnail {
     position: absolute;
-    background-image: url("project://database/Assets/Sprites/GameCircleIcon.png?fileID=2800000&guid=fd2ffd28f7581c6448eda780e130e44b&type=3#GameCircleIcon");
+    background-image: url('project://database/Assets/Sprites/GameCircleIcon.png?fileID=2800000&guid=fd2ffd28f7581c6448eda780e130e44b&type=3#GameCircleIcon');
     top: 0;
     right: 0;
     bottom: 0;

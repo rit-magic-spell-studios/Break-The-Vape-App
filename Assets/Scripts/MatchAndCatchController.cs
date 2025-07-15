@@ -55,14 +55,11 @@ public class MatchAndCatchController : GameController {
         // Get references to other important UI elements
         matchesLabel = ui.Q<Label>("MatchesLabel");
         matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
-
-        jsonManager.ActiveGameSession.Name = "Match And Catch";
     }
 
     protected override void Start( ) {
         base.Start( );
 
-        // When the game starts, the tutorial should be shown first
         UIControllerState = UIState.TUTORIAL;
     }
 

@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 576956273}
   - component: {fileID: 576956275}
   m_Layer: 5
-  m_Name: Match And Catch UI
+  m_Name: Match And Catch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,7 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
-  tutorialTime: 5
+  tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
+  tutorialText: Tap to reveal cards. See if you can find all the matching pairs!
   cardFlipTime: 0.2
   cardCheckDelay: 1
   cardFrontSprites:

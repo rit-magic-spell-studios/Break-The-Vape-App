@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 
 public abstract class GameController : UIController {
     [Header("GameController")]
-    [SerializeField, Range(0f, 10f)] private float tutorialTime;
+    [SerializeField] private RenderTexture tutorialVisual;
+    [SerializeField, TextArea] private string tutorialText;
 
     /// <summary>
     /// The current game points for this game
@@ -25,8 +26,6 @@ public abstract class GameController : UIController {
             totalScoreLabel.text = $"{jsonManager.ActiveAppSession.TotalPoints} points";
         }
     }
-
-    private float tutorialTimer;
 
     protected Label scoreLabel;
     protected Label finalScoreLabel;
@@ -67,32 +66,25 @@ public abstract class GameController : UIController {
         ui.Q<Button>("HomeButton").clicked += ( ) => { FadeToScene(0); };
         ui.Q<Button>("PlayAgainButton").clicked += ( ) => { FadeToScene(SceneManager.GetActiveScene( ).buildIndex); };
         ui.Q<Button>("PauseButton").clicked += ( ) => { UIControllerState = UIState.PAUSE; };
+        ui.Q<Button>("PlayButton").clicked += ( ) => { UIControllerState = UIState.GAME; };
+        ui.Q<Button>("HowToPlayButton").clicked += ( ) => { UIControllerState = UIState.TUTORIAL; };
 
         // Get references to other important UI elements
         scoreLabel = ui.Q<Label>("ScoreLabel");
         finalScoreLabel = ui.Q<Label>("FinalScoreLabel");
         totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
 
+        // Set tutorial information
+        ui.Q<VisualElement>("TutorialVisual").style.backgroundImage = new StyleBackground(Background.FromRenderTexture(tutorialVisual));
+        ui.Q<Label>("TutorialLabel").text = tutorialText;
+        ui.Q<Label>("TitleLabel").text = name;
+
         // Create a new game session data entry for this game
         jsonManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
+        jsonManager.ActiveGameSession.Name = name;
 
         // Set default values for some of the variables
-        tutorialTimer = 0f;
         GamePoints = 0;
-    }
-
-    protected virtual void Update( ) {
-        // If the current game controller state is not the tutorial, then do not update the tutorial timer
-        if (UIControllerState != UIState.TUTORIAL) {
-            return;
-        }
-
-        tutorialTimer += Time.deltaTime;
-
-        // Once the tutorial timer has reached the alloted tutorial time, then switch the game state to show the game
-        if (tutorialTimer > tutorialTime) {
-            UIControllerState = UIState.GAME;
-        }
     }
 
     protected override void FadeToScene(int sceneBuildIndex) {

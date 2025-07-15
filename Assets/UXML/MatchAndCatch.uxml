@@ -1,24 +1,17 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="GameBar" src="project://database/Assets/UXML/Templates/GameBar.uxml?fileID=9197481963319205126&amp;guid=44a2d20bd69f40c47afe90cab3c4380d&amp;type=3#GameBar" />
+    <engine:Template name="GameTutorialSubscreen" src="project://database/Assets/UXML/Templates/GameTutorialSubscreen.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialSubscreen" />
+    <engine:Template name="GameWinScreen" src="project://database/Assets/UXML/Templates/GameWinScreen.uxml?fileID=9197481963319205126&amp;guid=1d6928190cee2694fba334f48fdf52f5&amp;type=3#GameWinScreen" />
+    <engine:Template name="GamePauseScreen" src="project://database/Assets/UXML/Templates/GamePauseScreen.uxml?fileID=9197481963319205126&amp;guid=2bacc1f092c8dd5469eacb2e23ea4ea1&amp;type=3#GamePauseScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <Style src="project://database/Assets/USS/MatchAndCatch.uss?fileID=7433441132597879392&amp;guid=f886bf6c8b7ff7d48b6c1fae2709657b&amp;type=3#MatchAndCatch" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: flex;">
-            <engine:VisualElement class="uofr-vert-list uofr-section-small" style="justify-content: flex-end;">
-                <engine:VisualElement class="uofr-hori-list uofr-vert-list-first">
-                    <engine:Label text="Match &amp; Catch" class="uofr-text-large" style="flex-grow: 1;" />
-                    <engine:Button name="PauseButton" class="uofr-button uofr-button-pause">
-                        <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/PauseIcon.png?fileID=2800000&amp;guid=bee2404f4685eed4baf6068a8203dffe&amp;type=3#PauseIcon&quot;); flex-grow: 1;" />
-                    </engine:Button>
-                </engine:VisualElement>
-                <engine:Label text="Score: &lt;b&gt;320&lt;/b&gt;" name="ScoreLabel" class="uofr-text-small uofr-vert-list-last uofr-text-gray" />
-            </engine:VisualElement>
+            <engine:Instance template="GameBar" class="uofr-gamebar" />
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:VisualElement name="TutorialSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">
-                    <engine:VisualElement class="uofr-vert-list-first" style="width: 65%; background-image: resource(&apos;MatchAndCatchTutorial&apos;); height: 0; padding-top: 65%;" />
-                    <engine:Label text="Match all pairs of cards to learn more!" class="uofr-text-medium uofr-vert-list-last" style="-unity-text-align: upper-center;" />
-                </engine:VisualElement>
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: none;">
-                    <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-text-medium uofr-section-small" style="-unity-text-align: middle-center;" />
+                <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" class="uofr-subscreen" style="display: none;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex;">
+                    <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-title" style="-unity-text-align: middle-center; margin-bottom: 80px;" />
                     <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
@@ -78,24 +71,7 @@
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
-        <engine:VisualElement name="WinScreen" class="uofr-screen" style="display: none;">
-            <engine:VisualElement class="uofr-vert-list uofr-section-small">
-                <engine:Label text="Final Score" class="uofr-text-medium uofr-vert-list-first" style="-unity-text-align: middle-center;" />
-                <engine:Label text="300 points" name="FinalScoreLabel" class="uofr-vert-list-last uofr-text-large" style="-unity-text-align: middle-center;" />
-            </engine:VisualElement>
-            <engine:VisualElement class="uofr-vert-list uofr-section-medium">
-                <engine:Label text="Total Score" class="uofr-text-medium uofr-vert-list-first" style="-unity-text-align: middle-center;" />
-                <engine:Label text="600 points" name="TotalScoreLabel" class="uofr-vert-list-last uofr-text-large" style="-unity-text-align: middle-center;" />
-            </engine:VisualElement>
-            <engine:VisualElement class="uofr-vert-list">
-                <engine:Button text="Play Again" name="PlayAgainButton" class="uofr-button uofr-button-selected uofr-vert-list-first" />
-                <engine:Button text="Home" name="HomeButton" class="uofr-button uofr-vert-list-last" />
-            </engine:VisualElement>
-        </engine:VisualElement>
-        <engine:VisualElement name="PauseScreen" class="uofr-screen uofr-vert-list" style="display: none;">
-            <engine:Label text="Paused" class="uofr-text-large uofr-vert-list-first uofr-section-small" style="-unity-text-align: middle-center;" />
-            <engine:Button text="Resume" name="ResumeButton" class="uofr-button uofr-button-selected uofr-vert-list-middle" />
-            <engine:Button text="Quit" name="QuitButton" class="uofr-button uofr-vert-list-last" />
-        </engine:VisualElement>
+        <engine:Instance template="GameWinScreen" name="WinScreen" class="uofr-screen" style="display: none;" />
+        <engine:Instance template="GamePauseScreen" name="PauseScreen" class="uofr-screen" style="display: none;" />
     </engine:VisualElement>
 </engine:UXML>

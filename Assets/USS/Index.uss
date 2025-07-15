@@ -22,7 +22,7 @@
     padding-top: 0;
     padding-bottom: 0;
     -unity-font-definition: url("project://database/Assets/Fonts/Fuzzy_Bubbles/FuzzyBubbles-Regular%20SDF.asset?fileID=11400000&guid=c12a350cfc623d740bd959a59f213402&type=2#FuzzyBubbles-Regular SDF");
-    font-size: 80px;
+    font-size: 60px;
     -unity-font-style: bold;
     letter-spacing: -8px;
 }
@@ -46,12 +46,12 @@
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 50px;
-    height: 140px;
+    font-size: 60px;
+    height: 120px;
     border-left-width: 6px;
     border-right-width: 6px;
     border-top-width: 6px;
@@ -67,7 +67,7 @@
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     -unity-font-definition: url("project://database/Assets/Fonts/Fuzzy_Bubbles/FuzzyBubbles-Regular%20SDF.asset?fileID=11400000&guid=c12a350cfc623d740bd959a59f213402&type=2#FuzzyBubbles-Regular SDF");
-    min-height: 140px;
+    min-height: 120px;
     -unity-font-style: bold;
     letter-spacing: -8px;
     -unity-text-align: middle-center;
@@ -280,10 +280,10 @@
 
 .uofr-screen {
     flex-grow: 1;
-    padding-top: 120px;
-    padding-right: 60px;
-    padding-bottom: 120px;
-    padding-left: 60px;
+    padding-top: 100px;
+    padding-right: 40px;
+    padding-bottom: 100px;
+    padding-left: 40px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -409,6 +409,13 @@
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: rgb(238, 238, 238);
+}
+
+.uofr-gamebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .uofr-container {

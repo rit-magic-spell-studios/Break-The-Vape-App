@@ -1,15 +1,15 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-vert-list uofr-container" style="justify-content: flex-end; border-top-left-radius: 0; border-top-right-radius: 0; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
-        <engine:VisualElement class="uofr-hori-list" style="margin-bottom: 20px; margin-top: 20px;">
+        <engine:VisualElement class="uofr-hori-list uofr-vert-list-first">
             <engine:Button name="PauseButton" class="uofr-button uofr-button-square">
                 <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Arrow_Left.png?fileID=2800000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); flex-grow: 1;" />
             </engine:Button>
-            <engine:Label text="Crave Smash" class="uofr-title" style="flex-grow: 1; -unity-text-align: middle-center;" />
+            <engine:Label text="Match And Catch" name="TitleLabel" class="uofr-title" style="flex-grow: 1; -unity-text-align: middle-center;" />
             <engine:Button name="HowToPlayButton" class="uofr-button uofr-button-square">
                 <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Help.png?fileID=21300000&amp;guid=2ae2c2a252483b148bc6343c0adf7c18&amp;type=3#Help&quot;); flex-grow: 1;" />
             </engine:Button>
         </engine:VisualElement>
-        <engine:Label text="Score: &lt;b&gt;123&lt;/b&gt;" name="ScoreLabel" class="uofr-text" style="-unity-text-align: middle-center;" />
+        <engine:Label text="Score: &lt;b&gt;123&lt;/b&gt;" name="ScoreLabel" class="uofr-text uofr-vert-list-last" style="-unity-text-align: middle-center;" />
     </engine:VisualElement>
 </engine:UXML>

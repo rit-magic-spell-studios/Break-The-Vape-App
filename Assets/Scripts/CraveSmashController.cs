@@ -48,7 +48,7 @@ public class CraveSmashController : GameController {
         craveMonsterVisual = ui.Q<VisualElement>("CraveMonsterVisual");
 
         // When monster is clicked, deal damage and display indicator text
-        craveMonsterButton.RegisterCallback<ClickEvent>((EventCallback<ClickEvent>) ((e) => {
+        craveMonsterButton.RegisterCallback<ClickEvent>((e) => {
             // Make sure the crave monster health does not go below 0
             if (CraveMonsterHealth <= 0) {
                 return;
@@ -78,24 +78,23 @@ public class CraveSmashController : GameController {
                 // Players were accidentally pressing buttons on the win screen so this delay should hopefully prevent that
                 DelayAction(( ) => { UIControllerState = UIState.WIN; }, 1f);
             }
-        }));
+        });
 
         // Make sure the crave monster starts at the max health
         CraveMonsterHealth = 100f;
         lastClickTime = -1;
-
-        jsonManager.ActiveGameSession.Name = "Crave Smash";
     }
 
     protected override void Start( ) {
         base.Start( );
 
-        // When the game starts, the tutorial should be shown first
         UIControllerState = UIState.TUTORIAL;
     }
 
-    protected override void Update( ) {
-        base.Update( );
+    protected void Update( ) {
+        if (UIControllerState != UIState.GAME) {
+            return;
+        }
 
         // If it has been a certain amount of time since the last click, have the monster start to heal some of the damage it has taken
         if (lastClickTime != -1 && Time.time - lastClickTime >= craveMonsterHealDelay) {

@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 710957787}
   - component: {fileID: 710957789}
   m_Layer: 5
-  m_Name: Crave Smash UI
+  m_Name: Crave Smash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
-  tutorialTime: 5
+  tutorialVisual: {fileID: 8400000, guid: 93f91963009a75644944a18b24dfed4e, type: 2}
+  tutorialText: Tap the craving monster quickly to defeat your craving!
   clickDamage: 2.5
   clickPoints: 10
   maxClickPoints: 45
