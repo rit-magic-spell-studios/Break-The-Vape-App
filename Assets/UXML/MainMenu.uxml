@@ -5,41 +5,46 @@
         <ui:VisualElement name="MainScreen" class="uofr-screen" style="display: flex; justify-content: flex-end;">
             <ui:VisualElement class="uofr-container uofr-vert-list uofr-gamebar" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement class="uofr-hori-list uofr-vert-list-first">
-                    <ui:Label text="Good morning!" name="GreetingLabel" class="uofr-title" style="flex-grow: 1;" />
+                    <ui:Label text="Good morning!" name="GreetingLabel" class="uofr-font-fubu" style="flex-grow: 1; font-size: 60px; -unity-font-style: bold;" />
                     <ui:Button name="ResetButton" class="uofr-button-square uofr-button">
                         <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Menu.png?fileID=21300000&amp;guid=de43547c6586e6f4a806bd0199879a62&amp;type=3#Menu&quot;); flex-grow: 1;" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:Button name="CheckInButton" class="uofr-button uofr-hori-list uofr-vert-list-last">
+                <ui:Button name="CheckInButton" class="uofr-button uofr-hori-list uofr-vert-list-last uofr-button-discreet">
                     <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); width: 60px; padding-top: 60px;" />
-                    <ui:Label text="Complete a check-in" name="CheckInLabel" class="uofr-text uofr-hori-list-middle" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                    <ui:Label text="Complete a check-in" name="CheckInLabel" class="uofr-hori-list-middle uofr-font-geol" style="flex-grow: 1; -unity-text-align: middle-left; font-size: 40px;" />
                     <ui:VisualElement name="CheckInCheckmark" class="uofr-hori-list-last" style="background-image: url(&quot;project://database/Assets/Sprites/Complete.png?fileID=21300000&amp;guid=73c22c49ff4279a46bf7b3184ea2fe9a&amp;type=3#Complete&quot;); width: 60px; padding-top: 60px;" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:VisualElement class="uofr-vert-list uofr-container">
-                <ui:Button class="uofr-button" />
-                <ui:VisualElement class="uofr-hori-list">
-                    <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); width: 60px; padding-top: 60px;" />
-                    <ui:Label text="300 points" name="TotalScoreLabel" class="uofr-text-medium" />
+            <ui:VisualElement class="uofr-vert-list uofr-container" style="height: 75%;">
+                <ui:VisualElement class="uofr-hori-list uofr-vert-list-first">
+                    <ui:Button class="uofr-button uofr-hori-list uofr-hori-list-first uofr-button-discreet" style="width: auto;">
+                        <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Trophy.png?fileID=21300000&amp;guid=621d34a019854b946b2f291b078451bb&amp;type=3#Trophy&quot;); width: 60px; padding-top: 60px;" />
+                        <ui:Label text="4567 P" name="TotalScoreLabel" class="uofr-font-fubu" style="font-size: 40px; -unity-text-align: middle-right;" />
+                    </ui:Button>
+                    <ui:Button class="uofr-button uofr-hori-list-last uofr-button-discreet uofr-vert-list" style="flex-grow: 1; justify-content: space-between;">
+                        <ui:Label text="5:00 to your play goal!" class="uofr-font-geol" style="font-size: 25px; -unity-text-align: middle-right;" />
+                        <ui:ProgressBar value="22" class="uofr-progress-bar" />
+                    </ui:Button>
                 </ui:VisualElement>
-                <ui:Button name="CraveSmashButton" class="uofr-button uofr-vert-list-first mm-button-game">
-                    <ui:Label text="Crave Smash" class="uofr-title" style="-unity-text-align: middle-left;" />
-                    <ui:Label text="v0.5.3" class="uofr-subtitle" style="-unity-text-align: middle-left;" />
+                <ui:Button name="CraveSmashButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                    <ui:Label text="Crave Smash" name="GameName" class="uofr-font-fubu" />
+                    <ui:Label text="v0.5.3" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="MatchAndCatchButton" class="uofr-button uofr-vert-list-middle mm-button-game">
-                    <ui:Label text="Match &amp; Catch" class="uofr-title" style="-unity-text-align: middle-left;" />
-                    <ui:Label text="v0.2.2" class="uofr-subtitle" style="-unity-text-align: middle-left;" />
+                <ui:Button name="MatchAndCatchButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                    <ui:Label text="Match And Catch" name="GameName" class="uofr-font-fubu" />
+                    <ui:Label text="0.2.2" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="PuffDodgeButton" class="uofr-button uofr-vert-list-middle mm-button-game">
-                    <ui:Label text="Puff Dodge" class="uofr-title" style="-unity-text-align: middle-left;" />
-                    <ui:Label text="v0.0.0 | In Development" class="uofr-subtitle" style="-unity-text-align: middle-left;" />
+                <ui:Button name="NotSoTastyButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                    <ui:Label text="Not So Tasty" name="GameName" class="uofr-font-fubu" />
+                    <ui:Label text="v0.1.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="NotSoTastyButton" class="uofr-button mm-button-game uofr-vert-list-last">
-                    <ui:Label text="Not So Tasty" class="uofr-title" style="-unity-text-align: middle-left;" />
-                    <ui:Label text="v0.1.0" class="uofr-subtitle" style="-unity-text-align: middle-left;" />
+                <ui:Button name="PuffDodgeButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                    <ui:Label text="Puff Dodge" name="GameName" class="uofr-font-fubu" />
+                    <ui:Label text="v0.0.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:Label text="Escape The Vape v0.3.2&#10;MAGIC Spell Studios" class="uofr-subtitle" style="-unity-text-align: upper-center;" />
+            <ui:Label text="v0.3.2" class="uofr-subtitle" style="-unity-text-align: middle-center; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;" />
         </ui:VisualElement>
         <ui:VisualElement name="ResetScreen" class="uofr-screen uofr-vert-list" style="display: none;">
             <ui:VisualElement class="uofr-vert-list uofr-section-medium">

@@ -3,11 +3,11 @@
     <engine:VisualElement style="justify-content: center; flex-grow: 1;">
         <engine:Label text="Final Score" class="uofr-title" style="-unity-text-align: middle-center; position: absolute; top: 0; left: 0; right: 0;" />
         <engine:VisualElement class="uofr-vert-list uofr-container" style="margin-bottom: 100px;">
-            <engine:Label text="Points Earned" class="uofr-subtitle" style="-unity-text-align: middle-center;" />
-            <engine:Label text="+123" name="FinalScoreLabel" class="uofr-title" style="-unity-text-align: middle-center;" />
+            <engine:Label text="Points Earned" class="uofr-font-geol uofr-text-gray" style="-unity-text-align: middle-center; font-size: 30px;" />
+            <engine:Label text="+123 P" name="FinalScoreLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 50px; -unity-font-style: bold;" />
             <engine:VisualElement class="uofr-hr" />
-            <engine:Label text="Current Score" class="uofr-subtitle" style="-unity-text-align: middle-center;" />
-            <engine:Label text="456" name="TotalScoreLabel" class="uofr-title" style="-unity-text-align: middle-center;" />
+            <engine:Label text="Current Score" class="uofr-font-geol uofr-text-gray" style="-unity-text-align: middle-center; font-size: 30px;" />
+            <engine:Label text="456 P" name="TotalScoreLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; -unity-font-style: bold; font-size: 50px;" />
         </engine:VisualElement>
         <engine:VisualElement class="uofr-vert-list">
             <engine:Button text="Play Again" name="PlayAgainButton" class="uofr-button uofr-vert-list-first uofr-button-highlight" />

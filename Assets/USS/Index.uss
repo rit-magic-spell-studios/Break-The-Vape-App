@@ -1,6 +1,4 @@
-.uofr-text {
-    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
-    font-size: 40px;
+.uofr-font-geol {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -9,10 +7,11 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
     white-space: normal;
 }
 
-.uofr-title {
+.uofr-font-fubu {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -22,23 +21,12 @@
     padding-top: 0;
     padding-bottom: 0;
     -unity-font-definition: url("project://database/Assets/Fonts/Fuzzy_Bubbles/FuzzyBubbles-Regular%20SDF.asset?fileID=11400000&guid=c12a350cfc623d740bd959a59f213402&type=2#FuzzyBubbles-Regular SDF");
-    font-size: 60px;
-    -unity-font-style: bold;
     letter-spacing: -8px;
+    white-space: normal;
 }
 
-.uofr-subtitle {
+.uofr-text-gray {
     color: rgb(97, 97, 97);
-    font-size: 40px;
-    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
 .uofr-button {
@@ -50,7 +38,7 @@
     padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 60px;
+    font-size: 50px;
     height: 120px;
     border-left-width: 6px;
     border-right-width: 6px;
@@ -93,6 +81,17 @@
     min-width: 100px;
     max-width: 100px;
     max-height: 100px;
+}
+
+.uofr-button-discreet {
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
 }
 
 .uofr-progress-bar {
@@ -165,7 +164,7 @@
     padding-top: 0;
     padding-bottom: 0;
     min-width: 11px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(79, 130, 255);
     transition-property: width;
     transition-duration: 0.2s;
 }
@@ -411,13 +410,6 @@
     background-color: rgb(238, 238, 238);
 }
 
-.uofr-gamebar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
 .uofr-container {
     border-left-color: rgb(238, 238, 238);
     border-right-color: rgb(238, 238, 238);
@@ -440,4 +432,12 @@
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: rgb(255, 255, 255);
+}
+
+.uofr-gamebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 120px;
 }

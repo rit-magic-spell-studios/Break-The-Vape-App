@@ -1,19 +1,15 @@
 .mm-button-game {
-    height: 250px;
-    min-height: 250px;
     justify-content: center;
+    flex-grow: 1;
 }
 
-.mm-game-thumbnail {
-    position: absolute;
-    background-image: url('project://database/Assets/Sprites/GameCircleIcon.png?fileID=2800000&guid=fd2ffd28f7581c6448eda780e130e44b&type=3#GameCircleIcon');
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 170px;
-    min-width: 170px;
+.mm-button-game > #GameName {
+    -unity-font-style: bold;
+    font-size: 40px;
+    -unity-text-align: middle-left;
 }
 
-.uofr-button-disabled .mm-game-thumbnail {
-    display: none;
+.mm-button-game > #GameVersion {
+    font-size: 25px;
+    -unity-text-align: middle-left;
 }
