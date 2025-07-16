@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class JSONManager : Singleton<JSONManager> {
     [HideInInspector] public PlayerData PlayerData;
+    [SerializeField] private bool doDataSaving;
 
     public string RITchCode { get => PlayerData.RITchCode; private set => PlayerData.RITchCode = value; }
     public List<AppSessionData> AppSessionData { get => PlayerData.AppSessionData; private set => PlayerData.AppSessionData = value; }
@@ -45,7 +46,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// <param name="newRITchCode">The new RITch code to log into</param>
     public void LoadNewRITchCode(string newRITchCode) {
         // Do not try to log into the same RITch code
-        if (RITchCode == newRITchCode) {
+        if (RITchCode == newRITchCode || !doDataSaving) {
             return;
         }
 
@@ -67,7 +68,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// </summary>
     public void SavePlayerData( ) {
         // Do not try to save to the file if there is no RITch code
-        if (RITchCode == "") {
+        if (RITchCode == "" || !doDataSaving) {
             return;
         }
 

@@ -17,14 +17,12 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T> {
     }
 
     protected virtual void Awake( ) {
-        // Make sure only one instance of the singleton is in the game at one time
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
         } else {
             Instance = this as T;
         }
 
-        // Have the singleton persist between scenes
         DontDestroyOnLoad(gameObject);
     }
 }

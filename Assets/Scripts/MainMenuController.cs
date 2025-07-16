@@ -61,4 +61,8 @@ public class MainMenuController : UIController {
         // The main menu controller will always start on the main menu UI state
         UIControllerState = UIState.MAIN;
     }
+
+    protected void Update( ) {
+        
+    }
 }

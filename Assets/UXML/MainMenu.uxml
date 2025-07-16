@@ -44,7 +44,7 @@
                     <ui:Label text="v0.0.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:Label text="v0.3.2" class="uofr-subtitle" style="-unity-text-align: middle-center; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;" />
+            <ui:Label text="v0.3.2" class="uofr-font-geol" style="-unity-text-align: middle-center; position: absolute; bottom: 0; left: 0; right: 0; height: 100px; font-size: 25px;" />
         </ui:VisualElement>
         <ui:VisualElement name="ResetScreen" class="uofr-screen uofr-vert-list" style="display: none;">
             <ui:VisualElement class="uofr-vert-list uofr-section-medium">
