@@ -39,15 +39,15 @@
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 50px;
-    height: 120px;
+    height: 100px;
     border-left-width: 6px;
     border-right-width: 6px;
     border-top-width: 6px;
     border-bottom-width: 6px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     border-left-color: rgb(79, 130, 255);
     border-right-color: rgb(79, 130, 255);
     border-top-color: rgb(79, 130, 255);
@@ -55,10 +55,11 @@
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     -unity-font-definition: url("project://database/Assets/Fonts/Fuzzy_Bubbles/FuzzyBubbles-Regular%20SDF.asset?fileID=11400000&guid=c12a350cfc623d740bd959a59f213402&type=2#FuzzyBubbles-Regular SDF");
-    min-height: 120px;
+    min-height: 100px;
     -unity-font-style: bold;
     letter-spacing: -8px;
     -unity-text-align: middle-center;
+    overflow: visible;
 }
 
 .uofr-button-highlight {
@@ -92,6 +93,17 @@
     border-right-width: 3px;
     border-bottom-width: 3px;
     border-left-width: 3px;
+}
+
+.uofr-button-none {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
 }
 
 .uofr-progress-bar {
@@ -310,6 +322,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    justify-content: center;
 }
 
 .uofr-section-large {
@@ -440,4 +453,59 @@
     left: 0;
     right: 0;
     padding-top: 120px;
+}
+
+.uofr-textfield {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 175px;
+    width: 125px;
+}
+
+.uofr-textfield .unity-text-field__input {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgb(238, 238, 238);
+    -unity-text-align: middle-center;
+    font-size: 90px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+}
+
+.uofr-footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 100px;
+    padding-left: 40px;
 }

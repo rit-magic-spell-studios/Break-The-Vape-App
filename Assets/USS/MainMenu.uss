@@ -10,6 +10,6 @@
 }
 
 .mm-button-game > #GameVersion {
-    font-size: 25px;
+    font-size: 15px;
     -unity-text-align: middle-left;
 }

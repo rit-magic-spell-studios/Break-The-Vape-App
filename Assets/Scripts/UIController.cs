@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 /// </summary>
 public enum UIState {
     NULL, 
-    MAIN, RESET,
+    MAIN, MENU, RESET, RITCHCODE, SPLASH,
     TUTORIAL, GAME, PAUSE, WIN,
     CRAVE, CAUSE, COMPLETE
 }
