@@ -1,5 +1,9 @@
 # Not So Tasty Changelog
 
+## Unreleased
+* The player now needs to manually click to advance the tutorial
+* Added a delay at the end of the game to allows players to look at the secret tiles they uncovered
+
 ## v0.1.0 - July 8th, 2025
 * Added basic version of the game with first pass of UI
 	* Fruit is randomly placed on the board

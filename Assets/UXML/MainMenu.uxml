@@ -5,7 +5,7 @@
         <ui:VisualElement name="MainScreen" class="uofr-screen" style="display: flex; justify-content: flex-end;">
             <ui:VisualElement class="uofr-container uofr-vert-list uofr-gamebar" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement class="uofr-hori-list uofr-vert-list-first">
-                    <ui:Label text="Good morning!" name="GreetingLabel" class="uofr-font-fubu" style="flex-grow: 1; font-size: 60px; -unity-font-style: bold;" />
+                    <ui:Label text="Good afternoon!" name="GreetingLabel" class="uofr-font-fubu" style="flex-grow: 1; font-size: 60px; -unity-font-style: bold;" />
                     <ui:Button name="MenuButton" class="uofr-button-square uofr-button">
                         <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Menu.png?fileID=21300000&amp;guid=de43547c6586e6f4a806bd0199879a62&amp;type=3#Menu&quot;); flex-grow: 1;" />
                     </ui:Button>
@@ -24,23 +24,23 @@
                         <ui:Label text="4567 P" name="TotalScoreLabel" class="uofr-font-fubu" style="font-size: 40px; -unity-text-align: middle-right;" />
                     </ui:Button>
                     <ui:Button name="PlayGoalButton" class="uofr-button uofr-hori-list-last uofr-button-discreet uofr-vert-list" style="flex-grow: 1; justify-content: space-between;">
-                        <ui:Label text="5:00 to your play goal!" name="PlayGoalLabel" class="uofr-font-geol" style="font-size: 25px; -unity-text-align: middle-right;" />
+                        <ui:Label text="5:00 to your play goal!" name="PlayGoalLabel" class="uofr-font-geol" style="font-size: 25px; -unity-text-align: middle-right; -unity-font-style: bold;" />
                         <ui:ProgressBar value="0.25" name="PlayGoalProgressBar" high-value="1" class="uofr-progress-bar" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:Button name="CraveSmashButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                <ui:Button name="CraveSmashButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(255, 244, 198);">
                     <ui:Label text="Crave Smash" name="GameName" class="uofr-font-fubu" />
                     <ui:Label text="v0.5.3" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="MatchAndCatchButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                <ui:Button name="MatchAndCatchButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(255, 215, 215);">
                     <ui:Label text="Match And Catch" name="GameName" class="uofr-font-fubu" />
                     <ui:Label text="0.2.2" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="NotSoTastyButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                <ui:Button name="NotSoTastyButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(213, 255, 202);">
                     <ui:Label text="Not So Tasty" name="GameName" class="uofr-font-fubu" />
                     <ui:Label text="v0.1.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="PuffDodgeButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle">
+                <ui:Button name="PuffDodgeButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(193, 199, 255);">
                     <ui:Label text="Puff Dodge" name="GameName" class="uofr-font-fubu" />
                     <ui:Label text="v0.0.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
@@ -58,11 +58,11 @@
                     <ui:Label text="Menu" class="uofr-vert-list-first uofr-font-fubu" style="font-size: 60px; -unity-text-align: middle-left; -unity-font-style: bold;" />
                     <ui:Button name="ResetButton" class="uofr-button uofr-vert-list-middle uofr-button-discreet uofr-hori-list">
                         <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Reset.png?fileID=21300000&amp;guid=e24bddee50c11b74b9d5ac54dd24bc11&amp;type=3#Reset&quot;); width: 60px; padding-top: 60px;" />
-                        <ui:Label text="Reset" class="uofr-hori-list-last uofr-font-geol" />
+                        <ui:Label text="Reset" class="uofr-hori-list-last uofr-font-geol" style="font-size: 40px;" />
                     </ui:Button>
                     <ui:Button name="RITchCodeButton" class="uofr-button uofr-vert-list-middle uofr-button-discreet uofr-hori-list">
                         <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Code.png?fileID=21300000&amp;guid=b0551d276898b0846a8328708c843791&amp;type=3#Code&quot;); width: 60px; padding-top: 60px;" />
-                        <ui:Label text="RITch Code" class="uofr-hori-list-last uofr-font-geol" />
+                        <ui:Label text="RITch Code" class="uofr-hori-list-last uofr-font-geol" style="font-size: 40px;" />
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>

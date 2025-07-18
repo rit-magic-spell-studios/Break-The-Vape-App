@@ -1,5 +1,9 @@
 # Crave Smash Changelog
 
+## Unreleased
+* The player now needs to manually click to advance the tutorial
+* The crave monster now has a random chance to be one of four possible monsters
+
 ## v0.5.3 - July 7th, 2025
 * Player now gets between 10-15 points per click, depending on how fast they are clicking the crave monster
 * The crave monster how takes 40 total clicks to win the game

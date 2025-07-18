@@ -1,5 +1,8 @@
 # Match and Catch Changelog
 
+## Unreleased
+* The player now needs to manually click to advance the tutorial
+
 ## v0.2.2 - June 20th, 2025
 * Added card backs with the Match And Catch logo
 * Replaced card numbers with images to make each of the cards more recognizable

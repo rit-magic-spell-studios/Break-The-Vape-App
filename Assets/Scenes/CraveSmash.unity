@@ -327,10 +327,11 @@ MonoBehaviour:
   rapidClickPointIncrease: 1.5
   craveMonsterHealDelay: 2
   craveMonsterHealSpeed: 4
-  craveMonsterStages:
-  - {fileID: 21300000, guid: e7e1418c0008efa4b8c039513ca00748, type: 3}
-  - {fileID: 21300000, guid: 742b3459cdad41449b1021024c6b0f16, type: 3}
-  - {fileID: 21300000, guid: 25d63055891ed6b4b8c6cff33fd7eb2f, type: 3}
+  craveMonsterSprites:
+  - {fileID: 21300000, guid: dfd0cb5af0263d5468e8bfd1c9b420ae, type: 3}
+  - {fileID: 21300000, guid: 909ad2f332a10fd4980700588af39bff, type: 3}
+  - {fileID: 21300000, guid: 219c92f48da6e64449c5dfd6667d2761, type: 3}
+  - {fileID: 21300000, guid: 1a27e9f3f3cba9b42af4a7f95e3f7edb, type: 3}
 --- !u!1 &735481395
 GameObject:
   m_ObjectHideFlags: 0

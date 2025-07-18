@@ -154,10 +154,7 @@ public class MatchAndCatchController : GameController {
 
             // If all of the cards have been flipped over, then the player has won
             if (flippedCards.Count == cards.Count) {
-                // Wait a second to give the player a chance to look at the cards
-                yield return new WaitForSeconds(cardCheckDelay);
-
-                UIControllerState = UIState.WIN;
+                DelayAction(( ) => { UIControllerState = UIState.WIN; }, 2f);
             }
         }
 

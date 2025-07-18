@@ -13,7 +13,6 @@
 * **Game Versions**
   * Crave Smash [v0.5.3](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 7th, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 8th, 2025)
   * Match And Catch [v0.2.2](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 20th, 2025)
 
@@ -24,7 +23,6 @@
 * **Game Versions**
   * Crave Smash [v0.5.2](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 20th, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
   * Match And Catch [v0.2.2](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 20th, 2025)
 
@@ -44,7 +42,6 @@
 * **Game Versions**
   * Crave Smash [v0.5.1](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 13th, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
   * Match And Catch [v0.2.1](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 13th, 2025)
 
@@ -56,7 +53,6 @@
 * **Game Versions**
   * Crave Smash [v0.5.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 9th, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
   * Match And Catch [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 10th, 2025)
 
@@ -64,7 +60,6 @@
 * **Game Versions**
   * Crave Smash [v0.4.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 6th, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
   * Match And Catch [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 4th, 2025)
 
@@ -74,7 +69,6 @@
 * **Game Versions**
   * Crave Smash [v0.3.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 4th, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
   * Match And Catch [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 4th, 2025)
 
@@ -85,6 +79,5 @@
 * **Game Versions**
   * Crave Smash [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (June 2nd, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
   * Not So Tasty [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (Not Started)
   * Match And Catch [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (Not Started)

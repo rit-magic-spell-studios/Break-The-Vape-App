@@ -10,6 +10,6 @@
                 <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Help.png?fileID=21300000&amp;guid=2ae2c2a252483b148bc6343c0adf7c18&amp;type=3#Help&quot;); flex-grow: 1;" />
             </engine:Button>
         </engine:VisualElement>
-        <engine:Label text="Score: &lt;b&gt;123&lt;/b&gt;" name="ScoreLabel" class="uofr-vert-list-last uofr-font-geol" style="-unity-text-align: middle-center; font-size: 25px;" />
+        <engine:Label text="Score: &lt;b&gt;123&lt;/b&gt;" name="ScoreLabel" class="uofr-vert-list-last uofr-font-geol" style="-unity-text-align: middle-center; font-size: 40px;" />
     </engine:VisualElement>
 </engine:UXML>

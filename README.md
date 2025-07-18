@@ -4,7 +4,6 @@ This is a repository for the MAGIC Spell Studios collaboration with the Universi
 ## App Version [v0.3.2](https://github.com/qusr08/UofR-Games/blob/main/APP_CHANGELOG.md) (July 8th, 2025)
 * Crave Smash [v0.5.3](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 7th, 2025)
 * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-* Blow It Off [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/BLOWITOFF_CHANGELOG.md) (Not Started)
 * Not So Tasty [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 8th, 2025)
 * Match And Catch [v0.2.2](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (June 20th, 2025)
 

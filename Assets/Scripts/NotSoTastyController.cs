@@ -24,6 +24,8 @@ public class NotSoTastyController : GameController {
     private List<int> secretTileClearCount;
 
     private List<VisualElement> lineElements;
+    private VisualElement lineElementContainer;
+
     private List<VisualElement> chainedFruits;
     private VisualElement lastDragFruit;
     private Vector2 lastMousePosition;
@@ -73,6 +75,8 @@ public class NotSoTastyController : GameController {
         remainingSecretTilesLabel.text = $"{secretTiles.Count} secret tiles left!";
 
         lineElements = new List<VisualElement>( );
+        lineElementContainer = ui.Q<VisualElement>("LineElementContainer");
+
         chainedFruits = new List<VisualElement>( );
         isChainingFruits = false;
         lineElementIndex = -1;
@@ -99,7 +103,7 @@ public class NotSoTastyController : GameController {
                 SetLineElementStyles(lineElements[lineElementIndex - 1], chainedFruitPosition1, chainedFruitPosition2);
             }
         } else if (lineElementIndex < lineElements.Count - 1) {
-            gameSubscreen.Remove(lineElements[^1]);
+            lineElementContainer.Remove(lineElements[^1]);
             lineElements.Remove(lineElements[^1]);
         } else if (lineElementIndex == lineElements.Count - 1 && lineElementIndex != -1) {
             // Get the position of the last fruit in the chain
@@ -264,7 +268,7 @@ public class NotSoTastyController : GameController {
             UpdateBoard( );
 
             if (secretTiles.Count == 0) {
-                UIControllerState = UIState.WIN;
+                DelayAction(( ) => { UIControllerState = UIState.WIN; }, 2f);
             }
         }
         chainedFruits.Clear( );
@@ -451,7 +455,7 @@ public class NotSoTastyController : GameController {
         };
 
         lineElements.Add(lineElement);
-        gameSubscreen.Add(lineElement);
+        lineElementContainer.Add(lineElement);
     }
 
     /// <summary>

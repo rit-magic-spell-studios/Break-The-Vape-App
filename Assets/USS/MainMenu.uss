@@ -5,7 +5,7 @@
 
 .mm-button-game > #GameName {
     -unity-font-style: bold;
-    font-size: 40px;
+    font-size: 50px;
     -unity-text-align: middle-left;
 }
 

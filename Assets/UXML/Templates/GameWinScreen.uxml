@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement style="justify-content: center; flex-grow: 1;">
-        <engine:Label text="Final Score" class="uofr-title" style="-unity-text-align: middle-center; position: absolute; top: 0; left: 0; right: 0;" />
+        <engine:Label text="Final Score" class="uofr-font-fubu" style="-unity-text-align: middle-center; position: absolute; top: 0; left: 0; right: 0; font-size: 90px;" />
         <engine:VisualElement class="uofr-vert-list uofr-container" style="margin-bottom: 100px;">
             <engine:Label text="Points Earned" class="uofr-font-geol uofr-text-gray" style="-unity-text-align: middle-center; font-size: 30px;" />
             <engine:Label text="+123 P" name="FinalScoreLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 50px; -unity-font-style: bold;" />

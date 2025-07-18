@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 26657545}
   - component: {fileID: 26657547}
   m_Layer: 5
-  m_Name: Not So Tasty UI
+  m_Name: Not So Tasty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
-  tutorialTime: 2
+  tutorialVisual: {fileID: 0}
+  tutorialText: Connect fruits to reveal the hidden messages. Reveal them all to
+    win!
   boardSize: {x: 6, y: 8}
   fruitFallSpeed: 0.25
   minFruitChainLength: 2
