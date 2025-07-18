@@ -11,9 +11,50 @@ public class JSONManager : Singleton<JSONManager> {
 
     public string RITchCode { get => PlayerData.RITchCode; private set => PlayerData.RITchCode = value; }
     public List<AppSessionData> AppSessionData { get => PlayerData.AppSessionData; private set => PlayerData.AppSessionData = value; }
-    public AppSessionData ActiveAppSession => AppSessionData[^1];
-    public GameSessionData ActiveGameSession => ActiveAppSession.GameSessionData[^1];
-    public CheckInSessionData ActiveCheckInSession => ActiveAppSession.CheckInSessionData[^1];
+   
+    /// <summary>
+    /// Whether or not at least one check in session has been completed
+    /// </summary>
+    public bool HasCompletedCheckIn => (ActiveAppSession.CheckInSessionData.Count > 0);
+
+    /// <summary>
+    /// The currently active app session (the last app session data in the session list)
+    /// </summary>
+    public AppSessionData ActiveAppSession {
+        get {
+            if (AppSessionData.Count == 0) {
+                return null;
+            }
+
+            return AppSessionData[^1];
+        }
+    }
+
+    /// <summary>
+    /// The currently active game session (the last game session data in the session list)
+    /// </summary>
+    public GameSessionData ActiveGameSession {
+        get {
+            if (ActiveAppSession.GameSessionData.Count == 0) {
+                return null;
+            }
+
+            return ActiveAppSession.GameSessionData[^1];
+        }
+    }
+
+    /// <summary>
+    /// The currently active check in session (the last check in session data in the session list)
+    /// </summary>
+    public CheckInSessionData ActiveCheckInSession {
+        get {
+            if (ActiveAppSession.CheckInSessionData.Count == 0) {
+                return null;
+            }
+
+            return ActiveAppSession.CheckInSessionData[^1];
+        }
+    }
 
     /// <summary>
     /// The data path to where all json files will be saving
@@ -28,7 +69,9 @@ public class JSONManager : Singleton<JSONManager> {
         }
     }
 
-    private void OnEnable( ) {
+    protected override void Awake( ) {
+        base.Awake( );
+
         // When the app starts, set default values
         PlayerData = new PlayerData( );
 
@@ -46,7 +89,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// <param name="newRITchCode">The new RITch code to log into</param>
     public void LoadNewRITchCode(string newRITchCode) {
         // Do not try to log into the same RITch code
-        if (RITchCode == newRITchCode || !doDataSaving) {
+        if (RITchCode == newRITchCode) {
             return;
         }
 
@@ -68,7 +111,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// </summary>
     public void SavePlayerData( ) {
         // Do not try to save to the file if there is no RITch code
-        if (RITchCode == "" || !doDataSaving) {
+        if (RITchCode == "") {
             return;
         }
 
@@ -81,6 +124,10 @@ public class JSONManager : Singleton<JSONManager> {
 
         // Set the final playtime since the play session for the current RITch code is finished
         ActiveAppSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveAppSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
+
+        if (!doDataSaving) {
+            return;
+        }
 
         // Check to see if there is a file at the data path
         CheckForFile(DataPath);
@@ -97,6 +144,10 @@ public class JSONManager : Singleton<JSONManager> {
     /// Load player data and overwrite the currently loaded player data
     /// </summary>
     private void LoadPlayerData( ) {
+        if (!doDataSaving) {
+            return;
+        }
+
         // Check to see if there is a file at the data path
         CheckForFile(DataPath);
 

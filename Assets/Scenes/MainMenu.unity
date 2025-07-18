@@ -156,7 +156,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.30980393, g: 0.50980395, b: 1, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   PlayerData:
     RITchCode: 
     AppSessionData: []
+  doDataSaving: 0
 --- !u!1 &1270173472
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,10 +367,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonManager: {fileID: 0}
   screenFadeTransitionTime: 0.1
+  notificationTime: 3
+  playGoalSeconds: 900
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1172993861}
   - {fileID: 144598074}
   - {fileID: 1270173474}
-  - {fileID: 1172993861}

@@ -7,7 +7,6 @@
     <Style src="project://database/Assets/USS/CraveSmash.uss?fileID=7433441132597879392&amp;guid=8b9794395f2c32f46bbdabaed81ea606&amp;type=3#CraveSmash" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: flex;">
-            <engine:Instance template="GameTitleBar" class="uofr-gamebar" />
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: none;">
                     <engine:Button name="CraveMonsterButton" class="cs-monster-button" style="height: 50%;">
@@ -16,6 +15,7 @@
                 </engine:VisualElement>
                 <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" class="uofr-subscreen" style="display: flex;" />
             </engine:VisualElement>
+            <engine:Instance template="GameTitleBar" class="uofr-gamebar" />
         </engine:VisualElement>
         <engine:Instance template="GamePauseScreen" name="PauseScreen" class="uofr-screen" style="display: none;" />
         <engine:Instance template="GameWinScreen" name="WinScreen" class="uofr-screen" style="display: none;" />

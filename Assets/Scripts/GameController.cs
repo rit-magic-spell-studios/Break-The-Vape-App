@@ -87,15 +87,20 @@ public abstract class GameController : UIController {
         GamePoints = 0;
     }
 
+    protected override void Start( ) {
+        base.Start( );
+
+        UIControllerState = UIState.TUTORIAL;
+    }
+
     protected override void FadeToScene(int sceneBuildIndex) {
         jsonManager.SavePlayerData( );
+
+        MainMenuController.LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
 
         base.FadeToScene(sceneBuildIndex);
     }
 
-    /// <summary>
-    /// Update all of the subscreens in this game controller based on the current game controller state
-    /// </summary>
     protected override void UpdateSubscreens( ) {
         SetSubscreenVisibility(gameSubscreen, UIControllerState == UIState.GAME);
         SetSubscreenVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);

@@ -79,13 +79,6 @@ public class NotSoTastyController : GameController {
         lastDragFruit = null;
     }
 
-    protected override void Start( ) {
-        base.Start( );
-
-        // When the game starts, the tutorial should be shown first
-        UIControllerState = UIState.GAME;
-    }
-
     protected void Update( ) {
         if (UIControllerState != UIState.GAME) {
             return;

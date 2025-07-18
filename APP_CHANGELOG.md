@@ -1,10 +1,11 @@
 # App Changelog
 
 ## Unreleased
-* Added first prototype of telemetry and player data tracking across the app and minigames
+* Added first version of telemetry and player data tracking across the app and minigames
 	* Tracks points, what games were played, total playtime, and more
 * Added a screen for players to log in and track personal data using their RITch code
 * Added a new pass of the updated UI style
+* Added a play goal timer that shows how long the player has been in the app
 
 ## v0.3.2 - July 8th, 2025
 * Added link from main menu to Not So Tasty

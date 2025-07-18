@@ -57,12 +57,6 @@ public class MatchAndCatchController : GameController {
         matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
     }
 
-    protected override void Start( ) {
-        base.Start( );
-
-        UIControllerState = UIState.TUTORIAL;
-    }
-
     /// <summary>
     /// Flip a card over to see what it has written on its face
     /// </summary>

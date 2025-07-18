@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 /// </summary>
 public enum UIState {
     NULL, 
-    MAIN, MENU, RESET, RITCHCODE, SPLASH,
+    MAIN, MENU, RESET, RITCHCODE, SPLASH, PLAYGOAL,
     TUTORIAL, GAME, PAUSE, WIN,
     CRAVE, CAUSE, COMPLETE
 }
@@ -162,6 +162,8 @@ public abstract class UIController : MonoBehaviour {
         if (LastScreen != null) {
             yield return StartCoroutine(FadeVisualElementOpacity(LastScreen, screenFadeTransitionTime, false));
         }
+
+        UpdateSubscreens( );
 
         // Fade in the to screen if it exists
         if (CurrentScreen != null) {

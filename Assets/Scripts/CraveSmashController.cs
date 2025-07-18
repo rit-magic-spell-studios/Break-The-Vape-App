@@ -85,12 +85,6 @@ public class CraveSmashController : GameController {
         lastClickTime = -1;
     }
 
-    protected override void Start( ) {
-        base.Start( );
-
-        UIControllerState = UIState.TUTORIAL;
-    }
-
     protected void Update( ) {
         if (UIControllerState != UIState.GAME) {
             return;
