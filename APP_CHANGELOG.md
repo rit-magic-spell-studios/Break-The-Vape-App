@@ -6,6 +6,7 @@
 * Added a screen for players to log in and track personal data using their RITch code
 * Added a new pass of the updated UI style
 * Added a play goal timer that shows how long the player has been in the app
+* Added colorful bubbles to the background that move and bounce around the edges of the screen
 
 ## v0.3.2 - July 8th, 2025
 * Added link from main menu to Not So Tasty
