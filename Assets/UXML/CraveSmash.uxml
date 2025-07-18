@@ -6,7 +6,7 @@
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <Style src="project://database/Assets/USS/CraveSmash.uss?fileID=7433441132597879392&amp;guid=8b9794395f2c32f46bbdabaed81ea606&amp;type=3#CraveSmash" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: none;">
+        <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: flex;">
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: none;">
                     <engine:Button name="CraveMonsterButton" class="cs-monster-button" style="height: 50%;">

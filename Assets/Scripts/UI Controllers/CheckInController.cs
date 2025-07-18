@@ -82,7 +82,7 @@ public class CheckInController : UIController {
 
         // Set up all elements on the completed subscreen
         ui.Q<Button>("FinishButton").clicked += ( ) => {
-            jsonManager.SavePlayerData( );
+            JSONManager.Instance.SavePlayerData( );
 
             FadeToScene(0);
         };
@@ -147,7 +147,7 @@ public class CheckInController : UIController {
 
                 // There should only be one option selected for the crave level screen
                 // The text should also always be a number
-                jsonManager.ActiveCheckInSession.Intensity = int.Parse(selectedButtons[0].text);
+                JSONManager.ActiveCheckInSession.Intensity = int.Parse(selectedButtons[0].text);
 
                 break;
             case UIState.CAUSE:
@@ -156,7 +156,7 @@ public class CheckInController : UIController {
 
                 // There could be multiple selected options for the craving cause
                 for (int i = 0; i < selectedButtons.Count; i++) {
-                    jsonManager.ActiveCheckInSession.Triggers.Add(selectedButtons[i].text);
+                    JSONManager.ActiveCheckInSession.Triggers.Add(selectedButtons[i].text);
                 }
 
                 break;

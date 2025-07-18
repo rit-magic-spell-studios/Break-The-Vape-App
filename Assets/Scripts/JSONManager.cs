@@ -9,18 +9,18 @@ public class JSONManager : Singleton<JSONManager> {
     [HideInInspector] public PlayerData PlayerData;
     [SerializeField] private bool doDataSaving;
 
-    public string RITchCode { get => PlayerData.RITchCode; private set => PlayerData.RITchCode = value; }
-    public List<AppSessionData> AppSessionData { get => PlayerData.AppSessionData; private set => PlayerData.AppSessionData = value; }
+    public static string RITchCode { get => Instance.PlayerData.RITchCode; private set => Instance.PlayerData.RITchCode = value; }
+    public static List<AppSessionData> AppSessionData { get => Instance.PlayerData.AppSessionData; private set => Instance.PlayerData.AppSessionData = value; }
    
     /// <summary>
     /// Whether or not at least one check in session has been completed
     /// </summary>
-    public bool HasCompletedCheckIn => (ActiveAppSession.CheckInSessionData.Count > 0);
+    public static bool HasCompletedCheckIn => (ActiveAppSession.CheckInSessionData.Count > 0);
 
     /// <summary>
     /// The currently active app session (the last app session data in the session list)
     /// </summary>
-    public AppSessionData ActiveAppSession {
+    public static AppSessionData ActiveAppSession {
         get {
             if (AppSessionData.Count == 0) {
                 return null;
@@ -33,7 +33,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// <summary>
     /// The currently active game session (the last game session data in the session list)
     /// </summary>
-    public GameSessionData ActiveGameSession {
+    public static GameSessionData ActiveGameSession {
         get {
             if (ActiveAppSession.GameSessionData.Count == 0) {
                 return null;
@@ -46,7 +46,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// <summary>
     /// The currently active check in session (the last check in session data in the session list)
     /// </summary>
-    public CheckInSessionData ActiveCheckInSession {
+    public static CheckInSessionData ActiveCheckInSession {
         get {
             if (ActiveAppSession.CheckInSessionData.Count == 0) {
                 return null;
@@ -59,7 +59,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// <summary>
     /// The data path to where all json files will be saving
     /// </summary>
-    public string DataPath {
+    private string DataPath {
         get {
             if (Directory.Exists(Application.persistentDataPath)) {
                 return Path.Combine(Application.persistentDataPath, $"{PlayerData.RITchCode}.json");

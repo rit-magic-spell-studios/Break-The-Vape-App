@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 /// A full list of all states that the UI can be. This includes the main menu and all of the games. Each state is not guarenteed to be used for each type of controller
 /// </summary>
 public enum UIState {
-    NULL, 
+    NULL,
     MAIN, MENU, RESET, RITCHCODE, SPLASH, PLAYGOAL,
     TUTORIAL, GAME, PAUSE, WIN,
     CRAVE, CAUSE, COMPLETE
@@ -17,7 +17,6 @@ public enum UIState {
 
 public abstract class UIController : MonoBehaviour {
     [Header("UIController")]
-    [SerializeField] protected JSONManager jsonManager;
     [SerializeField, Range(0f, 2f)] protected float screenFadeTransitionTime;
 
     private Coroutine menuTransition;
@@ -100,8 +99,6 @@ public abstract class UIController : MonoBehaviour {
         // Create arrays that hold references to the screens and subscreens of each UI state
         screens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
         subscreens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
-
-        jsonManager = FindFirstObjectByType<JSONManager>( );
     }
 
     protected virtual void Start( ) {
@@ -137,7 +134,7 @@ public abstract class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="subscreen">The subscreen to set the visibility of</param>
     /// <param name="isVisible">Whether or not the subscreen should be visible</param>
-    protected void SetSubscreenVisibility (VisualElement subscreen, bool isVisible) {
+    protected void SetSubscreenVisibility(VisualElement subscreen, bool isVisible) {
         subscreen.style.opacity = (isVisible ? 1f : 0f);
         subscreen.style.display = (isVisible ? DisplayStyle.Flex : DisplayStyle.None);
     }
@@ -155,6 +152,12 @@ public abstract class UIController : MonoBehaviour {
         }
 
         menuTransition = StartCoroutine(FadeToCurrentScreenTransition( ));
+
+        if (LastUIControllerState == UIState.NULL) {
+            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(screenFadeTransitionTime, true);
+        } else if (UIControllerState == UIState.NULL) {
+            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(screenFadeTransitionTime, false);
+        }
     }
 
     private IEnumerator FadeToCurrentScreenTransition( ) {
@@ -223,7 +226,8 @@ public abstract class UIController : MonoBehaviour {
         // Wait until the UI is finished transitioning
         yield return new WaitUntil(( ) => !IsTransitioningUI);
 
-        // Load the scene based on the input build index
+        BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
+
         menuTransition = null;
         SceneManager.LoadScene(sceneBuildIndex);
     }
@@ -267,11 +271,11 @@ public abstract class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="action">The function to be called after a delay</param>
     /// <param name="delaySeconds">The delay in seconds after which to call the function</param>
-    protected void DelayAction (Action action, float delaySeconds) {
+    protected void DelayAction(Action action, float delaySeconds) {
         StartCoroutine(DelayActionSeconds(action, delaySeconds));
     }
 
-    private IEnumerator DelayActionSeconds (Action action, float delaySeconds) {
+    private IEnumerator DelayActionSeconds(Action action, float delaySeconds) {
         yield return new WaitForSeconds(delaySeconds);
 
         action?.Invoke( );

@@ -14,16 +14,16 @@ public abstract class GameController : UIController {
     /// The current game points for this game
     /// </summary>
     public int GamePoints {
-        get => jsonManager.ActiveGameSession.Points;
+        get => JSONManager.ActiveGameSession.Points;
         set {
             // Make sure to add the points that were gained to the total app session points
-            jsonManager.ActiveAppSession.TotalPoints += value - jsonManager.ActiveGameSession.Points;
-            jsonManager.ActiveGameSession.Points = value;
+            JSONManager.ActiveAppSession.TotalPoints += value - JSONManager.ActiveGameSession.Points;
+            JSONManager.ActiveGameSession.Points = value;
 
             // Update the score label text based on the new score value
-            scoreLabel.text = $"Score: <b>{jsonManager.ActiveGameSession.Points} points</b>";
-            finalScoreLabel.text = $"{jsonManager.ActiveGameSession.Points} points";
-            totalScoreLabel.text = $"{jsonManager.ActiveAppSession.TotalPoints} points";
+            scoreLabel.text = $"Score: <b>{JSONManager.ActiveGameSession.Points} points</b>";
+            finalScoreLabel.text = $"{JSONManager.ActiveGameSession.Points} points";
+            totalScoreLabel.text = $"{JSONManager.ActiveAppSession.TotalPoints} points";
         }
     }
 
@@ -80,8 +80,8 @@ public abstract class GameController : UIController {
         ui.Q<Label>("TitleLabel").text = name;
 
         // Create a new game session data entry for this game
-        jsonManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
-        jsonManager.ActiveGameSession.Name = name;
+        JSONManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
+        JSONManager.ActiveGameSession.Name = name;
 
         // Set default values for some of the variables
         GamePoints = 0;
@@ -94,7 +94,7 @@ public abstract class GameController : UIController {
     }
 
     protected override void FadeToScene(int sceneBuildIndex) {
-        jsonManager.SavePlayerData( );
+        JSONManager.Instance.SavePlayerData( );
 
         MainMenuController.LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
 

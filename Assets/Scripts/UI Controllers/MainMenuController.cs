@@ -67,8 +67,8 @@ public class MainMenuController : UIController {
         resetSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
         ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
         ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
-            jsonManager.ActiveAppSession.TotalPoints = 0;
-            jsonManager.ActiveAppSession.PlaytimeSeconds = 0;
+            JSONManager.ActiveAppSession.TotalPoints = 0;
+            JSONManager.ActiveAppSession.PlaytimeSeconds = 0;
             ui.Q<Label>("TotalScoreLabel").text = $"0 points";
 
             UIControllerState = UIState.MAIN;
@@ -85,14 +85,14 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalButton").clicked += ( ) => { UIControllerState = UIState.PLAYGOAL; };
         ui.Q<Button>("PlayGoalBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
-        ui.Q<VisualElement>("CheckInCheckmark").style.display = (jsonManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
-        
-        ui.Q<Label>("TotalScoreLabel").text = $"{jsonManager.ActiveAppSession.TotalPoints} points";
-        
-        int secondsRemaining = (int) (playGoalSeconds - jsonManager.ActiveAppSession.PlaytimeSeconds);
+        ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
+
+        ui.Q<Label>("TotalScoreLabel").text = $"{JSONManager.ActiveAppSession.TotalPoints} points";
+
+        int secondsRemaining = (int) (playGoalSeconds - JSONManager.ActiveAppSession.PlaytimeSeconds);
         string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
         ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "You have completed your play goal!";
-        ui.Q<ProgressBar>("PlayGoalProgressBar").value = jsonManager.ActiveAppSession.PlaytimeSeconds / playGoalSeconds;
+        ui.Q<ProgressBar>("PlayGoalProgressBar").value = JSONManager.ActiveAppSession.PlaytimeSeconds / playGoalSeconds;
 
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
@@ -146,7 +146,7 @@ public class MainMenuController : UIController {
             return;
         }
 
-        jsonManager.LoadNewRITchCode(newRITchCode);
+        JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
 
         notificationTimer = 0;
         loadSuccessfulNotification.style.visibility = Visibility.Visible;
