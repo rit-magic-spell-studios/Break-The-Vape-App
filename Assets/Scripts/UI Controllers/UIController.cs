@@ -16,6 +16,8 @@ public enum UIState {
 }
 
 public abstract class UIController : MonoBehaviour {
+    public static int LAST_SCENE = -1;
+
     [Header("UIController")]
     [SerializeField, Range(0f, 2f)] protected float screenFadeTransitionTime;
 
@@ -119,6 +121,10 @@ public abstract class UIController : MonoBehaviour {
         }
     }
 
+    protected virtual void Update( ) {
+        JSONManager.ActiveAppSession.PlaytimeSeconds += Time.deltaTime;
+    }
+
     /// <summary>
     /// Update all of the subscreens in this controller based on the current controller state
     /// </summary>
@@ -215,6 +221,8 @@ public abstract class UIController : MonoBehaviour {
         if (IsTransitioningUI) {
             return;
         }
+
+        LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
 
         menuTransition = StartCoroutine(FadeToSceneTransition(sceneBuildIndex));
     }

@@ -182,7 +182,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DOTweenIcon_0: -9137117592129561275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

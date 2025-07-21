@@ -21,9 +21,9 @@ public abstract class GameController : UIController {
             JSONManager.ActiveGameSession.Points = value;
 
             // Update the score label text based on the new score value
-            scoreLabel.text = $"Score: <b>{JSONManager.ActiveGameSession.Points} points</b>";
-            finalScoreLabel.text = $"{JSONManager.ActiveGameSession.Points} points";
-            totalScoreLabel.text = $"{JSONManager.ActiveAppSession.TotalPoints} points";
+            scoreLabel.text = $"Score: <b>{JSONManager.ActiveGameSession.Points} pts</b>";
+            finalScoreLabel.text = $"{JSONManager.ActiveGameSession.Points} pts";
+            totalScoreLabel.text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
         }
     }
 
@@ -93,10 +93,14 @@ public abstract class GameController : UIController {
         UIControllerState = UIState.TUTORIAL;
     }
 
+    protected override void Update( ) {
+        base.Update( );
+
+        JSONManager.ActiveGameSession.PlaytimeSeconds += Time.deltaTime;
+    }
+
     protected override void FadeToScene(int sceneBuildIndex) {
         JSONManager.Instance.SavePlayerData( );
-
-        MainMenuController.LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
 
         base.FadeToScene(sceneBuildIndex);
     }

@@ -1,55 +1,50 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background" style="flex-grow: 1;">
-        <engine:VisualElement name="CheckInScreen" class="uofr-screen uofr-vert-list" style="display: flex; opacity: 1;">
-            <engine:VisualElement class="uofr-vert-list uofr-section-medium uofr-vert-list-first">
-                <engine:Label text="Check-In" class="uofr-text-small uofr-vert-list-first uofr-text-gray" />
-                <engine:Label text="Have you vaped in the last 24 hours?" name="CheckInLabel" class="uofr-text-large uofr-vert-list-last" />
-            </engine:VisualElement>
-            <engine:VisualElement class="uofr-vert-list-middle" style="flex-grow: 1;">
-                <engine:VisualElement name="VapeSubscreen" class="uofr-subscreen" style="display: flex;">
-                    <engine:VisualElement name="VisualElement" style="flex-grow: 1;" />
-                    <engine:VisualElement name="VapeOptions" class="uofr-hori-list uofr-section-small">
-                        <engine:Button text="Yes" name="VapeYesButton" class="uofr-button uofr-hori-list-first" style="flex-grow: 1;" />
-                        <engine:Button text="No" name="VapeNoButton" class="uofr-button uofr-hori-list-last" style="flex-grow: 1;" />
+        <engine:VisualElement name="CheckInScreen" class="uofr-screen" style="display: flex; opacity: 1;">
+            <engine:VisualElement style="flex-grow: 1;">
+                <engine:VisualElement name="CravingLevelSubscreen" class="uofr-subscreen" style="justify-content: flex-end; display: none;">
+                    <engine:VisualElement class="uofr-container">
+                        <engine:Label text="What is your craving level?" class="uofr-font-geol" style="font-size: 50px; -unity-text-align: middle-center;" />
+                        <engine:Label class="uofr-font-geol uofr-text-gray" style="font-size: 25px; -unity-text-align: middle-center;" />
+                        <engine:VisualElement style="flex-grow: 1; display: flex; margin-top: 50px; margin-right: 0; margin-bottom: 50px; margin-left: 0;">
+                            <engine:SliderInt value="3" high-value="5" name="CravingSliderInt" class="uofr-slider-int uofr-vert-list-first" />
+                            <engine:VisualElement class="uofr-vert-list-last" style="flex-grow: 1; flex-direction: row; justify-content: space-between; padding-right: 25px; padding-left: 25px;">
+                                <engine:Label text="0" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="1" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="2" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="3" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="4" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="5" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        <engine:VisualElement class="uofr-hori-list" style="flex-grow: 1; justify-content: space-between;">
+                            <engine:Button text="Skip" name="SkipCravingLevelButton" class="uofr-button uofr-button-none uofr-font-geol" style="-unity-font-style: normal; font-size: 40px;" />
+                            <engine:Button name="NextButton" class="uofr-button uofr-button-square">
+                                <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Arrow_Right.png?fileID=21300000&amp;guid=bc5e017b8f0b13247baafa8890d8df3e&amp;type=3#Arrow_Right&quot;);" />
+                            </engine:Button>
+                        </engine:VisualElement>
                     </engine:VisualElement>
                 </engine:VisualElement>
-                <engine:VisualElement name="CraveSubscreen" class="uofr-subscreen" style="display: none;">
-                    <engine:VisualElement style="flex-grow: 1;" />
-                    <engine:ScrollView touch-scroll-type="Elastic" name="CraveOptions" mouse-wheel-scroll-size="6" class="uofr-scroll-view uofr-vert-list-first uofr-section-large">
-                        <engine:Button text="0" class="uofr-button" />
-                        <engine:Button text="1" class="uofr-button" />
-                        <engine:Button text="2" class="uofr-button" />
-                        <engine:Button text="3" class="uofr-button" />
-                        <engine:Button text="4" class="uofr-button" />
-                        <engine:Button text="5" class="uofr-button" />
-                        <engine:Button text="6" class="uofr-button" />
-                        <engine:Button text="7" class="uofr-button" />
-                        <engine:Button text="8" class="uofr-button" />
-                        <engine:Button text="9" class="uofr-button" />
-                        <engine:Button text="10" class="uofr-button" />
-                    </engine:ScrollView>
-                </engine:VisualElement>
-                <engine:VisualElement name="CauseSubscreen" class="uofr-subscreen" style="display: none;">
-                    <engine:VisualElement name="CauseOptions" class="uofr-vert-list">
-                        <engine:Button text="Stress" class="uofr-button uofr-vert-list-first" />
-                        <engine:Button text="Boredom" class="uofr-button uofr-vert-list-middle" />
-                        <engine:Button text="Friends" class="uofr-button uofr-vert-list-middle" />
-                        <engine:Button text="Habit" class="uofr-button uofr-vert-list-middle" />
-                        <engine:Button text="Other" class="uofr-button uofr-vert-list-last" />
+                <engine:VisualElement name="CravingCauseSubscreen" class="uofr-subscreen" style="justify-content: flex-end;">
+                    <engine:VisualElement class="uofr-container">
+                        <engine:Label text="What is affecting your craving?" class="uofr-font-geol" style="font-size: 50px; -unity-text-align: middle-center;" />
+                        <engine:Label text="You can select more than one option" class="uofr-font-geol uofr-text-gray" style="font-size: 25px; -unity-text-align: middle-center;" />
+                        <engine:VisualElement name="CravingCausesContainer" style="flex-grow: 1; display: flex; flex-wrap: wrap; flex-direction: row; justify-content: center; align-items: center; margin-top: 50px; margin-right: 0; margin-bottom: 50px; margin-left: 0;">
+                            <engine:Button text="Stress" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Habit" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Friends" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Boredom" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Other" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                        </engine:VisualElement>
+                        <engine:VisualElement class="uofr-hori-list" style="flex-grow: 1; justify-content: space-between;">
+                            <engine:Button text="Skip" name="SkipCravingCauseButton" class="uofr-button uofr-button-none uofr-font-geol" style="-unity-font-style: normal; font-size: 40px;" />
+                            <engine:Button name="FinishButton" class="uofr-button uofr-button-square">
+                                <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Arrow_Right.png?fileID=21300000&amp;guid=bc5e017b8f0b13247baafa8890d8df3e&amp;type=3#Arrow_Right&quot;);" />
+                            </engine:Button>
+                        </engine:VisualElement>
                     </engine:VisualElement>
                 </engine:VisualElement>
-                <engine:VisualElement name="CompleteSubscreen" class="uofr-subscreen" style="display: flex;">
-                    <engine:VisualElement class="uofr-vert-list" style="flex-grow: 1; align-items: center;">
-                        <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/SmileIcon.png?fileID=2800000&amp;guid=1fd552cf82729fe4c90975df63624d6c&amp;type=3#SmileIcon&quot;); width: 40%; padding-top: 40%; -unity-background-image-tint-color: rgb(0, 104, 255);" />
-                        <engine:Label text="Thanks for taking the time to check in." class="uofr-text-large" style="-unity-text-align: middle-center;" />
-                    </engine:VisualElement>
-                    <engine:Button text="Finish" name="FinishButton" class="uofr-button uofr-button-selected" />
-                </engine:VisualElement>
-            </engine:VisualElement>
-            <engine:VisualElement class="uofr-vert-list uofr-vert-list-last" style="align-items: flex-end;">
-                <engine:Button text="Next" name="NextButton" class="uofr-button-discreet uofr-vert-list-first" />
-                <engine:ProgressBar value="0.25" high-value="1" name="CheckInProgressBar" class="uofr-progress-bar uofr-vert-list-last" />
             </engine:VisualElement>
         </engine:VisualElement>
     </engine:VisualElement>

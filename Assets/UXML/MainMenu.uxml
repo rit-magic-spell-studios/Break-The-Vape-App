@@ -34,15 +34,15 @@
                 </ui:Button>
                 <ui:Button name="MatchAndCatchButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(255, 215, 215);">
                     <ui:Label text="Match And Catch" name="GameName" class="uofr-font-fubu" />
-                    <ui:Label text="0.2.2" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
+                    <ui:Label text="v0.2.2" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
                 <ui:Button name="NotSoTastyButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(213, 255, 202);">
                     <ui:Label text="Not So Tasty" name="GameName" class="uofr-font-fubu" />
                     <ui:Label text="v0.1.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
-                <ui:Button name="PuffDodgeButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(193, 199, 255);">
+                <ui:Button name="PuffDodgeButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(170, 170, 170);">
                     <ui:Label text="Puff Dodge" name="GameName" class="uofr-font-fubu" />
-                    <ui:Label text="v0.0.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
+                    <ui:Label text="v0.0.0 (Coming Soon)" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="ResetSubscreen" class="uofr-subscreen" style="background-color: rgba(0, 0, 0, 0.75); display: none;">
@@ -81,7 +81,7 @@
                     <ui:Label text="Code loaded successfully" class="uofr-font-geol" style="font-size: 40px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement class="uofr-vert-list">
+            <ui:VisualElement class="uofr-vert-list" style="margin-bottom: 50%;">
                 <ui:Label text="Enter your 6-digit RITch code to link your play record." class="uofr-font-geol" style="font-size: 40px; -unity-text-align: middle-center; -unity-font-style: bold;" />
                 <ui:VisualElement class="uofr-hori-list" style="justify-content: space-between; margin-top: 40px; margin-right: 0; margin-bottom: 40px; margin-left: 0;">
                     <ui:TextField max-length="1" class="uofr-textfield" />
@@ -106,9 +106,9 @@
             <ui:Label text="Tap To Start" class="uofr-font-geol" style="font-size: 40px; -unity-text-align: middle-center;" />
         </ui:VisualElement>
         <ui:VisualElement name="PlayGoalScreen" class="uofr-screen" style="display: flex;">
+            <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); align-self: center; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; padding-right: 80%; height: 40%; -unity-background-scale-mode: scale-and-crop; margin-bottom: 100px;" />
             <ui:VisualElement class="uofr-container">
-                <ui:VisualElement class="uofr-vert-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); align-self: center; width: 80%; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; padding-top: 80%;" />
-                <ui:Label text="15 minutes of distraction" class="uofr-font-geol uofr-vert-list-middle" style="font-size: 40px; -unity-font-style: bold; -unity-text-align: middle-left;" />
+                <ui:Label text="15 minutes of distraction" class="uofr-font-geol uofr-vert-list-first" style="font-size: 40px; -unity-font-style: bold; -unity-text-align: middle-left;" />
                 <ui:Label text="Research shows that 15 to 20 minutes of relaxation and distraction can help the brain lose craving sensations." class="uofr-font-geol uofr-vert-list-middle" style="font-size: 40px;" />
                 <ui:Label text="Give it a try by distracting yourself with some of these games!" class="uofr-font-geol uofr-vert-list-last" style="font-size: 40px;" />
             </ui:VisualElement>

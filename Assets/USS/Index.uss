@@ -1,34 +1,3 @@
-.uofr-font-geol {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
-    white-space: normal;
-}
-
-.uofr-font-fubu {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
-    letter-spacing: -8px;
-    white-space: normal;
-}
-
-.uofr-text-gray {
-    color: rgb(97, 97, 97);
-}
-
 .uofr-button {
     margin-left: 0;
     margin-right: 0;
@@ -287,6 +256,107 @@
     right: auto;
     bottom: auto;
     width: 100%;
+}
+
+.uofr-slider-int {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.uofr-slider-int .unity-base-slider__drag-container {
+}
+
+.uofr-slider-int .unity-base-slider__tracker {
+    background-color: rgba(255, 255, 255, 0);
+    height: 80px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: auto;
+}
+
+.uofr-slider-int .unity-base-slider__dragger-border {
+    height: 80px;
+    display: flex;
+}
+
+.uofr-slider-int .unity-base-slider__dragger {
+    height: 100px;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    background-color: rgb(80, 131, 255);
+    margin-top: -10px;
+    margin-right: -10px;
+    margin-bottom: -10px;
+    margin-left: -10px;
+}
+
+.uofr-font-geol {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+    white-space: normal;
+}
+
+.uofr-font-fubu {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    letter-spacing: -8px;
+    white-space: normal;
+}
+
+.uofr-text-gray {
+    color: rgb(97, 97, 97);
 }
 
 .uofr-screen {

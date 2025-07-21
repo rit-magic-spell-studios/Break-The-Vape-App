@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
-    public static int LAST_SCENE = -1;
-
     [Header("MainMenuController")]
     [SerializeField, Range(0f, 5f)] private float notificationTime;
     [SerializeField, Range(600f, 1800f)] private float playGoalSeconds;
@@ -69,7 +67,7 @@ public class MainMenuController : UIController {
         ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
             JSONManager.ActiveAppSession.TotalPoints = 0;
             JSONManager.ActiveAppSession.PlaytimeSeconds = 0;
-            ui.Q<Label>("TotalScoreLabel").text = $"0 points";
+            ui.Q<Label>("TotalScoreLabel").text = $"0 pts";
 
             UIControllerState = UIState.MAIN;
         };
@@ -87,11 +85,11 @@ public class MainMenuController : UIController {
 
         ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
 
-        ui.Q<Label>("TotalScoreLabel").text = $"{JSONManager.ActiveAppSession.TotalPoints} points";
+        ui.Q<Label>("TotalScoreLabel").text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
 
         int secondsRemaining = (int) (playGoalSeconds - JSONManager.ActiveAppSession.PlaytimeSeconds);
         string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
-        ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "You have completed your play goal!";
+        ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "Play goal complete!";
         ui.Q<ProgressBar>("PlayGoalProgressBar").value = JSONManager.ActiveAppSession.PlaytimeSeconds / playGoalSeconds;
 
         greetingLabel = ui.Q<Label>("GreetingLabel");

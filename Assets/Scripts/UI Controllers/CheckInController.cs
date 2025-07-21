@@ -10,20 +10,12 @@ public class CheckInController : UIController {
     [SerializeField, Range(0f, 2f)] private float progressBarTransitionTime;
 
     private VisualElement checkInScreen;
+    private VisualElement cravingLevelSubscreen;
+    private VisualElement cravingCauseSubscreen;
 
-    private VisualElement craveSubscreen;
-    private List<Button> craveLevelButtons;
+    private SliderInt cravingLevelSlider;
 
-    private VisualElement causeSubscreen;
-    private List<Button> craveCauseButtons;
-
-    private VisualElement completeSubscreen;
-
-    private Label checkInLabel;
-    private Button nextButton;
-    private ProgressBar checkInProgressBar;
-
-    private Coroutine progressBarCoroutine;
+    private List<Button> cravingCausesButtons;
     private List<Button> selectedButtons;
 
     protected override void Awake( ) {
@@ -31,61 +23,32 @@ public class CheckInController : UIController {
 
         // Get a reference to all the screens and subscreens
         checkInScreen = ui.Q<VisualElement>("CheckInScreen");
-        craveSubscreen = ui.Q<VisualElement>("CraveSubscreen");
-        causeSubscreen = ui.Q<VisualElement>("CauseSubscreen");
-        completeSubscreen = ui.Q<VisualElement>("CompleteSubscreen");
+        cravingLevelSubscreen = ui.Q<VisualElement>("CravingLevelSubscreen");
+        cravingCauseSubscreen = ui.Q<VisualElement>("CravingCauseSubscreen");
 
         // The screen is the same for all of the questions in the check in form
         screens[(int) UIState.CRAVE] = checkInScreen;
         screens[(int) UIState.CAUSE] = checkInScreen;
-        screens[(int) UIState.COMPLETE] = checkInScreen;
 
         // Each subscreen has a different UI state
-        subscreens[(int) UIState.CRAVE] = craveSubscreen;
-        subscreens[(int) UIState.CAUSE] = causeSubscreen;
-        subscreens[(int) UIState.COMPLETE] = completeSubscreen;
+        subscreens[(int) UIState.CRAVE] = cravingLevelSubscreen;
+        subscreens[(int) UIState.CAUSE] = cravingCauseSubscreen;
 
-        selectedButtons = new List<Button>( );
+        ui.Q<Button>("SkipCravingLevelButton").clicked += AdvanceCheckInProgress;
+        ui.Q<Button>("SkipCravingCauseButton").clicked += AdvanceCheckInProgress;
+        ui.Q<Button>("FinishButton").clicked += AdvanceCheckInProgress;
+        ui.Q<Button>("NextButton").clicked += AdvanceCheckInProgress;
 
-        // Set up all buttons in the check in
-        checkInLabel = ui.Q<Label>("CheckInLabel");
-
-        checkInProgressBar = ui.Q<ProgressBar>("CheckInProgressBar");
-        checkInProgressBar.value = checkInProgressBar.lowValue;
-
-        nextButton = ui.Q<Button>("NextButton");
-        nextButton.clicked += ( ) => {
-            // Only go to the next UI controller state if a button is selected
-            if (selectedButtons.Count > 0) {
-                // This only works if the UIStates for each of the subscreens of the check in are right next to each other in the enum list
-                UIControllerState = UIControllerState + 1;
-
-                // Update the progress bar values since the player has just completed a screen
-                if (progressBarCoroutine != null) {
-                    StopCoroutine(progressBarCoroutine);
-                }
-                progressBarCoroutine = StartCoroutine(ProgressBarTransition(checkInProgressBar.value + 0.5f));
-            }
-        };
-
-        // Set up all elements on the crave level subscreen
-        craveLevelButtons = ui.Q<VisualElement>("CraveOptions").Query<Button>( ).ToList( );
-        for (int i = 0; i < craveLevelButtons.Count; i++) {
-            craveLevelButtons[i].RegisterCallback<ClickEvent>((e) => { SelectOption(craveLevelButtons, craveLevelButtons.IndexOf((Button) e.target)); });
-        }
+        cravingLevelSlider = ui.Q<SliderInt>("CravingSliderInt");
 
         // Set up all elements on the crave cause subscreen
-        craveCauseButtons = ui.Q<VisualElement>("CauseOptions").Query<Button>( ).ToList( );
-        for (int i = 0; i < craveCauseButtons.Count; i++) {
-            craveCauseButtons[i].RegisterCallback<ClickEvent>((e) => { ToggleSelectOption(craveCauseButtons, craveCauseButtons.IndexOf((Button) e.target)); });
+        cravingCausesButtons = ui.Q<VisualElement>("CravingCausesContainer").Query<Button>( ).ToList( );
+        selectedButtons = new List<Button>( );
+        for (int i = 0; i < cravingCausesButtons.Count; i++) {
+            cravingCausesButtons[i].RegisterCallback<ClickEvent>((e) => { ToggleSelectOption(cravingCausesButtons, cravingCausesButtons.IndexOf((Button) e.target)); });
         }
 
-        // Set up all elements on the completed subscreen
-        ui.Q<Button>("FinishButton").clicked += ( ) => {
-            JSONManager.Instance.SavePlayerData( );
-
-            FadeToScene(0);
-        };
+        JSONManager.ActiveAppSession.CheckInSessionData.Add(new CheckInSessionData( ));
     }
 
     protected override void Start( ) {
@@ -93,6 +56,21 @@ public class CheckInController : UIController {
 
         // The check in controller will always start with the vape question first
         UIControllerState = UIState.CRAVE;
+    }
+
+    protected override void Update( ) {
+        base.Update( );
+
+        JSONManager.ActiveCheckInSession.PlaytimeSeconds += Time.deltaTime;
+    }
+
+    private void AdvanceCheckInProgress( ) {
+        if (UIControllerState == UIState.CAUSE) {
+            JSONManager.Instance.SavePlayerData( );
+            FadeToScene(0);
+        } else {
+            UIControllerState += 1;
+        }
     }
 
     /// <summary>
@@ -121,79 +99,53 @@ public class CheckInController : UIController {
         Button toggledOption = options[toggleOptionIndex];
 
         // Toggle the class on the option as well as remove/add it from the selected buttons list
-        if (toggledOption.ClassListContains("uofr-button-selected")) {
-            toggledOption.RemoveFromClassList("uofr-button-selected");
-            selectedButtons.Remove(toggledOption);
-        } else {
-            toggledOption.AddToClassList("uofr-button-selected");
+        if (toggledOption.ClassListContains("uofr-button-discreet")) {
+            toggledOption.RemoveFromClassList("uofr-button-discreet");
             selectedButtons.Add(toggledOption);
+        } else {
+            toggledOption.AddToClassList("uofr-button-discreet");
+            selectedButtons.Remove(toggledOption);
         }
     }
 
     /// <summary>
     /// Deselect all options and save their data based on the last UI controller state
     /// </summary>
-    private void DeselectAllOptions( ) {
-        // Based on the last controller state, save the selected button data to variables so it can be tracked
-        switch (LastUIControllerState) {
-            case UIState.NULL:
-                // Set the check in label for the next subscreen
-                checkInLabel.text = "What is your craving level?";
+    //private void DeselectAllOptions( ) {
+    //    // Based on the last controller state, save the selected button data to variables so it can be tracked
+    //    switch (LastUIControllerState) {
+    //        case UIState.NULL:
+    //            // Set the check in label for the next subscreen
+    //            checkInLabel.text = "What is your craving level?";
 
-                break;
-            case UIState.CRAVE:
-                // Set the check in label for the next subscreen
-                checkInLabel.text = "What is causing your craving?";
+    //            break;
+    //        case UIState.CRAVE:
+    //            // Set the check in label for the next subscreen
+    //            checkInLabel.text = "What is causing your craving?";
 
-                // There should only be one option selected for the crave level screen
-                // The text should also always be a number
-                JSONManager.ActiveCheckInSession.Intensity = int.Parse(selectedButtons[0].text);
+    //            // There should only be one option selected for the crave level screen
+    //            // The text should also always be a number
+    //            JSONManager.ActiveCheckInSession.Intensity = int.Parse(selectedButtons[0].text);
 
-                break;
-            case UIState.CAUSE:
-                // Set the check in label for the next subscreen
-                checkInLabel.text = "Complete!";
+    //            break;
+    //        case UIState.CAUSE:
+    //            // Set the check in label for the next subscreen
+    //            checkInLabel.text = "Complete!";
 
-                // There could be multiple selected options for the craving cause
-                for (int i = 0; i < selectedButtons.Count; i++) {
-                    JSONManager.ActiveCheckInSession.Triggers.Add(selectedButtons[i].text);
-                }
+    //            // There could be multiple selected options for the craving cause
+    //            for (int i = 0; i < selectedButtons.Count; i++) {
+    //                JSONManager.ActiveCheckInSession.Triggers.Add(selectedButtons[i].text);
+    //            }
 
-                break;
-        }
+    //            break;
+    //    }
 
-        // Clear the selected buttons to allow new options to be selected
-        selectedButtons.Clear( );
-    }
-
-    /// <summary>
-    /// Smoothly transition the progress bar to a new value
-    /// </summary>
-    /// <param name="toValue">The value to set the progress bar to</param>
-    /// <returns></returns>
-    private IEnumerator ProgressBarTransition(float toValue) {
-        float fromValue = checkInProgressBar.value;
-        float elapsed = 0f;
-
-        while (elapsed < 1f) {
-            elapsed += Time.deltaTime / progressBarTransitionTime;
-            checkInProgressBar.value = Mathf.Lerp(fromValue, toValue, elapsed);
-
-            yield return null;
-        }
-
-        checkInProgressBar.value = toValue;
-    }
+    //    // Clear the selected buttons to allow new options to be selected
+    //    selectedButtons.Clear( );
+    //}
 
     protected override void UpdateSubscreens( ) {
-        SetSubscreenVisibility(craveSubscreen, UIControllerState == UIState.CRAVE);
-        SetSubscreenVisibility(causeSubscreen, UIControllerState == UIState.CAUSE);
-        SetSubscreenVisibility(completeSubscreen, UIControllerState == UIState.COMPLETE);
-
-        // On the last complete screen of the check in form, make sure the next button is not visible anymore
-        nextButton.style.display = (UIControllerState == UIState.COMPLETE ? DisplayStyle.None : DisplayStyle.Flex);
-
-        // Deselect all of the options on each subscreen
-        DeselectAllOptions( );
+        SetSubscreenVisibility(cravingLevelSubscreen, UIControllerState == UIState.CRAVE);
+        SetSubscreenVisibility(cravingCauseSubscreen, UIControllerState == UIState.CAUSE);
     }
 }

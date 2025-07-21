@@ -111,21 +111,7 @@ public class JSONManager : Singleton<JSONManager> {
     /// </summary>
     public void SavePlayerData( ) {
         // Do not try to save to the file if there is no RITch code
-        if (RITchCode == "") {
-            return;
-        }
-
-        // Update the active game session or check in session if specified
-        if (SceneManager.GetActiveScene( ).name == "CheckIn") {
-            ActiveCheckInSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveCheckInSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
-        } else if (SceneManager.GetActiveScene( ).name != "MainMenu") {
-            ActiveGameSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveGameSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
-        }
-
-        // Set the final playtime since the play session for the current RITch code is finished
-        ActiveAppSession.PlaytimeSeconds = (float) (DateTime.UtcNow - DateTime.Parse(ActiveAppSession.StartTimeUTC, null, System.Globalization.DateTimeStyles.RoundtripKind)).TotalSeconds;
-
-        if (!doDataSaving) {
+        if (RITchCode == "" || !doDataSaving) {
             return;
         }
 

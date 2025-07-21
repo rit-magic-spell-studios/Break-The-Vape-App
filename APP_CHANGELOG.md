@@ -1,6 +1,6 @@
 # App Changelog
 
-## Unreleased
+## v0.4.0 - July 21st, 2025
 * Added first version of telemetry and player data tracking across the app and minigames
 	* Tracks points, what games were played, total playtime, and more
 * Added a screen for players to log in and track personal data using their RITch code
