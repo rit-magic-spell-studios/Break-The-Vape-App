@@ -36,9 +36,6 @@ public class MainMenuController : UIController {
         menuSubscreen = ui.Q<VisualElement>("MenuSubscreen");
         resetSubscreen = ui.Q<VisualElement>("ResetSubscreen");
 
-        ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
-        loadSuccessfulNotification = ritchCodeScreen.Q<VisualElement>("LoadSuccessfulNotification");
-
         // Set the states of the screens and subscreens based on what game controller state is active
         screens[(int) UIState.SPLASH] = splashScreen;
         screens[(int) UIState.MAIN] = mainScreen;
@@ -51,6 +48,8 @@ public class MainMenuController : UIController {
         subscreens[(int) UIState.RESET] = resetSubscreen;
 
         splashScreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
+
+        ui.Q<Label>("VersionLabel").text = $"{Application.version} | MAGIC Spell Studios";
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
@@ -67,7 +66,7 @@ public class MainMenuController : UIController {
         ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
             JSONManager.ActiveAppSession.TotalPoints = 0;
             JSONManager.ActiveAppSession.PlaytimeSeconds = 0;
-            ui.Q<Label>("TotalScoreLabel").text = $"0 pts";
+            JSONManager.Instance.SavePlayerData( );
 
             UIControllerState = UIState.MAIN;
         };
@@ -76,6 +75,9 @@ public class MainMenuController : UIController {
         ui.Q<Button>("RITchCodeBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
         ui.Q<Button>("RITchCodeClearButton").clicked += ClearRITchCodeTextFields;
         ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
+
+        loadSuccessfulNotification = ritchCodeScreen.Q<VisualElement>("LoadSuccessfulNotification");
+        ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
         for (int i = 0; i < ritchCodeTextFields.Count; i++) {
             ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
         }
@@ -84,13 +86,6 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
         ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
-
-        ui.Q<Label>("TotalScoreLabel").text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
-
-        int secondsRemaining = (int) (playGoalSeconds - JSONManager.ActiveAppSession.PlaytimeSeconds);
-        string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
-        ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "Play goal complete!";
-        ui.Q<ProgressBar>("PlayGoalProgressBar").value = JSONManager.ActiveAppSession.PlaytimeSeconds / playGoalSeconds;
 
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
@@ -102,6 +97,9 @@ public class MainMenuController : UIController {
             greetingLabel.text = "Good evening!";
         }
 
+        AddEventHandlers( );
+        JSONManager.InvokeAllDelegates( );
+
         notificationTimer = notificationTime;
     }
 
@@ -111,15 +109,27 @@ public class MainMenuController : UIController {
         UIControllerState = (LAST_SCENE == -1 ? UIState.SPLASH : UIState.MAIN);
     }
 
-    protected void Update( ) {
+    protected override void Update( ) {
+        base.Update( );
+
         // Update the timer for notifications to be visible
         notificationTimer += Time.deltaTime;
         if (notificationTimer >= notificationTime) {
             loadSuccessfulNotification.style.visibility = Visibility.Hidden;
         }
+    }
 
-        // Update the play goal timer
+    protected override void AddEventHandlers( ) {
+        JSONManager.ActiveAppSession.OnPlaytimeSecondsChange += ( ) => {
+            int secondsRemaining = (int) (playGoalSeconds - JSONManager.ActiveAppSession.PlaytimeSeconds);
+            string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
+            ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "Play goal complete!";
+            ui.Q<ProgressBar>("PlayGoalProgressBar").value = JSONManager.ActiveAppSession.PlaytimeSeconds / playGoalSeconds;
+        };
 
+        JSONManager.ActiveAppSession.OnTotalPointsChange += ( ) => {
+            ui.Q<Label>("TotalScoreLabel").text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
+        };
     }
 
     /// <summary>
@@ -170,7 +180,7 @@ public class MainMenuController : UIController {
     }
 
     protected override void UpdateSubscreens( ) {
-        SetSubscreenVisibility(menuSubscreen, UIControllerState == UIState.MENU);
-        SetSubscreenVisibility(resetSubscreen, UIControllerState == UIState.RESET);
+        SetElementVisibility(menuSubscreen, UIControllerState == UIState.MENU);
+        SetElementVisibility(resetSubscreen, UIControllerState == UIState.RESET);
     }
 }

@@ -15,16 +15,16 @@
                     <ui:Label text="Complete a check-in" class="uofr-hori-list-middle uofr-font-geol" style="flex-grow: 1; -unity-text-align: middle-left; font-size: 40px;" />
                     <ui:VisualElement name="CheckInCheckmark" class="uofr-hori-list-last" style="background-image: url(&quot;project://database/Assets/Sprites/Complete.png?fileID=21300000&amp;guid=73c22c49ff4279a46bf7b3184ea2fe9a&amp;type=3#Complete&quot;); width: 60px; padding-top: 60px;" />
                 </ui:Button>
-                <ui:Label text="v0.3.2 | MAGIC Spell Studios" class="uofr-font-geol uofr-text-gray uofr-vert-list-last" style="font-size: 25px;" />
+                <ui:Label text="v0.3.2 | MAGIC Spell Studios" name="VersionLabel" class="uofr-font-geol uofr-text-gray uofr-vert-list-last" style="font-size: 25px;" />
             </ui:VisualElement>
             <ui:VisualElement class="uofr-vert-list uofr-container" style="height: 75%;">
                 <ui:VisualElement class="uofr-hori-list uofr-vert-list-first">
                     <ui:Button name="TotalScoreButton" class="uofr-button uofr-hori-list uofr-hori-list-first uofr-button-discreet" style="width: auto;">
                         <ui:VisualElement class="uofr-hori-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/Trophy.png?fileID=21300000&amp;guid=621d34a019854b946b2f291b078451bb&amp;type=3#Trophy&quot;); width: 60px; padding-top: 60px;" />
-                        <ui:Label text="4567 P" name="TotalScoreLabel" class="uofr-font-fubu" style="font-size: 40px; -unity-text-align: middle-right;" />
+                        <ui:Label text="4567 Pts" name="TotalScoreLabel" class="uofr-font-fubu" style="font-size: 40px; -unity-text-align: middle-right;" />
                     </ui:Button>
                     <ui:Button name="PlayGoalButton" class="uofr-button uofr-hori-list-last uofr-button-discreet uofr-vert-list" style="flex-grow: 1; justify-content: space-between;">
-                        <ui:Label text="5:00 to your play goal!" name="PlayGoalLabel" class="uofr-font-geol" style="font-size: 25px; -unity-text-align: middle-right; -unity-font-style: bold;" />
+                        <ui:Label text="Play goal completed!" name="PlayGoalLabel" class="uofr-font-geol" style="font-size: 25px; -unity-text-align: middle-right; -unity-font-style: bold;" />
                         <ui:ProgressBar value="0.25" name="PlayGoalProgressBar" high-value="1" class="uofr-progress-bar" />
                     </ui:Button>
                 </ui:VisualElement>
@@ -100,12 +100,12 @@
                 <ui:Button text="Submit" name="RITchCodeSubmitButton" class="uofr-button uofr-button-highlight" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="SplashScreen" class="uofr-screen" style="display: none;">
+        <ui:VisualElement name="SplashScreen" class="uofr-screen" style="display: flex;">
             <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/URM_horiz_2C.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#URM_horiz_2C&quot;); height: 100px; -unity-background-scale-mode: scale-to-fit;" />
             <ui:Label text="Break The Vape" class="uofr-font-fubu" style="font-size: 90px; -unity-text-align: middle-center; flex-grow: 1;" />
             <ui:Label text="Tap To Start" class="uofr-font-geol" style="font-size: 40px; -unity-text-align: middle-center;" />
         </ui:VisualElement>
-        <ui:VisualElement name="PlayGoalScreen" class="uofr-screen" style="display: flex;">
+        <ui:VisualElement name="PlayGoalScreen" class="uofr-screen" style="display: none;">
             <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); align-self: center; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; padding-right: 80%; height: 40%; -unity-background-scale-mode: scale-and-crop; margin-bottom: 100px;" />
             <ui:VisualElement class="uofr-container">
                 <ui:Label text="15 minutes of distraction" class="uofr-font-geol uofr-vert-list-first" style="font-size: 40px; -unity-font-style: bold; -unity-text-align: middle-left;" />

@@ -6,11 +6,8 @@ using UnityEngine.UIElements;
 public class CraveSmashController : GameController {
     [Header("CraveSmashController")]
     [SerializeField, Range(0, 100)] private float clickDamage;
-    [SerializeField, Range(0, 50)] private int clickPoints;
-    [SerializeField, Range(0, 50)] private int maxClickPoints;
-    [SerializeField, Range(0, 3)] private float rapidClickPointIncrease;
-    [SerializeField, Range(0, 5)] private float craveMonsterHealDelay;
-    [SerializeField, Range(0, 10)] private float craveMonsterHealSpeed;
+    [SerializeField, Range(0, 50)] private int baseClickPoints;
+    [SerializeField, Range(0, 50)] private float craveMonsterHealSpeed;
     [SerializeField] private List<Sprite> craveMonsterSprites;
 
     private float lastClickTime;
@@ -23,10 +20,6 @@ public class CraveSmashController : GameController {
         private set {
             // Make sure the health stays between 0 and 100
             _craveMonsterHealth = Mathf.Clamp(value, 0f, 100f);
-
-            // Set the crave monster stage image
-            // int craveMonsterStage = Mathf.Clamp(Mathf.CeilToInt(CraveMonsterHealth / 100f * craveMonsterStages.Count), 1, 3);
-            // craveMonsterVisual.style.backgroundImage = new StyleBackground(craveMonsterStages[craveMonsterStage - 1]);
 
             // Update the size of the monster
             // The reason we are updating the width and the top padding is to keep a 1:1 aspect ratio
@@ -53,15 +46,14 @@ public class CraveSmashController : GameController {
         lastClickTime = -1;
     }
 
-    protected void Update( ) {
+    protected override void Update( ) {
+        base.Update( );
+
         if (UIControllerState != UIState.GAME) {
             return;
         }
 
-        // If it has been a certain amount of time since the last click, have the monster start to heal some of the damage it has taken
-        if (lastClickTime != -1 && Time.time - lastClickTime >= craveMonsterHealDelay) {
             CraveMonsterHealth += Time.deltaTime * craveMonsterHealSpeed;
-        }
     }
 
     /// <summary>
@@ -79,14 +71,14 @@ public class CraveSmashController : GameController {
 
         // Calculate the points gained by the player clicking the monster
         // This depends on how long it has been since the last click
-        int gainedPoints = clickPoints;
+        int gainedPoints = baseClickPoints;
         if (lastClickTime >= 0) {
             float timeDifference = Time.time - lastClickTime;
-            gainedPoints += Mathf.CeilToInt(Mathf.Exp(-timeDifference + 1));
+            gainedPoints += Mathf.RoundToInt(Mathf.Exp(-3 * timeDifference + 3));
         }
 
         // Make sure the player does not get a huge amount of points per click
-        GamePoints += Mathf.Min(gainedPoints, maxClickPoints);
+        GamePoints += gainedPoints;
         lastClickTime = Time.time;
 
         // If the monster has run out of health, then go to the end state

@@ -11,7 +11,7 @@ public class JSONManager : Singleton<JSONManager> {
 
     public static string RITchCode { get => Instance.PlayerData.RITchCode; private set => Instance.PlayerData.RITchCode = value; }
     public static List<AppSessionData> AppSessionData { get => Instance.PlayerData.AppSessionData; private set => Instance.PlayerData.AppSessionData = value; }
-   
+
     /// <summary>
     /// Whether or not at least one check in session has been completed
     /// </summary>
@@ -163,5 +163,37 @@ public class JSONManager : Singleton<JSONManager> {
 
         File.Create(filePath).Close( );
         return false;
+    }
+
+    /// <summary>
+    /// Clear all functions from all delegates within the player data
+    /// </summary>
+    public static void ClearAllDelegates( ) {
+        if (ActiveAppSession != null) {
+            ActiveAppSession.OnTotalPointsChange = null;
+            ActiveAppSession.OnPlaytimeSecondsChange = null;
+        }
+
+        if (ActiveCheckInSession != null) {
+            ActiveCheckInSession.OnPlaytimeSecondsChange = null;
+        }
+
+        if (ActiveGameSession != null) {
+            ActiveGameSession.OnPointsChange = null;
+            ActiveGameSession.OnPlaytimeSecondsChange = null;
+        }
+    }
+
+    /// <summary>
+    /// Invoke all functions that are hooked up to all delegates. This can be used to quickly update all UI at the start of a scene
+    /// </summary>
+    public static void InvokeAllDelegates( ) {
+        ActiveAppSession?.OnTotalPointsChange?.Invoke( );
+        ActiveAppSession?.OnPlaytimeSecondsChange?.Invoke( );
+
+        ActiveCheckInSession?.OnPlaytimeSecondsChange?.Invoke( );
+
+        ActiveGameSession?.OnPointsChange?.Invoke( );
+        ActiveGameSession?.OnPlaytimeSecondsChange?.Invoke( );
     }
 }

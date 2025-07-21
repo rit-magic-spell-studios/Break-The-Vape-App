@@ -83,7 +83,9 @@ public class NotSoTastyController : GameController {
         lastDragFruit = null;
     }
 
-    protected void Update( ) {
+    protected override void Update( ) {
+        base.Update( );
+
         if (UIControllerState != UIState.GAME) {
             return;
         }

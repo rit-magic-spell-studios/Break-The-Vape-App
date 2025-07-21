@@ -411,7 +411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cfd2c9549c72442ad3509d03229905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenFadeTransitionTime: 0.1
   notificationTime: 3
   playGoalSeconds: 900
 --- !u!1660057539 &9223372036854775807

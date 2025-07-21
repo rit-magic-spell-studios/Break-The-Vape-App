@@ -17,9 +17,7 @@ public enum UIState {
 
 public abstract class UIController : MonoBehaviour {
     public static int LAST_SCENE = -1;
-
-    [Header("UIController")]
-    [SerializeField, Range(0f, 2f)] protected float screenFadeTransitionTime;
+    public const float FADE_TRANSITION_SECONDS = 0.1f;
 
     private Coroutine menuTransition;
 
@@ -62,9 +60,9 @@ public abstract class UIController : MonoBehaviour {
             _controllerState = value;
 
             // Only transition between menus if the state was changed
-            if (LastUIControllerState == _controllerState) {
-                return;
-            }
+            //if (LastUIControllerState == _controllerState) {
+            //    return;
+            //}
 
             // If the last controller state was null, then this is the start of the scene
             // Make sure to do one last update of all the subscreens to make sure they are properly visible/invisible
@@ -126,6 +124,12 @@ public abstract class UIController : MonoBehaviour {
     }
 
     /// <summary>
+    /// Add functions to the various event handlers within the code. These will automatically be removed when the scene changes
+    /// </summary>
+    protected virtual void AddEventHandlers( ) { }
+
+
+    /// <summary>
     /// Update all of the subscreens in this controller based on the current controller state
     /// </summary>
     protected virtual void UpdateSubscreens( ) { }
@@ -136,13 +140,13 @@ public abstract class UIController : MonoBehaviour {
     protected virtual void OnScreenChange( ) { }
 
     /// <summary>
-    /// Set a subscreen's visibility
+    /// Set a visual element's visibility
     /// </summary>
-    /// <param name="subscreen">The subscreen to set the visibility of</param>
-    /// <param name="isVisible">Whether or not the subscreen should be visible</param>
-    protected void SetSubscreenVisibility(VisualElement subscreen, bool isVisible) {
-        subscreen.style.opacity = (isVisible ? 1f : 0f);
-        subscreen.style.display = (isVisible ? DisplayStyle.Flex : DisplayStyle.None);
+    /// <param name="element">The visual element to set the visibility of</param>
+    /// <param name="isVisible">Whether or not the visual element should be visible</param>
+    protected void SetElementVisibility(VisualElement element, bool isVisible) {
+        element.style.opacity = (isVisible ? 1f : 0f);
+        element.style.display = (isVisible ? DisplayStyle.Flex : DisplayStyle.None);
     }
 
     /// <summary>
@@ -160,23 +164,23 @@ public abstract class UIController : MonoBehaviour {
         menuTransition = StartCoroutine(FadeToCurrentScreenTransition( ));
 
         if (LastUIControllerState == UIState.NULL) {
-            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(screenFadeTransitionTime, true);
+            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(FADE_TRANSITION_SECONDS, true);
         } else if (UIControllerState == UIState.NULL) {
-            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(screenFadeTransitionTime, false);
+            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(FADE_TRANSITION_SECONDS, false);
         }
     }
 
     private IEnumerator FadeToCurrentScreenTransition( ) {
         // Fade the from screen out if it exists
         if (LastScreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(LastScreen, screenFadeTransitionTime, false));
+            yield return StartCoroutine(FadeVisualElementOpacity(LastScreen, FADE_TRANSITION_SECONDS, false));
         }
 
         UpdateSubscreens( );
 
         // Fade in the to screen if it exists
         if (CurrentScreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(CurrentScreen, screenFadeTransitionTime, true));
+            yield return StartCoroutine(FadeVisualElementOpacity(CurrentScreen, FADE_TRANSITION_SECONDS, true));
         }
 
         OnScreenChange( );
@@ -198,14 +202,14 @@ public abstract class UIController : MonoBehaviour {
     private IEnumerator FadeToCurrentSubscreenTransition( ) {
         // Fade the from screen out if it exists
         if (LastSubscreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(LastSubscreen, screenFadeTransitionTime, false));
+            yield return StartCoroutine(FadeVisualElementOpacity(LastSubscreen, FADE_TRANSITION_SECONDS, false));
         }
 
         UpdateSubscreens( );
 
         // Fade in the to screen if it exists
         if (CurrentSubscreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(CurrentSubscreen, screenFadeTransitionTime, true));
+            yield return StartCoroutine(FadeVisualElementOpacity(CurrentSubscreen, FADE_TRANSITION_SECONDS, true));
         }
 
         OnScreenChange( );
@@ -222,8 +226,6 @@ public abstract class UIController : MonoBehaviour {
             return;
         }
 
-        LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
-
         menuTransition = StartCoroutine(FadeToSceneTransition(sceneBuildIndex));
     }
 
@@ -234,9 +236,11 @@ public abstract class UIController : MonoBehaviour {
         // Wait until the UI is finished transitioning
         yield return new WaitUntil(( ) => !IsTransitioningUI);
 
+        JSONManager.ClearAllDelegates( );
         BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
 
         menuTransition = null;
+        LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
         SceneManager.LoadScene(sceneBuildIndex);
     }
 

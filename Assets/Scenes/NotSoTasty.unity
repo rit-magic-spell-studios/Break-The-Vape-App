@@ -180,15 +180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc969acd52a0aec4aba7f5d6cead6fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
-  screenFadeTransitionTime: 0.1
-  tutorialVisual: {fileID: 0}
+  tutorialVisual: {fileID: 8400000, guid: 8d9df1e2f2356f64e9967ca95601fd69, type: 2}
   tutorialText: Connect fruits to reveal the hidden messages. Reveal them all to
     win!
   boardSize: {x: 6, y: 8}
   fruitFallSpeed: 0.25
   minFruitChainLength: 2
-  minFruitHoverDistance: 40
+  minFruitHoverDistance: 50
   minSecretTileSize: 2
   maxSecretTileSize: 4
   fruitSprites:
@@ -199,7 +197,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d6b29b523ce30604d898270f7809a31e, type: 3}
   - {fileID: 21300000, guid: b5cefc411047cbc4d8a9087ff298abea, type: 3}
   secretTileSprites:
-  - {fileID: 21300000, guid: 8ec49e1324aca364699f762ed6cff3cc, type: 3}
+  - {fileID: 21300000, guid: a7d78263aeb3dc74eb158e6f4da2e28d, type: 3}
 --- !u!1 &1428559950
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,9 +335,76 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1765635766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765635768}
+  - component: {fileID: 1765635767}
+  m_Layer: 0
+  m_Name: Tutorial Video Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &1765635767
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765635766}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 9a70a3e44a1e34044854ddb64fff51a3, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 8d9df1e2f2356f64e9967ca95601fd69, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &1765635768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765635766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1428559953}
   - {fileID: 26657546}
+  - {fileID: 1765635768}

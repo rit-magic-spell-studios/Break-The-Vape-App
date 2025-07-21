@@ -1,0 +1,41 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <engine:VisualElement class="uofr-background" style="flex-grow: 1;">
+        <engine:VisualElement name="CheckInScreen" class="uofr-screen" style="display: flex; opacity: 1;">
+            <engine:VisualElement style="flex-grow: 1;">
+                <engine:VisualElement name="CravingIntensitySubscreen" class="uofr-subscreen" style="display: flex;">
+                    <engine:VisualElement class="uofr-container" style="min-height: 20%; justify-content: space-between;">
+                        <engine:VisualElement>
+                            <engine:Label text="What is your craving level?" name="CheckInQuestion" class="uofr-font-geol" style="font-size: 40px; -unity-text-align: middle-center; -unity-font-style: bold;" />
+                            <engine:Label name="CheckInSubtitle" class="uofr-font-geol uofr-text-gray" style="font-size: 25px; -unity-text-align: middle-center;" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="CravingCauseContainer" style="flex-grow: 1; display: none; flex-wrap: wrap; flex-direction: row; justify-content: center; align-items: center; margin-top: 50px; margin-right: 0; margin-bottom: 50px; margin-left: 0;">
+                            <engine:Button text="Stress" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Habit" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Friends" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Boredom" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                            <engine:Button text="Other" class="uofr-button uofr-button-discreet" style="width: 45%; flex-grow: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="CravingIntensityContainer" style="flex-grow: 1; display: none; margin-top: 50px; margin-right: 0; margin-bottom: 50px; margin-left: 0;">
+                            <engine:SliderInt value="3" high-value="5" name="CravingIntensitySlider" class="uofr-slider-int uofr-vert-list-first" />
+                            <engine:VisualElement class="uofr-vert-list-last" style="flex-grow: 1; flex-direction: row; justify-content: space-between; padding-right: 25px; padding-left: 25px;">
+                                <engine:Label text="0" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="1" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="2" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="3" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="4" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                                <engine:Label text="5" class="uofr-font-fubu" style="font-size: 50px; -unity-text-align: upper-center; align-self: center;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        <engine:VisualElement class="uofr-hori-list" style="justify-content: space-between;">
+                            <engine:Button text="Skip" name="SkipButton" class="uofr-button uofr-button-none" style="-unity-font-style: normal; font-size: 25px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&amp;guid=1580f011331101848ad6e3f659545f69&amp;type=2#Geologica-Light SDF&quot;);" />
+                            <engine:Button name="NextButton" class="uofr-button uofr-button-square">
+                                <engine:VisualElement name="NextButtonIcon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Arrow_Right.png?fileID=21300000&amp;guid=bc5e017b8f0b13247baafa8890d8df3e&amp;type=3#Arrow_Right&quot;);" />
+                            </engine:Button>
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

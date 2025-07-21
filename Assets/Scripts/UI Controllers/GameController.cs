@@ -19,11 +19,6 @@ public abstract class GameController : UIController {
             // Make sure to add the points that were gained to the total app session points
             JSONManager.ActiveAppSession.TotalPoints += value - JSONManager.ActiveGameSession.Points;
             JSONManager.ActiveGameSession.Points = value;
-
-            // Update the score label text based on the new score value
-            scoreLabel.text = $"Score: <b>{JSONManager.ActiveGameSession.Points} pts</b>";
-            finalScoreLabel.text = $"{JSONManager.ActiveGameSession.Points} pts";
-            totalScoreLabel.text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
         }
     }
 
@@ -37,7 +32,6 @@ public abstract class GameController : UIController {
 
     protected VisualElement gameSubscreen;
     protected VisualElement tutorialSubscreen;
-
 
     protected override void Awake( ) {
         base.Awake( );
@@ -82,9 +76,8 @@ public abstract class GameController : UIController {
         // Create a new game session data entry for this game
         JSONManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
         JSONManager.ActiveGameSession.Name = name;
-
-        // Set default values for some of the variables
-        GamePoints = 0;
+        AddEventHandlers( );
+        JSONManager.InvokeAllDelegates( );
     }
 
     protected override void Start( ) {
@@ -99,6 +92,14 @@ public abstract class GameController : UIController {
         JSONManager.ActiveGameSession.PlaytimeSeconds += Time.deltaTime;
     }
 
+    protected override void AddEventHandlers( ) {
+        JSONManager.ActiveGameSession.OnPointsChange += ( ) => {
+            scoreLabel.text = $"Score: <b>{JSONManager.ActiveGameSession.Points} pts</b>";
+            finalScoreLabel.text = $"{JSONManager.ActiveGameSession.Points} pts";
+            totalScoreLabel.text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
+        };
+    }
+
     protected override void FadeToScene(int sceneBuildIndex) {
         JSONManager.Instance.SavePlayerData( );
 
@@ -106,7 +107,7 @@ public abstract class GameController : UIController {
     }
 
     protected override void UpdateSubscreens( ) {
-        SetSubscreenVisibility(gameSubscreen, UIControllerState == UIState.GAME);
-        SetSubscreenVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);
+        SetElementVisibility(gameSubscreen, UIControllerState == UIState.GAME);
+        SetElementVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);
     }
 }
