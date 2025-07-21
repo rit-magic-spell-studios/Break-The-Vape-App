@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: caadf90d9b09e47469a3a10502372d75
+guid: 6db27e7eb14ab2241ac9d0f505dc8236
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6587128794601110634
-    second: MATCH AND CATCH_MINT CARD_0
+      213: 3846284021192310437
+    second: MATCH AND CATCH_CARD 3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,7 +152,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MATCH AND CATCH_MINT CARD_0
+      name: MATCH AND CATCH_CARD 3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 693cd0ce241d594a0800000000000000
-      internalID: -6587128794601110634
+      spriteID: 5aebd6450feb06530800000000000000
+      internalID: 3846284021192310437
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MATCH AND CATCH_MINT CARD_0: -6587128794601110634
+      MATCH AND CATCH_CARD 3_0: 3846284021192310437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

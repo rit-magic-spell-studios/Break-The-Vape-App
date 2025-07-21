@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <Style src="project://database/Assets/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=a4a55c9a32a60214fa99f4361b929f4c&amp;type=3#MainMenu" />
     <ui:VisualElement class="uofr-background">
-        <ui:VisualElement name="MainScreen" class="uofr-screen" style="display: flex; justify-content: flex-end;">
+        <ui:VisualElement name="MainScreen" class="uofr-screen" style="display: none; justify-content: flex-end;">
             <ui:VisualElement class="uofr-container uofr-vert-list uofr-gamebar" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement class="uofr-hori-list uofr-vert-list-first">
                     <ui:Label text="Good afternoon!" name="GreetingLabel" class="uofr-font-fubu" style="flex-grow: 1; font-size: 60px; -unity-font-style: bold;" />
@@ -105,10 +105,10 @@
             <ui:Label text="Break The Vape" class="uofr-font-fubu" style="font-size: 90px; -unity-text-align: middle-center; flex-grow: 1;" />
             <ui:Label text="Tap To Start" class="uofr-font-geol" style="font-size: 40px; -unity-text-align: middle-center;" />
         </ui:VisualElement>
-        <ui:VisualElement name="PlayGoalScreen" class="uofr-screen" style="display: none;">
-            <ui:VisualElement style="background-image: none; align-self: center; width: 500px; height: 500px; margin-bottom: 100px;" />
+        <ui:VisualElement name="PlayGoalScreen" class="uofr-screen" style="display: flex;">
             <ui:VisualElement class="uofr-container">
-                <ui:Label text="15 minutes of distraction" class="uofr-font-geol uofr-vert-list-first" style="font-size: 40px; -unity-font-style: bold; -unity-text-align: middle-left;" />
+                <ui:VisualElement class="uofr-vert-list-first" style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); align-self: center; width: 80%; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; padding-top: 80%;" />
+                <ui:Label text="15 minutes of distraction" class="uofr-font-geol uofr-vert-list-middle" style="font-size: 40px; -unity-font-style: bold; -unity-text-align: middle-left;" />
                 <ui:Label text="Research shows that 15 to 20 minutes of relaxation and distraction can help the brain lose craving sensations." class="uofr-font-geol uofr-vert-list-middle" style="font-size: 40px;" />
                 <ui:Label text="Give it a try by distracting yourself with some of these games!" class="uofr-font-geol uofr-vert-list-last" style="font-size: 40px;" />
             </ui:VisualElement>

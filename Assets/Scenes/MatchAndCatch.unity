@@ -246,19 +246,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6467cc422599fe94f87b3bf518445998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonManager: {fileID: 11400000, guid: dc3e3c21572d9614d9d70f98625f1197, type: 2}
   screenFadeTransitionTime: 0.1
   tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
   tutorialText: Tap to reveal cards. See if you can find all the matching pairs!
   cardFlipTime: 0.2
   cardCheckDelay: 1
   cardFrontSprites:
+  - {fileID: 21300000, guid: 4cab62c1cb03cce4e849ae20d50803a4, type: 3}
+  - {fileID: 21300000, guid: c75cc13953c8abd448dd686d5405387e, type: 3}
+  - {fileID: 21300000, guid: d0ad26a69fe75c148a2e4810e3461dc0, type: 3}
   - {fileID: 21300000, guid: d35ab295c9d14ad4dad241b68f07638a, type: 3}
-  - {fileID: 21300000, guid: caadf90d9b09e47469a3a10502372d75, type: 3}
-  - {fileID: 21300000, guid: f7718a794f1018048a209121a03fce06, type: 3}
-  - {fileID: 21300000, guid: f9207f8b1d754144ca5a437e545cb82b, type: 3}
-  - {fileID: 21300000, guid: b82b866f1a6467e4cbd17b4e66768aa5, type: 3}
-  - {fileID: 21300000, guid: 65b7f2610e260024e9087a6962353d64, type: 3}
+  - {fileID: 21300000, guid: a7d78263aeb3dc74eb158e6f4da2e28d, type: 3}
+  - {fileID: 21300000, guid: 8e7fbcf87c9d5dd49a316d9e176a4abf, type: 3}
 --- !u!1 &2129265789
 GameObject:
   m_ObjectHideFlags: 0
