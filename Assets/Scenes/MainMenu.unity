@@ -413,6 +413,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notificationTime: 3
   playGoalSeconds: 900
+--- !u!1001 &1957501692817163420
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4329249889822927471, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+      propertyPath: m_Name
+      value: Confetti Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558253078642720677, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558253078642720677, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558253078642720677, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -421,3 +458,4 @@ SceneRoots:
   - {fileID: 144598074}
   - {fileID: 1270173474}
   - {fileID: 162978902}
+  - {fileID: 1957501692817163420}
