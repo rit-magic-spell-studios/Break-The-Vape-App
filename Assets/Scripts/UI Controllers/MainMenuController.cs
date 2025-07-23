@@ -14,6 +14,7 @@ public class MainMenuController : UIController {
     private VisualElement ritchCodeScreen;
     private VisualElement splashScreen;
     private VisualElement playGoalScreen;
+    private VisualElement viewDataScreen;
 
     private VisualElement menuSubscreen;
     private VisualElement resetSubscreen;
@@ -32,6 +33,7 @@ public class MainMenuController : UIController {
         ritchCodeScreen = ui.Q<VisualElement>("RITchCodeScreen");
         splashScreen = ui.Q<VisualElement>("SplashScreen");
         playGoalScreen = ui.Q<VisualElement>("PlayGoalScreen");
+        viewDataScreen = ui.Q<VisualElement>("ViewDataScreen");
 
         menuSubscreen = ui.Q<VisualElement>("MenuSubscreen");
         resetSubscreen = ui.Q<VisualElement>("ResetSubscreen");
@@ -43,13 +45,15 @@ public class MainMenuController : UIController {
         screens[(int) UIState.RESET] = mainScreen;
         screens[(int) UIState.RITCHCODE] = ritchCodeScreen;
         screens[(int) UIState.PLAYGOAL] = playGoalScreen;
+        screens[ (int) UIState.DATA] = viewDataScreen;
 
         subscreens[(int) UIState.MENU] = menuSubscreen;
         subscreens[(int) UIState.RESET] = resetSubscreen;
 
         splashScreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
 
-        ui.Q<Label>("VersionLabel").text = $"{Application.version} | MAGIC Spell Studios";
+        ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
+        ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
@@ -85,7 +89,8 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalButton").clicked += ( ) => { UIControllerState = UIState.PLAYGOAL; };
         ui.Q<Button>("PlayGoalBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
-        ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
+        ui.Q<Button>("ViewDataButton").clicked += ( ) => { UIControllerState = UIState.DATA; };
+        ui.Q<Button>("ViewDataBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
