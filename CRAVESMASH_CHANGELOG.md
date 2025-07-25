@@ -5,6 +5,7 @@
 * The crave monster now has a random chance to be one of four possible monsters
 * There is no delay for the monster to regain health and continually gains health as the game progresses
 * Players now get more added bonus points for clicking fast
+* Added a new pass of the updated UI style
 
 ## v0.5.3 - July 7th, 2025
 * Player now gets between 10-15 points per click, depending on how fast they are clicking the crave monster

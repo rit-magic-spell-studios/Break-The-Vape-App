@@ -5,6 +5,7 @@
 * Added a delay at the end of the game to allows players to look at the secret tiles they uncovered
 * Added tutorial gif to the beginning of the game
 * Slightly increased the size of fruit hitboxes
+* Added a new pass of the updated UI style
 
 ## v0.1.0 - July 8th, 2025
 * Added basic version of the game with first pass of UI

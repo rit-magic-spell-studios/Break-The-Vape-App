@@ -59,7 +59,7 @@ public class MainMenuController : UIController {
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
         ui.Q<Button>("CheckInButton").clicked += ( ) => { FadeToScene(3); };
         ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { FadeToScene(4); };
-        //ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { FadeToScene(5); };
+        ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { FadeToScene(5); };
 
         ui.Q<Button>("MenuButton").clicked += ( ) => { UIControllerState = UIState.MENU; };
         menuSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
