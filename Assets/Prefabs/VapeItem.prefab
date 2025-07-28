@@ -235,7 +235,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8593721952098234018}
   polygonCollider2D: {fileID: 376481928241355242}
   minLaunchVelocity: 7
-  maxLaunchVelocity: 9
+  maxLaunchVelocity: 11
+  minLaunchAngularVelocity: 70
+  maxLaunchAngularVelocity: 120
   sprites:
   - {fileID: 21300000, guid: f0c2837c8ce73b8439d18fd70439a9de, type: 3}
   - {fileID: 21300000, guid: 63624b4bc52d3d241ba4fe49148d1e34, type: 3}

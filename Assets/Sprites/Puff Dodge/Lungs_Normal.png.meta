@@ -46,17 +46,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0.1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -231,10 +231,68 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: -25, y: -108}
+      - {x: -11, y: -94}
+      - {x: -15, y: -55}
+      - {x: -10, y: -55}
+      - {x: -6, y: -54}
+      - {x: -2, y: 20}
+      - {x: 3, y: 20}
+      - {x: 7, y: 25}
+      - {x: 9, y: 27}
+      - {x: 14, y: 24}
+      - {x: 20, y: 22}
+      - {x: 12, y: -1}
+      - {x: 12, y: -69}
+      - {x: 20, y: -84}
+      - {x: 30, y: -98}
+      - {x: 51, y: -111}
+      - {x: 89, y: -111}
+      - {x: 90, y: -104}
+      - {x: 111, y: -107}
+      - {x: 124, y: -96}
+      - {x: 137, y: -78}
+      - {x: 137, y: -18}
+      - {x: 130, y: -18}
+      - {x: 130, y: 3}
+      - {x: 123, y: 9}
+      - {x: 122, y: 35}
+      - {x: 113, y: 55}
+      - {x: 99, y: 77}
+      - {x: 80, y: 93}
+      - {x: 30, y: 96}
+      - {x: 21, y: 85}
+      - {x: 19, y: 125}
+      - {x: -3, y: 125}
+      - {x: -3, y: 85}
+      - {x: -27, y: 103}
+      - {x: -51, y: 103}
+      - {x: -65, y: 96}
+      - {x: -86, y: 78}
+      - {x: -100, y: 49}
+      - {x: -108, y: 44}
+      - {x: -115, y: 28}
+      - {x: -123, y: 9}
+      - {x: -124, y: 3}
+      - {x: -124, y: -8}
+      - {x: -131, y: -23}
+      - {x: -131, y: -81}
+      - {x: -123, y: -91}
+      - {x: -110, y: -104}
+      - {x: -92, y: -111}
+      - {x: -38, y: -111}
+    - - {x: -5, y: 70}
+      - {x: -7, y: 69}
+      - {x: -6, y: 71}
+      - {x: -6, y: 73}
+      - {x: -5, y: 73}
+      - {x: -4, y: 74}
+      - {x: -3, y: 71}
+      - {x: -4, y: 69}
     bones: []
     spriteID: 8ed1f54a69ce4124fa3d8574400e8706
-    internalID: 0
+    internalID: -1212749615
     vertices: []
     indices: 
     edges: []

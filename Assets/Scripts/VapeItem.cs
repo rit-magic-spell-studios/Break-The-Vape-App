@@ -7,20 +7,27 @@ public class VapeItem : MonoBehaviour {
     [SerializeField] private Rigidbody2D rigidBody2D;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
-    [SerializeField, Range(0f, 10f)] private float minLaunchVelocity;
-    [SerializeField, Range(0f, 10f)] private float maxLaunchVelocity;
+    [SerializeField] private PuffDodgeController puffDodgeController;
+    [SerializeField, Range(0f, 20f)] private float minLaunchVelocity;
+    [SerializeField, Range(0f, 20f)] private float maxLaunchVelocity;
+    [SerializeField, Range(0f, 360f)] private float minLaunchAngularVelocity;
+    [SerializeField, Range(0f, 360f)] private float maxLaunchAngularVelocity;
     [SerializeField] private List<Sprite> sprites;
 
+    float cameraHalfWidth, cameraHalfHeight;
+
     private void Awake( ) {
+        puffDodgeController = FindAnyObjectByType<PuffDodgeController>( );
+
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Count)];
-        UpdatePolygonColliderShape( );
+        Utils.UpdatePolygonColliderShape(polygonCollider2D, spriteRenderer);
     }
 
     private void Start( ) {
-        float cameraHalfHeight = Camera.main.orthographicSize;
-        float cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
+        cameraHalfHeight = Camera.main.orthographicSize;
+        cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
         float xDistance = Random.Range(cameraHalfWidth, cameraHalfWidth * 3f);
-        float yDistance = cameraHalfHeight * 0.5f;
+        float yDistance = transform.position.y + cameraHalfHeight;
 
         float launchVelocity = Random.Range(minLaunchVelocity, maxLaunchVelocity);
         float launchAngle = CalculateLaunchAngle(xDistance, yDistance, launchVelocity);
@@ -28,12 +35,14 @@ public class VapeItem : MonoBehaviour {
             // Reflect the launch angle over the vertical axis
             launchAngle = Mathf.PI - launchAngle;
         }
-        Vector2 launchDirection = new Vector2(Mathf.Cos(launchAngle), Mathf.Sin(launchAngle));
-        rigidBody2D.AddForce(launchDirection * launchVelocity, ForceMode2D.Impulse);
+
+        rigidBody2D.velocity = new Vector2(Mathf.Cos(launchAngle), Mathf.Sin(launchAngle)) * launchVelocity;
+        rigidBody2D.angularVelocity = Random.Range(minLaunchAngularVelocity, maxLaunchAngularVelocity);
     }
 
     private void Update( ) {
-        if (transform.position.y < -40f) {
+        if (transform.position.y <= -cameraHalfHeight * 2f) {
+            puffDodgeController.VapeItems.Remove(gameObject);
             Destroy(gameObject);
         }
     }
@@ -53,19 +62,5 @@ public class VapeItem : MonoBehaviour {
         float d = Mathf.Atan(x / h);
         float theta = (c + d) / 2f;
         return theta;
-    }
-
-    /// <summary>
-    /// Manually update the shape of the polygon collider after a sprite has changed
-    /// </summary>
-    private void UpdatePolygonColliderShape( ) {
-        polygonCollider2D.pathCount = spriteRenderer.sprite.GetPhysicsShapeCount( );
-
-        List<Vector2> path = new List<Vector2>( );
-        for (int i = 0; i < polygonCollider2D.pathCount; i++) {
-            path.Clear( );
-            spriteRenderer.sprite.GetPhysicsShape(i, path);
-            polygonCollider2D.SetPath(i, path.ToArray( ));
-        }
     }
 }

@@ -9,8 +9,8 @@
         <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: flex;">
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" class="uofr-subscreen" style="display: none;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; justify-content: center; margin-top: 30%;">
-                    <engine:Label text="0/20 items hit!" name="ItemsHitLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 90px; margin-bottom: 10px;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; margin-top: 30%; justify-content: flex-start;">
+                    <engine:Label text="0/20 items hit!" name="DestroyedItemsLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 90px; margin-bottom: 10px;" />
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:Instance template="GameBar" class="uofr-gamebar" />
