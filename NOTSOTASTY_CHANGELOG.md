@@ -1,8 +1,9 @@
 # Not So Tasty Changelog
 
-## v0.2.1 - Unreleased
+## v0.2.1 - July 28th, 2025
 * Added new fruit assets
 * Changed chain connection lines to magenta
+* Changed secret tile image to something darker as to not clash with fruit colors
 
 ## v0.2.0 - July 21st, 2025
 * The player now needs to manually click to advance the tutorial
@@ -20,3 +21,6 @@
 	* Secret tiles are slowly uncovered in the background of the game as you matches are made
 		* Each fully revealed secret tile gives the player 50 points
 	* Fully reveal all of the secret tiles to win
+
+
+308 45 184 377

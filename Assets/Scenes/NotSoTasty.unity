@@ -227,7 +227,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1e1af1a9d14edcb49bdb4f43aeac7ba2, type: 3}
   - {fileID: 21300000, guid: 875c054979f607845b1977dfc4ab70ad, type: 3}
   secretTileSprites:
-  - {fileID: 21300000, guid: a7d78263aeb3dc74eb158e6f4da2e28d, type: 3}
+  - {fileID: 21300000, guid: 73c7f415f2ab60f4d9cd93dabef9c2b6, type: 3}
 --- !u!1 &1428559950
 GameObject:
   m_ObjectHideFlags: 0

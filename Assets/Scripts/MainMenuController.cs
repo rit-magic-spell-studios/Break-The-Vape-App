@@ -89,7 +89,7 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalButton").clicked += ( ) => { UIControllerState = UIState.PLAYGOAL; };
         ui.Q<Button>("PlayGoalBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
-        //ui.Q<Button>("ViewDataButton").clicked += ( ) => { UIControllerState = UIState.DATA; };
+        ui.Q<Button>("ViewDataButton").clicked += ( ) => { UIControllerState = UIState.DATA; };
         ui.Q<Button>("ViewDataBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
         greetingLabel = ui.Q<Label>("GreetingLabel");

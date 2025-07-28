@@ -1,6 +1,6 @@
 # Crave Smash Changelog
 
-## v0.6.1 - Unreleased
+## v0.6.1 - July 28th, 2025
 * Fixed bug where the player could continue to click and gain points from the monster after it had disappeared
 
 ## v0.6.0 - July 21st, 2025

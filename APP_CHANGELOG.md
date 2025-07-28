@@ -1,13 +1,13 @@
 # App Changelog
 
-## v0.4.1 - Unreleased
+## v0.4.1 - July 28th, 2025
 * Added link from main menu to Puff Dodge
 * Added different background bubble color gradients for each minigame
 * **Game Versions**
-  * Crave Smash [v0.5.4](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 21st, 2025)
+  * Crave Smash [v0.6.1](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 28th, 2025)
   * Puff Dodge [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (July 27th, 2025)
-  * Not So Tasty [v0.1.1](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 21st, 2025)
-  * Match And Catch [v0.2.3](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (July 21st, 2025)
+  * Not So Tasty [v0.2.1](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 28th, 2025)
+  * Match And Catch [v0.3.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (July 21st, 2025)
 
 ## v0.4.0 - July 21st, 2025
 * Added first version of telemetry and player data tracking across the app and minigames
