@@ -11,6 +11,7 @@ public class CraveSmashController : GameController {
     [SerializeField] private List<Sprite> craveMonsterSprites;
 
     private float lastClickTime;
+    private bool isDead;
 
     private Button craveMonsterButton;
     private VisualElement craveMonsterVisual;
@@ -44,6 +45,7 @@ public class CraveSmashController : GameController {
 
         CraveMonsterHealth = 100f;
         lastClickTime = -1;
+        isDead = false;
     }
 
     protected override void Update( ) {
@@ -53,7 +55,7 @@ public class CraveSmashController : GameController {
             return;
         }
 
-            CraveMonsterHealth += Time.deltaTime * craveMonsterHealSpeed;
+        CraveMonsterHealth += Time.deltaTime * craveMonsterHealSpeed;
     }
 
     /// <summary>
@@ -62,7 +64,7 @@ public class CraveSmashController : GameController {
     /// <param name="e">Event information about the monster click</param>
     private void OnCraveMonsterClick(ClickEvent e) {
         // Make sure the crave monster health does not go below 0
-        if (CraveMonsterHealth <= 0) {
+        if (isDead) {
             return;
         }
 
@@ -85,6 +87,7 @@ public class CraveSmashController : GameController {
         if (CraveMonsterHealth <= 0) {
             // Set the monster to be invisible
             craveMonsterVisual.style.visibility = Visibility.Hidden;
+            isDead = true;
 
             // Delay a bit after the health is 0 to allow the player to stop tapping the screen
             // Players were accidentally pressing buttons on the win screen so this delay should hopefully prevent that

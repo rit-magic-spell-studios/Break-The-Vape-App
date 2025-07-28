@@ -1,5 +1,8 @@
 # Crave Smash Changelog
 
+## v0.6.1 - Unreleased
+* Fixed bug where the player could continue to click and gain points from the monster after it had disappeared
+
 ## v0.6.0 - July 21st, 2025
 * The player now needs to manually click to advance the tutorial
 * The crave monster now has a random chance to be one of four possible monsters
