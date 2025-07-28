@@ -30,15 +30,15 @@
                 </ui:VisualElement>
                 <ui:Button name="CraveSmashButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(255, 244, 198);">
                     <ui:Label text="Crave Smash" name="GameName" class="uofr-font-fubu" />
-                    <ui:Label text="v0.5.4" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
+                    <ui:Label text="v0.6.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
                 <ui:Button name="MatchAndCatchButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(255, 215, 215);">
                     <ui:Label text="Match And Catch" name="GameName" class="uofr-font-fubu" />
-                    <ui:Label text="v0.2.3" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
+                    <ui:Label text="v0.3.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
                 <ui:Button name="NotSoTastyButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(213, 255, 202);">
                     <ui:Label text="Not So Tasty" name="GameName" class="uofr-font-fubu" />
-                    <ui:Label text="v0.1.1" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
+                    <ui:Label text="v0.2.0" name="GameVersion" class="uofr-font-geol uofr-text-gray" />
                 </ui:Button>
                 <ui:Button name="PuffDodgeButton" class="uofr-button mm-button-game uofr-button-discreet uofr-vert-list-middle" style="background-color: rgb(193, 199, 255);">
                     <ui:Label text="Puff Dodge" name="GameName" class="uofr-font-fubu" />

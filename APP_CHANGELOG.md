@@ -17,10 +17,10 @@
 * Added colorful bubbles to the background that move and bounce around the edges of the screen
 * Changed project name back to "Break The Vape"
 * **Game Versions**
-  * Crave Smash [v0.5.4](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 21st, 2025)
+  * Crave Smash [v0.6.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 21st, 2025)
   * Puff Dodge [v0.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (Not Started)
-  * Not So Tasty [v0.1.1](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 21st, 2025)
-  * Match And Catch [v0.2.3](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (July 21st, 2025)
+  * Not So Tasty [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 21st, 2025)
+  * Match And Catch [v0.3.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (July 21st, 2025)
 
 ## v0.3.2 - July 8th, 2025
 * Added link from main menu to Not So Tasty

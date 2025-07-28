@@ -1,6 +1,6 @@
 # Match and Catch Changelog
 
-## v0.2.3 - July 21st, 2025
+## v0.3.0 - July 21st, 2025
 * The player now needs to manually click to advance the tutorial
 * Added new card images with the latest color palette and monsters
 * Added a new pass of the updated UI style

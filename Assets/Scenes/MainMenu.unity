@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundBubblePrefab: {fileID: 5081468783216857070, guid: 7392155975101514bbc98bd882df3a92, type: 3}
-  backgroundBubbleCount: 3
+  backgroundBubbleCount: 4
 --- !u!1 &1172993860
 GameObject:
   m_ObjectHideFlags: 0
