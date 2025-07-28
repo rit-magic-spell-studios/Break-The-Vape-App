@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8ec49e1324aca364699f762ed6cff3cc
+guid: fed7e12bd94ba5e4e8653d9e3ea757c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4510432835411528695
-    second: MATCH AND CATCH_VAPE CARD_0
+      213: 3153287414931558023
+    second: NOT SO TASTY_MINT_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MATCH AND CATCH_VAPE CARD_0
+      name: NOT SO TASTY_MINT_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 189
-        height: 189
+        width: 1106
+        height: 1158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 904b906cb39b761c0800000000000000
-      internalID: -4510432835411528695
+      spriteID: 78e84b1723ab2cb20800000000000000
+      internalID: 3153287414931558023
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MATCH AND CATCH_VAPE CARD_0: -4510432835411528695
+      NOT SO TASTY_MINT_0: 3153287414931558023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc969acd52a0aec4aba7f5d6cead6fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialVisual: {fileID: 8400000, guid: 8d9df1e2f2356f64e9967ca95601fd69, type: 2}
   backgroundGradient:
     serializedVersion: 2
     key0: {r: 0.5882353, g: 0.972549, b: 0.11764706, a: 1}
@@ -211,6 +210,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  tutorialVisual: {fileID: 8400000, guid: 8d9df1e2f2356f64e9967ca95601fd69, type: 2}
   tutorialText: Connect fruits to reveal the hidden messages. Reveal them all to
     win!
   boardSize: {x: 6, y: 8}
@@ -220,12 +220,12 @@ MonoBehaviour:
   minSecretTileSize: 2
   maxSecretTileSize: 4
   fruitSprites:
-  - {fileID: 21300000, guid: 3fb2ed0c7101e3a48b74797aa51718f3, type: 3}
-  - {fileID: 21300000, guid: d16d107eefae2a648b206520cde0c309, type: 3}
-  - {fileID: 21300000, guid: b1cb748c428b4254da293321e800e850, type: 3}
-  - {fileID: 21300000, guid: 2e2822c2b4426ac46bd6b7690eb3eb7f, type: 3}
-  - {fileID: 21300000, guid: d6b29b523ce30604d898270f7809a31e, type: 3}
-  - {fileID: 21300000, guid: b5cefc411047cbc4d8a9087ff298abea, type: 3}
+  - {fileID: 21300000, guid: a4f25286c4731034ba7ae310dc4682da, type: 3}
+  - {fileID: 21300000, guid: fed7e12bd94ba5e4e8653d9e3ea757c6, type: 3}
+  - {fileID: 21300000, guid: c18006296daff4440b115dd3e9f57f41, type: 3}
+  - {fileID: 21300000, guid: db5c6cb5fc038c74f95a17f1e1c14b4f, type: 3}
+  - {fileID: 21300000, guid: 1e1af1a9d14edcb49bdb4f43aeac7ba2, type: 3}
+  - {fileID: 21300000, guid: 875c054979f607845b1977dfc4ab70ad, type: 3}
   secretTileSprites:
   - {fileID: 21300000, guid: a7d78263aeb3dc74eb158e6f4da2e28d, type: 3}
 --- !u!1 &1428559950

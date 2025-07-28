@@ -1,5 +1,9 @@
 # Not So Tasty Changelog
 
+## v0.2.1 - Unreleased
+* Added new fruit assets
+* Changed chain connection lines to magenta
+
 ## v0.2.0 - July 21st, 2025
 * The player now needs to manually click to advance the tutorial
 * Added a delay at the end of the game to allows players to look at the secret tiles they uncovered

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2e2822c2b4426ac46bd6b7690eb3eb7f
+guid: db5c6cb5fc038c74f95a17f1e1c14b4f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7326654606771045902
-    second: NOT SO TASTY_PEACH1_v.2_0
+      213: -4324800232611123052
+    second: NOT SO TASTY_RASPBERRY_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NOT SO TASTY_PEACH1_v.2_0
+      name: NOT SO TASTY_RASPBERRY_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 248
-        height: 262
+        width: 1031
+        height: 1099
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f9be63147e725a90800000000000000
-      internalID: -7326654606771045902
+      spriteID: 490ffaa2a193bf3c0800000000000000
+      internalID: -4324800232611123052
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NOT SO TASTY_PEACH1_v.2_0: -7326654606771045902
+      NOT SO TASTY_RASPBERRY_0: -4324800232611123052
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

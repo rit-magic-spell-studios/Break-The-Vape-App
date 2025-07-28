@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3fb2ed0c7101e3a48b74797aa51718f3
+guid: 875c054979f607845b1977dfc4ab70ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -783498668852043872
-    second: NOT SO TASTY_BLUEBERRY1_v.2_0
+      213: -7426224870814163162
+    second: NOT SO TASTY_WATERMELON_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NOT SO TASTY_BLUEBERRY1_v.2_0
+      name: NOT SO TASTY_WATERMELON_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 307
-        height: 259
+        width: 1107
+        height: 1138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0af1511ac147025f0800000000000000
-      internalID: -783498668852043872
+      spriteID: 62f53f863dfb0f890800000000000000
+      internalID: -7426224870814163162
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NOT SO TASTY_BLUEBERRY1_v.2_0: -783498668852043872
+      NOT SO TASTY_WATERMELON_0: -7426224870814163162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
