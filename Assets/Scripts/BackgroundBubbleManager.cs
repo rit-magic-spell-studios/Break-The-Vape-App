@@ -15,29 +15,21 @@ public class BackgroundBubbleManager : Singleton<BackgroundBubbleManager> {
 
         backgroundBubbles = new List<BackgroundBubble>( );
         backgroundBubbleGradient = new Gradient( );
-    }
 
-    private void Start( ) {
         for (int i = 0; i < backgroundBubbleCount; i++) {
             backgroundBubbles.Add(Instantiate(backgroundBubblePrefab, transform).GetComponent<BackgroundBubble>( ));
         }
-
-        SetBackgroundBubbleGradient(new GradientColorKey[ ] {
-             new GradientColorKey(new Color(1f, 0.25f, 0.611f), 0f),
-             new GradientColorKey(new Color(1f, 0.85f, 0.25f), 0.5f),
-             new GradientColorKey(new Color(0.25f, 0.26f, 1f), 1f)
-        });
     }
 
     /// <summary>
     /// Set the colors of the background bubbles based on the new gradient colors
     /// </summary>
     /// <param name="gradientColors">A list of the gradient color keys to set</param>
-    private void SetBackgroundBubbleGradient(GradientColorKey[ ] gradientColors) {
-        backgroundBubbleGradient.SetKeys(gradientColors, null);
+    public static void SetBackgroundBubbleGradient(GradientColorKey[ ] gradientColors) {
+        Instance.backgroundBubbleGradient.SetKeys(gradientColors, null);
 
-        for (int i = 0; i < backgroundBubbleCount; i++) {
-            backgroundBubbles[i].Color = backgroundBubbleGradient.Evaluate((float) i / (backgroundBubbleCount - 1));
+        for (int i = 0; i < Instance.backgroundBubbleCount; i++) {
+            Instance.backgroundBubbles[i].Color = Instance.backgroundBubbleGradient.Evaluate((float) i / (Instance.backgroundBubbleCount - 1));
         }
     }
 

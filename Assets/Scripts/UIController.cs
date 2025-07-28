@@ -19,6 +19,9 @@ public abstract class UIController : MonoBehaviour {
     public static int LAST_SCENE = -1;
     public const float FADE_TRANSITION_SECONDS = 0.1f;
 
+    [Header("UIController")]
+    [SerializeField] private Gradient backgroundGradient;
+
     private Coroutine menuTransition;
 
     protected VisualElement ui;
@@ -117,6 +120,8 @@ public abstract class UIController : MonoBehaviour {
                 subscreens[i].style.display = DisplayStyle.None;
             }
         }
+
+        BackgroundBubbleManager.SetBackgroundBubbleGradient(backgroundGradient.colorKeys);
     }
 
     protected virtual void Update( ) {

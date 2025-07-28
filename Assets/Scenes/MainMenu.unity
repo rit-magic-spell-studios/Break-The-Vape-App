@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundBubblePrefab: {fileID: 5081468783216857070, guid: 7392155975101514bbc98bd882df3a92, type: 3}
-  backgroundBubbleCount: 4
+  backgroundBubbleCount: 3
 --- !u!1 &1172993860
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +411,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cfd2c9549c72442ad3509d03229905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.2509804, b: 0.6117647, a: 1}
+    key1: {r: 1, g: 0.8509804, b: 0.2509804, a: 1}
+    key2: {r: 0.2509804, g: 0.2627451, b: 1, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
   notificationTime: 3
   playGoalSeconds: 900
 --- !u!1660057539 &9223372036854775807

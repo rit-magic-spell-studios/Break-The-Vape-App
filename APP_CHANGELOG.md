@@ -2,6 +2,7 @@
 
 ## v0.4.1 - Unreleased
 * Added link from main menu to Puff Dodge
+* Added different background bubble color gradients for each minigame
 * **Game Versions**
   * Crave Smash [v0.5.4](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 21st, 2025)
   * Puff Dodge [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (July 27th, 2025)
