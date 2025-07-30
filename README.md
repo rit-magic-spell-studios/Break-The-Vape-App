@@ -21,3 +21,6 @@ Click on a fruit and drag to nearby, similar fruit to form a fruit chain. Lift u
 
 ### Match and Catch
 Tap cards to flip them over. Once two cards are flipped over, they are checked to make sure they match. If they do not match, they are flipped back over. Once all cards are flipped over in matching pairs, you win!
+
+### Puff Dodge
+Hazardous items will fly in from the sides of the screen that you can swipe across the screen to destroy. Destroy the items to protect your lungs at the bottom of the screen. Once 25 items are destroyed, you win!
