@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="CheckInScreen" class="uofr-screen" style="display: flex; opacity: 1; justify-content: flex-end;">
-            <engine:VisualElement class="uofr-container">
+            <engine:VisualElement class="uofr-container" style="min-height: 50%; justify-content: space-between;">
                 <engine:VisualElement>
                     <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-med" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
                     <engine:Label name="CheckInSubtitle" text="Subtitle text" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
