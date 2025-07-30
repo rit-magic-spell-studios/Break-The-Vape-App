@@ -1,21 +1,21 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:Template name="GameTutorialSubscreen" src="project://database/Assets/UXML/Templates/GameTutorialSubscreen.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialSubscreen" />
     <engine:Template name="GameBar" src="project://database/Assets/UXML/Templates/GameBar.uxml?fileID=9197481963319205126&amp;guid=44a2d20bd69f40c47afe90cab3c4380d&amp;type=3#GameBar" />
+    <engine:Template name="GameTutorialSubscreen" src="project://database/Assets/UXML/Templates/GameTutorialSubscreen.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialSubscreen" />
     <engine:Template name="GameWinScreen" src="project://database/Assets/UXML/Templates/GameWinScreen.uxml?fileID=9197481963319205126&amp;guid=1d6928190cee2694fba334f48fdf52f5&amp;type=3#GameWinScreen" />
     <engine:Template name="GamePauseScreen" src="project://database/Assets/UXML/Templates/GamePauseScreen.uxml?fileID=9197481963319205126&amp;guid=2bacc1f092c8dd5469eacb2e23ea4ea1&amp;type=3#GamePauseScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <Style src="project://database/Assets/USS/MatchAndCatch.uss?fileID=7433441132597879392&amp;guid=f886bf6c8b7ff7d48b6c1fae2709657b&amp;type=3#MatchAndCatch" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: flex;">
+        <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
+            <engine:Instance template="GameBar" />
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" class="uofr-subscreen" style="display: none;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; margin-top: 30%; justify-content: flex-start;">
-                    <engine:Label text="0/20 items hit!" name="DestroyedItemsLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 90px; margin-bottom: 10px;" />
+                <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: none;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-screen" style="display: flex;">
+                    <engine:Label text="0/20 items hit!" name="DestroyedItemsLabel" class="uofr-title-med uofr-title-header" style="-unity-font-style: normal;" />
                 </engine:VisualElement>
             </engine:VisualElement>
-            <engine:Instance template="GameBar" class="uofr-gamebar" />
         </engine:VisualElement>
-        <engine:Instance template="GameWinScreen" name="WinScreen" class="uofr-screen" style="display: none;" />
-        <engine:Instance template="GamePauseScreen" name="PauseScreen" class="uofr-screen" style="display: none;" />
+        <engine:Instance template="GameWinScreen" name="WinScreen" style="display: none; flex-grow: 1;" />
+        <engine:Instance template="GamePauseScreen" name="PauseScreen" style="display: none; flex-grow: 1;" />
     </engine:VisualElement>
 </engine:UXML>

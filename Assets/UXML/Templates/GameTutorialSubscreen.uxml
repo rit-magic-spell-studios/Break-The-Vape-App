@@ -1,11 +1,14 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement style="justify-content: center; flex-grow: 1;">
-        <engine:VisualElement class="uofr-container uofr-vert-list">
-            <engine:Label text="How To Play" name="HowToPlayLabel" class="uofr-font-fubu" style="position: absolute; top: -60px; align-self: center; height: 120px; font-size: 50px; background-color: rgb(234, 240, 255); padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; border-top-left-radius: 60px; border-top-right-radius: 60px; border-bottom-right-radius: 60px; border-bottom-left-radius: 60px; -unity-text-align: middle-center; border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-left-color: rgb(207, 221, 255); border-right-color: rgb(207, 221, 255); border-top-color: rgb(207, 221, 255); border-bottom-color: rgb(207, 221, 255); -unity-font-style: bold;" />
-            <engine:VisualElement name="TutorialVisual" style="flex-grow: 1; width: 80%; padding-top: 80%; align-self: center; margin-top: 50px;" />
-            <engine:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." name="TutorialLabel" class="uofr-font-geol" style="-unity-text-align: upper-center; margin-bottom: 50px; margin-top: 50px; font-size: 40px;" />
-            <engine:Button text="Let&apos;s Go!" name="PlayButton" select-word-by-double-click="false" class="uofr-button uofr-button-highlight" style="flex-shrink: 1; align-self: center;" />
+    <engine:VisualElement class="uofr-screen">
+        <engine:VisualElement class="uofr-container">
+            <engine:Label text="How To Play" name="HowToPlayLabel" class="uofr-container-label" style="position: absolute;" />
+            <engine:VisualElement class="uofr-space-med" style="flex-grow: 1;" />
+            <engine:VisualElement name="TutorialVisual" style="width: 80%; padding-top: 80%; align-self: center;" />
+            <engine:VisualElement class="uofr-space-med" style="flex-grow: 1;" />
+            <engine:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." name="TutorialLabel" class="uofr-text-med" style="-unity-text-align: upper-center;" />
+            <engine:VisualElement class="uofr-space-med" style="flex-grow: 1;" />
+            <engine:Button text="Let&apos;s Go!" name="PlayButton" select-word-by-double-click="false" class="uofr-button uofr-button-highlight" style="align-self: center;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 207987996}
   - component: {fileID: 207987997}
   m_Layer: 0
-  m_Name: Puff Dodge Tutorial Video Player
+  m_Name: Tutorial Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

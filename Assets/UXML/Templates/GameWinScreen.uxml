@@ -1,17 +1,19 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement style="justify-content: center; flex-grow: 1;">
-        <engine:Label text="Final Score" class="uofr-font-fubu" style="-unity-text-align: middle-center; position: absolute; top: 0; left: 0; right: 0; font-size: 90px;" />
-        <engine:VisualElement class="uofr-vert-list uofr-container" style="margin-bottom: 100px;">
-            <engine:Label text="Points Earned" class="uofr-font-geol uofr-text-gray" style="-unity-text-align: middle-center; font-size: 30px;" />
-            <engine:Label text="+123 P" name="FinalScoreLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 50px; -unity-font-style: bold;" />
+    <engine:VisualElement class="uofr-screen">
+        <engine:Label text="Final Score" class="uofr-title-large uofr-title-header" />
+        <engine:VisualElement class="uofr-container">
+            <engine:Label text="Points Earned" class="uofr-text-med" style="color: rgb(97, 97, 97); -unity-text-align: middle-center;" />
+            <engine:Label text="+123 P" name="FinalScoreLabel" class="uofr-title-med" />
             <engine:VisualElement class="uofr-hr" />
-            <engine:Label text="Current Score" class="uofr-font-geol uofr-text-gray" style="-unity-text-align: middle-center; font-size: 30px;" />
-            <engine:Label text="456 P" name="TotalScoreLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; -unity-font-style: bold; font-size: 50px;" />
+            <engine:Label text="Current Score" class="uofr-text-med" style="-unity-text-align: middle-center; color: rgb(97, 97, 97);" />
+            <engine:Label text="456 P" name="TotalScoreLabel" class="uofr-title-med" />
         </engine:VisualElement>
-        <engine:VisualElement class="uofr-vert-list">
-            <engine:Button text="Play Again" name="PlayAgainButton" class="uofr-button uofr-vert-list-first uofr-button-highlight" />
-            <engine:Button text="Home" name="HomeButton" class="uofr-button uofr-vert-list-last" />
+        <engine:VisualElement class="uofr-space-large" />
+        <engine:VisualElement>
+            <engine:Button text="Play Again" name="PlayAgainButton" class="uofr-button uofr-button-highlight" />
+            <engine:VisualElement class="uofr-space-small" style="flex-grow: 1;" />
+            <engine:Button text="Home" name="HomeButton" class="uofr-button" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

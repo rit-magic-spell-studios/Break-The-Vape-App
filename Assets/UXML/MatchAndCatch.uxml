@@ -6,62 +6,74 @@
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <Style src="project://database/Assets/USS/MatchAndCatch.uss?fileID=7433441132597879392&amp;guid=f886bf6c8b7ff7d48b6c1fae2709657b&amp;type=3#MatchAndCatch" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="GameScreen" class="uofr-screen" style="display: flex;">
+        <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
+            <engine:Instance template="GameBar" name="TemplateContainer" />
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" class="uofr-subscreen" style="display: none;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-vert-list uofr-subscreen" style="align-items: center; display: flex; justify-content: center; margin-top: 30%;">
-                    <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-font-fubu" style="-unity-text-align: middle-center; font-size: 90px; margin-bottom: 10px;" />
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
+                <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: none; flex-grow: 1;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-screen" style="display: flex;">
+                    <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-title-header uofr-title-med" style="-unity-font-style: normal;" />
+                    <engine:VisualElement style="flex-direction: row;">
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
-                        <engine:Button name="Card" class="mandc-card">
-                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
-                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
-                        </engine:Button>
-                    </engine:VisualElement>
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
-                        <engine:Button name="Card" class="mandc-card">
-                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
-                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
-                        </engine:Button>
-                        <engine:Button name="Card" class="mandc-card">
-                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
-                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
-                        </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                     </engine:VisualElement>
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
+                    <engine:VisualElement class="uofr-space-small" />
+                    <engine:VisualElement style="flex-direction: row;">
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
                     </engine:VisualElement>
-                    <engine:VisualElement class="uofr-hori-list mandc-card-row uofr-vert-list-first">
+                    <engine:VisualElement class="uofr-space-small" />
+                    <engine:VisualElement style="flex-direction: row;">
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
                         </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
+                        <engine:Button name="Card" class="mandc-card">
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
+                        </engine:Button>
+                    </engine:VisualElement>
+                    <engine:VisualElement class="uofr-space-small" />
+                    <engine:VisualElement style="flex-direction: row;">
+                        <engine:Button name="Card" class="mandc-card">
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
+                        </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
+                        <engine:Button name="Card" class="mandc-card">
+                            <engine:VisualElement name="CardBack" class="mandc-card-back" />
+                            <engine:VisualElement name="CardFront" class="mandc-card-front" />
+                        </engine:Button>
+                        <engine:VisualElement class="uofr-space-small" />
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />
                             <engine:VisualElement name="CardFront" class="mandc-card-front" />
@@ -69,9 +81,8 @@
                     </engine:VisualElement>
                 </engine:VisualElement>
             </engine:VisualElement>
-            <engine:Instance template="GameBar" class="uofr-gamebar" />
         </engine:VisualElement>
-        <engine:Instance template="GameWinScreen" name="WinScreen" class="uofr-screen" style="display: none;" />
-        <engine:Instance template="GamePauseScreen" name="PauseScreen" class="uofr-screen" style="display: none;" />
+        <engine:Instance template="GameWinScreen" name="WinScreen" style="display: none; flex-grow: 1;" />
+        <engine:Instance template="GamePauseScreen" name="PauseScreen" style="display: none; flex-grow: 1;" />
     </engine:VisualElement>
 </engine:UXML>

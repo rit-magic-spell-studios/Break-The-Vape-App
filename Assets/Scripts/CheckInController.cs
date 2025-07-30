@@ -111,12 +111,12 @@ public class CheckInController : UIController {
         Button toggledOption = options[toggleOptionIndex];
 
         // Toggle the class on the option as well as remove/add it from the selected buttons list
-        if (toggledOption.ClassListContains("uofr-button-discreet")) {
-            toggledOption.RemoveFromClassList("uofr-button-discreet");
-            selectedButtons.Add(toggledOption);
-        } else {
-            toggledOption.AddToClassList("uofr-button-discreet");
+        if (toggledOption.ClassListContains("uofr-button-selected")) {
+            toggledOption.RemoveFromClassList("uofr-button-selected");
             selectedButtons.Remove(toggledOption);
+        } else {
+            toggledOption.AddToClassList("uofr-button-selected");
+            selectedButtons.Add(toggledOption);
         }
     }
 

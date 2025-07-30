@@ -1,80 +1,3 @@
-.uofr-button {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 50px;
-    height: 100px;
-    border-left-width: 6px;
-    border-right-width: 6px;
-    border-top-width: 6px;
-    border-bottom-width: 6px;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-left-color: rgb(79, 130, 255);
-    border-right-color: rgb(79, 130, 255);
-    border-top-color: rgb(79, 130, 255);
-    border-bottom-color: rgb(79, 130, 255);
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
-    min-height: 100px;
-    -unity-font-style: bold;
-    letter-spacing: -8px;
-    -unity-text-align: middle-center;
-    overflow: visible;
-}
-
-.uofr-button-highlight {
-    background-color: rgb(255, 223, 47);
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-}
-
-.uofr-button-square {
-    width: 100px;
-    height: 100px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    flex-grow: 0;
-    min-height: 100px;
-    min-width: 100px;
-    max-width: 100px;
-    max-height: 100px;
-}
-
-.uofr-button-discreet {
-    border-left-color: rgb(238, 238, 238);
-    border-right-color: rgb(238, 238, 238);
-    border-top-color: rgb(238, 238, 238);
-    border-bottom-color: rgb(238, 238, 238);
-    border-top-width: 3px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-left-width: 3px;
-}
-
-.uofr-button-none {
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-}
-
 .uofr-progress-bar {
     padding-left: 0;
     padding-right: 0;
@@ -328,202 +251,6 @@
     margin-left: -10px;
 }
 
-.uofr-font-geol {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
-    white-space: normal;
-}
-
-.uofr-font-fubu {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
-    letter-spacing: -8px;
-    white-space: normal;
-}
-
-.uofr-text-gray {
-    color: rgb(97, 97, 97);
-}
-
-.uofr-screen {
-    flex-grow: 1;
-    padding-top: 100px;
-    padding-right: 40px;
-    padding-bottom: 100px;
-    padding-left: 40px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    justify-content: center;
-}
-
-.uofr-subscreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    flex-grow: 1;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    justify-content: center;
-}
-
-.uofr-section-large {
-    height: 40%;
-    min-height: 40%;
-    width: 100%;
-}
-
-.uofr-section-medium {
-    height: 25%;
-    min-height: 25%;
-    width: 100%;
-}
-
-.uofr-section-small {
-    height: 10%;
-    min-height: 10%;
-    width: 100%;
-}
-
-.uofr-background {
-    flex-grow: 1;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    width: 100%;
-    max-width: 1080px;
-    align-self: center;
-}
-
-.uofr-hori-list {
-    flex-direction: row;
-    flex-grow: 0;
-    align-items: center;
-    width: 100%;
-}
-
-.uofr-hori-list-first {
-    margin-right: 10px;
-}
-
-.uofr-hori-list-middle {
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-    flex-grow: 1;
-}
-
-.uofr-hori-list-last {
-    margin-right: 0;
-    margin-left: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.uofr-vert-list {
-    flex-direction: column;
-    justify-content: center;
-}
-
-.uofr-vert-list-first {
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 10px;
-    margin-left: 0;
-}
-
-.uofr-vert-list-middle {
-    margin-top: 10px;
-    margin-right: 0;
-    margin-bottom: 10px;
-    margin-left: 0;
-}
-
-.uofr-vert-list-last {
-    margin-top: 10px;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-}
-
-.uofr-hr {
-    height: 6px;
-    max-height: 6px;
-    min-height: 6px;
-    width: 95%;
-    align-self: center;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: rgb(238, 238, 238);
-}
-
-.uofr-container {
-    border-left-color: rgb(238, 238, 238);
-    border-right-color: rgb(238, 238, 238);
-    border-top-color: rgb(238, 238, 238);
-    border-bottom-color: rgb(238, 238, 238);
-    border-top-width: 3px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-left-width: 3px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: rgb(255, 255, 255);
-}
-
-.uofr-gamebar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
 .uofr-textfield {
     margin-left: 0;
     margin-right: 0;
@@ -568,6 +295,190 @@
     -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
 }
 
+.uofr-button {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 60px;
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left-color: rgb(79, 130, 255);
+    border-right-color: rgb(79, 130, 255);
+    border-top-color: rgb(79, 130, 255);
+    border-bottom-color: rgb(79, 130, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    -unity-font-style: bold;
+    letter-spacing: -8px;
+    overflow: visible;
+    justify-content: center;
+}
+
+.uofr-button-highlight {
+    background-color: rgb(255, 223, 47);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.uofr-button-square {
+    width: 100px;
+    height: 100px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    flex-grow: 0;
+    min-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.uofr-button-discreet {
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+}
+
+.uofr-button-none {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.uofr-button-selected {
+    border-left-color: rgb(63, 121, 255);
+    border-right-color: rgb(63, 121, 255);
+    border-top-color: rgb(63, 121, 255);
+    border-bottom-color: rgb(63, 121, 255);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    background-color: rgb(221, 239, 255);
+}
+
+.uofr-screen {
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.uofr-background {
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    max-width: 1080px;
+    align-self: center;
+}
+
+.uofr-hr {
+    height: 6px;
+    max-height: 6px;
+    min-height: 6px;
+    width: 95%;
+    align-self: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(238, 238, 238);
+}
+
+.uofr-container {
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgb(255, 255, 255);
+}
+
+.uofr-container-label {
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    font-size: 60px;
+    -unity-text-align: middle-center;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: rgb(234, 240, 255);
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-left-color: rgb(207, 221, 255);
+    border-right-color: rgb(207, 221, 255);
+    border-top-color: rgb(207, 221, 255);
+    border-bottom-color: rgb(207, 221, 255);
+    position: absolute;
+    top: -60px;
+    align-self: center;
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+}
+
 .uofr-footer {
     bottom: 0;
     left: 0;
@@ -577,4 +488,112 @@
     padding-right: 40px;
     padding-bottom: 100px;
     padding-left: 40px;
+}
+
+.uofr-text-small {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    white-space: normal;
+    flex-grow: 1;
+}
+
+.uofr-text-med {
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+    font-size: 40px;
+    white-space: normal;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-grow: 1;
+    color: rgb(0, 0, 0);
+}
+
+.uofr-space-med {
+    min-height: 40px;
+    flex-grow: 0;
+    min-width: 40px;
+}
+
+.uofr-space-small {
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.uofr-space-large {
+    min-height: 80px;
+    flex-grow: 0;
+    min-width: 80px;
+}
+
+.uofr-title-med {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    font-size: 60px;
+    -unity-font-style: bold;
+    white-space: normal;
+    -unity-text-align: middle-center;
+    color: rgb(0, 0, 0);
+}
+
+.uofr-title-large {
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    font-size: 100px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+}
+
+.uofr-title-header {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    height: 15%;
+}
+
+.uofr-title-small {
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    font-size: 40px;
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }

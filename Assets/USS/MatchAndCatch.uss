@@ -1,25 +1,13 @@
-.mandc-card-row {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .mandc-card {
     border-left-width: 0;
     border-right-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
-    width: 32.5%;
-    padding-top: 32.5%;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    padding-right: 0;
-    padding-left: 0;
     background-color: rgba(0, 0, 0, 0);
     overflow: visible;
+    flex-grow: 1;
+    padding-top: 30%;
+    width: 30%;
 }
 
 .mandc-card-front {

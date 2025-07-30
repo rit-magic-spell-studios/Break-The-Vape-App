@@ -1,5 +1,8 @@
 # App Changelog
 
+## v0.4.2 - Unreleased
+* Reworked UI styles and formatting to make the look of the app cleaner and consistent
+
 ## v0.4.1 - July 28th, 2025
 * Added link from main menu to Puff Dodge
 * Added different background bubble color gradients for each minigame

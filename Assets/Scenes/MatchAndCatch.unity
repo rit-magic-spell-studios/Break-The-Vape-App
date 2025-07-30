@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 207987996}
   - component: {fileID: 207987997}
   m_Layer: 0
-  m_Name: Match And Catch Tutorial Video Player
+  m_Name: Tutorial Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6467cc422599fe94f87b3bf518445998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
   backgroundGradient:
     serializedVersion: 2
     key0: {r: 0.972549, g: 0.40392157, b: 0.11764706, a: 1}
@@ -277,6 +276,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
   tutorialText: Tap to reveal cards. See if you can find all the matching pairs!
   cardFlipTime: 0.2
   cardCheckDelay: 1
