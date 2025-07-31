@@ -234,11 +234,13 @@ MonoBehaviour:
   rigidBody2D: {fileID: 4707618920844042814}
   spriteRenderer: {fileID: 8593721952098234018}
   polygonCollider2D: {fileID: 376481928241355242}
+  puffDodgeController: {fileID: 0}
   minLaunchVelocity: 7
   maxLaunchVelocity: 11
   minLaunchAngularVelocity: 70
   maxLaunchAngularVelocity: 120
   sprites:
-  - {fileID: 21300000, guid: f0c2837c8ce73b8439d18fd70439a9de, type: 3}
-  - {fileID: 21300000, guid: 63624b4bc52d3d241ba4fe49148d1e34, type: 3}
-  - {fileID: 21300000, guid: cba6cf29d8d029442a1750dc80cad136, type: 3}
+  - {fileID: 21300000, guid: a5b3ef3f9656f414cbd9116fae1a89cb, type: 3}
+  - {fileID: 21300000, guid: 71b24251bba0e294aba0cb8877331e77, type: 3}
+  - {fileID: 21300000, guid: 2847eabed69f3fd41a3fe37f261f8c42, type: 3}
+  - {fileID: 21300000, guid: 5b45b597ca2e02342b0420008d4523b3, type: 3}

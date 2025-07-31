@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 086b1afa61e5f5740b4dccfbf7b18af9
+guid: 71b24251bba0e294aba0cb8877331e77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4414212538991370194
-    second: Lungs_Hurt_0
+      213: 7016614437478065616
+    second: PUFF DODGE_VAPE 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,12 +51,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 750
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0.1
+  spriteTessellationDetail: 0.05
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -152,144 +152,73 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lungs_Hurt_0
+      name: PUFF DODGE_VAPE 2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 1010
+        height: 1713
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -38, y: -89}
-        - {x: -10, y: -90}
-        - {x: -9, y: -85}
-        - {x: -9, y: 32}
-        - {x: 0, y: 24}
-        - {x: 8, y: 18}
-        - {x: 11, y: -33}
-        - {x: 11, y: -77}
-        - {x: 16, y: -80}
-        - {x: 26, y: -81}
-        - {x: 29, y: -88}
-        - {x: 93, y: -87}
-        - {x: 102, y: -80}
-        - {x: 112, y: -69}
-        - {x: 113, y: -56}
-        - {x: 119, y: -55}
-        - {x: 119, y: -4}
-        - {x: 113, y: -1}
-        - {x: 112, y: 26}
-        - {x: 109, y: 29}
-        - {x: 104, y: 35}
-        - {x: 94, y: 55}
-        - {x: 84, y: 63}
-        - {x: 77, y: 79}
-        - {x: 70, y: 87}
-        - {x: 54, y: 92}
-        - {x: 46, y: 101}
-        - {x: 38, y: 102}
-        - {x: 34, y: 99}
-        - {x: 22, y: 95}
-        - {x: 18, y: 112}
-        - {x: 14, y: 117}
-        - {x: 6, y: 117}
-        - {x: -13, y: 109}
-        - {x: -21, y: 81}
-        - {x: -27, y: 87}
-        - {x: -51, y: 86}
-        - {x: -62, y: 78}
-        - {x: -73.117645, y: 68.117645}
-        - {x: -74, y: 69}
-        - {x: -77, y: 68}
-        - {x: -77, y: 65}
-        - {x: -76.82353, y: 64.82353}
-        - {x: -80, y: 62}
-        - {x: -95, y: 40}
-        - {x: -102, y: 28}
-        - {x: -109, y: 10}
-        - {x: -115, y: -10}
-        - {x: -117, y: -15}
-        - {x: -117, y: -68}
-        - {x: -108, y: -85}
-        - {x: -94, y: -95}
-        - {x: -39, y: -95}
-      tessellationDetail: 0.1
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 2dfd7adaaee624d30800000000000000
-      internalID: 4414212538991370194
+      spriteID: 0d5e1cfb7a5006160800000000000000
+      internalID: 7016614437478065616
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     physicsShape:
-    - - {x: -38, y: -89}
-      - {x: -10, y: -90}
-      - {x: -9, y: -85}
-      - {x: -9, y: 32}
-      - {x: 0, y: 24}
-      - {x: 8, y: 18}
-      - {x: 11, y: -33}
-      - {x: 11, y: -77}
-      - {x: 16, y: -80}
-      - {x: 26, y: -81}
-      - {x: 29, y: -88}
-      - {x: 93, y: -87}
-      - {x: 102, y: -80}
-      - {x: 112, y: -69}
-      - {x: 113, y: -56}
-      - {x: 119, y: -55}
-      - {x: 119, y: -4}
-      - {x: 113, y: -1}
-      - {x: 112, y: 26}
-      - {x: 109, y: 29}
-      - {x: 104, y: 35}
-      - {x: 94, y: 55}
-      - {x: 84, y: 63}
-      - {x: 77, y: 79}
-      - {x: 70, y: 87}
-      - {x: 54, y: 92}
-      - {x: 46, y: 101}
-      - {x: 38, y: 102}
-      - {x: 34, y: 99}
-      - {x: 22, y: 95}
-      - {x: 18, y: 112}
-      - {x: 14, y: 117}
-      - {x: 6, y: 117}
-      - {x: -13, y: 109}
-      - {x: -21, y: 81}
-      - {x: -27, y: 87}
-      - {x: -51, y: 86}
-      - {x: -62, y: 78}
-      - {x: -73.117645, y: 68.117645}
-      - {x: -74, y: 69}
-      - {x: -77, y: 68}
-      - {x: -77, y: 65}
-      - {x: -76.82353, y: 64.82353}
-      - {x: -80, y: 62}
-      - {x: -95, y: 40}
-      - {x: -102, y: 28}
-      - {x: -109, y: 10}
-      - {x: -115, y: -10}
-      - {x: -117, y: -15}
-      - {x: -117, y: -68}
-      - {x: -108, y: -85}
-      - {x: -94, y: -95}
-      - {x: -39, y: -95}
+    - - {x: 242, y: -491}
+      - {x: 269, y: -470}
+      - {x: 282, y: -456}
+      - {x: 294, y: -429}
+      - {x: 295, y: -413}
+      - {x: 295, y: 249}
+      - {x: 291, y: 265}
+      - {x: 279, y: 292}
+      - {x: 244, y: 321}
+      - {x: 195, y: 335}
+      - {x: 194, y: 369}
+      - {x: 188, y: 444}
+      - {x: 184, y: 480}
+      - {x: 170, y: 496}
+      - {x: 159, y: 500}
+      - {x: 19, y: 500}
+      - {x: 3, y: 494}
+      - {x: -9, y: 482}
+      - {x: -15, y: 439}
+      - {x: -18, y: 385}
+      - {x: -24, y: 337}
+      - {x: -50, y: 328}
+      - {x: -110, y: 328}
+      - {x: -132, y: 327}
+      - {x: -170, y: 329}
+      - {x: -218, y: 326}
+      - {x: -242, y: 321}
+      - {x: -283, y: 285}
+      - {x: -295, y: 257}
+      - {x: -295, y: -427}
+      - {x: -281, y: -464}
+      - {x: -259, y: -482}
+      - {x: -230, y: -497}
+      - {x: -216, y: -500}
+      - {x: 218, y: -500}
     bones: []
-    spriteID: ba9e7e14183d7644bbbbe16722a216f0
-    internalID: 925038635
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lungs_Hurt_0: 4414212538991370194
+      PUFF DODGE_VAPE 2_0: 7016614437478065616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

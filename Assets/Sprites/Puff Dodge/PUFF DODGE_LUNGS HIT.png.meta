@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f0c2837c8ce73b8439d18fd70439a9de
+guid: 370d8be099010d940a176d2d4fe87938
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8349404740399266513
-    second: Item_Elfbar_0
+      213: 4264771754509019411
+    second: PUFF DODGE_LUNGS HIT_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,12 +51,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 750
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0.1
+  spriteTessellationDetail: 0.05
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Item_Elfbar_0
+      name: PUFF DODGE_LUNGS HIT_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 330
-        height: 447
+        width: 2405
+        height: 2303
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,70 +166,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f250a8a20a4f02c80800000000000000
-      internalID: -8349404740399266513
+      spriteID: 31921a3a0538f2b30800000000000000
+      internalID: 4264771754509019411
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     physicsShape:
-    - - {x: -75, y: -219.5}
-      - {x: -75, y: -217.5}
-      - {x: -74, y: -221.5}
-      - {x: -69.85185, y: -219.72223}
-      - {x: -68, y: -222.5}
-      - {x: -65, y: -221.5}
-      - {x: -65, y: -218.5}
-      - {x: -65.0923, y: -218.46924}
-      - {x: 119, y: -215.5}
-      - {x: 141, y: -202.5}
-      - {x: 151, y: -175.5}
-      - {x: 151, y: 112.5}
-      - {x: 139, y: 143.5}
-      - {x: 118, y: 156.5}
-      - {x: 113, y: 153.5}
-      - {x: 111, y: 151.5}
-      - {x: 112, y: 157.5}
-      - {x: 78, y: 162.5}
-      - {x: 24, y: 158.5}
-      - {x: 27, y: 203.5}
-      - {x: 21, y: 205.5}
-      - {x: -70, y: 205.5}
-      - {x: -71.5, y: 204}
-      - {x: -73, y: 205.5}
-      - {x: -75, y: 205.5}
-      - {x: -77, y: 203.5}
-      - {x: -77, y: 199.5}
-      - {x: -76.5, y: 199}
-      - {x: -78, y: 197.5}
-      - {x: -83, y: 155.5}
-      - {x: -87.55556, y: 154.05556}
-      - {x: -89, y: 155.5}
-      - {x: -91, y: 155.5}
-      - {x: -93, y: 153.5}
-      - {x: -93, y: 152.32927}
-      - {x: -124, y: 142.5}
-      - {x: -126, y: 136.5}
-      - {x: -123, y: 135.5}
-      - {x: -126, y: 134.5}
-      - {x: -135, y: 123.5}
-      - {x: -138, y: 102.5}
-      - {x: -135, y: 101.5}
-      - {x: -141, y: 100.5}
-      - {x: -141, y: -181.5}
-      - {x: -135, y: -198.5}
-      - {x: -120, y: -216.5}
-      - {x: -112, y: -215.5}
-      - {x: -110, y: -209.5}
-      - {x: -113, y: -208.5}
-      - {x: -119, y: -208.5}
-      - {x: -115, y: -206.5}
-      - {x: -109, y: -208.5}
-      - {x: -111, y: -213.5}
-      - {x: -102, y: -216.5}
-      - {x: -92, y: -222.5}
-      - {x: -78, y: -222.5}
+    - - {x: -226, y: -468}
+      - {x: -208, y: -479}
+      - {x: -134, y: -479}
+      - {x: -118, y: -475}
+      - {x: 123, y: -479}
+      - {x: 207, y: -479}
+      - {x: 223, y: -466}
+      - {x: 259, y: -464}
+      - {x: 272, y: -478}
+      - {x: 286, y: -479}
+      - {x: 350, y: -479}
+      - {x: 367, y: -468}
+      - {x: 377, y: -443}
+      - {x: 347, y: -417}
+      - {x: 367, y: -382}
+      - {x: 376, y: -365}
+      - {x: 401, y: -380}
+      - {x: 421, y: -387}
+      - {x: 445, y: -398}
+      - {x: 475, y: -397}
+      - {x: 499, y: -381}
+      - {x: 500, y: -377}
+      - {x: 500, y: -345}
+      - {x: 488, y: -325}
+      - {x: 465, y: -315}
+      - {x: 389, y: -252}
+      - {x: 376, y: -245}
+      - {x: 360, y: -237}
+      - {x: 388, y: -196}
+      - {x: 412, y: -147}
+      - {x: 420, y: -103}
+      - {x: 414, y: -20}
+      - {x: 399, y: 47}
+      - {x: 388, y: 96}
+      - {x: 380, y: 117}
+      - {x: 358, y: 171}
+      - {x: 346, y: 192}
+      - {x: 314, y: 249}
+      - {x: 258, y: 337}
+      - {x: 203, y: 401}
+      - {x: 171, y: 431}
+      - {x: 111, y: 445}
+      - {x: 78, y: 435}
+      - {x: 44, y: 399}
+      - {x: -11, y: 382}
+      - {x: 5, y: 457}
+      - {x: -6, y: 469}
+      - {x: -21, y: 480}
+      - {x: -26, y: 480}
+      - {x: -37, y: 443}
+      - {x: -45, y: 379}
+      - {x: -61, y: 399}
+      - {x: -74, y: 416}
+      - {x: -106, y: 439}
+      - {x: -156, y: 441}
+      - {x: -195, y: 423}
+      - {x: -265, y: 353}
+      - {x: -366, y: 187}
+      - {x: -394, y: 121}
+      - {x: -419, y: 33}
+      - {x: -432, y: -37}
+      - {x: -435, y: -108}
+      - {x: -430, y: -140}
+      - {x: -407, y: -195}
+      - {x: -389, y: -214}
+      - {x: -469, y: -239}
+      - {x: -500, y: -264}
+      - {x: -500, y: -295}
+      - {x: -499, y: -306}
+      - {x: -477, y: -323}
+      - {x: -430, y: -338}
+      - {x: -407, y: -368}
+      - {x: -376, y: -398}
+      - {x: -361, y: -429}
+      - {x: -365, y: -454}
+      - {x: -349, y: -476}
+      - {x: -335, y: -479}
+      - {x: -256, y: -479}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 1537655665
@@ -239,7 +261,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Item_Elfbar_0: -8349404740399266513
+      PUFF DODGE_LUNGS HIT_0: 4264771754509019411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

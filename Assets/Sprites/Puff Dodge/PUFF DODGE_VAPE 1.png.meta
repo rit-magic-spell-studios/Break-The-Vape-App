@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1cdfd8ce78b7fab44a3a915808397b90
+guid: a5b3ef3f9656f414cbd9116fae1a89cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2722914280875815191
-    second: Lungs_Normal_0
+      213: 1364338182924406029
+    second: PUFF DODGE_VAPE 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,12 +51,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 750
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0.1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -152,154 +152,44 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lungs_Normal_0
+      name: PUFF DODGE_VAPE 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 381
+        height: 1960
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -25, y: -108}
-        - {x: -11, y: -94}
-        - {x: -15, y: -55}
-        - {x: -10, y: -55}
-        - {x: -6, y: -54}
-        - {x: -2, y: 20}
-        - {x: 3, y: 20}
-        - {x: 7, y: 25}
-        - {x: 9, y: 27}
-        - {x: 14, y: 24}
-        - {x: 20, y: 22}
-        - {x: 12, y: -1}
-        - {x: 12, y: -69}
-        - {x: 20, y: -84}
-        - {x: 30, y: -98}
-        - {x: 51, y: -111}
-        - {x: 89, y: -111}
-        - {x: 90, y: -104}
-        - {x: 111, y: -107}
-        - {x: 124, y: -96}
-        - {x: 137, y: -78}
-        - {x: 137, y: -18}
-        - {x: 130, y: -18}
-        - {x: 130, y: 3}
-        - {x: 123, y: 9}
-        - {x: 122, y: 35}
-        - {x: 113, y: 55}
-        - {x: 99, y: 77}
-        - {x: 80, y: 93}
-        - {x: 30, y: 96}
-        - {x: 21, y: 85}
-        - {x: 19, y: 125}
-        - {x: -3, y: 125}
-        - {x: -3, y: 85}
-        - {x: -27, y: 103}
-        - {x: -51, y: 103}
-        - {x: -65, y: 96}
-        - {x: -86, y: 78}
-        - {x: -100, y: 49}
-        - {x: -108, y: 44}
-        - {x: -115, y: 28}
-        - {x: -123, y: 9}
-        - {x: -124, y: 3}
-        - {x: -124, y: -8}
-        - {x: -131, y: -23}
-        - {x: -131, y: -81}
-        - {x: -123, y: -91}
-        - {x: -110, y: -104}
-        - {x: -92, y: -111}
-        - {x: -38, y: -111}
-      - - {x: -5, y: 70}
-        - {x: -7, y: 69}
-        - {x: -6, y: 71}
-        - {x: -6, y: 73}
-        - {x: -5, y: 73}
-        - {x: -4, y: 74}
-        - {x: -3, y: 71}
-        - {x: -4, y: 69}
-      tessellationDetail: 0.1
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 711f071ac1cb9c520800000000000000
-      internalID: 2722914280875815191
+      spriteID: d0d06ba495a1fe210800000000000000
+      internalID: 1364338182924406029
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     physicsShape:
-    - - {x: -25, y: -108}
-      - {x: -11, y: -94}
-      - {x: -15, y: -55}
-      - {x: -10, y: -55}
-      - {x: -6, y: -54}
-      - {x: -2, y: 20}
-      - {x: 3, y: 20}
-      - {x: 7, y: 25}
-      - {x: 9, y: 27}
-      - {x: 14, y: 24}
-      - {x: 20, y: 22}
-      - {x: 12, y: -1}
-      - {x: 12, y: -69}
-      - {x: 20, y: -84}
-      - {x: 30, y: -98}
-      - {x: 51, y: -111}
-      - {x: 89, y: -111}
-      - {x: 90, y: -104}
-      - {x: 111, y: -107}
-      - {x: 124, y: -96}
-      - {x: 137, y: -78}
-      - {x: 137, y: -18}
-      - {x: 130, y: -18}
-      - {x: 130, y: 3}
-      - {x: 123, y: 9}
-      - {x: 122, y: 35}
-      - {x: 113, y: 55}
-      - {x: 99, y: 77}
-      - {x: 80, y: 93}
-      - {x: 30, y: 96}
-      - {x: 21, y: 85}
-      - {x: 19, y: 125}
-      - {x: -3, y: 125}
-      - {x: -3, y: 85}
-      - {x: -27, y: 103}
-      - {x: -51, y: 103}
-      - {x: -65, y: 96}
-      - {x: -86, y: 78}
-      - {x: -100, y: 49}
-      - {x: -108, y: 44}
-      - {x: -115, y: 28}
-      - {x: -123, y: 9}
-      - {x: -124, y: 3}
-      - {x: -124, y: -8}
-      - {x: -131, y: -23}
-      - {x: -131, y: -81}
-      - {x: -123, y: -91}
-      - {x: -110, y: -104}
-      - {x: -92, y: -111}
-      - {x: -38, y: -111}
-    - - {x: -5, y: 70}
-      - {x: -7, y: 69}
-      - {x: -6, y: 71}
-      - {x: -6, y: 73}
-      - {x: -5, y: 73}
-      - {x: -4, y: 74}
-      - {x: -3, y: 71}
-      - {x: -4, y: 69}
+    - - {x: 97, y: 484}
+      - {x: 94, y: 500}
+      - {x: -85, y: 500}
+      - {x: -97, y: 497}
+      - {x: -97, y: -500}
+      - {x: 97, y: -500}
     bones: []
-    spriteID: 8ed1f54a69ce4124fa3d8574400e8706
-    internalID: -1212749615
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lungs_Normal_0: 2722914280875815191
+      PUFF DODGE_VAPE 1_0: 1364338182924406029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
