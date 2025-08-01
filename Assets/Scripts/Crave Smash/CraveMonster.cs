@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,12 @@ public class CraveMonster : MonoBehaviour {
         // Deal damage to the monster
         Health -= clickDamage;
 
+        transform.DOKill(complete: true);
+        transform.DOShakePosition(0.3f, strength: 0.15f);
+        transform.DOShakeRotation(0.2f, strength: 20f);
+
+        craveSmashController.UpdateTouchInput( );
+
         // Calculate the points gained by the player clicking the monster
         // This depends on how long it has been since the last click
         int gainedPoints = baseClickPoints;
@@ -68,11 +75,15 @@ public class CraveMonster : MonoBehaviour {
         craveSmashController.GamePoints += gainedPoints;
         lastClickTime = Time.time;
 
+        craveSmashController.SpawnPointsPopup(craveSmashController.LastTouchPosition, gainedPoints);
+
         // If the monster has run out of health, then go to the end state
         if (Health <= 0) {
             // Set the monster to be invisible
             spriteRenderer.color = Color.clear;
             IsDead = true;
+
+            craveSmashController.SpawnConfettiParticles(transform.position);
 
             // Delay a bit after the health is 0 to allow the player to stop tapping the screen
             // Players were accidentally pressing buttons on the win screen so this delay should hopefully prevent that

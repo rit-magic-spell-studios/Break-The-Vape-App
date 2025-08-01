@@ -276,6 +276,9 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  mainCamera: {fileID: 2129265791}
+  confettiParticlePrefab: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+  pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
   tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
   tutorialText: Tap to reveal cards. See if you can find all the matching pairs!
   cardFlipTime: 0.2

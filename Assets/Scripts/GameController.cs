@@ -1,12 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public abstract class GameController : UIController {
     [Header("GameController")]
+    [SerializeField] private GameObject confettiParticlePrefab;
+    [SerializeField] private GameObject pointsPopupPrefab;
     [SerializeField] private RenderTexture tutorialVisual;
     [SerializeField, TextArea] private string tutorialText;
 
@@ -73,6 +75,8 @@ public abstract class GameController : UIController {
         ui.Q<Label>("TutorialLabel").text = tutorialText;
         ui.Q<Label>("TitleLabel").text = name;
 
+        ui.Q<Label>("MotivationalMessage").text = MOTIV_MESSAGES[Random.Range(0, MOTIV_MESSAGES.Length)];
+
         // Create a new game session data entry for this game
         JSONManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
         JSONManager.ActiveGameSession.Name = name;
@@ -109,5 +113,18 @@ public abstract class GameController : UIController {
     protected override void UpdateSubscreens( ) {
         SetElementVisibility(gameSubscreen, UIControllerState == UIState.GAME);
         SetElementVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);
+    }
+
+    /// <summary>
+    /// Spawn a confetti particle system at a particular position
+    /// </summary>
+    /// <param name="position">The position to spawn the confetti at</param>
+    public void SpawnConfettiParticles(Vector3 position) {
+        Instantiate(confettiParticlePrefab, position, Quaternion.identity);
+    }
+
+    public void SpawnPointsPopup (Vector3 position, int points) {
+        TextMeshPro pointsPopup = Instantiate(pointsPopupPrefab, position, Quaternion.identity).GetComponent<TextMeshPro>();
+        pointsPopup.text = $"+{points}";
     }
 }

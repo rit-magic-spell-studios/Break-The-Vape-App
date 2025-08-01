@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 public class PuffDodgeController : GameController {
     [Header("PuffDodgeController")]
     [SerializeField] private GameObject vapeItemPrefab;
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private TrailRenderer sliceTrailRenderer;
     [Space]
     [SerializeField, Range(0f, 3f)] private float itemSpawnRate;
@@ -22,9 +21,6 @@ public class PuffDodgeController : GameController {
     [SerializeField] private int _destroyedItems;
 
     private float itemSpawnTimer;
-    private Vector2 slicePosition;
-    private Vector2 lastSlicePosition;
-    private bool isSlicing;
     private int sliceFrameCounter;
 
     public List<GameObject> VapeItems { get; private set; }
@@ -47,20 +43,12 @@ public class PuffDodgeController : GameController {
     }
     private Label destroyedItemsLabel;
 
-    private float cameraHalfWidth, cameraHalfHeight;
-
     protected override void Awake( ) {
         base.Awake( );
 
         destroyedItemsLabel = ui.Q<Label>("DestroyedItemsLabel");
         VapeItems = new List<GameObject>( );
         DestroyedItems = 0;
-
-        cameraHalfHeight = Camera.main.orthographicSize;
-        cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
-
-        isSlicing = false;
-        lastSlicePosition = Vector2.positiveInfinity;
     }
 
     protected override void Update( ) {
@@ -70,24 +58,8 @@ public class PuffDodgeController : GameController {
             return;
         }
 
-        // Get inputs from either touch or mouse
-        if (Input.touchCount == 1) {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Moved) {
-                slicePosition = mainCamera.ScreenToWorldPoint(touch.position);
-                isSlicing = true;
-            }
-        } else if (Input.GetMouseButton(0)) {
-            slicePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            isSlicing = true;
-        } else {
-            isSlicing = false;
-            sliceTrailRenderer.time = 0f;
-            sliceFrameCounter = 0;
-        }
-
-        if (isSlicing) {
-            sliceTrailRenderer.transform.position = slicePosition;
+        if (IsTouching) {
+            sliceTrailRenderer.transform.position = LastTouchPosition;
             sliceFrameCounter++;
             if (sliceTrailRenderer.time == 0f && sliceFrameCounter >= sliceFrameDelay) {
                 sliceTrailRenderer.time = sliceTrailTime;
@@ -95,20 +67,20 @@ public class PuffDodgeController : GameController {
 
             // Check to see if one of the slice positions overlaps the collider for a vape item
             // For now, just destroy the vape item and increment the number of destroyed items
-            if (lastSlicePosition != slicePosition) {
-                RaycastHit2D[ ] hits = Physics2D.RaycastAll(slicePosition, Vector2.up, 0.05f, vapeItemLayer.value);
-                for (int i = 0; i < hits.Length; i++) {
-                    GameObject hitObject = hits[i].transform.gameObject;
+            RaycastHit2D[ ] hits = Physics2D.RaycastAll(LastTouchPosition, Vector2.up, 0.05f, vapeItemLayer.value);
+            for (int i = 0; i < hits.Length; i++) {
+                GameObject hitObject = hits[i].transform.gameObject;
 
-                    VapeItems.Remove(hitObject);
-                    Destroy(hitObject);
+                VapeItems.Remove(hitObject);
+                Destroy(hitObject);
 
-                    DestroyedItems++;
-                    GamePoints += 50;
-                }
+                DestroyedItems++;
+                GamePoints += 50;
             }
+        } else {
+            sliceTrailRenderer.time = 0f;
+            sliceFrameCounter = 0;
         }
-        lastSlicePosition = slicePosition;
 
         // Spawn vape items periodically
         itemSpawnTimer += Time.deltaTime;

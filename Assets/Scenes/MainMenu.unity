@@ -441,6 +441,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  mainCamera: {fileID: 144598073}
   notificationTime: 3
   playGoalSeconds: 900
 --- !u!1660057539 &9223372036854775807

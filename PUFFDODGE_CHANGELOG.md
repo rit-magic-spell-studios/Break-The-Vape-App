@@ -1,5 +1,8 @@
 # Puff Dodge Changelog
 
+## v0.1.1 - Unreleased
+* Replaced placeholder assets with new assets
+
 ## v0.1.0 - July 27th, 2025
 * Added basic version of gameplay
   * Player uses their finger to swipe across the screen and clear vape items that launch in from the sides of the screen

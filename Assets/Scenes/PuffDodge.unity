@@ -423,10 +423,12 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  mainCamera: {fileID: 2129265791}
+  confettiParticlePrefab: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
+  pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
   tutorialVisual: {fileID: 0}
   tutorialText: Protect your lungs by knocking away 25 of the harmful objects!
   vapeItemPrefab: {fileID: 2567073745258421220, guid: 1043916232ec95349af2b367043b60fc, type: 3}
-  mainCamera: {fileID: 2129265791}
   sliceTrailRenderer: {fileID: 276330533}
   itemSpawnRate: 2
   itemSpawnBurstMin: 2
@@ -593,7 +595,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.3333334, y: 1.3333334}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

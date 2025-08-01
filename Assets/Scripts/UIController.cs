@@ -18,9 +18,18 @@ public enum UIState {
 public abstract class UIController : MonoBehaviour {
     public static int LAST_SCENE = -1;
     public const float FADE_TRANSITION_SECONDS = 0.1f;
+    public static string[ ] MOTIV_MESSAGES = new string[ ] {
+        "You are doing great!",
+        "Keep it up!",
+        "You can do it!"
+    };
 
     [Header("UIController")]
     [SerializeField] private Gradient backgroundGradient;
+    [SerializeField] protected Camera mainCamera;
+
+    protected float cameraHalfWidth;
+    protected float cameraHalfHeight;
 
     private Coroutine menuTransition;
 
@@ -96,12 +105,25 @@ public abstract class UIController : MonoBehaviour {
     /// </summary>
     public bool IsTransitioningUI => (menuTransition != null);
 
+    /// <summary>
+    /// Whether or not the user is currently touching the screen
+    /// </summary>
+    public bool IsTouching { get; private set; }
+
+    /// <summary>
+    /// The last position in world space that the user touched the screen at
+    /// </summary>
+    public Vector3 LastTouchPosition { get; private set; }
+
     protected virtual void Awake( ) {
         ui = GetComponent<UIDocument>( ).rootVisualElement;
 
         // Create arrays that hold references to the screens and subscreens of each UI state
         screens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
         subscreens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
+
+        cameraHalfHeight = mainCamera.orthographicSize;
+        cameraHalfWidth = cameraHalfHeight * mainCamera.aspect;
     }
 
     protected virtual void Start( ) {
@@ -126,6 +148,24 @@ public abstract class UIController : MonoBehaviour {
 
     protected virtual void Update( ) {
         JSONManager.ActiveAppSession.PlaytimeSeconds += Time.deltaTime;
+
+        UpdateTouchInput( );
+    }
+
+    /// <summary>
+    /// Update the touch input position based on either a touchscreen or mouse input
+    /// </summary>
+    public void UpdateTouchInput() {
+        if (Input.touchCount == 1) {
+            Touch touch = Input.GetTouch(0);
+            LastTouchPosition = (Vector2) mainCamera.ScreenToWorldPoint(touch.position);
+            IsTouching = true;
+        } else if (Input.GetMouseButton(0)) {
+            LastTouchPosition = (Vector2) mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            IsTouching = true;
+        } else {
+            IsTouching = false;
+        }
     }
 
     /// <summary>

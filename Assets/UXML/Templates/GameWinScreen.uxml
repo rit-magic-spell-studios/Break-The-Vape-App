@@ -8,6 +8,8 @@
             <engine:VisualElement class="uofr-hr" />
             <engine:Label text="Current Score" class="uofr-text-med" style="-unity-text-align: middle-center; color: rgb(97, 97, 97);" />
             <engine:Label text="456 P" name="TotalScoreLabel" class="uofr-title-med" />
+            <engine:VisualElement class="uofr-space-large" />
+            <engine:Label text="Motivational Message" name="MotivationalMessage" class="uofr-text-med" style="-unity-text-align: middle-center;" />
         </engine:VisualElement>
         <engine:VisualElement class="uofr-space-large" />
         <engine:VisualElement>
