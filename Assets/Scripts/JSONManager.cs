@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//using Azure.Functions;
 
 public class JSONManager : Singleton<JSONManager> {
     [HideInInspector] public PlayerData PlayerData;
@@ -12,10 +13,10 @@ public class JSONManager : Singleton<JSONManager> {
     public static string RITchCode { get => Instance.PlayerData.RITchCode; private set => Instance.PlayerData.RITchCode = value; }
     public static List<AppSessionData> AppSessionData { get => Instance.PlayerData.AppSessionData; private set => Instance.PlayerData.AppSessionData = value; }
 
-    /// <summary>
-    /// Whether or not at least one check in session has been completed
-    /// </summary>
-    public static bool HasCompletedCheckIn => (ActiveAppSession.CheckInSessionData.Count > 0);
+	/// <summary>
+	/// Whether or not at least one check in session has been completed
+	/// </summary>
+	public static bool HasCompletedCheckIn => (ActiveAppSession.CheckInSessionData.Count > 0);
 
     /// <summary>
     /// The currently active app session (the last app session data in the session list)
@@ -80,7 +81,10 @@ public class JSONManager : Singleton<JSONManager> {
     }
 
     private void OnDisable( ) {
-        SavePlayerData( );
+        if (this == Instance)
+        {
+			SavePlayerData( );
+		}
     }
 
     /// <summary>
@@ -104,6 +108,9 @@ public class JSONManager : Singleton<JSONManager> {
 
         // Restart the play session stats (current time, total points, etc)
         AppSessionData.Add(new AppSessionData(Application.version));
+
+        // Save the player data immediately after loading
+        SavePlayerData( );
     }
 
     /// <summary>

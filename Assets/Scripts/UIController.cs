@@ -146,10 +146,11 @@ public abstract class UIController : MonoBehaviour {
         BackgroundBubbleManager.SetBackgroundBubbleGradient(backgroundGradient.colorKeys);
     }
 
-    protected virtual void Update( ) {
-        JSONManager.ActiveAppSession.PlaytimeSeconds += Time.deltaTime;
+    protected virtual void Update( )
+	{
+		JSONManager.ActiveAppSession.AddToPlaytimeSeconds(Time.deltaTime);
 
-        UpdateTouchInput( );
+		UpdateTouchInput( );
     }
 
     /// <summary>

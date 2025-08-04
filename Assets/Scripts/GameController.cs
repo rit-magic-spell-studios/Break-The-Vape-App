@@ -19,8 +19,8 @@ public abstract class GameController : UIController {
         get => JSONManager.ActiveGameSession.Points;
         set {
             // Make sure to add the points that were gained to the total app session points
-            JSONManager.ActiveAppSession.TotalPoints += value - JSONManager.ActiveGameSession.Points;
-            JSONManager.ActiveGameSession.Points = value;
+            JSONManager.ActiveAppSession.AddToTotalPoints(value - JSONManager.ActiveGameSession.Points);
+            JSONManager.ActiveGameSession.SetPoints(value);
         }
     }
 
@@ -93,7 +93,7 @@ public abstract class GameController : UIController {
     protected override void Update( ) {
         base.Update( );
 
-        JSONManager.ActiveGameSession.PlaytimeSeconds += Time.deltaTime;
+        JSONManager.ActiveGameSession.AddToPlaytimeSeconds(Time.deltaTime);
     }
 
     protected override void AddEventHandlers( ) {

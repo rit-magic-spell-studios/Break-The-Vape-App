@@ -66,7 +66,7 @@ public class CheckInController : UIController {
     protected override void Update( ) {
         base.Update( );
 
-        JSONManager.ActiveCheckInSession.PlaytimeSeconds += Time.deltaTime;
+        JSONManager.ActiveCheckInSession.AddToPlaytimeSeconds(Time.deltaTime);
     }
 
     /// <summary>

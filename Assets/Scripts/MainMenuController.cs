@@ -68,8 +68,8 @@ public class MainMenuController : UIController {
         resetSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
         ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
         ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
-            JSONManager.ActiveAppSession.TotalPoints = 0;
-            JSONManager.ActiveAppSession.PlaytimeSeconds = 0;
+            JSONManager.ActiveAppSession.SetTotalPoints(0);
+            JSONManager.ActiveAppSession.SetPlaytimeSeconds(0);
             JSONManager.Instance.SavePlayerData( );
 
             UIControllerState = UIState.MAIN;
@@ -144,7 +144,9 @@ public class MainMenuController : UIController {
         for (int i = 0; i < ritchCodeTextFields.Count; i++) {
             ritchCodeTextFields[i].value = "";
         }
-    }
+
+		ritchCodeTextFields[0].Focus( );
+	}
 
     /// <summary>
     /// Submit the currently typed RITch code and load its data
@@ -161,8 +163,7 @@ public class MainMenuController : UIController {
 
         JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
 
-        notificationTimer = 0;
-        loadSuccessfulNotification.style.visibility = Visibility.Visible;
+        UIControllerState = UIState.SPLASH;
     }
 
     /// <summary>
@@ -171,13 +172,15 @@ public class MainMenuController : UIController {
     /// <param name="e">Event information about the changed value of the text field</param>
     private void CheckTextFieldForAlphanumericValue(ChangeEvent<string> e) {
         TextField textField = (TextField) e.currentTarget;
+		int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
 
-        if (e.newValue == "") {
-            return;
+		if (e.newValue == "")
+		{
+			ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
+			return;
         }
 
         if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
-            int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
             ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
         } else {
             textField.value = "";

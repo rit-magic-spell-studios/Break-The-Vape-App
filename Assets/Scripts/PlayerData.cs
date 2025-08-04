@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 
 public delegate void ValueChangeEvent( );
 
@@ -20,98 +19,161 @@ public class AppSessionData {
     public string AppVersion;
     public string SessionID;
     public string StartTimeUTC;
-    public List<GameSessionData> GameSessionData;
+	public float PlaytimeSeconds;
+	public int TotalPoints;
+	public List<GameSessionData> GameSessionData;
     public List<CheckInSessionData> CheckInSessionData;
-
-    public int TotalPoints {
-        get => _totalPoints;
-        set {
-            _totalPoints = value;
-            OnTotalPointsChange?.Invoke( );
-        }
-    }
-    private int _totalPoints;
-
-    public float PlaytimeSeconds {
-        get => _playtimeSeconds;
-        set {
-            _playtimeSeconds = value;
-            OnPlaytimeSecondsChange?.Invoke( );
-        }
-    }
-    private float _playtimeSeconds;
 
     public ValueChangeEvent OnTotalPointsChange;
     public ValueChangeEvent OnPlaytimeSecondsChange;
 
     public AppSessionData(string appVersion) {
         AppVersion = appVersion;
-        //SessionID = GUID.Generate( ).ToString( );
-        SessionID = "NA";
+        SessionID = Guid.NewGuid( ).ToString();
         StartTimeUTC = DateTime.UtcNow.ToString("o");
-        TotalPoints = 0;
-        PlaytimeSeconds = 0;
+        SetTotalPoints(0);
+        SetPlaytimeSeconds(0);
 
         GameSessionData = new List<GameSessionData>( );
         CheckInSessionData = new List<CheckInSessionData>( );
     }
+
+    /// <summary>
+    /// Set the total points of this app session
+    /// </summary>
+    /// <param name="totalPoints">The current total points value</param>
+    public void SetTotalPoints(int totalPoints)
+    {
+		TotalPoints = totalPoints;
+		OnTotalPointsChange?.Invoke( );
+	}
+
+    /// <summary>
+    /// Add a certain number of points to the total points value
+    /// </summary>
+    /// <param name="points">The number of points to add</param>
+    public void AddToTotalPoints(int points)
+    {
+        TotalPoints += points;
+        OnTotalPointsChange?.Invoke( );
+    }
+
+    /// <summary>
+    /// Set the playtime seconds of this app session
+    /// </summary>
+    /// <param name="playtimeSeconds">The current playtime seconds value</param>
+    public void SetPlaytimeSeconds (float playtimeSeconds)
+    {
+		PlaytimeSeconds = playtimeSeconds;
+		OnPlaytimeSecondsChange?.Invoke( );
+	}
+
+    /// <summary>
+    /// Add a certain number of seconds to the total playtime seconds value
+    /// </summary>
+    /// <param name="seconds">The number of seconds to add</param>
+	public void AddToPlaytimeSeconds (float seconds)
+	{
+		PlaytimeSeconds += seconds;
+		OnPlaytimeSecondsChange?.Invoke( );
+	}
 }
 
 [Serializable]
 public class CheckInSessionData {
+    public string SessionID;
     public string StartTimeUTC;
-    public int Intensity;
-    public List<string> Triggers;
+	public float PlaytimeSeconds;
+	public int Intensity;
+	public List<string> Triggers;
 
-    public float PlaytimeSeconds {
-        get => _playtimeSeconds;
-        set {
-            _playtimeSeconds = value;
-            OnPlaytimeSecondsChange?.Invoke( );
-        }
-    }
-    private float _playtimeSeconds;
-
-    public ValueChangeEvent OnPlaytimeSecondsChange;
+	public ValueChangeEvent OnPlaytimeSecondsChange;
 
     public CheckInSessionData( ) {
-        StartTimeUTC = DateTime.UtcNow.ToString("o");
+        SessionID = Guid.NewGuid( ).ToString( );
+		StartTimeUTC = DateTime.UtcNow.ToString("o");
         Intensity = -1;
         Triggers = new List<string>( );
-        PlaytimeSeconds = 0;
+        SetPlaytimeSeconds(0);
     }
+
+	/// <summary>
+	/// Set the playtime seconds of this check in session
+	/// </summary>
+	/// <param name="playtimeSeconds">The current playtime seconds value</param>
+	public void SetPlaytimeSeconds (float playtimeSeconds)
+	{
+		PlaytimeSeconds = playtimeSeconds;
+		OnPlaytimeSecondsChange?.Invoke( );
+	}
+
+	/// <summary>
+	/// Add a certain number of seconds to the total playtime seconds value
+	/// </summary>
+	/// <param name="seconds">The number of seconds to add</param>
+	public void AddToPlaytimeSeconds (float seconds)
+	{
+		PlaytimeSeconds += seconds;
+		OnPlaytimeSecondsChange?.Invoke( );
+	}
 }
 
 [Serializable]
 public class GameSessionData {
-    public string StartTimeUTC;
+    public string SessionID;
     public string Name;
-
-    public int Points {
-        get => _points;
-        set {
-            _points = value;
-            OnPointsChange?.Invoke( );
-        }
-    }
-    private int _points;
-
-    public float PlaytimeSeconds {
-        get => _playtimeSeconds;
-        set {
-            _playtimeSeconds = value;
-            OnPlaytimeSecondsChange?.Invoke( );
-        }
-    }
-    private float _playtimeSeconds;
+	public string StartTimeUTC;
+	public float PlaytimeSeconds;
+	public int Points;
 
     public ValueChangeEvent OnPointsChange;
     public ValueChangeEvent OnPlaytimeSecondsChange;
 
     public GameSessionData( ) {
+        SessionID = Guid.NewGuid().ToString();
         StartTimeUTC = DateTime.UtcNow.ToString("o");
         Name = "";
-        Points = 0;
-        PlaytimeSeconds = 0;
-    }
+		SetPoints(0);
+        SetPlaytimeSeconds(0);
+	}
+
+	/// <summary>
+	/// Set the total points of this game session
+	/// </summary>
+	/// <param name="points">The current points value</param>
+	public void SetPoints (int points)
+	{
+		Points = points;
+		OnPointsChange?.Invoke( );
+	}
+
+	/// <summary>
+	/// Add a certain number of points to the points value
+	/// </summary>
+	/// <param name="points">The number of points to add</param>
+	public void AddToTotalPoints (int points)
+	{
+		Points += points;
+		OnPointsChange?.Invoke( );
+	}
+
+	/// <summary>
+	/// Set the playtime seconds of this game session
+	/// </summary>
+	/// <param name="playtimeSeconds">The current playtime seconds value</param>
+	public void SetPlaytimeSeconds (float playtimeSeconds)
+	{
+		PlaytimeSeconds = playtimeSeconds;
+		OnPlaytimeSecondsChange?.Invoke( );
+	}
+
+	/// <summary>
+	/// Add a certain number of seconds to the total playtime seconds value
+	/// </summary>
+	/// <param name="seconds">The number of seconds to add</param>
+	public void AddToPlaytimeSeconds (float seconds)
+	{
+		PlaytimeSeconds += seconds;
+		OnPlaytimeSecondsChange?.Invoke( );
+	}
 }

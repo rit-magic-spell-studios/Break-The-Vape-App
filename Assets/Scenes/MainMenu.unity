@@ -349,7 +349,7 @@ MonoBehaviour:
   PlayerData:
     RITchCode: 
     AppSessionData: []
-  doDataSaving: 0
+  doDataSaving: 1
 --- !u!1 &1270173472
 GameObject:
   m_ObjectHideFlags: 0
