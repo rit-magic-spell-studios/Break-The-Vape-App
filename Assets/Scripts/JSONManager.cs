@@ -1,14 +1,21 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-//using Azure.Functions;
+using RESTClient;
+using Azure.Functions;
+using System;
 
 public class JSONManager : Singleton<JSONManager> {
     [HideInInspector] public PlayerData PlayerData;
     [SerializeField] private bool doDataSaving;
+    [SerializeField] private string defaultRITchCode = "NONE00";
+
+    private string accountName = "RitchSRA";
+    private string functionCode = "";
+    private string route = "";
+
+    private AzureFunctionClient client;
+    private Action<IRestResponse<string>> action;
 
     public static string RITchCode { get => Instance.PlayerData.RITchCode; private set => Instance.PlayerData.RITchCode = value; }
     public static List<AppSessionData> AppSessionData { get => Instance.PlayerData.AppSessionData; private set => Instance.PlayerData.AppSessionData = value; }
@@ -63,10 +70,10 @@ public class JSONManager : Singleton<JSONManager> {
     private string DataPath {
         get {
             if (Directory.Exists(Application.persistentDataPath)) {
-                return Path.Combine(Application.persistentDataPath, $"{PlayerData.RITchCode}.json");
+                return Path.Combine(Application.persistentDataPath, $"{RITchCode}.json");
             }
 
-            return Path.Combine(Application.streamingAssetsPath, $"{PlayerData.RITchCode}.json");
+            return Path.Combine(Application.streamingAssetsPath, $"{RITchCode}.json");
         }
     }
 
@@ -76,22 +83,43 @@ public class JSONManager : Singleton<JSONManager> {
         // When the app starts, set default values
         PlayerData = new PlayerData( );
 
-        // Load the default RITch code at the start of the game
-        LoadNewRITchCode("NONE00");
+        // Initialize the Azure client
+		client = AzureFunctionClient.Create(accountName);
+
+		// Load the default RITch code at the start of the game
+		LoadNewRITchCode(defaultRITchCode);
     }
 
     private void OnDisable( ) {
         if (this == Instance)
         {
-			SavePlayerData( );
+			SavePlayerData(forceSaveDefaultRTIchCode: true);
 		}
     }
 
     /// <summary>
-    /// Load a new RITch code. This saves the current data and loads the new RITch code's data
+    /// Main call function that sends data to Azure
     /// </summary>
-    /// <param name="newRITchCode">The new RITch code to log into</param>
-    public void LoadNewRITchCode(string newRITchCode) {
+    /// <param name="message">The message to send to the Azure server</param>
+	public void AzureCall (string message)
+	{
+		if (message == null)
+        {
+			return;
+		}
+
+		// Create AzureFunction, RecieveGameDataFunction is the name of the function we are targeting on azure
+		AzureFunction azureFunction = new AzureFunction("RecieveGameDataFunction", client, functionCode);
+
+		// Simple Azure post request to send the data
+		StartCoroutine(azureFunction.Post(message, action, route, null));
+	}
+
+	/// <summary>
+	/// Load a new RITch code. This saves the current data and loads the new RITch code's data
+	/// </summary>
+	/// <param name="newRITchCode">The new RITch code to log into</param>
+	public void LoadNewRITchCode(string newRITchCode) {
         // Do not try to log into the same RITch code
         if (RITchCode == newRITchCode) {
             return;
@@ -116,10 +144,22 @@ public class JSONManager : Singleton<JSONManager> {
     /// <summary>
     /// Save the current player data to its RITch code file
     /// </summary>
-    public void SavePlayerData( ) {
+    public void SavePlayerData(bool forceSaveDefaultRTIchCode = false) {
         // Do not try to save to the file if there is no RITch code
         if (RITchCode == "" || !doDataSaving) {
             return;
+        }
+
+		string saveDataPath = DataPath;
+		if (RITchCode == defaultRITchCode)
+        {
+            if (forceSaveDefaultRTIchCode)
+            {
+				saveDataPath = saveDataPath.Replace($"{RITchCode}.json", $"{RITchCode}-{Guid.NewGuid( )}.json");
+			} else
+            {
+                return;
+            }
         }
 
         // Check to see if there is a file at the data path
@@ -127,17 +167,22 @@ public class JSONManager : Singleton<JSONManager> {
 
         // This should overwrite the entire file because the data should have already been loaded in when the RITch code was set
         string json = JsonUtility.ToJson(PlayerData);
-        using StreamWriter streamWriter = new StreamWriter(DataPath);
+        using StreamWriter streamWriter = new StreamWriter(saveDataPath);
         streamWriter.Write(json);
 
-        Debug.Log($"Saved data to {DataPath}: {json}");
+        Debug.Log($"Saved data to {saveDataPath}: {json}");
     }
 
     /// <summary>
     /// Load player data and overwrite the currently loaded player data
     /// </summary>
     private void LoadPlayerData( ) {
-        if (!doDataSaving) {
+        if (RITchCode == "" || RITchCode == defaultRITchCode || !doDataSaving) {
+            if (AppSessionData == null)
+            {
+                AppSessionData = new List<AppSessionData>( );
+            }
+
             return;
         }
 
