@@ -151,9 +151,9 @@ public class JSONManager : Singleton<JSONManager> {
         }
 
 		string saveDataPath = DataPath;
-		if (RITchCode == defaultRITchCode)
+        if (RITchCode == defaultRITchCode)
         {
-            if (forceSaveDefaultRTIchCode)
+            if (forceSaveDefaultRTIchCode && (AppSessionData[^1].GameSessionData.Count > 0 || AppSessionData[^1].CheckInSessionData.Count > 0))
             {
 				saveDataPath = saveDataPath.Replace($"{RITchCode}.json", $"{RITchCode}-{Guid.NewGuid( )}.json");
 			} else
