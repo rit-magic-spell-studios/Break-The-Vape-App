@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
     [Header("MainMenuController")]
-    [SerializeField, Range(0f, 5f)] private float notificationTime;
     [SerializeField, Range(600f, 1800f)] private float playGoalSeconds;
 
     private VisualElement mainScreen;

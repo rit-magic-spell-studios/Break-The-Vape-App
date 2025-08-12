@@ -266,9 +266,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1270173474}
   - component: {fileID: 1270173473}
-  - component: {fileID: 1270173475}
   m_Layer: 5
-  m_Name: Main Menu
+  m_Name: Spash Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 1e2c50a274f04214db22d691ccaf06a7, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: e64a3d741e6cd0a468ac38d745f4e7f4, type: 3}
+  sourceAsset: {fileID: 0}
   m_SortingOrder: 0
 --- !u!4 &1270173474
 Transform:
@@ -305,50 +304,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1270173475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270173472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9cfd2c9549c72442ad3509d03229905, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundGradient:
-    serializedVersion: 2
-    key0: {r: 0.972549, g: 0.40392157, b: 0.11764706, a: 1}
-    key1: {r: 1, g: 0.2509804, b: 0.2509804, a: 1}
-    key2: {r: 1, g: 0, b: 0.58431375, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 32768
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
-  mainCamera: {fileID: 144598073}
-  playGoalSeconds: 900
 --- !u!1001 &5745348023424609814
 PrefabInstance:
   m_ObjectHideFlags: 0
