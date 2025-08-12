@@ -20,8 +20,6 @@ public class MainMenuController : UIController {
     private VisualElement resetSubscreen;
 
     private List<TextField> ritchCodeTextFields;
-    private VisualElement loadSuccessfulNotification;
-    private float notificationTimer;
 
     private Label greetingLabel;
 
@@ -45,14 +43,14 @@ public class MainMenuController : UIController {
         screens[(int) UIState.RESET] = mainScreen;
         screens[(int) UIState.RITCHCODE] = ritchCodeScreen;
         screens[(int) UIState.PLAYGOAL] = playGoalScreen;
-        screens[ (int) UIState.DATA] = viewDataScreen;
+        screens[(int) UIState.DATA] = viewDataScreen;
 
         subscreens[(int) UIState.MENU] = menuSubscreen;
         subscreens[(int) UIState.RESET] = resetSubscreen;
 
         splashScreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
 
-        ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
+        //ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
         ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
@@ -68,10 +66,8 @@ public class MainMenuController : UIController {
         resetSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
         ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
         ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
-            JSONManager.ActiveAppSession.SetTotalPoints(0);
-            JSONManager.ActiveAppSession.SetPlaytimeSeconds(0);
-            JSONManager.Instance.SavePlayerData( );
-
+            DataManager.AppSessionData.TotalPointsEarnedValue = 0;
+            DataManager.AppSessionData.TotalTimeSecondsValue = 0;
             UIControllerState = UIState.MAIN;
         };
 
@@ -80,7 +76,6 @@ public class MainMenuController : UIController {
         ui.Q<Button>("RITchCodeClearButton").clicked += ClearRITchCodeTextFields;
         ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
 
-        loadSuccessfulNotification = ritchCodeScreen.Q<VisualElement>("LoadSuccessfulNotification");
         ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
         for (int i = 0; i < ritchCodeTextFields.Count; i++) {
             ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
@@ -102,39 +97,21 @@ public class MainMenuController : UIController {
             greetingLabel.text = "Good evening!";
         }
 
-        AddEventHandlers( );
-        JSONManager.InvokeAllDelegates( );
-
-        notificationTimer = notificationTime;
+        DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
+            int secondsRemaining = (int) (playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
+            string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
+            ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "Play goal complete!";
+            ui.Q<ProgressBar>("PlayGoalProgressBar").value = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds;
+        };
+        DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
+            ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned} pts";
+        };
+        DataManager.AppSessionData.InvokeAllDelegates( );
     }
 
     protected override void Start( ) {
         base.Start( );
-
         UIControllerState = (LAST_SCENE == -1 ? UIState.SPLASH : UIState.MAIN);
-    }
-
-    protected override void Update( ) {
-        base.Update( );
-
-        // Update the timer for notifications to be visible
-        notificationTimer += Time.deltaTime;
-        if (notificationTimer >= notificationTime) {
-            loadSuccessfulNotification.style.visibility = Visibility.Hidden;
-        }
-    }
-
-    protected override void AddEventHandlers( ) {
-        JSONManager.ActiveAppSession.OnPlaytimeSecondsChange += ( ) => {
-            int secondsRemaining = (int) (playGoalSeconds - JSONManager.ActiveAppSession.PlaytimeSeconds);
-            string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
-            ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "Play goal complete!";
-            ui.Q<ProgressBar>("PlayGoalProgressBar").value = JSONManager.ActiveAppSession.PlaytimeSeconds / playGoalSeconds;
-        };
-
-        JSONManager.ActiveAppSession.OnTotalPointsChange += ( ) => {
-            ui.Q<Label>("TotalScoreLabel").text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
-        };
     }
 
     /// <summary>
@@ -145,8 +122,8 @@ public class MainMenuController : UIController {
             ritchCodeTextFields[i].value = "";
         }
 
-		ritchCodeTextFields[0].Focus( );
-	}
+        ritchCodeTextFields[0].Focus( );
+    }
 
     /// <summary>
     /// Submit the currently typed RITch code and load its data
@@ -161,7 +138,7 @@ public class MainMenuController : UIController {
             return;
         }
 
-        JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
+        //JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
 
         UIControllerState = UIState.SPLASH;
     }
@@ -172,12 +149,11 @@ public class MainMenuController : UIController {
     /// <param name="e">Event information about the changed value of the text field</param>
     private void CheckTextFieldForAlphanumericValue(ChangeEvent<string> e) {
         TextField textField = (TextField) e.currentTarget;
-		int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
+        int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
 
-		if (e.newValue == "")
-		{
-			ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
-			return;
+        if (e.newValue == "") {
+            ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
+            return;
         }
 
         if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
@@ -190,5 +166,10 @@ public class MainMenuController : UIController {
     protected override void UpdateSubscreens( ) {
         SetElementVisibility(menuSubscreen, UIControllerState == UIState.MENU);
         SetElementVisibility(resetSubscreen, UIControllerState == UIState.RESET);
+    }
+
+    protected override void FadeToScene(int sceneBuildIndex) {
+        DataManager.AppSessionData.ClearAllDelegates( );
+        base.FadeToScene(sceneBuildIndex);
     }
 }

@@ -205,7 +205,7 @@ public class NotSoTastyController : GameController {
         // If the chain was long enough, destroy the fruit that were in the chain
         if (chainedFruits.Count >= minFruitChainLength) {
             // Add points for each of the chained fruits that were connected
-            GamePoints += chainedFruits.Count * 5;
+            GameSessionData.PointsEarnedValue += chainedFruits.Count * 5;
 
             // Set the display of all the fruits to be invisible
             for (int i = 0; i < chainedFruits.Count; i++) {
@@ -255,7 +255,7 @@ public class NotSoTastyController : GameController {
                             remainingSecretTilesLabel.text = $"{secretTiles.Count} secret tiles left!";
 
                             // Give the player more points for getting an entire secret tile
-                            GamePoints += 50;
+                            GameSessionData.PointsEarnedValue += 50;
                         }
 
                         break;

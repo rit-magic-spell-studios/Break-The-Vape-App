@@ -37,29 +37,11 @@ public abstract class UIController : MonoBehaviour {
     protected VisualElement[ ] screens;
     protected VisualElement[ ] subscreens;
 
-    /// <summary>
-    /// The current screen that is visible on this controller
-    /// </summary>
     public VisualElement CurrentScreen => screens[(int) UIControllerState];
-
-    /// <summary>
-    /// The current subscreen that is visible on this controller
-    /// </summary>
     public VisualElement CurrentSubscreen => subscreens[(int) UIControllerState];
-
-    /// <summary>
-    /// The last screen that was visible on this controller
-    /// </summary>
     public VisualElement LastScreen => screens[(int) LastUIControllerState];
-
-    /// <summary>
-    /// The last subscreen that was visible on this controller
-    /// </summary>
     public VisualElement LastSubscreen => subscreens[(int) LastUIControllerState];
 
-    /// <summary>
-    /// The current state of this UI controller
-    /// </summary>
     public UIState UIControllerState {
         get => _controllerState;
         set {
@@ -94,26 +76,13 @@ public abstract class UIController : MonoBehaviour {
     }
     private UIState _controllerState;
 
-    /// <summary>
-    /// The last controller state
-    /// </summary>
     public UIState LastUIControllerState { get => _lastControllerState; private set => _lastControllerState = value; }
     private UIState _lastControllerState;
 
-    /// <summary>
-    /// Whether or not the UI is currently doing a screen transition
-    /// </summary>
     public bool IsTransitioningUI => (menuTransition != null);
+    public bool IsTouchingScreen { get; private set; }
 
-    /// <summary>
-    /// Whether or not the user is currently touching the screen
-    /// </summary>
-    public bool IsTouching { get; private set; }
-
-    /// <summary>
-    /// The last position in world space that the user touched the screen at
-    /// </summary>
-    public Vector3 LastTouchPosition { get; private set; }
+    public Vector3 LastTouchWorldPosition { get; private set; }
 
     protected virtual void Awake( ) {
         ui = GetComponent<UIDocument>( ).rootVisualElement;
@@ -148,8 +117,7 @@ public abstract class UIController : MonoBehaviour {
 
     protected virtual void Update( )
 	{
-		JSONManager.ActiveAppSession.AddToPlaytimeSeconds(Time.deltaTime);
-
+        DataManager.AppSessionData.TotalTimeSecondsValue += Time.deltaTime;
 		UpdateTouchInput( );
     }
 
@@ -159,21 +127,15 @@ public abstract class UIController : MonoBehaviour {
     public void UpdateTouchInput() {
         if (Input.touchCount == 1) {
             Touch touch = Input.GetTouch(0);
-            LastTouchPosition = (Vector2) mainCamera.ScreenToWorldPoint(touch.position);
-            IsTouching = true;
+            LastTouchWorldPosition = (Vector2) mainCamera.ScreenToWorldPoint(touch.position);
+            IsTouchingScreen = true;
         } else if (Input.GetMouseButton(0)) {
-            LastTouchPosition = (Vector2) mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            IsTouching = true;
+            LastTouchWorldPosition = (Vector2) mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            IsTouchingScreen = true;
         } else {
-            IsTouching = false;
+            IsTouchingScreen = false;
         }
     }
-
-    /// <summary>
-    /// Add functions to the various event handlers within the code. These will automatically be removed when the scene changes
-    /// </summary>
-    protected virtual void AddEventHandlers( ) { }
-
 
     /// <summary>
     /// Update all of the subscreens in this controller based on the current controller state
@@ -282,7 +244,7 @@ public abstract class UIController : MonoBehaviour {
         // Wait until the UI is finished transitioning
         yield return new WaitUntil(( ) => !IsTransitioningUI);
 
-        JSONManager.ClearAllDelegates( );
+        DataManager.AppSessionData.ClearAllDelegates( );
         BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
 
         menuTransition = null;

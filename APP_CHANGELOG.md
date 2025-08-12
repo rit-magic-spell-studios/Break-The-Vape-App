@@ -3,6 +3,9 @@
 ## Unreleased
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent
 * Added motivational messages that appear on win screens of each game
+* Changed how player data is tracked throughout app usage
+  * Data now uploads to Azure on check-in and game completion
+  * Data also saves locally to the device 
 
 ## v0.4.1 - July 28th, 2025
 * Added link from main menu to Puff Dodge

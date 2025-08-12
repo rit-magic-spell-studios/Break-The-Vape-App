@@ -58,8 +58,8 @@ public class PuffDodgeController : GameController {
             return;
         }
 
-        if (IsTouching) {
-            sliceTrailRenderer.transform.position = LastTouchPosition;
+        if (IsTouchingScreen) {
+            sliceTrailRenderer.transform.position = LastTouchWorldPosition;
             sliceFrameCounter++;
             if (sliceTrailRenderer.time == 0f && sliceFrameCounter >= sliceFrameDelay) {
                 sliceTrailRenderer.time = sliceTrailTime;
@@ -67,7 +67,7 @@ public class PuffDodgeController : GameController {
 
             // Check to see if one of the slice positions overlaps the collider for a vape item
             // For now, just destroy the vape item and increment the number of destroyed items
-            RaycastHit2D[ ] hits = Physics2D.RaycastAll(LastTouchPosition, Vector2.up, 0.05f, vapeItemLayer.value);
+            RaycastHit2D[ ] hits = Physics2D.RaycastAll(LastTouchWorldPosition, Vector2.up, 0.05f, vapeItemLayer.value);
             for (int i = 0; i < hits.Length; i++) {
                 GameObject hitObject = hits[i].transform.gameObject;
 
@@ -75,7 +75,7 @@ public class PuffDodgeController : GameController {
                 Destroy(hitObject);
 
                 DestroyedItems++;
-                GamePoints += 50;
+                GameSessionData.PointsEarnedValue += 50;
             }
         } else {
             sliceTrailRenderer.time = 0f;

@@ -12,18 +12,6 @@ public abstract class GameController : UIController {
     [SerializeField] private RenderTexture tutorialVisual;
     [SerializeField, TextArea] private string tutorialText;
 
-    /// <summary>
-    /// The current game points for this game
-    /// </summary>
-    public int GamePoints {
-        get => JSONManager.ActiveGameSession.Points;
-        set {
-            // Make sure to add the points that were gained to the total app session points
-            JSONManager.ActiveAppSession.AddToTotalPoints(value - JSONManager.ActiveGameSession.Points);
-            JSONManager.ActiveGameSession.SetPoints(value);
-        }
-    }
-
     protected Label scoreLabel;
     protected Label finalScoreLabel;
     protected Label totalScoreLabel;
@@ -34,6 +22,7 @@ public abstract class GameController : UIController {
 
     protected VisualElement gameSubscreen;
     protected VisualElement tutorialSubscreen;
+    public GameSessionData GameSessionData { get; private set; }
 
     protected override void Awake( ) {
         base.Awake( );
@@ -78,35 +67,28 @@ public abstract class GameController : UIController {
         ui.Q<Label>("MotivationalMessage").text = MOTIV_MESSAGES[Random.Range(0, MOTIV_MESSAGES.Length)];
 
         // Create a new game session data entry for this game
-        JSONManager.ActiveAppSession.GameSessionData.Add(new GameSessionData( ));
-        JSONManager.ActiveGameSession.Name = name;
-        AddEventHandlers( );
-        JSONManager.InvokeAllDelegates( );
+        GameSessionData = new GameSessionData(name, DataManager.AppSessionData.RITchCode, DataManager.AppSessionData.TotalPointsEarned);
+        GameSessionData.OnPointsEarnedChange += ( ) => {
+            scoreLabel.text = $"Score: <b>{GameSessionData.PointsEarned} pts</b>";
+            finalScoreLabel.text = $"{GameSessionData.PointsEarned} pts";
+            totalScoreLabel.text = $"{GameSessionData.TotalPointsEarned} pts";
+        };
+        GameSessionData.InvokeAllDelegates( );
     }
 
     protected override void Start( ) {
         base.Start( );
-
         UIControllerState = UIState.TUTORIAL;
     }
 
     protected override void Update( ) {
         base.Update( );
-
-        JSONManager.ActiveGameSession.AddToPlaytimeSeconds(Time.deltaTime);
-    }
-
-    protected override void AddEventHandlers( ) {
-        JSONManager.ActiveGameSession.OnPointsChange += ( ) => {
-            scoreLabel.text = $"Score: <b>{JSONManager.ActiveGameSession.Points} pts</b>";
-            finalScoreLabel.text = $"{JSONManager.ActiveGameSession.Points} pts";
-            totalScoreLabel.text = $"{JSONManager.ActiveAppSession.TotalPoints} pts";
-        };
+        GameSessionData.TotalTimeSecondsValue += Time.deltaTime;
     }
 
     protected override void FadeToScene(int sceneBuildIndex) {
-        JSONManager.Instance.SavePlayerData( );
-
+        DataManager.AppSessionData.TotalPointsEarnedValue = GameSessionData.TotalPointsEarned;
+        DataManager.Instance.UploadSessionData(GameSessionData);
         base.FadeToScene(sceneBuildIndex);
     }
 
@@ -123,8 +105,13 @@ public abstract class GameController : UIController {
         Instantiate(confettiParticlePrefab, position, Quaternion.identity);
     }
 
-    public void SpawnPointsPopup (Vector3 position, int points) {
-        TextMeshPro pointsPopup = Instantiate(pointsPopupPrefab, position, Quaternion.identity).GetComponent<TextMeshPro>();
+    /// <summary>
+    /// Spawn a points popup on the screen at a specific position
+    /// </summary>
+    /// <param name="position">The position to spawn the points popup at</param>
+    /// <param name="points">The number of points to display on the popup</param>
+    public void SpawnPointsPopup(Vector3 position, int points) {
+        TextMeshPro pointsPopup = Instantiate(pointsPopupPrefab, position, Quaternion.identity).GetComponent<TextMeshPro>( );
         pointsPopup.text = $"+{points}";
     }
 }

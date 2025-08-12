@@ -23,6 +23,8 @@ public class CheckInController : UIController {
     private List<Button> cravingCauseButtons;
     private List<Button> selectedButtons;
 
+    private CheckInSessionData checkInSessionData;
+
     protected override void Awake( ) {
         base.Awake( );
 
@@ -51,22 +53,17 @@ public class CheckInController : UIController {
         }
 
         selectedButtons = new List<Button>( );
-
-        JSONManager.ActiveAppSession.CheckInSessionData.Add(new CheckInSessionData( ));
-        AddEventHandlers( );
-        JSONManager.InvokeAllDelegates( );
+        checkInSessionData = new CheckInSessionData(DataManager.AppSessionData.RITchCode);
     }
 
     protected override void Start( ) {
         base.Start( );
-
         UIControllerState = UIState.CRAVE;
     }
 
     protected override void Update( ) {
         base.Update( );
-
-        JSONManager.ActiveCheckInSession.AddToPlaytimeSeconds(Time.deltaTime);
+        checkInSessionData.TotalTimeSecondsValue += Time.deltaTime;
     }
 
     /// <summary>
@@ -77,7 +74,7 @@ public class CheckInController : UIController {
         switch (UIControllerState) {
             case UIState.CRAVE:
                 if (saveData) {
-                    JSONManager.ActiveCheckInSession.Intensity = cravingIntensitySlider.value;
+                    checkInSessionData.CravingIntensity = cravingIntensitySlider.value;
                 }
 
                 UIControllerState = UIState.CAUSE;
@@ -89,14 +86,13 @@ public class CheckInController : UIController {
                     }
 
                     for (int i = 0; i < selectedButtons.Count; i++) {
-                        JSONManager.ActiveCheckInSession.Triggers.Add(selectedButtons[i].text);
+                        checkInSessionData.CravingTriggers.Add(selectedButtons[i].text);
                     }
                 }
 
                 UIControllerState = UIState.COMPLETE;
                 break;
             case UIState.COMPLETE:
-                JSONManager.Instance.SavePlayerData( );
                 FadeToScene(0);
                 break;
         }
@@ -141,5 +137,10 @@ public class CheckInController : UIController {
                 ui.Q<VisualElement>("NextButtonIcon").style.backgroundImage = new StyleBackground(checkInCompleteIcon);
                 break;
         }
+    }
+
+    protected override void FadeToScene(int sceneBuildIndex) {
+        DataManager.Instance.UploadSessionData(checkInSessionData);
+        base.FadeToScene(sceneBuildIndex);
     }
 }

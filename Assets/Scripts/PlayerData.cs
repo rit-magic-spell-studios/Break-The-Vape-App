@@ -1,179 +1,156 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public delegate void ValueChangeEvent( );
 
 [Serializable]
-public class PlayerData {
-    public string RITchCode;
-    public List<AppSessionData> AppSessionData;
+public class UserData {
+    public string Age;
+    public string HighestEducation;
+    public string Sex;
+    public string Race;
+    public string Environment;
+    public int DaysVapedDuringPastWeek;
 
-    public PlayerData( ) {
-        RITchCode = "";
-        AppSessionData = new List<AppSessionData>( );
+    public UserData( ) {
+        Age = "NA";
+        HighestEducation = "NA";
+        Sex = "NA";
+        Race = "NA";
+        Environment = "NA";
+        DaysVapedDuringPastWeek = -1;
     }
 }
 
 [Serializable]
-public class AppSessionData {
+public class AppSessionData : SessionData {
+    public int TotalPointsEarned;
+
+    public ValueChangeEvent OnTotalPointsEarnedChange;
+
+    public int TotalPointsEarnedValue {
+        get => TotalPointsEarned;
+        set {
+            TotalPointsEarned = value;
+            OnTotalPointsEarnedChange?.Invoke( );
+        }
+    }
+
+    public AppSessionData(string ritchCode) : base(ritchCode) {
+        TotalPointsEarned = 0;
+    }
+
+    public override void ClearAllDelegates( ) {
+        base.ClearAllDelegates( );
+        OnTotalPointsEarnedChange = null;
+    }
+
+    public override void InvokeAllDelegates( ) {
+        base.InvokeAllDelegates( );
+        OnTotalPointsEarnedChange?.Invoke( );
+    }
+
+    public override string ToString( ) {
+        return "AppSession";
+    }
+}
+
+[Serializable]
+public class CheckInSessionData : SessionData {
+    public int CravingIntensity;
+    public List<string> CravingTriggers;
+
+    public CheckInSessionData(string ritchCode) : base(ritchCode) {
+        CravingIntensity = -1;
+        CravingTriggers = new List<string>( );
+    }
+
+    public override string ToString( ) {
+        return "CheckInSession";
+    }
+}
+
+[Serializable]
+public class GameSessionData : SessionData {
+    public string GameName;
+    public int PointsEarned;
+    public int TotalPointsEarned;
+    public int CravingIntensity;
+
+    private readonly int initialTotalPoints;
+
+    public ValueChangeEvent OnPointsEarnedChange;
+
+    public int PointsEarnedValue {
+        get => PointsEarned;
+        set {
+            PointsEarned = value;
+            TotalPointsEarned = initialTotalPoints + PointsEarned;
+            OnPointsEarnedChange?.Invoke( );
+        }
+    }
+
+    public GameSessionData(string gameName, string ritchCode, int initialTotalPoints) : base(ritchCode) {
+        GameName = gameName;
+        PointsEarned = 0;
+        this.initialTotalPoints = initialTotalPoints;
+        TotalPointsEarned = initialTotalPoints;
+        CravingIntensity = -1;
+    }
+
+    public override void ClearAllDelegates( ) {
+        base.ClearAllDelegates( );
+        OnPointsEarnedChange = null;
+    }
+
+    public override void InvokeAllDelegates( ) {
+        base.InvokeAllDelegates( );
+        OnPointsEarnedChange?.Invoke( );
+    }
+
+    public override string ToString( ) {
+        return "GameSession";
+    }
+}
+
+[Serializable]
+public class SessionData {
+    public UserData UserData;
+    public string RITchCode;
     public string AppVersion;
     public string SessionID;
     public string StartTimeUTC;
-	public float PlaytimeSeconds;
-	public int TotalPoints;
-	public List<GameSessionData> GameSessionData;
-    public List<CheckInSessionData> CheckInSessionData;
+    public float TotalTimeSeconds;
 
-    public ValueChangeEvent OnTotalPointsChange;
-    public ValueChangeEvent OnPlaytimeSecondsChange;
+    public ValueChangeEvent OnTotalTimeSecondsChange;
 
-    public AppSessionData(string appVersion) {
-        AppVersion = appVersion;
-        SessionID = Guid.NewGuid( ).ToString();
-        StartTimeUTC = DateTime.UtcNow.ToString("o");
-        SetTotalPoints(0);
-        SetPlaytimeSeconds(0);
-
-        GameSessionData = new List<GameSessionData>( );
-        CheckInSessionData = new List<CheckInSessionData>( );
+    public float TotalTimeSecondsValue {
+        get => TotalTimeSeconds;
+        set {
+            TotalTimeSeconds = value;
+            OnTotalTimeSecondsChange?.Invoke( );
+        }
     }
 
-    /// <summary>
-    /// Set the total points of this app session
-    /// </summary>
-    /// <param name="totalPoints">The current total points value</param>
-    public void SetTotalPoints(int totalPoints)
-    {
-		TotalPoints = totalPoints;
-		OnTotalPointsChange?.Invoke( );
-	}
-
-    /// <summary>
-    /// Add a certain number of points to the total points value
-    /// </summary>
-    /// <param name="points">The number of points to add</param>
-    public void AddToTotalPoints(int points)
-    {
-        TotalPoints += points;
-        OnTotalPointsChange?.Invoke( );
-    }
-
-    /// <summary>
-    /// Set the playtime seconds of this app session
-    /// </summary>
-    /// <param name="playtimeSeconds">The current playtime seconds value</param>
-    public void SetPlaytimeSeconds (float playtimeSeconds)
-    {
-		PlaytimeSeconds = playtimeSeconds;
-		OnPlaytimeSecondsChange?.Invoke( );
-	}
-
-    /// <summary>
-    /// Add a certain number of seconds to the total playtime seconds value
-    /// </summary>
-    /// <param name="seconds">The number of seconds to add</param>
-	public void AddToPlaytimeSeconds (float seconds)
-	{
-		PlaytimeSeconds += seconds;
-		OnPlaytimeSecondsChange?.Invoke( );
-	}
-}
-
-[Serializable]
-public class CheckInSessionData {
-    public string SessionID;
-    public string StartTimeUTC;
-	public float PlaytimeSeconds;
-	public int Intensity;
-	public List<string> Triggers;
-
-	public ValueChangeEvent OnPlaytimeSecondsChange;
-
-    public CheckInSessionData( ) {
+    public SessionData(string ritchCode) {
+        UserData = null;
+        RITchCode = ritchCode;
+        AppVersion = Application.version;
         SessionID = Guid.NewGuid( ).ToString( );
-		StartTimeUTC = DateTime.UtcNow.ToString("o");
-        Intensity = -1;
-        Triggers = new List<string>( );
-        SetPlaytimeSeconds(0);
+        StartTimeUTC = DateTime.UtcNow.ToString("o");
+        TotalTimeSeconds = 0;
     }
 
-	/// <summary>
-	/// Set the playtime seconds of this check in session
-	/// </summary>
-	/// <param name="playtimeSeconds">The current playtime seconds value</param>
-	public void SetPlaytimeSeconds (float playtimeSeconds)
-	{
-		PlaytimeSeconds = playtimeSeconds;
-		OnPlaytimeSecondsChange?.Invoke( );
-	}
+    public virtual void ClearAllDelegates( ) {
+        OnTotalTimeSecondsChange = null;
+    }
 
-	/// <summary>
-	/// Add a certain number of seconds to the total playtime seconds value
-	/// </summary>
-	/// <param name="seconds">The number of seconds to add</param>
-	public void AddToPlaytimeSeconds (float seconds)
-	{
-		PlaytimeSeconds += seconds;
-		OnPlaytimeSecondsChange?.Invoke( );
-	}
-}
+    public virtual void InvokeAllDelegates( ) {
+        OnTotalTimeSecondsChange?.Invoke( );
+    }
 
-[Serializable]
-public class GameSessionData {
-    public string SessionID;
-    public string Name;
-	public string StartTimeUTC;
-	public float PlaytimeSeconds;
-	public int Points;
-
-    public ValueChangeEvent OnPointsChange;
-    public ValueChangeEvent OnPlaytimeSecondsChange;
-
-    public GameSessionData( ) {
-        SessionID = Guid.NewGuid().ToString();
-        StartTimeUTC = DateTime.UtcNow.ToString("o");
-        Name = "";
-		SetPoints(0);
-        SetPlaytimeSeconds(0);
-	}
-
-	/// <summary>
-	/// Set the total points of this game session
-	/// </summary>
-	/// <param name="points">The current points value</param>
-	public void SetPoints (int points)
-	{
-		Points = points;
-		OnPointsChange?.Invoke( );
-	}
-
-	/// <summary>
-	/// Add a certain number of points to the points value
-	/// </summary>
-	/// <param name="points">The number of points to add</param>
-	public void AddToTotalPoints (int points)
-	{
-		Points += points;
-		OnPointsChange?.Invoke( );
-	}
-
-	/// <summary>
-	/// Set the playtime seconds of this game session
-	/// </summary>
-	/// <param name="playtimeSeconds">The current playtime seconds value</param>
-	public void SetPlaytimeSeconds (float playtimeSeconds)
-	{
-		PlaytimeSeconds = playtimeSeconds;
-		OnPlaytimeSecondsChange?.Invoke( );
-	}
-
-	/// <summary>
-	/// Add a certain number of seconds to the total playtime seconds value
-	/// </summary>
-	/// <param name="seconds">The number of seconds to add</param>
-	public void AddToPlaytimeSeconds (float seconds)
-	{
-		PlaytimeSeconds += seconds;
-		OnPlaytimeSecondsChange?.Invoke( );
-	}
+    public override string ToString( ) {
+        return "Session";
+    }
 }
