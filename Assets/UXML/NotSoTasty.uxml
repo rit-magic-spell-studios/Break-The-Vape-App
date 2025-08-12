@@ -10,8 +10,8 @@
             <engine:Instance template="GameBar" />
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: none; flex-grow: 1;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-screen" style="display: flex;">
-                    <engine:Label text="6 secret tiles left!" name="SecretLabel" class="uofr-title-med uofr-title-header" style="-unity-font-style: normal;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-padding" style="display: flex;">
+                    <engine:Label text="6 secret tiles left!" name="SecretLabel" class="uofr-title-medium uofr-title-header" style="-unity-font-style: normal;" />
                     <engine:VisualElement style="overflow: hidden;">
                         <engine:VisualElement style="flex-direction: row;">
                             <engine:VisualElement name="Tile" class="nst-tile">

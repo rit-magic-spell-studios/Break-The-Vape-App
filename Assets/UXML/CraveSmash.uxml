@@ -9,7 +9,7 @@
         <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
             <engine:Instance template="GameTitleBar" />
             <engine:VisualElement style="flex-grow: 1;">
-                <engine:VisualElement name="GameSubscreen" class="uofr-screen" style="display: none;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-padding" style="display: none;" />
                 <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: flex; flex-grow: 1;" />
             </engine:VisualElement>
         </engine:VisualElement>

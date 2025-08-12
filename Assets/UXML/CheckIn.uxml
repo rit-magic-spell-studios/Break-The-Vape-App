@@ -1,13 +1,13 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="CheckInScreen" class="uofr-screen" style="display: flex; opacity: 1; justify-content: flex-end;">
+        <engine:VisualElement name="CheckInScreen" class="uofr-padding" style="display: flex; opacity: 1; justify-content: flex-end;">
             <engine:VisualElement class="uofr-container" style="min-height: 50%; justify-content: space-between;">
                 <engine:VisualElement>
-                    <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-med" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
+                    <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
                     <engine:Label name="CheckInSubtitle" text="Subtitle text" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
                 </engine:VisualElement>
-                <engine:VisualElement class="uofr-space-med" />
+                <engine:VisualElement class="uofr-space-medium" />
                 <engine:VisualElement name="CravingCauseContainer" style="flex-direction: row; display: flex;">
                     <engine:VisualElement style="width: 50%;">
                         <engine:Button text="Stress" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
@@ -37,7 +37,7 @@
                         <engine:Label text="5" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
                     </engine:VisualElement>
                 </engine:VisualElement>
-                <engine:VisualElement class="uofr-space-med" />
+                <engine:VisualElement class="uofr-space-medium" />
                 <engine:VisualElement style="justify-content: space-between; flex-direction: row;">
                     <engine:Button text="Skip" name="SkipButton" class="uofr-button uofr-button-none" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&amp;guid=1580f011331101848ad6e3f659545f69&amp;type=2#Geologica-Light SDF&quot;); font-size: 40px; -unity-font-style: normal;" />
                     <engine:Button name="NextButton" class="uofr-button uofr-button-square">

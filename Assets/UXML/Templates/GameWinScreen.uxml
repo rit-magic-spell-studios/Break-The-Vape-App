@@ -1,15 +1,15 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement class="uofr-screen">
+    <engine:VisualElement class="uofr-padding">
         <engine:Label text="Final Score" class="uofr-title-large uofr-title-header" />
         <engine:VisualElement class="uofr-container">
-            <engine:Label text="Points Earned" class="uofr-text-med" style="color: rgb(97, 97, 97); -unity-text-align: middle-center;" />
-            <engine:Label text="+123 P" name="FinalScoreLabel" class="uofr-title-med" />
+            <engine:Label text="Points Earned" class="uofr-text-medium" style="color: rgb(97, 97, 97); -unity-text-align: middle-center;" />
+            <engine:Label text="+123 P" name="FinalScoreLabel" class="uofr-title-medium" />
             <engine:VisualElement class="uofr-hr" />
-            <engine:Label text="Current Score" class="uofr-text-med" style="-unity-text-align: middle-center; color: rgb(97, 97, 97);" />
-            <engine:Label text="456 P" name="TotalScoreLabel" class="uofr-title-med" />
+            <engine:Label text="Current Score" class="uofr-text-medium" style="-unity-text-align: middle-center; color: rgb(97, 97, 97);" />
+            <engine:Label text="456 P" name="TotalScoreLabel" class="uofr-title-medium" />
             <engine:VisualElement class="uofr-space-large" />
-            <engine:Label text="Motivational Message" name="MotivationalMessage" class="uofr-text-med" style="-unity-text-align: middle-center;" />
+            <engine:Label text="Motivational Message" name="MotivationalMessage" class="uofr-text-medium" style="-unity-text-align: middle-center;" />
         </engine:VisualElement>
         <engine:VisualElement class="uofr-space-large" />
         <engine:VisualElement>

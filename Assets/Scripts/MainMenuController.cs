@@ -10,15 +10,7 @@ public class MainMenuController : UIController {
     [SerializeField, Range(600f, 1800f)] private float playGoalSeconds;
 
     private VisualElement mainScreen;
-    private VisualElement ritchCodeScreen;
-    private VisualElement splashScreen;
     private VisualElement playGoalScreen;
-    private VisualElement viewDataScreen;
-
-    private VisualElement menuSubscreen;
-    private VisualElement resetSubscreen;
-
-    private List<TextField> ritchCodeTextFields;
 
     private Label greetingLabel;
 
@@ -27,29 +19,14 @@ public class MainMenuController : UIController {
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
-        ritchCodeScreen = ui.Q<VisualElement>("RITchCodeScreen");
-        splashScreen = ui.Q<VisualElement>("SplashScreen");
         playGoalScreen = ui.Q<VisualElement>("PlayGoalScreen");
-        viewDataScreen = ui.Q<VisualElement>("ViewDataScreen");
-
-        menuSubscreen = ui.Q<VisualElement>("MenuSubscreen");
-        resetSubscreen = ui.Q<VisualElement>("ResetSubscreen");
 
         // Set the states of the screens and subscreens based on what game controller state is active
-        screens[(int) UIState.SPLASH] = splashScreen;
         screens[(int) UIState.MAIN] = mainScreen;
-        screens[(int) UIState.MENU] = mainScreen;
-        screens[(int) UIState.RESET] = mainScreen;
-        screens[(int) UIState.RITCHCODE] = ritchCodeScreen;
         screens[(int) UIState.PLAYGOAL] = playGoalScreen;
-        screens[(int) UIState.DATA] = viewDataScreen;
 
-        subscreens[(int) UIState.MENU] = menuSubscreen;
-        subscreens[(int) UIState.RESET] = resetSubscreen;
+        popupOverlay.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
 
-        splashScreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
-
-        //ui.Q<VisualElement>("CheckInCheckmark").style.display = (JSONManager.HasCompletedCheckIn ? DisplayStyle.Flex : DisplayStyle.None);
         ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
@@ -58,33 +35,30 @@ public class MainMenuController : UIController {
         ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { FadeToScene(4); };
         ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { FadeToScene(5); };
 
-        ui.Q<Button>("MenuButton").clicked += ( ) => { UIControllerState = UIState.MENU; };
-        menuSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
+        //ui.Q<Button>("MenuButton").clicked += ( ) => { UIControllerState = UIState.MENU; };
+        //menuSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
 
-        ui.Q<Button>("ResetButton").clicked += ( ) => { UIControllerState = UIState.RESET; };
-        resetSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
-        ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
-        ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
-            DataManager.AppSessionData.TotalPointsEarnedValue = 0;
-            DataManager.AppSessionData.TotalTimeSecondsValue = 0;
-            UIControllerState = UIState.MAIN;
-        };
+        //ui.Q<Button>("ResetButton").clicked += ( ) => { UIControllerState = UIState.RESET; };
+        //resetSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
+        //ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
+        //ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
+        //    DataManager.AppSessionData.TotalPointsEarnedValue = 0;
+        //    DataManager.AppSessionData.TotalTimeSecondsValue = 0;
+        //    UIControllerState = UIState.MAIN;
+        //};
 
-        ui.Q<Button>("RITchCodeButton").clicked += ( ) => { UIControllerState = UIState.RITCHCODE; };
-        ui.Q<Button>("RITchCodeBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
-        ui.Q<Button>("RITchCodeClearButton").clicked += ClearRITchCodeTextFields;
-        ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
+        //ui.Q<Button>("RITchCodeButton").clicked += ( ) => { UIControllerState = UIState.RITCHCODE; };
+        //ui.Q<Button>("RITchCodeBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
+        //ui.Q<Button>("RITchCodeClearButton").clicked += ClearRITchCodeTextFields;
+        //ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
 
-        ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
-        for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-            ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
-        }
+        //ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
+        //for (int i = 0; i < ritchCodeTextFields.Count; i++) {
+        //    ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
+        //}
 
         ui.Q<Button>("PlayGoalButton").clicked += ( ) => { UIControllerState = UIState.PLAYGOAL; };
         ui.Q<Button>("PlayGoalBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
-
-        ui.Q<Button>("ViewDataButton").clicked += ( ) => { UIControllerState = UIState.DATA; };
-        ui.Q<Button>("ViewDataBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
 
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
@@ -110,62 +84,62 @@ public class MainMenuController : UIController {
 
     protected override void Start( ) {
         base.Start( );
-        UIControllerState = (LAST_SCENE == -1 ? UIState.SPLASH : UIState.MAIN);
+        UIControllerState = UIState.MAIN;
     }
 
     /// <summary>
     /// Clear all of the RITch code text fields
     /// </summary>
-    private void ClearRITchCodeTextFields( ) {
-        for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-            ritchCodeTextFields[i].value = "";
-        }
+    //private void ClearRITchCodeTextFields( ) {
+    //    for (int i = 0; i < ritchCodeTextFields.Count; i++) {
+    //        ritchCodeTextFields[i].value = "";
+    //    }
 
-        ritchCodeTextFields[0].Focus( );
-    }
+    //    ritchCodeTextFields[0].Focus( );
+    //}
 
     /// <summary>
     /// Submit the currently typed RITch code and load its data
     /// </summary>
-    private void SubmitRITchCode( ) {
-        string newRITchCode = "";
-        for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-            newRITchCode += ritchCodeTextFields[i].value;
-        }
+    //private void SubmitRITchCode( ) {
+    //    string newRITchCode = "";
+    //    for (int i = 0; i < ritchCodeTextFields.Count; i++) {
+    //        newRITchCode += ritchCodeTextFields[i].value;
+    //    }
 
-        if (newRITchCode.Length != 6) {
-            return;
-        }
+    //    if (newRITchCode.Length != 6) {
+    //        return;
+    //    }
 
-        //JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
+    //    //JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
 
-        UIControllerState = UIState.SPLASH;
-    }
+    //    UIControllerState = UIState.SPLASH;
+    //}
 
     /// <summary>
     /// Check a text field to ensure it has an alphanumeric value. If not, then clear its value. If yes, then move focus the new RITch code text field
     /// </summary>
     /// <param name="e">Event information about the changed value of the text field</param>
-    private void CheckTextFieldForAlphanumericValue(ChangeEvent<string> e) {
-        TextField textField = (TextField) e.currentTarget;
-        int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
+    //private void CheckTextFieldForAlphanumericValue(ChangeEvent<string> e) {
+    //    TextField textField = (TextField) e.currentTarget;
+    //    int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
 
-        if (e.newValue == "") {
-            ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
-            return;
-        }
+    //    if (e.newValue == "") {
+    //        ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
+    //        return;
+    //    }
 
-        if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
-            ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
-        } else {
-            textField.value = "";
-        }
-    }
+    //    if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
+    //        ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
+    //    } else {
+    //        textField.value = "";
+    //    }
+    //}
 
-    protected override void UpdateSubscreens( ) {
-        SetElementVisibility(menuSubscreen, UIControllerState == UIState.MENU);
-        SetElementVisibility(resetSubscreen, UIControllerState == UIState.RESET);
-    }
+    //protected override void UpdateSubscreens( ) {
+    //    SetElementVisibility(menuSubscreen, UIControllerState == UIState.MENU);
+    //    SetElementVisibility(resetSubscreen, UIControllerState == UIState.RESET);
+    //}
 
     protected override void FadeToScene(int sceneBuildIndex) {
         DataManager.AppSessionData.ClearAllDelegates( );

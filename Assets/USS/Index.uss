@@ -382,7 +382,7 @@
     background-color: rgb(221, 239, 255);
 }
 
-.uofr-screen {
+.uofr-padding {
     flex-grow: 1;
     margin-left: 0;
     margin-right: 0;
@@ -393,6 +393,24 @@
     padding-right: 40px;
     padding-top: 40px;
     padding-bottom: 40px;
+}
+
+.uofr-padding-overlay {
+    flex-grow: 1;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .uofr-background {
@@ -479,17 +497,6 @@
     color: rgb(0, 0, 0);
 }
 
-.uofr-footer {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    padding-top: 40px;
-    padding-right: 40px;
-    padding-bottom: 100px;
-    padding-left: 40px;
-}
-
 .uofr-text-small {
     margin-left: 0;
     margin-right: 0;
@@ -500,13 +507,13 @@
     padding-top: 0;
     padding-bottom: 0;
     -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
-    font-size: 20px;
+    font-size: 30px;
     color: rgb(0, 0, 0);
     white-space: normal;
     flex-grow: 1;
 }
 
-.uofr-text-med {
+.uofr-text-medium {
     -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
     font-size: 40px;
     white-space: normal;
@@ -522,7 +529,7 @@
     color: rgb(0, 0, 0);
 }
 
-.uofr-space-med {
+.uofr-space-medium {
     min-height: 40px;
     flex-grow: 0;
     min-width: 40px;
@@ -539,7 +546,7 @@
     min-width: 80px;
 }
 
-.uofr-title-med {
+.uofr-title-medium {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;

@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 /// </summary>
 public enum UIState {
     NULL,
-    MAIN, MENU, RESET, RITCHCODE, SPLASH, PLAYGOAL, DATA,
+    MAIN, PLAYGOAL,
     TUTORIAL, GAME, PAUSE, WIN,
     CRAVE, CAUSE, COMPLETE
 }
@@ -31,11 +31,15 @@ public abstract class UIController : MonoBehaviour {
     protected float cameraHalfWidth;
     protected float cameraHalfHeight;
 
-    private Coroutine menuTransition;
-
     protected VisualElement ui;
     protected VisualElement[ ] screens;
     protected VisualElement[ ] subscreens;
+
+    protected VisualElement popupOverlay;
+    protected VisualElement currentPopup;
+
+    protected VisualElement transitionOverlay;
+    private Coroutine menuTransition;
 
     public VisualElement CurrentScreen => screens[(int) UIControllerState];
     public VisualElement CurrentSubscreen => subscreens[(int) UIControllerState];
@@ -91,6 +95,9 @@ public abstract class UIController : MonoBehaviour {
         screens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
         subscreens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
 
+        popupOverlay = ui.Q<VisualElement>("PopupOverlay");
+        transitionOverlay = ui.Q<VisualElement>("TransitionOverlay");
+
         cameraHalfHeight = mainCamera.orthographicSize;
         cameraHalfWidth = cameraHalfHeight * mainCamera.aspect;
     }
@@ -115,16 +122,15 @@ public abstract class UIController : MonoBehaviour {
         BackgroundBubbleManager.SetBackgroundBubbleGradient(backgroundGradient.colorKeys);
     }
 
-    protected virtual void Update( )
-	{
+    protected virtual void Update( ) {
         DataManager.AppSessionData.TotalTimeSecondsValue += Time.deltaTime;
-		UpdateTouchInput( );
+        UpdateTouchInput( );
     }
 
     /// <summary>
     /// Update the touch input position based on either a touchscreen or mouse input
     /// </summary>
-    public void UpdateTouchInput() {
+    public void UpdateTouchInput( ) {
         if (Input.touchCount == 1) {
             Touch touch = Input.GetTouch(0);
             LastTouchWorldPosition = (Vector2) mainCamera.ScreenToWorldPoint(touch.position);

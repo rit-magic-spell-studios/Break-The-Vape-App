@@ -10,8 +10,8 @@
             <engine:Instance template="GameBar" name="TemplateContainer" />
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: none; flex-grow: 1;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-screen" style="display: flex;">
-                    <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-title-header uofr-title-med" style="-unity-font-style: normal;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-padding" style="display: flex;">
+                    <engine:Label text="6 matches left!" name="MatchesLabel" class="uofr-title-header uofr-title-medium" style="-unity-font-style: normal;" />
                     <engine:VisualElement style="flex-direction: row;">
                         <engine:Button name="Card" class="mandc-card">
                             <engine:VisualElement name="CardBack" class="mandc-card-back" />

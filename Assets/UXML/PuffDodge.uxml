@@ -10,8 +10,8 @@
             <engine:Instance template="GameBar" />
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: none;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-screen" style="display: flex;">
-                    <engine:Label text="0/20 items hit!" name="DestroyedItemsLabel" class="uofr-title-med uofr-title-header" style="-unity-font-style: normal;" />
+                <engine:VisualElement name="GameSubscreen" class="uofr-padding" style="display: flex;">
+                    <engine:Label text="0/20 items hit!" name="DestroyedItemsLabel" class="uofr-title-medium uofr-title-header" style="-unity-font-style: normal;" />
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
