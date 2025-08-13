@@ -31,7 +31,6 @@ public class MainMenuController : UIController {
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
-        ui.Q<Button>("CheckInButton").clicked += ( ) => { FadeToScene(3); };
         ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { FadeToScene(4); };
         ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { FadeToScene(5); };
 
@@ -73,8 +72,8 @@ public class MainMenuController : UIController {
         DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
             int secondsRemaining = (int) (playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
             string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
-            ui.Q<Label>("PlayGoalLabel").text = (secondsRemaining > 0) ? $"{timerString} to your play goal!" : "Play goal complete!";
-            ui.Q<ProgressBar>("PlayGoalProgressBar").value = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds;
+            ui.Q<Label>("RadialProgressBarLabel").text = timerString;
+            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
             ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned} pts";

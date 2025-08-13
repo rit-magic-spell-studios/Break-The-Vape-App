@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="AppStats" src="project://database/Assets/UXML/Templates/AppStats.uxml?fileID=9197481963319205126&amp;guid=caad3bf1ebe1538408ef86943b012b4b&amp;type=3#AppStats" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <Style src="project://database/Assets/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=a4a55c9a32a60214fa99f4361b929f4c&amp;type=3#MainMenu" />
     <ui:VisualElement class="uofr-background">
         <ui:VisualElement name="MainScreen" style="display: flex; flex-grow: 1;">
             <ui:VisualElement class="uofr-container" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
@@ -11,6 +11,7 @@
                     </ui:Button>
                 </ui:VisualElement>
                 <ui:VisualElement class="uofr-hr" />
+                <ui:Instance template="AppStats" />
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding">
                 <ui:VisualElement class="uofr-container" style="flex-grow: 1;">

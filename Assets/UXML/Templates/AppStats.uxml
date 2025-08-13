@@ -1,0 +1,23 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="RadialProgressBar" src="project://database/Assets/UXML/Templates/RadialProgressBar.uxml?fileID=9197481963319205126&amp;guid=969f1e51e75b06d4c9b179cb89859270&amp;type=3#RadialProgressBar" />
+    <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <engine:VisualElement style="flex-direction: row;">
+        <engine:Button name="PlayGoalButton" class="uofr-button uofr-button-none" style="width: 50%; flex-shrink: 1;">
+            <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <engine:Label text="Play Goal" class="uofr-title-small" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Information.png?fileID=21300000&amp;guid=edad71fdeee63134495f4821d2ea841c&amp;type=3#Information&quot;); -unity-background-scale-mode: scale-to-fit; width: 50px;" />
+            </engine:VisualElement>
+            <engine:VisualElement class="uofr-space-small" />
+            <engine:Instance template="RadialProgressBar" />
+        </engine:Button>
+        <engine:VisualElement class="uofr-vr" style="flex-grow: 1; align-self: center;" />
+        <engine:Button name="LeaderboardButton" class="uofr-button uofr-button-none" style="width: 50%; flex-shrink: 1;">
+            <engine:VisualElement style="flex-direction: row;">
+                <engine:Label text="Points" class="uofr-title-small" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Trophy.png?fileID=21300000&amp;guid=621d34a019854b946b2f291b078451bb&amp;type=3#Trophy&quot;); width: 50px; -unity-background-scale-mode: scale-to-fit;" />
+            </engine:VisualElement>
+            <engine:VisualElement class="uofr-space-small" />
+            <engine:Label text="5,000 pts" name="TotalScoreLabel" class="uofr-title-medium" style="flex-grow: 1;" />
+        </engine:Button>
+    </engine:VisualElement>
+</engine:UXML>

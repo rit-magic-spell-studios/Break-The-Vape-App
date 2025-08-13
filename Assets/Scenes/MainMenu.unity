@@ -319,9 +319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundGradient:
     serializedVersion: 2
-    key0: {r: 0.972549, g: 0.40392157, b: 0.11764706, a: 1}
-    key1: {r: 1, g: 0.2509804, b: 0.2509804, a: 1}
-    key2: {r: 1, g: 0, b: 0.58431375, a: 0}
+    key0: {r: 1, g: 0.2509804, b: 0.6117647, a: 1}
+    key1: {r: 1, g: 0.8509804, b: 0.2509804, a: 1}
+    key2: {r: 0.2509804, g: 0.2627451, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}

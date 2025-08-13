@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <RadialProgress name="RadialProgressBar" background-color="#EEEEEEFF" fill-color="#4F82FFFF" class="uofr-radial-progress-bar">
+        <engine:Label text="15:00" name="RadialProgressBarLabel" class="uofr-title-medium" />
+    </RadialProgress>
+</engine:UXML>
