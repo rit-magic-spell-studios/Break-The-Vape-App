@@ -21,6 +21,3 @@
 	* Secret tiles are slowly uncovered in the background of the game as you matches are made
 		* Each fully revealed secret tile gives the player 50 points
 	* Fully reveal all of the secret tiles to win
-
-
-308 45 184 377

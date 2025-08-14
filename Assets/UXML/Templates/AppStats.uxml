@@ -2,7 +2,7 @@
     <engine:Template name="RadialProgressBar" src="project://database/Assets/UXML/Templates/RadialProgressBar.uxml?fileID=9197481963319205126&amp;guid=969f1e51e75b06d4c9b179cb89859270&amp;type=3#RadialProgressBar" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement style="flex-direction: row;">
-        <engine:Button name="PlayGoalButton" class="uofr-button uofr-button-none" style="width: 50%; flex-shrink: 1;">
+        <engine:Button name="PlayGoalInfoButton" class="uofr-button uofr-button-none" style="width: 50%; flex-shrink: 1;">
             <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
                 <engine:Label text="Play Goal" class="uofr-title-small" style="flex-grow: 1; -unity-text-align: middle-left;" />
                 <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Information.png?fileID=21300000&amp;guid=edad71fdeee63134495f4821d2ea841c&amp;type=3#Information&quot;); -unity-background-scale-mode: scale-to-fit; width: 50px;" />

@@ -37,26 +37,6 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="PlayGoalScreen" style="display: none; flex-grow: 1;">
-            <ui:VisualElement class="uofr-container" style="flex-direction: row; border-top-left-radius: 0; border-top-right-radius: 0; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
-                <ui:Button name="PlayGoalBackButton" class="uofr-button uofr-button-square">
-                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=2800000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); flex-grow: 1;" />
-                </ui:Button>
-                <ui:Label text="Play Goal" class="uofr-title-medium" style="flex-grow: 1;" />
-                <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
-            </ui:VisualElement>
-            <ui:VisualElement class="uofr-padding">
-                <ui:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); height: 50%; -unity-background-scale-mode: scale-and-crop; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:VisualElement class="uofr-container">
-                    <ui:Label text="15 minutes of distraction" class="uofr-text-medium" style="-unity-font-style: bold;" />
-                    <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Research shows that 15 to 20 minutes of relaxation and distraction can help the brain lose craving sensations." class="uofr-text-medium" />
-                    <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Give it a try by distracting yourself with some of these games!" class="uofr-text-medium" />
-                </ui:VisualElement>
-            </ui:VisualElement>
-        </ui:VisualElement>
         <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
             <ui:VisualElement name="LogOutPopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Are you sure?" class="uofr-title-medium" />
@@ -107,6 +87,17 @@
                 <ui:Button text="Restart" name="RestartSessionButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button text="Finish" name="FinishSessionButton" class="uofr-button " />
+            </ui:VisualElement>
+            <ui:VisualElement name="PlayGoalInfoPopup" class="uofr-container " style="display: none; min-height: 65%;">
+                <ui:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); -unity-background-scale-mode: scale-and-crop; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; flex-grow: 1;" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="15 minutes of distraction" class="uofr-text-medium" style="-unity-font-style: bold; flex-grow: 0;" />
+                <ui:VisualElement class="uofr-space-small" />
+                <ui:Label text="Research shows that 15 to 20 minutes of relaxation and distraction can help the brain lose craving sensations." class="uofr-text-medium" style="flex-grow: 0;" />
+                <ui:VisualElement class="uofr-space-small" />
+                <ui:Label text="Give it a try by distracting yourself with some of these games!" class="uofr-text-medium" style="flex-grow: 0;" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Button text="Close" name="PlayGoalInfoCloseButton" class="uofr-button " />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="flex-grow: 1; background-color: rgb(255, 255, 255); display: none;" />

@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9eb5f9110218e4a9246f270cc0d939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveDataLocally: 1
+  saveDataLocally: 0
   sendAzureData: 0
   defaultRITchCode: NONE00

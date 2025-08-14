@@ -7,25 +7,21 @@ using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
     [Header("MainMenuController")]
-    [SerializeField, Range(600f, 1800f)] private float playGoalSeconds;
+    [SerializeField, Min(0f)] private float playGoalSeconds;
 
     private VisualElement mainScreen;
-    private VisualElement playGoalScreen;
 
     private Label greetingLabel;
+    private bool isPlayGoalComplete;
 
     protected override void Awake( ) {
         base.Awake( );
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
-        playGoalScreen = ui.Q<VisualElement>("PlayGoalScreen");
 
         // Set the states of the screens and subscreens based on what game controller state is active
         screens[(int) UIState.MAIN] = mainScreen;
-        screens[(int) UIState.PLAYGOAL] = playGoalScreen;
-
-        popupOverlay.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
 
         ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
 
@@ -56,8 +52,26 @@ public class MainMenuController : UIController {
         //    ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
         //}
 
-        ui.Q<Button>("PlayGoalButton").clicked += ( ) => { UIControllerState = UIState.PLAYGOAL; };
-        ui.Q<Button>("PlayGoalBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
+        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalInfoPopup"));
+        ui.Q<Button>("PlayGoalInfoCloseButton").clicked += ( ) => HideCurrentPopup( );
+        isPlayGoalComplete = false;
+
+        popupOverlay.RegisterCallback<MouseDownEvent>((e) => { HideCurrentPopup( ); });
+        ui.Q<Button>("MenuButton").clicked += ( ) => DisplayPopup(ui.Q<VisualElement>("MenuPopup"), Vector2.zero, new Vector2(Screen.width / 2f, 0));
+
+        ui.Q<Button>("LogOutButton").clicked += ( ) => DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup"));
+        ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
+            // Send the user back to the splash screen
+            // Clear app session data
+        };
+        ui.Q<Button>("CancelLogOutButton").clicked += ( ) => HideCurrentPopup( );
+
+        ui.Q<Button>("DeleteUserDataButton").clicked += ( ) => DisplayBasicPopup(ui.Q<VisualElement>("DeleteUserDataPopup"));
+        ui.Q<Button>("ConfirmDeleteUserDataButton").clicked += ( ) => {
+            HideCurrentPopup( );
+            DataManager.Instance.RemoveUserData(DataManager.AppSessionData.RITchCode);
+        };
+        ui.Q<Button>("CancelDeleteUserDataButton").clicked += ( ) => HideCurrentPopup( );
 
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
@@ -70,10 +84,19 @@ public class MainMenuController : UIController {
         }
 
         DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
-            int secondsRemaining = (int) (playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
-            string timerString = string.Format("{0:0}:{1:00}", secondsRemaining / 60, secondsRemaining % 60);
-            ui.Q<Label>("RadialProgressBarLabel").text = timerString;
-            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
+            if (isPlayGoalComplete) {
+                return;
+            }
+
+            float secondsRemaining = playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds;
+            if (secondsRemaining <= 0) {
+                isPlayGoalComplete = true;
+                DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"));
+            } else {
+                string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
+                ui.Q<Label>("RadialProgressBarLabel").text = timerString;
+                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
+            }
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
             ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned} pts";

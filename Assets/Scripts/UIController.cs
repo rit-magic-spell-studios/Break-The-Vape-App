@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ public enum UIState {
 }
 
 public abstract class UIController : MonoBehaviour {
-    public static int LAST_SCENE = -1;
-    public const float FADE_TRANSITION_SECONDS = 0.1f;
+    public const float TRANSITION_SECONDS = 0.1f;
+    public const float POPUP_TRANSITION_SECONDS = 0.5f;
     public static string[ ] MOTIV_MESSAGES = new string[ ] {
         "You are doing great!",
         "Keep it up!",
@@ -37,6 +38,9 @@ public abstract class UIController : MonoBehaviour {
 
     protected VisualElement popupOverlay;
     protected VisualElement currentPopup;
+    protected Vector2 currentPopupOnScreen;
+    protected Vector2 currentPopupOffScreen;
+    private Dictionary<VisualElement, Tween> visualElementTweens;
 
     protected VisualElement transitionOverlay;
     private Coroutine menuTransition;
@@ -80,12 +84,10 @@ public abstract class UIController : MonoBehaviour {
     }
     private UIState _controllerState;
 
-    public UIState LastUIControllerState { get => _lastControllerState; private set => _lastControllerState = value; }
-    private UIState _lastControllerState;
+    public UIState LastUIControllerState { get; private set; }
 
     public bool IsTransitioningUI => (menuTransition != null);
     public bool IsTouchingScreen { get; private set; }
-
     public Vector3 LastTouchWorldPosition { get; private set; }
 
     protected virtual void Awake( ) {
@@ -96,6 +98,7 @@ public abstract class UIController : MonoBehaviour {
         subscreens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
 
         popupOverlay = ui.Q<VisualElement>("PopupOverlay");
+        visualElementTweens = new Dictionary<VisualElement, Tween>( );
         transitionOverlay = ui.Q<VisualElement>("TransitionOverlay");
 
         cameraHalfHeight = mainCamera.orthographicSize;
@@ -106,13 +109,11 @@ public abstract class UIController : MonoBehaviour {
         // Loop through all of the screens and subscreens and disable them at the start of the scene
         // This will allow for you to edit the UI without having to disable it manually each time you want to test the app
         for (int i = 0; i < screens.Length; i++) {
-            // If the screen is not null, then disable it
             if (screens[i] != null) {
                 screens[i].style.opacity = 0f;
                 screens[i].style.display = DisplayStyle.None;
             }
 
-            // If the subscreen is not null, then disable it
             if (subscreens[i] != null) {
                 subscreens[i].style.opacity = 0f;
                 subscreens[i].style.display = DisplayStyle.None;
@@ -163,6 +164,87 @@ public abstract class UIController : MonoBehaviour {
         element.style.display = (isVisible ? DisplayStyle.Flex : DisplayStyle.None);
     }
 
+    protected void DisplayBasicPopup(VisualElement popup) {
+        DisplayPopup(popup, Vector2.zero, new Vector2(0, Screen.height));
+    }
+
+    protected void HideCurrentPopup( ) {
+        DisplayPopup(null);
+    }
+
+    protected void DisplayPopup(VisualElement popup, Vector2 onScreen = default, Vector2 offScreen = default) {
+        // Stop new transitions if there is a transition currently happening
+        if (visualElementTweens.Count > 0) {
+            return;
+        }
+
+        if (popup != null) {
+            // If the new popup is not null and there is not a current popup, then transition the popup and the background in
+            // if the new popup is not null and there is a current popup, then transition the current popup out and the new popup in without touching the background
+            if (currentPopup == null) {
+                AnimateElementBackgroundColor(popupOverlay, new Color(0f, 0f, 0f, 0f), new Color(0f, 0f, 0f, 0.75f));
+                AnimateElementTranslation(popup, offScreen, onScreen);
+            } else {
+                AnimateElementTranslation(currentPopup, currentPopupOnScreen, currentPopupOffScreen, disableOnComplete: true);
+                AnimateElementTranslation(popup, offScreen, onScreen);
+            }
+        } else {
+            // If the new popup is null and there is a current popup, then transition the current popup out as well as the background because there will be no more popup visible
+            // If the new popup is nulla nd there is not a current popup, then do nothing because no popup is visible
+            if (currentPopup != null) {
+                AnimateElementBackgroundColor(popupOverlay, new Color(0f, 0f, 0f, 0.75f), new Color(0f, 0f, 0f, 0f), disableOnComplete:true);
+                AnimateElementTranslation(currentPopup, currentPopupOnScreen, currentPopupOffScreen, disableOnComplete: true);
+            }
+        }
+
+        // Set the current popup to whatever the new popup is
+        currentPopup = popup;
+        currentPopupOnScreen = onScreen;
+        currentPopupOffScreen = offScreen;
+    }
+
+    private Tween AnimateElementTranslation(VisualElement element, Vector2 startTranslation, Vector2 endTranslation, bool disableOnComplete = false) {
+        element.style.translate = new StyleTranslate(new Translate(startTranslation.x, startTranslation.y));
+        element.style.display = DisplayStyle.Flex;
+
+        Tween tween = DOTween.To(
+            ( ) => (Vector2) element.resolvedStyle.translate,
+            (v) => element.style.translate = new StyleTranslate(new Translate(v.x, v.y)),
+            endTranslation,
+            POPUP_TRANSITION_SECONDS)
+            .SetEase(Ease.InOutCubic)
+            .OnComplete(( ) => {
+                if (disableOnComplete) {
+                    element.style.display = DisplayStyle.None;
+                }
+                visualElementTweens.Remove(element);
+            });
+        visualElementTweens.Add(element, tween);
+
+        return tween;
+    }
+
+    private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, bool disableOnComplete = false) {
+        element.style.backgroundColor = new StyleColor(startColor);
+        element.style.display = DisplayStyle.Flex;
+
+        Tween tween = DOTween.To(
+            ( ) => element.resolvedStyle.backgroundColor,
+            (v) => element.style.backgroundColor = new StyleColor(v),
+            endColor,
+            POPUP_TRANSITION_SECONDS)
+            .SetEase(Ease.InOutCubic)
+            .OnComplete(( ) => {
+                if (disableOnComplete) {
+                    element.style.display = DisplayStyle.None;
+                }
+                visualElementTweens.Remove(element);
+            });
+        visualElementTweens.Add(element, tween);
+
+        return tween;
+    }
+
     /// <summary>
     /// Transition from one screen to another by fading one out and the other in
     /// </summary>
@@ -178,23 +260,23 @@ public abstract class UIController : MonoBehaviour {
         menuTransition = StartCoroutine(FadeToCurrentScreenTransition( ));
 
         if (LastUIControllerState == UIState.NULL) {
-            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(FADE_TRANSITION_SECONDS, true);
+            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(TRANSITION_SECONDS, true);
         } else if (UIControllerState == UIState.NULL) {
-            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(FADE_TRANSITION_SECONDS, false);
+            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(TRANSITION_SECONDS, false);
         }
     }
 
     private IEnumerator FadeToCurrentScreenTransition( ) {
         // Fade the from screen out if it exists
         if (LastScreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(LastScreen, FADE_TRANSITION_SECONDS, false));
+            yield return StartCoroutine(FadeVisualElementOpacity(LastScreen, TRANSITION_SECONDS, false));
         }
 
         UpdateSubscreens( );
 
         // Fade in the to screen if it exists
         if (CurrentScreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(CurrentScreen, FADE_TRANSITION_SECONDS, true));
+            yield return StartCoroutine(FadeVisualElementOpacity(CurrentScreen, TRANSITION_SECONDS, true));
         }
 
         OnScreenChange( );
@@ -216,14 +298,14 @@ public abstract class UIController : MonoBehaviour {
     private IEnumerator FadeToCurrentSubscreenTransition( ) {
         // Fade the from screen out if it exists
         if (LastSubscreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(LastSubscreen, FADE_TRANSITION_SECONDS, false));
+            yield return StartCoroutine(FadeVisualElementOpacity(LastSubscreen, TRANSITION_SECONDS, false));
         }
 
         UpdateSubscreens( );
 
         // Fade in the to screen if it exists
         if (CurrentSubscreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(CurrentSubscreen, FADE_TRANSITION_SECONDS, true));
+            yield return StartCoroutine(FadeVisualElementOpacity(CurrentSubscreen, TRANSITION_SECONDS, true));
         }
 
         OnScreenChange( );
@@ -254,7 +336,6 @@ public abstract class UIController : MonoBehaviour {
         BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
 
         menuTransition = null;
-        LAST_SCENE = SceneManager.GetActiveScene( ).buildIndex;
         SceneManager.LoadScene(sceneBuildIndex);
     }
 

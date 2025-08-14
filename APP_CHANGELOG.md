@@ -1,11 +1,13 @@
 # App Changelog
 
-## Unreleased
+## v0.5.0 - Unreleased
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent
+  * Added new header that displays the time remaining and the points (which also appears in each of the minigames on the win screen)
 * Added motivational messages that appear on win screens of each game
 * Changed how player data is tracked throughout app usage
   * Data now uploads to Azure on check-in and game completion
-  * Data also saves locally to the device 
+* Adjusted the user flow of the app
+* Added popup for play goal completion
 
 ## v0.4.1 - July 28th, 2025
 * Added link from main menu to Puff Dodge

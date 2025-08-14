@@ -73,9 +73,8 @@ public class CraveMonster : MonoBehaviour {
 
         // Make sure the player does not get a huge amount of points per click
         craveSmashController.GameSessionData.PointsEarnedValue += gainedPoints;
-        lastClickTime = Time.time;
-
         craveSmashController.SpawnPointsPopup(craveSmashController.LastTouchWorldPosition, gainedPoints);
+        lastClickTime = Time.time;
 
         // If the monster has run out of health, then go to the end state
         if (Health <= 0) {

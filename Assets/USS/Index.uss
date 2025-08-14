@@ -78,8 +78,8 @@
 }
 
 .uofr-radial-progress-bar {
-    min-width: 400px;
-    min-height: 400px;
+    min-width: 300px;
+    min-height: 300px;
     flex-direction: row;
     justify-content: center;
     align-self: center;

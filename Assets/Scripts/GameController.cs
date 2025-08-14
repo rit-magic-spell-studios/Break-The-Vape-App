@@ -111,7 +111,7 @@ public abstract class GameController : UIController {
     /// <param name="position">The position to spawn the points popup at</param>
     /// <param name="points">The number of points to display on the popup</param>
     public void SpawnPointsPopup(Vector3 position, int points) {
-        TextMeshPro pointsPopup = Instantiate(pointsPopupPrefab, position, Quaternion.identity).GetComponent<TextMeshPro>( );
-        pointsPopup.text = $"+{points}";
+        PointsPopup pointsPopup = Instantiate(pointsPopupPrefab, position, Quaternion.identity).GetComponent<PointsPopup>( );
+        pointsPopup.Points = points;
     }
 }
