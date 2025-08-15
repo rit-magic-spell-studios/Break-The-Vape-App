@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <engine:VisualElement class="uofr-container">
+        <engine:Label text="How To Play" name="HowToPlayLabel" class="uofr-container-label" style="position: absolute;" />
+        <engine:VisualElement class="uofr-space-medium" style="flex-grow: 1;" />
+        <engine:VisualElement name="TutorialVisual" style="width: 80%; padding-top: 80%; align-self: center;" />
+        <engine:VisualElement class="uofr-space-medium" style="flex-grow: 1;" />
+        <engine:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." name="TutorialLabel" class="uofr-text-medium" style="-unity-text-align: upper-center;" />
+        <engine:VisualElement class="uofr-space-medium" style="flex-grow: 1;" />
+        <engine:Button text="Let&apos;s Go!" name="PlayButton" select-word-by-double-click="false" class="uofr-button uofr-button-highlight" style="align-self: center;" />
+    </engine:VisualElement>
+</engine:UXML>

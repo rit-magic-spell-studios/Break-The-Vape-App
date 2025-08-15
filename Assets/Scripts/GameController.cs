@@ -19,58 +19,58 @@ public abstract class GameController : UIController {
     protected VisualElement gameScreen;
     protected VisualElement pauseScreen;
     protected VisualElement winScreen;
-
     protected VisualElement gameSubscreen;
-    protected VisualElement tutorialSubscreen;
+    protected VisualElement playGoalInfoScreen;
+
+    protected VisualElement gameTutorialPopup;
+
     public GameSessionData GameSessionData { get; private set; }
+    public bool IsPlayingGame => (CurrentScreen == gameScreen && CurrentPopup == null);
 
     protected override void Awake( ) {
         base.Awake( );
 
         // Get all screens within the game
         // Each game should have the same types of screens, but more functionality will need to be added individually
+        gameTutorialPopup = ui.Q<VisualElement>("GameTutorialPopup");
         gameSubscreen = ui.Q<VisualElement>("GameSubscreen");
-        tutorialSubscreen = ui.Q<VisualElement>("TutorialSubscreen");
         gameScreen = ui.Q<VisualElement>("GameScreen");
         pauseScreen = ui.Q<VisualElement>("PauseScreen");
         winScreen = ui.Q<VisualElement>("WinScreen");
-
-        // Set the states of the screens and subscreens based on what game controller state is active
-        screens[(int) UIState.TUTORIAL] = gameScreen;
-        screens[(int) UIState.GAME] = gameScreen;
-        screens[(int) UIState.PAUSE] = pauseScreen;
-        screens[(int) UIState.WIN] = winScreen;
-
-        subscreens[(int) UIState.TUTORIAL] = tutorialSubscreen;
-        subscreens[(int) UIState.GAME] = gameSubscreen;
+        playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
 
         // Set all common button functions
         // Each game should also have these buttons
-        ui.Q<Button>("ResumeButton").clicked += ( ) => { UIControllerState = LastUIControllerState; };
-        ui.Q<Button>("QuitButton").clicked += ( ) => { FadeToScene(0); };
-        ui.Q<Button>("HomeButton").clicked += ( ) => { FadeToScene(0); };
-        ui.Q<Button>("PlayAgainButton").clicked += ( ) => { FadeToScene(SceneManager.GetActiveScene( ).buildIndex); };
-        ui.Q<Button>("PauseButton").clicked += ( ) => { UIControllerState = UIState.PAUSE; };
-        ui.Q<Button>("PlayButton").clicked += ( ) => { UIControllerState = UIState.GAME; };
-        ui.Q<Button>("HowToPlayButton").clicked += ( ) => { UIControllerState = UIState.TUTORIAL; };
+        ui.Q<Button>("ResumeButton").clicked += ( ) => { DisplayScreen(gameScreen); };
+        ui.Q<Button>("QuitButton").clicked += ( ) => { GoToScene("MainMenu"); };
+        ui.Q<Button>("HomeButton").clicked += ( ) => { GoToScene("MainMenu"); };
+        ui.Q<Button>("PlayAgainButton").clicked += ( ) => { GoToScene(SceneManager.GetActiveScene( ).name); };
+        ui.Q<Button>("PauseButton").clicked += ( ) => { DisplayScreen(pauseScreen); };
+        ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
+        ui.Q<Button>("HowToPlayButton").clicked += ( ) => { DisplayBasicPopup(gameTutorialPopup); };
 
-        // Get references to other important UI elements
         scoreLabel = ui.Q<Label>("ScoreLabel");
         finalScoreLabel = ui.Q<Label>("FinalScoreLabel");
         totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
 
-        // Set tutorial information
         ui.Q<VisualElement>("TutorialVisual").style.backgroundImage = new StyleBackground(Background.FromRenderTexture(tutorialVisual));
         ui.Q<Label>("TutorialLabel").text = tutorialText;
         ui.Q<Label>("TitleLabel").text = name;
 
-        ui.Q<Label>("MotivationalMessage").text = MOTIV_MESSAGES[Random.Range(0, MOTIV_MESSAGES.Length)];
+        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
+        ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(winScreen);
 
         // Create a new game session data entry for this game
         GameSessionData = new GameSessionData(name, DataManager.AppSessionData.RITchCode, DataManager.AppSessionData.TotalPointsEarned);
+        DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
+            float secondsRemaining = Mathf.Max(0, PLAY_GOAL_SECONDS - DataManager.AppSessionData.TotalTimeSeconds);
+            string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
+            ui.Q<Label>("RadialProgressBarLabel").text = timerString;
+            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
+        };
         GameSessionData.OnPointsEarnedChange += ( ) => {
             scoreLabel.text = $"Score: <b>{GameSessionData.PointsEarned} pts</b>";
-            finalScoreLabel.text = $"{GameSessionData.PointsEarned} pts";
+            finalScoreLabel.text = $"+ {GameSessionData.PointsEarned} pts";
             totalScoreLabel.text = $"{GameSessionData.TotalPointsEarned} pts";
         };
         GameSessionData.InvokeAllDelegates( );
@@ -78,7 +78,8 @@ public abstract class GameController : UIController {
 
     protected override void Start( ) {
         base.Start( );
-        UIControllerState = UIState.TUTORIAL;
+        DisplayScreen(gameScreen);
+        DisplayBasicPopup(gameTutorialPopup, checkForAnimations: false);
     }
 
     protected override void Update( ) {
@@ -86,15 +87,19 @@ public abstract class GameController : UIController {
         GameSessionData.TotalTimeSecondsValue += Time.deltaTime;
     }
 
-    protected override void FadeToScene(int sceneBuildIndex) {
-        DataManager.AppSessionData.TotalPointsEarnedValue = GameSessionData.TotalPointsEarned;
+    protected override void GoToScene(string sceneName) {
         DataManager.Instance.UploadSessionData(GameSessionData);
-        base.FadeToScene(sceneBuildIndex);
+        DataManager.AppSessionData.TotalPointsEarnedValue = GameSessionData.TotalPointsEarned;
+        base.GoToScene(sceneName);
     }
 
-    protected override void UpdateSubscreens( ) {
-        SetElementVisibility(gameSubscreen, UIControllerState == UIState.GAME);
-        SetElementVisibility(tutorialSubscreen, UIControllerState == UIState.TUTORIAL);
+    /// <summary>
+    /// Add points scored within this game
+    /// </summary>
+    /// <param name="points">The amount of points to add</param>
+    public void AddPoints(int points) {
+        GameSessionData.PointsEarnedValue += points;
+        SpawnPointsPopup(LastTouchWorldPosition, points);
     }
 
     /// <summary>

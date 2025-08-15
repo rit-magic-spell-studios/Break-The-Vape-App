@@ -5,6 +5,6 @@
         <engine:VisualElement class="uofr-space-large" />
         <engine:Button text="Resume" name="ResumeButton" class="uofr-button uofr-button-highlight " />
         <engine:VisualElement class="uofr-space-small" />
-        <engine:Button text="Quit" name="QuitButton" class="uofr-button " />
+        <engine:Button text="Home" name="QuitButton" class="uofr-button " />
     </engine:VisualElement>
 </engine:UXML>

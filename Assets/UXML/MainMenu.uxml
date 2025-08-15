@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="AppStats" src="project://database/Assets/UXML/Templates/AppStats.uxml?fileID=9197481963319205126&amp;guid=caad3bf1ebe1538408ef86943b012b4b&amp;type=3#AppStats" />
+    <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <ui:VisualElement class="uofr-background">
         <ui:VisualElement name="MainScreen" style="display: flex; flex-grow: 1;">
@@ -37,6 +38,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: none; flex-grow: 1;" />
         <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
             <ui:VisualElement name="LogOutPopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Are you sure?" class="uofr-title-medium" />
@@ -87,17 +89,6 @@
                 <ui:Button text="Restart" name="RestartSessionButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button text="Finish" name="FinishSessionButton" class="uofr-button " />
-            </ui:VisualElement>
-            <ui:VisualElement name="PlayGoalInfoPopup" class="uofr-container " style="display: none; min-height: 65%;">
-                <ui:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PLAY_GOAL_LUNGS_IN_BOX.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PLAY_GOAL_LUNGS_IN_BOX&quot;); -unity-background-scale-mode: scale-and-crop; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; flex-grow: 1;" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="15 minutes of distraction" class="uofr-text-medium" style="-unity-font-style: bold; flex-grow: 0;" />
-                <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="Research shows that 15 to 20 minutes of relaxation and distraction can help the brain lose craving sensations." class="uofr-text-medium" style="flex-grow: 0;" />
-                <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="Give it a try by distracting yourself with some of these games!" class="uofr-text-medium" style="flex-grow: 0;" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Button text="Close" name="PlayGoalInfoCloseButton" class="uofr-button " />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="flex-grow: 1; background-color: rgb(255, 255, 255); display: none;" />

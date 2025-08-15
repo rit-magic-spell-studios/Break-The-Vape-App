@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,13 +18,10 @@ public enum UIState {
 }
 
 public abstract class UIController : MonoBehaviour {
-    public const float TRANSITION_SECONDS = 0.1f;
+    public const float SCREEN_TRANSITION_SECONDS = 0.25f;
     public const float POPUP_TRANSITION_SECONDS = 0.5f;
-    public static string[ ] MOTIV_MESSAGES = new string[ ] {
-        "You are doing great!",
-        "Keep it up!",
-        "You can do it!"
-    };
+    public const float WIN_DELAY_SECONDS = 1.5f;
+    public const int PLAY_GOAL_SECONDS = 900;
 
     [Header("UIController")]
     [SerializeField] private Gradient backgroundGradient;
@@ -33,93 +31,32 @@ public abstract class UIController : MonoBehaviour {
     protected float cameraHalfHeight;
 
     protected VisualElement ui;
-    protected VisualElement[ ] screens;
-    protected VisualElement[ ] subscreens;
+    private List<VisualElement> animatingVisualElements;
 
     protected VisualElement popupOverlay;
-    protected VisualElement currentPopup;
-    protected Vector2 currentPopupOnScreen;
-    protected Vector2 currentPopupOffScreen;
-    private Dictionary<VisualElement, Tween> visualElementTweens;
+    private Vector2 currentPopupOnScreen;
+    private Vector2 currentPopupOffScreen;
 
     protected VisualElement transitionOverlay;
-    private Coroutine menuTransition;
+    private VisualElement previousScreen;
 
-    public VisualElement CurrentScreen => screens[(int) UIControllerState];
-    public VisualElement CurrentSubscreen => subscreens[(int) UIControllerState];
-    public VisualElement LastScreen => screens[(int) LastUIControllerState];
-    public VisualElement LastSubscreen => subscreens[(int) LastUIControllerState];
-
-    public UIState UIControllerState {
-        get => _controllerState;
-        set {
-            // If there is currently a menu transition taking place, then do not change the game controller state
-            if (IsTransitioningUI) {
-                return;
-            }
-
-            LastUIControllerState = _controllerState;
-            _controllerState = value;
-
-            // Only transition between menus if the state was changed
-            //if (LastUIControllerState == _controllerState) {
-            //    return;
-            //}
-
-            // If the last controller state was null, then this is the start of the scene
-            // Make sure to do one last update of all the subscreens to make sure they are properly visible/invisible
-            if (LastUIControllerState == UIState.NULL) {
-                UpdateSubscreens( );
-            }
-
-            // Transition between two screens
-            // If the two screens are the same, then there must be a transition between subscreens instead of full screens
-            // Subscreens are placed within screens in the UI. They are used when the entire screen does not need to transition
-            if (LastScreen != CurrentScreen) {
-                FadeToCurrentScreen( );
-            } else {
-                FadeToCurrentSubscreen( );
-            }
-        }
-    }
-    private UIState _controllerState;
-
-    public UIState LastUIControllerState { get; private set; }
-
-    public bool IsTransitioningUI => (menuTransition != null);
+    public VisualElement CurrentScreen { get; private set; }
+    public VisualElement CurrentPopup { get; private set; }
     public bool IsTouchingScreen { get; private set; }
     public Vector3 LastTouchWorldPosition { get; private set; }
 
     protected virtual void Awake( ) {
         ui = GetComponent<UIDocument>( ).rootVisualElement;
 
-        // Create arrays that hold references to the screens and subscreens of each UI state
-        screens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
-        subscreens = new VisualElement[Enum.GetValues(typeof(UIState)).Length];
-
         popupOverlay = ui.Q<VisualElement>("PopupOverlay");
-        visualElementTweens = new Dictionary<VisualElement, Tween>( );
         transitionOverlay = ui.Q<VisualElement>("TransitionOverlay");
+        animatingVisualElements = new List<VisualElement>( );
 
         cameraHalfHeight = mainCamera.orthographicSize;
         cameraHalfWidth = cameraHalfHeight * mainCamera.aspect;
     }
 
     protected virtual void Start( ) {
-        // Loop through all of the screens and subscreens and disable them at the start of the scene
-        // This will allow for you to edit the UI without having to disable it manually each time you want to test the app
-        for (int i = 0; i < screens.Length; i++) {
-            if (screens[i] != null) {
-                screens[i].style.opacity = 0f;
-                screens[i].style.display = DisplayStyle.None;
-            }
-
-            if (subscreens[i] != null) {
-                subscreens[i].style.opacity = 0f;
-                subscreens[i].style.display = DisplayStyle.None;
-            }
-        }
-
         BackgroundBubbleManager.SetBackgroundBubbleGradient(backgroundGradient.colorKeys);
     }
 
@@ -145,232 +82,218 @@ public abstract class UIController : MonoBehaviour {
     }
 
     /// <summary>
-    /// Update all of the subscreens in this controller based on the current controller state
+    /// Set a specific screen to be displayed
     /// </summary>
-    protected virtual void UpdateSubscreens( ) { }
-
-    /// <summary>
-    /// Called when a screen has finished transitioning
-    /// </summary>
-    protected virtual void OnScreenChange( ) { }
-
-    /// <summary>
-    /// Set a visual element's visibility
-    /// </summary>
-    /// <param name="element">The visual element to set the visibility of</param>
-    /// <param name="isVisible">Whether or not the visual element should be visible</param>
-    protected void SetElementVisibility(VisualElement element, bool isVisible) {
-        element.style.opacity = (isVisible ? 1f : 0f);
-        element.style.display = (isVisible ? DisplayStyle.Flex : DisplayStyle.None);
-    }
-
-    protected void DisplayBasicPopup(VisualElement popup) {
-        DisplayPopup(popup, Vector2.zero, new Vector2(0, Screen.height));
-    }
-
-    protected void HideCurrentPopup( ) {
-        DisplayPopup(null);
-    }
-
-    protected void DisplayPopup(VisualElement popup, Vector2 onScreen = default, Vector2 offScreen = default) {
+    /// <param name="screen">The screen to display</param>
+    /// <param name="onComplete">An optional callback function that will be called when the screen transition is complete</param>
+    protected void DisplayScreen(VisualElement screen, Action onComplete = null) {
         // Stop new transitions if there is a transition currently happening
-        if (visualElementTweens.Count > 0) {
+        if (animatingVisualElements.Count > 0) {
+            return;
+        }
+
+        previousScreen = CurrentScreen;
+        CurrentScreen = screen;
+
+        Sequence transitionSequence = DOTween.Sequence( )
+            .OnComplete(( ) => { onComplete?.Invoke( ); });
+
+        if (previousScreen != null) {
+            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 0f, 1f, SCREEN_TRANSITION_SECONDS));
+            transitionSequence.AppendCallback(( ) => { previousScreen.style.display = DisplayStyle.None; });
+        }
+
+        if (CurrentScreen != null) {
+            transitionSequence.AppendCallback(( ) => { CurrentScreen.style.display = DisplayStyle.Flex; });
+            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 1f, 0f, SCREEN_TRANSITION_SECONDS, disableOnComplete: true, setDefaultsBeforeTweenStart: previousScreen == null));
+        }
+    }
+
+    /// <summary>
+    /// Transition to a specific scene
+    /// </summary>
+    /// <param name="sceneName">The name of the scene to transition to</param>
+    protected virtual void GoToScene(string sceneName) {
+        DisplayScreen(null, onComplete: ( ) => {
+            DataManager.AppSessionData.ClearAllDelegates( );
+            BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
+            SceneManager.LoadScene(sceneName);
+        });
+    }
+
+    /// <summary>
+    /// Display a basic popup on the screen. This means that the popup will start below the screen and transition to the center of the screen
+    /// </summary>
+    /// <param name="popup">The popup to display</param>
+    /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
+    protected void DisplayBasicPopup(VisualElement popup, bool checkForAnimations = true) {
+        DisplayPopup(popup, Vector2.zero, new Vector2(0, Screen.height), checkForAnimations: checkForAnimations);
+    }
+
+    /// <summary>
+    /// Hide the currently displayed popup
+    /// </summary>
+    /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
+    protected void HideCurrentPopup(bool checkForAnimations = true) {
+        DisplayPopup(null, checkForAnimations: checkForAnimations);
+    }
+
+    /// <summary>
+    /// Display a popup on the screen
+    /// </summary>
+    /// <param name="popup">The popup to display</param>
+    /// <param name="onScreen">The translation position of the popup where it should be when it is on the screen</param>
+    /// <param name="offScreen">The translation position of the popup where it should be when it is off the screen</param>
+    /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
+    protected void DisplayPopup(VisualElement popup, Vector2 onScreen = default, Vector2 offScreen = default, bool checkForAnimations = true) {
+        // Stop new transitions if there is a transition currently happening
+        if ((checkForAnimations && animatingVisualElements.Count > 0) || popup == CurrentPopup) {
             return;
         }
 
         if (popup != null) {
             // If the new popup is not null and there is not a current popup, then transition the popup and the background in
             // if the new popup is not null and there is a current popup, then transition the current popup out and the new popup in without touching the background
-            if (currentPopup == null) {
-                AnimateElementBackgroundColor(popupOverlay, new Color(0f, 0f, 0f, 0f), new Color(0f, 0f, 0f, 0.75f));
-                AnimateElementTranslation(popup, offScreen, onScreen);
+            if (CurrentPopup == null) {
+                AnimateElementOpacity(popupOverlay, 0f, 1f, POPUP_TRANSITION_SECONDS);
+                AnimateElementTranslation(popup, offScreen, onScreen, POPUP_TRANSITION_SECONDS);
             } else {
-                AnimateElementTranslation(currentPopup, currentPopupOnScreen, currentPopupOffScreen, disableOnComplete: true);
-                AnimateElementTranslation(popup, offScreen, onScreen);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
+                AnimateElementTranslation(popup, offScreen, onScreen, POPUP_TRANSITION_SECONDS);
             }
         } else {
             // If the new popup is null and there is a current popup, then transition the current popup out as well as the background because there will be no more popup visible
             // If the new popup is nulla nd there is not a current popup, then do nothing because no popup is visible
-            if (currentPopup != null) {
-                AnimateElementBackgroundColor(popupOverlay, new Color(0f, 0f, 0f, 0.75f), new Color(0f, 0f, 0f, 0f), disableOnComplete:true);
-                AnimateElementTranslation(currentPopup, currentPopupOnScreen, currentPopupOffScreen, disableOnComplete: true);
+            if (CurrentPopup != null) {
+                AnimateElementOpacity(popupOverlay, 1f, 0f, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
             }
         }
 
         // Set the current popup to whatever the new popup is
-        currentPopup = popup;
+        CurrentPopup = popup;
         currentPopupOnScreen = onScreen;
         currentPopupOffScreen = offScreen;
     }
 
-    private Tween AnimateElementTranslation(VisualElement element, Vector2 startTranslation, Vector2 endTranslation, bool disableOnComplete = false) {
-        element.style.translate = new StyleTranslate(new Translate(startTranslation.x, startTranslation.y));
-        element.style.display = DisplayStyle.Flex;
+    /// <summary>
+    /// Animate a visual element's translation style variable using DOTween
+    /// </summary>
+    /// <param name="element">The visual element to animate</param>
+    /// <param name="startTranslation">The starting translation of the visual element</param>
+    /// <param name="endTranslation">The ending translation of the visual element</param>
+    /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
+    /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
+    /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <returns>A reference to the Tween that is animating the visual element</returns>
+    private Tween AnimateElementTranslation(VisualElement element, Vector2 startTranslation, Vector2 endTranslation, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true) {
+        Action onStart = ( ) => {
+            element.style.display = DisplayStyle.Flex;
+            element.style.translate = new StyleTranslate(new Translate(startTranslation.x, startTranslation.y));
+            animatingVisualElements.Add(element);
+        };
 
-        Tween tween = DOTween.To(
+        if (setDefaultsBeforeTweenStart) {
+            onStart.Invoke( );
+        }
+
+        return DOTween.To(
             ( ) => (Vector2) element.resolvedStyle.translate,
             (v) => element.style.translate = new StyleTranslate(new Translate(v.x, v.y)),
             endTranslation,
-            POPUP_TRANSITION_SECONDS)
+            durationSeconds)
             .SetEase(Ease.InOutCubic)
+            .OnStart(( ) => {
+                if (!setDefaultsBeforeTweenStart) {
+                    onStart.Invoke( );
+                }
+            })
             .OnComplete(( ) => {
                 if (disableOnComplete) {
                     element.style.display = DisplayStyle.None;
                 }
-                visualElementTweens.Remove(element);
+                animatingVisualElements.Remove(element);
             });
-        visualElementTweens.Add(element, tween);
-
-        return tween;
     }
 
-    private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, bool disableOnComplete = false) {
-        element.style.backgroundColor = new StyleColor(startColor);
-        element.style.display = DisplayStyle.Flex;
+    /// <summary>
+    /// Animate a visual element's background color style variable using DOTween
+    /// </summary>
+    /// <param name="element">The visual element to animate</param>
+    /// <param name="startColor">The starting background color of the visual element</param>
+    /// <param name="endColor">The ending background color of the visual element</param>
+    /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
+    /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
+    /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <returns>A reference to the Tween that is animating the visual element</returns>
+    private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true) {
+        Action onStart = ( ) => {
+            element.style.display = DisplayStyle.Flex;
+            element.style.backgroundColor = new StyleColor(startColor);
+            animatingVisualElements.Add(element);
+        };
 
-        Tween tween = DOTween.To(
+        if (setDefaultsBeforeTweenStart) {
+            onStart.Invoke( );
+        }
+
+        return DOTween.To(
             ( ) => element.resolvedStyle.backgroundColor,
             (v) => element.style.backgroundColor = new StyleColor(v),
             endColor,
-            POPUP_TRANSITION_SECONDS)
+            durationSeconds)
             .SetEase(Ease.InOutCubic)
+            .OnStart(( ) => {
+                if (!setDefaultsBeforeTweenStart) {
+                    onStart.Invoke( );
+                }
+            })
             .OnComplete(( ) => {
                 if (disableOnComplete) {
                     element.style.display = DisplayStyle.None;
                 }
-                visualElementTweens.Remove(element);
+                animatingVisualElements.Remove(element);
             });
-        visualElementTweens.Add(element, tween);
-
-        return tween;
     }
 
     /// <summary>
-    /// Transition from one screen to another by fading one out and the other in
+    /// Animate a visual element's opacity style variable using DOTween
     /// </summary>
-    /// <param name="fromScreen">The screen to transition from, that is currently visible</param>
-    /// <param name="toScreen">The screen to transition to</param>
-    /// <param name="SubscreenUpdate">A function that is called when the subscreens are needed to be updated in the middle of the transition. This could take place when you are transitioning between two different subscreens within the same screen</param>
-    protected void FadeToCurrentScreen( ) {
-        // If the UI is currently transitioning, then return and do not fade the screen
-        if (IsTransitioningUI) {
-            return;
+    /// <param name="element">The visual element to animate</param>
+    /// <param name="startOpacity">The starting opacity of the visual element</param>
+    /// <param name="endOpacity">The ending opacity of the visual element</param>
+    /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
+    /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
+    /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <returns>A reference to the Tween that is animating the visual element</returns>
+    private Tween AnimateElementOpacity(VisualElement element, float startOpacity, float endOpacity, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true) {
+        Action onStart = ( ) => {
+            element.style.display = DisplayStyle.Flex;
+            element.style.opacity = startOpacity;
+            animatingVisualElements.Add(element);
+        };
+
+        if (setDefaultsBeforeTweenStart) {
+            onStart.Invoke( );
         }
 
-        menuTransition = StartCoroutine(FadeToCurrentScreenTransition( ));
-
-        if (LastUIControllerState == UIState.NULL) {
-            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(TRANSITION_SECONDS, true);
-        } else if (UIControllerState == UIState.NULL) {
-            BackgroundBubbleManager.Instance.FadeBackgroundBubblesAlpha(TRANSITION_SECONDS, false);
-        }
-    }
-
-    private IEnumerator FadeToCurrentScreenTransition( ) {
-        // Fade the from screen out if it exists
-        if (LastScreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(LastScreen, TRANSITION_SECONDS, false));
-        }
-
-        UpdateSubscreens( );
-
-        // Fade in the to screen if it exists
-        if (CurrentScreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(CurrentScreen, TRANSITION_SECONDS, true));
-        }
-
-        OnScreenChange( );
-        menuTransition = null;
-    }
-
-    /// <summary>
-    /// Fade from the last subscreen to the current subscreen
-    /// </summary>
-    protected void FadeToCurrentSubscreen( ) {
-        // If the UI is currently transitioning, then return and do not fade the screen
-        if (IsTransitioningUI) {
-            return;
-        }
-
-        menuTransition = StartCoroutine(FadeToCurrentSubscreenTransition( ));
-    }
-
-    private IEnumerator FadeToCurrentSubscreenTransition( ) {
-        // Fade the from screen out if it exists
-        if (LastSubscreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(LastSubscreen, TRANSITION_SECONDS, false));
-        }
-
-        UpdateSubscreens( );
-
-        // Fade in the to screen if it exists
-        if (CurrentSubscreen != null) {
-            yield return StartCoroutine(FadeVisualElementOpacity(CurrentSubscreen, TRANSITION_SECONDS, true));
-        }
-
-        OnScreenChange( );
-        menuTransition = null;
-    }
-
-    /// <summary>
-    /// Fade from the current screen to another Unity scene
-    /// </summary>
-    /// <param name="sceneBuildIndex">The build index of the scene to transition to</param>
-    protected virtual void FadeToScene(int sceneBuildIndex) {
-        // If the UI is currently transitioning, then return and do not fade the screen
-        if (IsTransitioningUI) {
-            return;
-        }
-
-        menuTransition = StartCoroutine(FadeToSceneTransition(sceneBuildIndex));
-    }
-
-    private IEnumerator FadeToSceneTransition(int sceneBuildIndex) {
-        // We want all of the UI to fade out so we can transition the scenes
-        UIControllerState = UIState.NULL;
-
-        // Wait until the UI is finished transitioning
-        yield return new WaitUntil(( ) => !IsTransitioningUI);
-
-        DataManager.AppSessionData.ClearAllDelegates( );
-        BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
-
-        menuTransition = null;
-        SceneManager.LoadScene(sceneBuildIndex);
-    }
-
-    /// <summary>
-    /// Fade a visual element's opacity
-    /// </summary>
-    /// <param name="element">The visual element to fade</param>
-    /// <param name="duration">The duration of the fade in seconds</param>
-    /// <param name="fadeIn">Whether or not the fade the element in or out. If this value is true, the element will start at 0 opacity and fade in all the way to 1 opacity</param>
-    /// <returns></returns>
-    private IEnumerator FadeVisualElementOpacity(VisualElement element, float duration, bool fadeIn) {
-        // Get the opacity values based on if the element is fading in or out
-        float fromOpacity = (fadeIn ? 0f : 1f);
-        float toOpacity = (fadeIn ? 1f : 0f);
-
-        // Set the display of the visual element to always be visible at the beginning
-        // This is because the transition is either going to fade in the element or fade out the element, both of which the element needs to be visible
-        element.style.opacity = fromOpacity;
-        element.style.display = DisplayStyle.Flex;
-
-        // Get the direction that this function needs to fade based on if the element is fading in or out
-        int fadeDirection = (fadeIn ? 1 : -1);
-
-        // Linearly interpolate between the two opacity values
-        float opacity = fromOpacity;
-        while ((opacity > toOpacity && fadeDirection == -1) || (opacity < toOpacity && fadeDirection == 1)) {
-            opacity += fadeDirection * Time.deltaTime / duration;
-            element.style.opacity = opacity;
-
-            yield return null;
-        }
-
-        // Set the final states of the visual element based on the opacity
-        element.style.opacity = toOpacity;
-        element.style.display = (fadeIn ? DisplayStyle.Flex : DisplayStyle.None);
+        return DOTween.To(
+            ( ) => element.resolvedStyle.opacity,
+            (v) => element.style.opacity = v,
+            endOpacity,
+            durationSeconds)
+            .SetEase(Ease.InOutCubic)
+            .OnStart(( ) => {
+                if (!setDefaultsBeforeTweenStart) {
+                    onStart.Invoke( );
+                }
+            })
+            .OnComplete(( ) => {
+                if (disableOnComplete) {
+                    element.style.display = DisplayStyle.None;
+                }
+                animatingVisualElements.Remove(element);
+            });
     }
 
     /// <summary>
@@ -379,12 +302,11 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="action">The function to be called after a delay</param>
     /// <param name="delaySeconds">The delay in seconds after which to call the function</param>
     public void DelayAction(Action action, float delaySeconds) {
-        StartCoroutine(DelayActionSeconds(action, delaySeconds));
+        StartCoroutine(DelayActionCoroutine(action, delaySeconds));
     }
 
-    private IEnumerator DelayActionSeconds(Action action, float delaySeconds) {
+    private IEnumerator DelayActionCoroutine(Action action, float delaySeconds) {
         yield return new WaitForSeconds(delaySeconds);
-
         action?.Invoke( );
     }
 }

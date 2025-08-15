@@ -6,10 +6,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
-    [Header("MainMenuController")]
-    [SerializeField, Min(0f)] private float playGoalSeconds;
-
     private VisualElement mainScreen;
+    private VisualElement playGoalInfoScreen;
 
     private Label greetingLabel;
     private bool isPlayGoalComplete;
@@ -19,41 +17,17 @@ public class MainMenuController : UIController {
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
-
-        // Set the states of the screens and subscreens based on what game controller state is active
-        screens[(int) UIState.MAIN] = mainScreen;
+        playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
 
         ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
 
-        ui.Q<Button>("CraveSmashButton").clicked += ( ) => { FadeToScene(1); };
-        ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { FadeToScene(2); };
-        ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { FadeToScene(4); };
-        ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { FadeToScene(5); };
+        ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
+        ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
+        ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
+        ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { GoToScene("PuffDodge"); };
 
-        //ui.Q<Button>("MenuButton").clicked += ( ) => { UIControllerState = UIState.MENU; };
-        //menuSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
-
-        //ui.Q<Button>("ResetButton").clicked += ( ) => { UIControllerState = UIState.RESET; };
-        //resetSubscreen.RegisterCallback<MouseDownEvent>((e) => { UIControllerState = UIState.MAIN; });
-        //ui.Q<Button>("CancelResetButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
-        //ui.Q<Button>("ConfirmResetButton").clicked += ( ) => {
-        //    DataManager.AppSessionData.TotalPointsEarnedValue = 0;
-        //    DataManager.AppSessionData.TotalTimeSecondsValue = 0;
-        //    UIControllerState = UIState.MAIN;
-        //};
-
-        //ui.Q<Button>("RITchCodeButton").clicked += ( ) => { UIControllerState = UIState.RITCHCODE; };
-        //ui.Q<Button>("RITchCodeBackButton").clicked += ( ) => { UIControllerState = UIState.MAIN; };
-        //ui.Q<Button>("RITchCodeClearButton").clicked += ClearRITchCodeTextFields;
-        //ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
-
-        //ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
-        //for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-        //    ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
-        //}
-
-        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalInfoPopup"));
-        ui.Q<Button>("PlayGoalInfoCloseButton").clicked += ( ) => HideCurrentPopup( );
+        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
+        ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(mainScreen);
         isPlayGoalComplete = false;
 
         popupOverlay.RegisterCallback<MouseDownEvent>((e) => { HideCurrentPopup( ); });
@@ -88,14 +62,14 @@ public class MainMenuController : UIController {
                 return;
             }
 
-            float secondsRemaining = playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds;
-            if (secondsRemaining <= 0) {
+            float secondsRemaining = Mathf.Max(0, PLAY_GOAL_SECONDS - DataManager.AppSessionData.TotalTimeSeconds);
+            if (secondsRemaining == 0) {
                 isPlayGoalComplete = true;
                 DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"));
             } else {
                 string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
                 ui.Q<Label>("RadialProgressBarLabel").text = timerString;
-                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
+                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
             }
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
@@ -106,65 +80,6 @@ public class MainMenuController : UIController {
 
     protected override void Start( ) {
         base.Start( );
-        UIControllerState = UIState.MAIN;
-    }
-
-    /// <summary>
-    /// Clear all of the RITch code text fields
-    /// </summary>
-    //private void ClearRITchCodeTextFields( ) {
-    //    for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-    //        ritchCodeTextFields[i].value = "";
-    //    }
-
-    //    ritchCodeTextFields[0].Focus( );
-    //}
-
-    /// <summary>
-    /// Submit the currently typed RITch code and load its data
-    /// </summary>
-    //private void SubmitRITchCode( ) {
-    //    string newRITchCode = "";
-    //    for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-    //        newRITchCode += ritchCodeTextFields[i].value;
-    //    }
-
-    //    if (newRITchCode.Length != 6) {
-    //        return;
-    //    }
-
-    //    //JSONManager.Instance.LoadNewRITchCode(newRITchCode.ToUpper( ));
-
-    //    UIControllerState = UIState.SPLASH;
-    //}
-
-    /// <summary>
-    /// Check a text field to ensure it has an alphanumeric value. If not, then clear its value. If yes, then move focus the new RITch code text field
-    /// </summary>
-    /// <param name="e">Event information about the changed value of the text field</param>
-    //private void CheckTextFieldForAlphanumericValue(ChangeEvent<string> e) {
-    //    TextField textField = (TextField) e.currentTarget;
-    //    int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
-
-    //    if (e.newValue == "") {
-    //        ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
-    //        return;
-    //    }
-
-    //    if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
-    //        ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
-    //    } else {
-    //        textField.value = "";
-    //    }
-    //}
-
-    //protected override void UpdateSubscreens( ) {
-    //    SetElementVisibility(menuSubscreen, UIControllerState == UIState.MENU);
-    //    SetElementVisibility(resetSubscreen, UIControllerState == UIState.RESET);
-    //}
-
-    protected override void FadeToScene(int sceneBuildIndex) {
-        DataManager.AppSessionData.ClearAllDelegates( );
-        base.FadeToScene(sceneBuildIndex);
+        DisplayScreen(mainScreen);
     }
 }

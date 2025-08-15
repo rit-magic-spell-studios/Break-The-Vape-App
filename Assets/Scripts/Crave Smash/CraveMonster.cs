@@ -41,7 +41,7 @@ public class CraveMonster : MonoBehaviour {
     }
 
     private void Update( ) {
-        if (craveSmashController.UIControllerState != UIState.GAME) {
+        if (!craveSmashController.IsPlayingGame) {
             return;
         }
 
@@ -50,7 +50,7 @@ public class CraveMonster : MonoBehaviour {
 
     private void OnMouseDown( ) {
         // Make sure the crave monster health does not go below 0
-        if (IsDead) {
+        if (IsDead || !craveSmashController.IsPlayingGame) {
             return;
         }
 
@@ -71,22 +71,14 @@ public class CraveMonster : MonoBehaviour {
             gainedPoints += Mathf.RoundToInt(Mathf.Exp(-3 * timeDifference + 3));
         }
 
-        // Make sure the player does not get a huge amount of points per click
-        craveSmashController.GameSessionData.PointsEarnedValue += gainedPoints;
-        craveSmashController.SpawnPointsPopup(craveSmashController.LastTouchWorldPosition, gainedPoints);
+        craveSmashController.AddPoints(gainedPoints);
         lastClickTime = Time.time;
 
         // If the monster has run out of health, then go to the end state
         if (Health <= 0) {
-            // Set the monster to be invisible
             spriteRenderer.color = Color.clear;
             IsDead = true;
-
-            craveSmashController.SpawnConfettiParticles(transform.position);
-
-            // Delay a bit after the health is 0 to allow the player to stop tapping the screen
-            // Players were accidentally pressing buttons on the win screen so this delay should hopefully prevent that
-            craveSmashController.DelayAction(( ) => { craveSmashController.UIControllerState = UIState.WIN; }, 2f);
+            craveSmashController.OnMonsterDestroyed( );
         }
     }
 }
