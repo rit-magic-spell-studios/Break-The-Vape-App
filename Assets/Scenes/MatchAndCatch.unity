@@ -185,6 +185,63 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!1001 &451869777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150402292235590003, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_Name
+      value: App Loader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
 --- !u!1 &576956272
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,8 +338,11 @@ MonoBehaviour:
   pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
   tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
   tutorialText: Tap to reveal cards. See if you can find all the matching pairs!
-  cardFlipTime: 0.2
+  cardPrefab: {fileID: 1428677354421896839, guid: 31730618350455247941a78a3f4444c9, type: 3}
   cardCheckDelay: 1
+  cardGridWidth: 3
+  cardGridHeight: 4
+  cardSpacing: 0.2
   cardFrontSprites:
   - {fileID: 21300000, guid: 4cab62c1cb03cce4e849ae20d50803a4, type: 3}
   - {fileID: 21300000, guid: c75cc13953c8abd448dd686d5405387e, type: 3}
@@ -431,6 +491,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 451869777}
   - {fileID: 2129265792}
   - {fileID: 576956274}
   - {fileID: 207987996}

@@ -478,62 +478,6 @@
     border-bottom-left-radius: 3px;
 }
 
-.uofr-container {
-    border-left-color: rgb(238, 238, 238);
-    border-right-color: rgb(238, 238, 238);
-    border-top-color: rgb(238, 238, 238);
-    border-bottom-color: rgb(238, 238, 238);
-    border-top-width: 4px;
-    border-right-width: 4px;
-    border-bottom-width: 4px;
-    border-left-width: 4px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border-bottom-left-radius: 40px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: rgb(255, 255, 255);
-}
-
-.uofr-container-label {
-    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
-    font-size: 60px;
-    -unity-text-align: middle-center;
-    padding-top: 20px;
-    padding-right: 40px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: rgb(234, 240, 255);
-    border-top-left-radius: 60px;
-    border-top-right-radius: 60px;
-    border-bottom-right-radius: 60px;
-    border-bottom-left-radius: 60px;
-    border-top-width: 4px;
-    border-right-width: 4px;
-    border-bottom-width: 4px;
-    border-left-width: 4px;
-    border-left-color: rgb(207, 221, 255);
-    border-right-color: rgb(207, 221, 255);
-    border-top-color: rgb(207, 221, 255);
-    border-bottom-color: rgb(207, 221, 255);
-    position: absolute;
-    top: -60px;
-    align-self: center;
-    -unity-font-style: bold;
-    color: rgb(0, 0, 0);
-}
-
 .uofr-text-small {
     margin-left: 0;
     margin-right: 0;
@@ -640,4 +584,60 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.uofr-container {
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgb(255, 255, 255);
+}
+
+.uofr-container-label {
+    -unity-font-definition: url("project://database/Assets/Fonts/Itim/Itim-Regular%20SDF.asset?fileID=11400000&guid=4c985dcb62f4a5845b349b323878a2bd&type=2#Itim-Regular SDF");
+    font-size: 60px;
+    -unity-text-align: middle-center;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: rgb(234, 240, 255);
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-left-color: rgb(207, 221, 255);
+    border-right-color: rgb(207, 221, 255);
+    border-top-color: rgb(207, 221, 255);
+    border-bottom-color: rgb(207, 221, 255);
+    position: absolute;
+    top: -60px;
+    align-self: center;
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
 }

@@ -5,14 +5,13 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CraveMonster : MonoBehaviour {
+    [SerializeField] private CraveSmashController craveSmashController;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> monsterSprites;
-    [SerializeField] private CraveSmashController craveSmashController;
     [Space]
     [SerializeField, Range(0, 100)] private float clickDamage;
     [SerializeField, Range(0, 50)] private int baseClickPoints;
     [SerializeField, Range(0, 50)] private float healSpeed;
-    [SerializeField] private float _health;
 
     private float lastClickTime;
 
@@ -31,6 +30,7 @@ public class CraveMonster : MonoBehaviour {
             transform.localScale = ((_health / 200f) + 0.5f) * Vector2.one;
         }
     }
+    private float _health;
 
     private void Awake( ) {
         spriteRenderer.sprite = monsterSprites[Random.Range(0, monsterSprites.Count)];
@@ -71,7 +71,7 @@ public class CraveMonster : MonoBehaviour {
             gainedPoints += Mathf.RoundToInt(Mathf.Exp(-3 * timeDifference + 3));
         }
 
-        craveSmashController.AddPoints(gainedPoints);
+        craveSmashController.AddPoints(craveSmashController.LastTouchWorldPosition, gainedPoints);
         lastClickTime = Time.time;
 
         // If the monster has run out of health, then go to the end state

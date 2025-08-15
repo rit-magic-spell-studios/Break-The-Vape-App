@@ -6,174 +6,124 @@ using UnityEngine.UIElements;
 
 public class MatchAndCatchController : GameController {
     [Header("MatchAndCatchController")]
-    [SerializeField, Range(0f, 2f)] private float cardFlipTime;
+    [SerializeField] private GameObject cardPrefab;
     [SerializeField, Range(0f, 2f)] private float cardCheckDelay;
+    [SerializeField, Range(0, 5)] private int cardGridWidth;
+    [SerializeField, Range(0, 5)] private int cardGridHeight;
+    [SerializeField, Range(0f, 3f)] private float cardSpacing;
     [SerializeField] private List<Sprite> cardFrontSprites;
 
- //   private List<Button> cards;
- //   private List<Button> flippedCards;
- //   private List<int> numbers;
+    private List<Card> cards;
+    private List<int> cardMatchIndices;
 
- //   private Label matchesLabel;
+    private Label matchesLabel;
+    private Coroutine checkMatchDelay;
 
- //   private Coroutine checkMatchCoroutine;
+    public List<Card> FlippedCards { get; private set; }
+    public bool CanFlipCard => checkMatchDelay == null;
 
- //   protected override void Awake( ) {
- //       base.Awake( );
+    protected override void Awake( ) {
+        base.Awake( );
 
- //       // Get a list of all the cards in the UI
- //       cards = ui.Query<Button>("Card").ToList( );
- //       flippedCards = new List<Button>( );
+        cardMatchIndices = GenerateRandomMatchList( );
+        cards = GenerateCardGrid(cardGridWidth, cardGridHeight);
+        FlippedCards = new List<Card>( );
 
- //       // Generate the list of matches
- //       numbers = new List<int>( );
- //       for (int i = 0; i < cards.Count / 2; i++) {
- //           // Each card needs a match, so add two of the same number to the list
- //           numbers.Add(i);
- //           numbers.Add(i);
- //       }
+        // Get references to other important UI elements
+        matchesLabel = ui.Q<Label>("MatchesLabel");
+        matchesLabel.text = $"{(cards.Count - FlippedCards.Count) / 2} matches left!";
+    }
 
- //       // Shuffle the numbers up to make the matching randomized
- //       // The numbers and cards list should be the same size so all indices of the numbers list corresponds to the cards list
- //       Shuffle(numbers);
+    /// <summary>
+    /// Generate a random list of indices that map to different sprites within the card sprites list
+    /// </summary>
+    /// <returns>An integer list of random indices</returns>
+    private List<int> GenerateRandomMatchList( ) {
+        List<int> matchIndexList = new List<int>( );
 
- //       // Set up the on-click functions for each of the cards
- //       for (int i = 0; i < cards.Count; i++) {
- //           cards[i].clickable.clickedWithEventInfo += FlipCard;
+        List<int> availableIndices = new List<int>( );
+        for (int i = 0; i < cardFrontSprites.Count; i++) {
+            availableIndices.Add(i);
+        }
 
- //           // Set the card back to be visible
- //           VisualElement cardBack = cards[i].Q<VisualElement>("CardBack");
- //           cardBack.style.display = DisplayStyle.Flex;
+        for (int i = 0; i < cardGridWidth * cardGridHeight / 2; i++) {
+            int randomAvailableIndex = Random.Range(0, availableIndices.Count);
+            int randomSpriteIndex = availableIndices[randomAvailableIndex];
 
- //           // Set the card front to not be visible
- //           // Also make sure it displays the right sprite
- //           VisualElement cardFront = cards[i].Q<VisualElement>("CardFront");
- //           cardFront.style.display = DisplayStyle.None;
- //           cardFront.style.backgroundImage = new StyleBackground(cardFrontSprites[numbers[i]]);
- //       }
+            matchIndexList.Add(randomSpriteIndex);
+            matchIndexList.Add(randomSpriteIndex);
 
- //       // Get references to other important UI elements
- //       matchesLabel = ui.Q<Label>("MatchesLabel");
- //       matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
- //   }
+            availableIndices.RemoveAt(randomAvailableIndex);
+        }
 
- //   /// <summary>
- //   /// Flip a card over to see what it has written on its face
- //   /// </summary>
- //   /// <param name="e">Event data about the click event from the card button</param>
- //   private void FlipCard(EventBase e) {
- //       // If the game is currently checking for a match, then do not flip a card
- //       // Need to wait until after the match is checked to flip a new card
- //       if (checkMatchCoroutine != null) {
- //           return;
- //       }
+        Utils.Shuffle(matchIndexList);
+        return matchIndexList;
+    }
 
- //       Button card = (Button) e.target;
+    /// <summary>
+    /// Generate a grid of card objects that the player will click on to flip over
+    /// </summary>
+    /// <param name="gridWidth">The grid width in cards</param>
+    /// <param name="gridHeight">The grid height in cards</param>
+    /// <returns>A list of all the card objects generated and placed into the grid</returns>
+    private List<Card> GenerateCardGrid(int gridWidth, int gridHeight) {
+        List<Card> cards = new List<Card>( );
 
- //       // If this card is currently flipped, then return and do not try to flip it again
- //       if (flippedCards.Contains(card)) {
- //           return;
- //       }
+        float cardSize = ((cameraHalfWidth * 2f) - ((gridWidth + 1) * cardSpacing)) / gridWidth;
+        float gridWorldHeight = (gridHeight * (cardSize + cardSpacing)) - cardSpacing;
+        float gridWorldWidth = (gridWidth * (cardSize + cardSpacing)) - cardSpacing;
+        for (int x = 0; x < gridWidth; x++) {
+            for (int y = 0; y < gridHeight; y++) {
+                float cardPositionX = (x * (cardSize + cardSpacing)) - (gridWorldWidth / 2f) + (cardSize / 2f);
+                float cardPositionY = (y * (cardSize + cardSpacing)) - (gridWorldHeight / 2f) + (cardSize / 2f);
 
- //       // Since this card is now flipped over, add it to the flipped cards list
- //       flippedCards.Add(card);
+                Card card = Instantiate(cardPrefab, new Vector2(cardPositionX, cardPositionY), Quaternion.identity).GetComponent<Card>( );
+                card.CardFront = cardFrontSprites[cardMatchIndices[x + (gridWidth * y)]];
+                card.Size = cardSize;
 
- //       // Play an animation of the card flipping over
- //       StartCoroutine(FlipCardAnimation(card, true));
- //   }
+                cards.Add(card);
+            }
+        }
 
- //   /// <summary>
- //   /// An animation that plays of the card flipping over
- //   /// </summary>
- //   /// <param name="card">The card button element to flip over</param>
- //   /// <param name="faceVisible">Whether or not the face of the card is visible after the animation</param>
- //   /// <returns></returns>
- //   private IEnumerator FlipCardAnimation(Button card, bool faceVisible) {
- //       // If there was an even number of cards flipped over, make sure all cards have a match
- //       // Also make sure that the cards face is being turned to visible since this method is reused for flipping the cards back over
- //       if (faceVisible && flippedCards.Count > 0 && flippedCards.Count % 2 == 0) {
- //           checkMatchCoroutine = StartCoroutine(CheckMatches( ));
- //       }
+        return cards;
+    }
 
- //       float scale = 1f;
- //       bool setFlipStyles = false;
+    /// <summary>
+    /// Check to see if a match has been found
+    /// </summary>
+    public void CheckForMatch( ) {
+        // Only start checking for a match if the right number of cards have been flipped over
+        if (FlippedCards.Count > 0 && FlippedCards.Count % 2 == 0) {
+            checkMatchDelay = StartCoroutine(CheckMatches( ));
+        }
+    }
 
- //       while (scale > -1f) {
- //           scale -= Time.deltaTime / (cardFlipTime / 2f);
- //           card.style.scale = new StyleScale(new Vector2(Mathf.Abs(scale), 1f));
+    /// <summary>
+    /// Check for a match after 2 cards have been turned over (with a slight delay)
+    /// </summary>
+    private IEnumerator CheckMatches( ) {
+        Card card1 = FlippedCards[^1];
+        Card card2 = FlippedCards[^2];
 
- //           // Once the card has flipped over, change the background color to give the illusion that the card has flipped
- //           if (scale <= 0f && !setFlipStyles) {
- //               // Whether or not the card is now visible, set the label and background color of the card
- //               if (faceVisible) {
- //                   card.Q<VisualElement>("CardBack").style.display = DisplayStyle.None;
- //                   card.Q<VisualElement>("CardFront").style.display = DisplayStyle.Flex;
- //               } else {
- //                   card.Q<VisualElement>("CardBack").style.display = DisplayStyle.Flex;
- //                   card.Q<VisualElement>("CardFront").style.display = DisplayStyle.None;
- //               }
+        // If the sprites of the last two cards do not match, then flip them back over
+        // If the sprites of the last two cards do match, then keep them flipped over
+        if (card1.CardFront != card2.CardFront) {
+            yield return new WaitForSeconds(cardCheckDelay);
 
- //               // Ensure that this if statement is not called multiple times within the while loop, only when the card is initially turned over
- //               setFlipStyles = true;
- //           }
+            card1.FlipCard( );
+            FlippedCards.Remove(card1);
 
- //           yield return null;
- //       }
+            card2.FlipCard( );
+            FlippedCards.Remove(card2);
+        } else {
+            matchesLabel.text = $"{(cards.Count - FlippedCards.Count) / 2} matches left!";
+            AddPoints(Vector3.zero, 100);
 
- //       card.style.scale = new StyleScale(Vector2.one);
- //   }
+            if (FlippedCards.Count == cards.Count) {
+                DelayAction(( ) => { DisplayScreen(winScreen); }, WIN_DELAY_SECONDS);
+            }
+        }
 
- //   /// <summary>
- //   /// Check for a match after 2 cards have been turned over (with a slight delay)
- //   /// </summary>
- //   /// <returns></returns>
- //   private IEnumerator CheckMatches( ) {
- //       // Get the index of the last two cards
- //       Button card1 = flippedCards[^1];
- //       Button card2 = flippedCards[^2];
-
- //       // If the numbers of the last two cards do not match, then flip them back over
- //       if (numbers[cards.IndexOf(card1)] != numbers[cards.IndexOf(card2)]) {
- //           // Wait before checking the card match so the player can see what they turned over
- //           yield return new WaitForSeconds(cardCheckDelay);
-
- //           // Since this card is now not flipped over, remove it from the flipped cards
- //           flippedCards.Remove(card1);
- //           flippedCards.Remove(card2);
-
- //           // Flip both of the cards over
- //           // We only need to wait for the second card to be finished because the card animations take the same amount of time
- //           StartCoroutine(FlipCardAnimation(card1, false));
- //           yield return StartCoroutine(FlipCardAnimation(card2, false));
- //       } else {
- //           // Update the matches left label
- //           matchesLabel.text = $"{(cards.Count - flippedCards.Count) / 2} matches left!";
-
- //           // Add points for the correct match
- //           GameSessionData.PointsEarnedValue += 100;
-
- //           // If all of the cards have been flipped over, then the player has won
- //           if (flippedCards.Count == cards.Count) {
- //               DelayAction(( ) => { UIControllerState = UIState.WIN; }, 2f);
- //           }
- //       }
-
- //       checkMatchCoroutine = null;
- //   }
-
- //   /// https://discussions.unity.com/t/clever-way-to-shuffle-a-list-t-in-one-line-of-c-code/535113
- //   /// <summary>
-	///// Shuffles the element order of the specified list.
-	///// </summary>
- //   /// <param name="list">The list to shuffle</param>
-	//private void Shuffle(IList list) {
- //       var count = list.Count;
- //       var last = count - 1;
- //       for (var i = 0; i < last; ++i) {
- //           var randomIndex = Random.Range(i, count);
- //           var tmp = list[i];
- //           list[i] = list[randomIndex];
- //           list[randomIndex] = tmp;
- //       }
- //   }
+        checkMatchDelay = null;
+    }
 }

@@ -19,7 +19,6 @@ public abstract class GameController : UIController {
     protected VisualElement gameScreen;
     protected VisualElement pauseScreen;
     protected VisualElement winScreen;
-    protected VisualElement gameSubscreen;
     protected VisualElement playGoalInfoScreen;
 
     protected VisualElement gameTutorialPopup;
@@ -30,17 +29,12 @@ public abstract class GameController : UIController {
     protected override void Awake( ) {
         base.Awake( );
 
-        // Get all screens within the game
-        // Each game should have the same types of screens, but more functionality will need to be added individually
         gameTutorialPopup = ui.Q<VisualElement>("GameTutorialPopup");
-        gameSubscreen = ui.Q<VisualElement>("GameSubscreen");
         gameScreen = ui.Q<VisualElement>("GameScreen");
         pauseScreen = ui.Q<VisualElement>("PauseScreen");
         winScreen = ui.Q<VisualElement>("WinScreen");
         playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
 
-        // Set all common button functions
-        // Each game should also have these buttons
         ui.Q<Button>("ResumeButton").clicked += ( ) => { DisplayScreen(gameScreen); };
         ui.Q<Button>("QuitButton").clicked += ( ) => { GoToScene("MainMenu"); };
         ui.Q<Button>("HomeButton").clicked += ( ) => { GoToScene("MainMenu"); };
@@ -53,12 +47,13 @@ public abstract class GameController : UIController {
         finalScoreLabel = ui.Q<Label>("FinalScoreLabel");
         totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
 
+        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
+        ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(winScreen);
+
+        // Set tutorial popup information
         ui.Q<VisualElement>("TutorialVisual").style.backgroundImage = new StyleBackground(Background.FromRenderTexture(tutorialVisual));
         ui.Q<Label>("TutorialLabel").text = tutorialText;
         ui.Q<Label>("TitleLabel").text = name;
-
-        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
-        ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(winScreen);
 
         // Create a new game session data entry for this game
         GameSessionData = new GameSessionData(name, DataManager.AppSessionData.RITchCode, DataManager.AppSessionData.TotalPointsEarned);
@@ -97,9 +92,9 @@ public abstract class GameController : UIController {
     /// Add points scored within this game
     /// </summary>
     /// <param name="points">The amount of points to add</param>
-    public void AddPoints(int points) {
+    public void AddPoints(Vector3 position, int points) {
         GameSessionData.PointsEarnedValue += points;
-        SpawnPointsPopup(LastTouchWorldPosition, points);
+        SpawnPointsPopup(position, points);
     }
 
     /// <summary>

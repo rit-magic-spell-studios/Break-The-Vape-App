@@ -16,4 +16,20 @@ public static class Utils {
             polygonCollider2D.SetPath(i, path.ToArray( ));
         }
     }
+
+    /// https://discussions.unity.com/t/clever-way-to-shuffle-a-list-t-in-one-line-of-c-code/535113
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    /// <param name="list">The list to shuffle</param>
+    public static void Shuffle(IList list) {
+        var count = list.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i) {
+            var randomIndex = Random.Range(i, count);
+            var tmp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = tmp;
+        }
+    }
 }
