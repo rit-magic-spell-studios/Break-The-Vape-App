@@ -100,14 +100,12 @@ public class CheckInController : UIController {
         for (int i = 0; i < ritchCodeTextFields.Count; i++) {
             ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
         }
-
-        DataManager.Instance.ResetAppSessionData( );
-        checkInSessionData = new CheckInSessionData(DataManager.AppSessionData.RITchCode);
     }
 
     protected override void Start( ) {
         base.Start( );
         DisplayScreen(splashScreen);
+        checkInSessionData = new CheckInSessionData(DataManager.AppSessionData.RITchCode);
     }
 
     protected override void Update( ) {

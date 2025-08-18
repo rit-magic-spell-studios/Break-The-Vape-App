@@ -34,7 +34,10 @@ public class MainMenuController : UIController {
         ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), Vector2.zero, new Vector2(Screen.width / 2f, 0)); };
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
-        ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => { GoToScene("CheckIn");};
+        ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
+            DataManager.Instance.ResetAppSessionData( );
+            GoToScene("CheckIn");
+        };
         ui.Q<Button>("CancelLogOutButton").clicked += ( ) => { HideCurrentPopup( ); };
 
         ui.Q<Button>("DeleteUserDataButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("DeleteUserDataPopup")); };
