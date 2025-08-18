@@ -1,8 +1,9 @@
 # Crave Smash Changelog
 
-## v0.6.2 - Unreleased
+## v0.6.2 - August 18th, 2025
 * Added point popup effects that display the amount of points the player gains per click
 * Added a bounce effect for the crave monster when you click it
+* Added improved win screen with main menu header and check in feature
 
 ## v0.6.1 - July 28th, 2025
 * Fixed bug where the player could continue to click and gain points from the monster after it had disappeared

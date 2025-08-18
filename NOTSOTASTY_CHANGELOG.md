@@ -1,5 +1,11 @@
 # Not So Tasty Changelog
 
+## v0.3.0 - August 18th, 2025
+* Added point popup effects that display the amount of points the player gains per chain and secret tile uncovered
+* Optimized code and animations
+* Added new secret tile sprites that are randomly assigned
+* Added improved win screen with main menu header and check in feature
+
 ## v0.2.1 - July 28th, 2025
 * Added new fruit assets
 * Changed chain connection lines to magenta

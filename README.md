@@ -1,11 +1,11 @@
 # Break The Vape
 This is a repository for the MAGIC Spell Studios collaboration with the University of Rochester for developing anti-vaping minigames for children in middle school and high school.
 
-## App Version [v0.4.1](https://github.com/qusr08/UofR-Games/blob/main/APP_CHANGELOG.md) (July 28th, 2025)
-* Crave Smash [v0.6.1](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (July 28th, 2025)
-* Puff Dodge [v0.1.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (July 27th, 2025)
-* Not So Tasty [v0.2.1](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (July 28th, 2025)
-* Match And Catch [v0.3.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (July 21st, 2025)
+## App Version [v0.5.0](https://github.com/qusr08/UofR-Games/blob/main/APP_CHANGELOG.md) (August 18th, 2025)
+* Crave Smash [v0.6.2](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 18th, 2025)
+* Puff Dodge [v0.1.1](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 18th, 2025)
+* Not So Tasty [v0.3.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 18th, 2025)
+* Match And Catch [v0.4.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 18th, 2025)
 
 ### Version Format: vX.Y.Z
 * X: Released version

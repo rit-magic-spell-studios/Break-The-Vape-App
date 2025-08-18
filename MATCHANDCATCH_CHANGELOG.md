@@ -1,5 +1,10 @@
 # Match and Catch Changelog
 
+## v0.4.0 - August 18th, 2025
+* Added point popup effects that display the amount of points the player gains per match
+* Optimized code and animations
+* Added improved win screen with main menu header and check in feature
+
 ## v0.3.0 - July 21st, 2025
 * The player now needs to manually click to advance the tutorial
 * Added new card images with the latest color palette and monsters

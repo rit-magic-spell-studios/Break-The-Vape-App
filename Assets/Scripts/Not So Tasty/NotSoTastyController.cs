@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,7 +14,7 @@ public class NotSoTastyController : GameController {
     [SerializeField, Range(0, 15)] private int tileGridWidth;
     [SerializeField, Range(0, 15)] private int tileGridHeight;
     [SerializeField, Range(0f, 3f)] private float tileEdgeSpacing;
-    [SerializeField, Min(0)] public int MinFruitChainLength;
+    [SerializeField, Min(0)] private int minFruitChainLength;
     [SerializeField, Range(1, 4)] private int minSecretTileSize;
     [SerializeField, Range(1, 4)] private int maxSecretTileSize;
     [SerializeField] private List<Sprite> secretTileSprites;
@@ -23,19 +25,10 @@ public class NotSoTastyController : GameController {
 
     public List<Rect> SecretTiles { get; private set; }
     private List<int> secretTileClearCount;
+    private List<Sprite> currentSecretTileSprites;
 
     public List<Tile> ChainedTiles { get; private set; }
-    public Tile LastChainedTile {
-        get {
-            if (ChainedTiles.Count > 0) {
-                return ChainedTiles[^1];
-            }
-
-            return null;
-        }
-    }
     public bool IsChainingFruits => ChainedTiles.Count > 0;
-
     public bool CanMatchFruit {
         get {
             if (!IsPlayingGame) {
@@ -77,11 +70,10 @@ public class NotSoTastyController : GameController {
                 float tilePositionX = (x * tileSize) - (tileGridWidth * tileSize / 2f) + (tileSize / 2f);
                 float tilePositionY = (y * tileSize) - (tileGridHeight * tileSize / 2f) + (tileSize / 2f);
 
-                Tile tile = Instantiate(tilePrefab, new Vector2(tilePositionX, tilePositionY), Quaternion.identity).GetComponent<Tile>( );
+                Tile tile = Instantiate(tilePrefab, new Vector2(tilePositionX, -tilePositionY), Quaternion.identity).GetComponent<Tile>( );
                 tile.transform.SetParent(objectContainer, false);
                 tile.BoardPosition = new Vector2Int(x, y);
                 tile.transform.localScale = new Vector2(tileSize, tileSize);
-                Debug.Log(tile.BoardPosition);
                 Tiles[x, y] = tile;
             }
         }
@@ -98,6 +90,7 @@ public class NotSoTastyController : GameController {
         // Generate all secret tiles on the board
         SecretTiles = new List<Rect>( );
         secretTileClearCount = new List<int>( );
+        currentSecretTileSprites = new List<Sprite>( );
         List<int> unavailableSizes = new List<int>( );
         List<int> availableSizes = new List<int>( );
         List<Vector2> availablePositions = new List<Vector2>( );
@@ -160,6 +153,7 @@ public class NotSoTastyController : GameController {
             // Now that we have a position and a size, create a new secret tile
             SecretTiles.Add(new Rect(position.x, position.y, size, size));
             secretTileClearCount.Add(0);
+            currentSecretTileSprites.Add(secretTileSprites[Random.Range(0, secretTileSprites.Count)]);
             totalAreaCount -= size * size;
         }
 
@@ -180,6 +174,8 @@ public class NotSoTastyController : GameController {
             // This will allow the player to backtrack and redo their chain
             if (ChainedTiles.Count > 1 && ChainedTiles[^2] == tile) {
                 ChainedTiles.Remove(ChainedTiles[^1]);
+                chainLineRenderer.positionCount = ChainedTiles.Count;
+                chainLineRenderer.SetPositions(ChainedTiles.Select(tile => tile.transform.position).ToArray( ));
             }
 
             return false;
@@ -190,50 +186,74 @@ public class NotSoTastyController : GameController {
         }
 
         ChainedTiles.Add(tile);
+        chainLineRenderer.positionCount = ChainedTiles.Count;
+        chainLineRenderer.SetPositions(ChainedTiles.Select(tile => tile.transform.position).ToArray( ));
         return true;
     }
 
+    /// <summary>
+    /// Clear the current chain of tiles, score points, and update the board
+    /// </summary>
+    public void ClearChain( ) {
+        if (ChainedTiles.Count >= minFruitChainLength) {
+            AddPoints(ChainedTiles[^1].transform.position, ChainedTiles.Count * 5);
+            UncoverSecretTiles( );
+            UpdateBoard( );
+        }
+
+        ChainedTiles.Clear( );
+        chainLineRenderer.positionCount = 0;
+        chainLineRenderer.SetPositions(new Vector3[0]);
+    }
+
+    /// <summary>
+    /// Uncover secret tiles on the board based on where the chained tiles were matched
+    /// </summary>
     public void UncoverSecretTiles( ) {
         for (int i = 0; i < ChainedTiles.Count; i++) {
-            if (!ChainedTiles[i].IsUncovered) {
-                for (int j = 0; j < SecretTiles.Count; j++) {
-                    if (SecretTiles[j].Contains(ChainedTiles[i].BoardPosition)) {
-                        // Get secret tile variables
-                        float secretTileSize = SecretTiles[j].width;
-                        Vector2 secretTilePosition = SecretTiles[j].position;
-
-                        // Get the position and size of the new texture
-                        int textureWidth = Mathf.FloorToInt(secretTileSprites[0].texture.width / secretTileSize);
-                        int textureHeight = Mathf.FloorToInt(secretTileSprites[0].texture.height / secretTileSize);
-                        int textureX = (ChainedTiles[i].BoardPosition.x - (int) secretTilePosition.x) * textureWidth;
-                        // Texture's have (0, 0) in the bottom left corner (so confusing)
-                        int textureY = ((int) (secretTilePosition.y + secretTileSize - 1) - ChainedTiles[i].BoardPosition.y) * textureHeight;
-
-                        // Create the new texture that is a chunk of the secret tile image based on the fruit's position
-                        Texture2D secretTileTexture = new Texture2D(textureWidth, textureHeight);
-                        secretTileTexture.SetPixels(secretTileSprites[0].texture.GetPixels(textureX, textureY, textureWidth, textureHeight));
-                        secretTileTexture.Apply( );
-
-                        // Set the style of the tile background
-                        ChainedTiles[i].TileSprite = Sprite.Create(secretTileTexture, new Rect(0, 0, secretTileTexture.width, secretTileTexture.height), new Vector2(0.5f, 0.5f));
-
-                        // Remove the secret tile if it has been fully uncovered
-                        if (++secretTileClearCount[j] >= secretTileSize * secretTileSize) {
-                            SecretTiles.RemoveAt(j);
-                            secretTileClearCount.RemoveAt(j);
-
-                            remainingSecretTilesLabel.text = $"{SecretTiles.Count} secret tiles left!";
-                            AddPoints(ChainedTiles[i].transform.position, 50);
-                        }
-
-                        break;
-                    }
-
-                    ChainedTiles[i].IsUncovered = true;
-                }
-            }
-
             ChainedTiles[i].NeedsUpdating = true;
+
+            if (ChainedTiles[i].IsUncovered) {
+                continue;
+            }
+            ChainedTiles[i].IsUncovered = true;
+
+            for (int j = 0; j < SecretTiles.Count; j++) {
+                if (!SecretTiles[j].Contains(ChainedTiles[i].BoardPosition)) {
+                    continue;
+                }
+
+                // Get secret tile variables
+                float secretTileSize = SecretTiles[j].width;
+                Vector2 secretTilePosition = SecretTiles[j].position;
+
+                // Get the position and size of the new texture
+                int textureWidth = Mathf.FloorToInt(secretTileSprites[0].texture.width / secretTileSize);
+                int textureHeight = Mathf.FloorToInt(secretTileSprites[0].texture.height / secretTileSize);
+                int textureX = (ChainedTiles[i].BoardPosition.x - (int) secretTilePosition.x) * textureWidth;
+                // Texture's have (0, 0) in the bottom left corner (so confusing)
+                int textureY = ((int) (secretTilePosition.y + secretTileSize - 1) - ChainedTiles[i].BoardPosition.y) * textureHeight;
+
+                // Create the new texture that is a chunk of the secret tile image based on the fruit's position
+                Texture2D secretTileTexture = new Texture2D(textureWidth, textureHeight);
+                secretTileTexture.SetPixels(currentSecretTileSprites[j].texture.GetPixels(textureX, textureY, textureWidth, textureHeight));
+                secretTileTexture.Apply( );
+
+                // Set the style of the tile background
+                ChainedTiles[i].TileSprite = Sprite.Create(secretTileTexture, new Rect(0, 0, secretTileTexture.width, secretTileTexture.height), new Vector2(0.5f, 0.5f), secretTileTexture.width);
+
+                // Remove the secret tile if it has been fully uncovered
+                if (++secretTileClearCount[j] >= secretTileSize * secretTileSize) {
+                    SecretTiles.RemoveAt(j);
+                    secretTileClearCount.RemoveAt(j);
+                    currentSecretTileSprites.RemoveAt(j);
+
+                    remainingSecretTilesLabel.text = $"{SecretTiles.Count} secret tiles left!";
+                    AddPoints(ChainedTiles[i].transform.position, 50);
+                }
+
+                break;
+            }
         }
 
         if (SecretTiles.Count == 0) {
@@ -245,86 +265,35 @@ public class NotSoTastyController : GameController {
     /// Update all of the tiles and fruits on the board
     /// </summary>
     public void UpdateBoard( ) {
-        Queue<VisualElement> missingFruits = new Queue<VisualElement>( );
+        Queue<Tile> needsUpdatingTiles = new Queue<Tile>( );
 
-        //for (int x = 0; x < tileGridWidth; x++) {
-        //    for (int y = tileGridHeight - 1; y >= 0; y--) {
-        //        // If the fruit is already enabled, then skip it
-        //        // This only works because we are going from the bottom to the top of the board
-        //        if (Tiles[x, y].NeedsUpdating) {
-        //            if (missingFruits.Count > 0) {
-        //                // Get the earliest missing fruit in the queue
-        //                StartFallingFruitAnimation(missingFruits.Dequeue( ), fruit.resolvedStyle.backgroundImage.sprite, y);
+        for (int x = 0; x < tileGridWidth; x++) {
+            for (int y = tileGridHeight - 1; y >= 0; y--) {
+                // If the fruit is already enabled, then skip it
+                // This only works because we are going from the bottom to the top of the board
+                if (!Tiles[x, y].NeedsUpdating) {
+                    if (needsUpdatingTiles.Count > 0) {
+                        // Get the earliest missing fruit in the queue
+                        needsUpdatingTiles.Dequeue( ).AnimateFruit(y, Tiles[x, y].FruitSprite);
 
-        //                // Since this fruit has been transferred to another tile, this tile is now missing
-        //                missingFruits.Enqueue(fruit);
-        //            }
+                        // Since this fruit has been transferred to another tile, this tile is now missing
+                        needsUpdatingTiles.Enqueue(Tiles[x, y]);
+                    }
 
-        //            continue;
-        //        }
+                    continue;
+                }
 
-        //        // If this fruit is missing, then enqueue it into the missing fruits list until there is a fruit that can fill the emptiness
-        //        missingFruits.Enqueue(fruit);
-        //    }
+                // If this fruit is missing, then enqueue it into the missing fruits list until there is a fruit that can fill the emptiness
+                needsUpdatingTiles.Enqueue(Tiles[x, y]);
+                Tiles[x, y].NeedsUpdating = false;
+            }
 
-        //    // If there are still fruits left in the missing queue, then that means new fruits need to be generated above the board
-        //    int i = 0;
-        //    while (missingFruits.Count > 0) {
-        //        StartFallingFruitAnimation(missingFruits.Dequeue( ), fruitSprites[Random.Range(0, fruitSprites.Count)], boardSize.y + i);
-
-        //        i++;
-        //    }
-        //}
+            // If there are still fruits left in the missing queue, then that means new fruits need to be generated above the board
+            int i = 0;
+            while (needsUpdatingTiles.Count > 0) {
+                needsUpdatingTiles.Dequeue( ).AnimateFruit(-i - 4);
+                i++;
+            }
+        }
     }
-
-    ///// <summary>
-    ///// Start a fruit animation of it falling
-    ///// </summary>
-    ///// <param name="animatingFruit">The fruit element to animate</param>
-    ///// <param name="fruitSprite">The sprite that the animating fruit should be</param>
-    ///// <param name="tileFallHeight">The height from which the fruit should fall</param>
-    //private void StartFallingFruitAnimation(VisualElement animatingFruit, Sprite fruitSprite, int tileFallHeight) {
-    //    // Get the difference in heights of the earliest empty fruit and this current fruit
-    //    int heightDifference = tileFallHeight - Get2DIndex(fruits, animatingFruit).y;
-
-    //    // Set the translate position of that fruit to the position of this fruit
-    //    // This will create the illusion that the fruit is falling between the tiles, when in reality it is always the same fruit object on each tile
-    //    animatingFruit.style.translate = new StyleTranslate(new Translate(new Length(0), new Length(heightDifference * -calculatedTileSize)));
-    //    animatingFruit.style.backgroundImage = new StyleBackground(fruitSprite);
-
-    //    // Start the fruit animation
-    //    StartCoroutine(FallingFruitAnimation(animatingFruit));
-    //}
-
-    ///// <summary>
-    ///// Animate a fruit falling into place on its tile
-    ///// </summary>
-    ///// <param name="fruit">The fruit to animate</param>
-    ///// <returns></returns>
-    //private IEnumerator FallingFruitAnimation(VisualElement fruit) {
-    //    // Get the starting height of the fruit
-    //    float fromHeight = fruit.resolvedStyle.translate.y;
-    //    int tileFallCount = Mathf.RoundToInt(fromHeight / -calculatedTileSize);
-
-    //    // Make sure the fruit is visible as it animates
-    //    fruit.style.display = DisplayStyle.Flex;
-
-    //    float t = 0f;
-    //    while (t < 1) {
-    //        // Based on the tile fall count, lerp the fruit faster or slower so it falls a consistent speed
-    //        t += Time.deltaTime / (fruitFallSpeed * tileFallCount);
-
-    //        // Smoothly move the translation of the fruit to 0 from its height
-    //        fruit.style.translate = new StyleTranslate(new Translate(new Length(0), new Length(Mathf.Lerp(fromHeight, 0f, t))));
-
-    //        yield return null;
-    //    }
-
-    //    // Set the final translation of the fruit
-    //    fruit.style.translate = new StyleTranslate(new Translate(new Length(0), new Length(0)));
-    //}
-
-    //private void SetTileBackground( ) {
-
-    //}
 }

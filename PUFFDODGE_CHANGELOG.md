@@ -1,7 +1,8 @@
 # Puff Dodge Changelog
 
-## v0.1.1 - Unreleased
+## v0.1.1 - August 18th, 2025
 * Replaced placeholder assets with new assets
+* Added improved win screen with main menu header and check in feature
 
 ## v0.1.0 - July 27th, 2025
 * Added basic version of gameplay

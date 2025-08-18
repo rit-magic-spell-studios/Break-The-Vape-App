@@ -25,7 +25,7 @@ public class MainMenuController : UIController {
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
-        //ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
+        ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
         ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { GoToScene("PuffDodge"); };
 
         ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => { DisplayScreen(playGoalInfoScreen); };

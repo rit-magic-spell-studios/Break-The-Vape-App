@@ -111,8 +111,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1e1af1a9d14edcb49bdb4f43aeac7ba2, type: 3}
   - {fileID: 21300000, guid: 875c054979f607845b1977dfc4ab70ad, type: 3}
   notSoTastyController: {fileID: 0}
-  fruitFallSpeed: 1
-  fruitPoints: 0
+  fruitFallSpeed: 0.15
+  _boardPosition: {x: 0, y: 0}
 --- !u!61 &2946580820874685410
 BoxCollider2D:
   m_ObjectHideFlags: 0

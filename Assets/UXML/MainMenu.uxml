@@ -20,22 +20,22 @@
                 <ui:VisualElement class="uofr-container" style="flex-grow: 1;">
                     <ui:Button name="CraveSmashButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 244, 198); flex-grow: 1;">
                         <ui:Label text="Crave Smash" class="uofr-title-medium" />
-                        <ui:Label text="v0.6.1" class="uofr-text-small" style="flex-grow: 0;" />
+                        <ui:Label text="v0.6.2" class="uofr-text-small" style="flex-grow: 0;" />
                     </ui:Button>
                     <ui:VisualElement class="uofr-space-small" />
                     <ui:Button name="MatchAndCatchButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 215, 215); flex-grow: 1;">
                         <ui:Label text="Match And Catch" class="uofr-title-medium" />
-                        <ui:Label text="v0.3.0" class="uofr-text-small" style="flex-grow: 0;" />
+                        <ui:Label text="v0.4.0" class="uofr-text-small" style="flex-grow: 0;" />
                     </ui:Button>
                     <ui:VisualElement class="uofr-space-small" />
                     <ui:Button name="NotSoTastyButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(213, 255, 202); flex-grow: 1;">
                         <ui:Label text="Not So Tasty" class="uofr-title-medium" />
-                        <ui:Label text="v0.2.1" class="uofr-text-small" style="flex-grow: 0;" />
+                        <ui:Label text="v0.3.0" class="uofr-text-small" style="flex-grow: 0;" />
                     </ui:Button>
                     <ui:VisualElement class="uofr-space-small" />
                     <ui:Button name="PuffDodgeButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(193, 199, 255); flex-grow: 1;">
                         <ui:Label text="Puff Dodge" class="uofr-title-medium" />
-                        <ui:Label text="v0.1.0" class="uofr-text-small" style="flex-grow: 0;" />
+                        <ui:Label text="v0.1.1" class="uofr-text-small" style="flex-grow: 0;" />
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>

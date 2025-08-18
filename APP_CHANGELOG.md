@@ -1,6 +1,6 @@
 # App Changelog
 
-## v0.5.0 - Unreleased
+## v0.5.0 - August 18th, 2025
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent
   * Added new header that displays the time remaining and the points (which also appears in each of the minigames on the win screen)
 * Added motivational messages that appear on win screens of each game
@@ -8,6 +8,11 @@
   * Data now uploads to Azure on check-in and game completion
 * Adjusted the user flow of the app
 * Added popup for play goal completion
+* **Game Versions**
+  * Crave Smash [v0.6.2](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 18th, 2025)
+  * Puff Dodge [v0.1.1](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 18th, 2025)
+  * Not So Tasty [v0.3.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 18th, 2025)
+  * Match And Catch [v0.4.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 18th, 2025)
 
 ## v0.4.1 - July 28th, 2025
 * Added link from main menu to Puff Dodge
