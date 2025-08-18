@@ -7,25 +7,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-/// <summary>
-/// A full list of all states that the UI can be. This includes the main menu and all of the games. Each state is not guarenteed to be used for each type of controller
-/// </summary>
-public enum UIState {
-    NULL,
-    MAIN, PLAYGOAL,
-    TUTORIAL, GAME, PAUSE, WIN,
-    CRAVE, CAUSE, COMPLETE
-}
-
 public abstract class UIController : MonoBehaviour {
-    public const float SCREEN_TRANSITION_SECONDS = 0.25f;
-    public const float POPUP_TRANSITION_SECONDS = 0.5f;
-    public const float WIN_DELAY_SECONDS = 1.5f;
-    public const int PLAY_GOAL_SECONDS = 900;
-
     [Header("UIController")]
-    [SerializeField] private Gradient backgroundGradient;
     [SerializeField] protected Camera mainCamera;
+    [Space]
+    [SerializeField] private Gradient backgroundGradient;
+    [Space]
+    [SerializeField, Range(0f, 2f)] public readonly float screenTransitionSeconds = 0.25f;
+    [SerializeField, Range(0f, 2f)] public readonly float popupTransitionSeconds = 0.5f;
+    [SerializeField, Range(0f, 2f)] public readonly float gameWinDelaySeconds = 1.5f;
+    [SerializeField, Min(0)] public readonly int playGoalSeconds = 900;
 
     protected float cameraHalfWidth;
     protected float cameraHalfHeight;
@@ -43,6 +34,10 @@ public abstract class UIController : MonoBehaviour {
     public VisualElement CurrentScreen { get; private set; }
     public VisualElement CurrentPopup { get; private set; }
     public bool IsTouchingScreen { get; private set; }
+
+    /// <summary>
+    /// The last position of touch input or the last mouse position on the screen
+    /// </summary>
     public Vector3 LastTouchWorldPosition { get; private set; }
 
     protected virtual void Awake( ) {
@@ -86,7 +81,7 @@ public abstract class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="screen">The screen to display</param>
     /// <param name="onComplete">An optional callback function that will be called when the screen transition is complete</param>
-    protected void DisplayScreen(VisualElement screen, Action onComplete = null) {
+    protected void DisplayScreen(VisualElement screen, Action onHalfway = null, Action onComplete = null) {
         // Stop new transitions if there is a transition currently happening
         if (animatingVisualElements.Count > 0) {
             return;
@@ -99,13 +94,15 @@ public abstract class UIController : MonoBehaviour {
             .OnComplete(( ) => { onComplete?.Invoke( ); });
 
         if (previousScreen != null) {
-            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 0f, 1f, SCREEN_TRANSITION_SECONDS));
+            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 0f, 1f, screenTransitionSeconds));
             transitionSequence.AppendCallback(( ) => { previousScreen.style.display = DisplayStyle.None; });
         }
 
+        transitionSequence.AppendCallback(( ) => { onHalfway?.Invoke( ); });
+
         if (CurrentScreen != null) {
             transitionSequence.AppendCallback(( ) => { CurrentScreen.style.display = DisplayStyle.Flex; });
-            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 1f, 0f, SCREEN_TRANSITION_SECONDS, disableOnComplete: true, setDefaultsBeforeTweenStart: previousScreen == null));
+            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 1f, 0f, screenTransitionSeconds, disableOnComplete: true, setDefaultsBeforeTweenStart: previousScreen == null));
         }
     }
 
@@ -155,18 +152,18 @@ public abstract class UIController : MonoBehaviour {
             // If the new popup is not null and there is not a current popup, then transition the popup and the background in
             // if the new popup is not null and there is a current popup, then transition the current popup out and the new popup in without touching the background
             if (CurrentPopup == null) {
-                AnimateElementOpacity(popupOverlay, 0f, 1f, POPUP_TRANSITION_SECONDS);
-                AnimateElementTranslation(popup, offScreen, onScreen, POPUP_TRANSITION_SECONDS);
+                AnimateElementOpacity(popupOverlay, 0f, 1f, popupTransitionSeconds);
+                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds);
             } else {
-                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
-                AnimateElementTranslation(popup, offScreen, onScreen, POPUP_TRANSITION_SECONDS);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true);
+                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds);
             }
         } else {
             // If the new popup is null and there is a current popup, then transition the current popup out as well as the background because there will be no more popup visible
             // If the new popup is nulla nd there is not a current popup, then do nothing because no popup is visible
             if (CurrentPopup != null) {
-                AnimateElementOpacity(popupOverlay, 1f, 0f, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
-                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
+                AnimateElementOpacity(popupOverlay, 1f, 0f, popupTransitionSeconds, disableOnComplete: true);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true);
             }
         }
 

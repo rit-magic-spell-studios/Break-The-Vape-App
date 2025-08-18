@@ -20,93 +20,93 @@ public class PuffDodgeController : GameController {
     [Space]
     [SerializeField] private int _destroyedItems;
 
-    //private float itemSpawnTimer;
-    //private int sliceFrameCounter;
+    private float itemSpawnTimer;
+    private int sliceFrameCounter;
 
-    //public List<GameObject> VapeItems { get; private set; }
+    public List<GameObject> VapeItems { get; private set; }
 
-    //public int DestroyedItems {
-    //    get => _destroyedItems;
-    //    set {
-    //        _destroyedItems = Mathf.Clamp(value, 0, targetDestroyedItems);
-    //        destroyedItemsLabel.text = $"{_destroyedItems} / {targetDestroyedItems} items destroyed!";
+    public int DestroyedItems {
+        get => _destroyedItems;
+        set {
+            _destroyedItems = Mathf.Clamp(value, 0, targetDestroyedItems);
+            destroyedItemsLabel.text = $"{_destroyedItems} / {targetDestroyedItems} items destroyed!";
 
-    //        if (_destroyedItems >= targetDestroyedItems) {
-    //            DelayAction(( ) => { UIControllerState = UIState.WIN; }, 2f);
+            if (_destroyedItems >= targetDestroyedItems) {
+                WinGame( );
 
-    //            for (int i = 0; i < VapeItems.Count; i++) {
-    //                Destroy(VapeItems[i]);
-    //            }
-    //            VapeItems.Clear( );
-    //        }
-    //    }
-    //}
-    //private Label destroyedItemsLabel;
+                for (int i = 0; i < VapeItems.Count; i++) {
+                    Destroy(VapeItems[i]);
+                }
+                VapeItems.Clear( );
+            }
+        }
+    }
+    private Label destroyedItemsLabel;
 
-    //protected override void Awake( ) {
-    //    base.Awake( );
+    protected override void Awake( ) {
+        base.Awake( );
 
-    //    destroyedItemsLabel = ui.Q<Label>("DestroyedItemsLabel");
-    //    VapeItems = new List<GameObject>( );
-    //    DestroyedItems = 0;
-    //}
+        destroyedItemsLabel = ui.Q<Label>("DestroyedItemsLabel");
+        VapeItems = new List<GameObject>( );
+        DestroyedItems = 0;
+    }
 
-    //protected override void Update( ) {
-    //    base.Update( );
+    protected override void Update( ) {
+        base.Update( );
 
-    //    if (UIControllerState != UIState.GAME || DestroyedItems >= targetDestroyedItems) {
-    //        return;
-    //    }
+        if (!IsPlayingGame || DestroyedItems >= targetDestroyedItems) {
+            return;
+        }
 
-    //    if (IsTouchingScreen) {
-    //        sliceTrailRenderer.transform.position = LastTouchWorldPosition;
-    //        sliceFrameCounter++;
-    //        if (sliceTrailRenderer.time == 0f && sliceFrameCounter >= sliceFrameDelay) {
-    //            sliceTrailRenderer.time = sliceTrailTime;
-    //        }
+        if (IsTouchingScreen) {
+            sliceTrailRenderer.transform.position = LastTouchWorldPosition;
+            sliceFrameCounter++;
+            if (sliceTrailRenderer.time == 0f && sliceFrameCounter >= sliceFrameDelay) {
+                sliceTrailRenderer.time = sliceTrailTime;
+            }
 
-    //        // Check to see if one of the slice positions overlaps the collider for a vape item
-    //        // For now, just destroy the vape item and increment the number of destroyed items
-    //        RaycastHit2D[ ] hits = Physics2D.RaycastAll(LastTouchWorldPosition, Vector2.up, 0.05f, vapeItemLayer.value);
-    //        for (int i = 0; i < hits.Length; i++) {
-    //            GameObject hitObject = hits[i].transform.gameObject;
+            // Check to see if one of the slice positions overlaps the collider for a vape item
+            // For now, just destroy the vape item and increment the number of destroyed items
+            RaycastHit2D[ ] hits = Physics2D.RaycastAll(LastTouchWorldPosition, Vector2.up, 0.05f, vapeItemLayer.value);
+            for (int i = 0; i < hits.Length; i++) {
+                GameObject hitObject = hits[i].transform.gameObject;
 
-    //            VapeItems.Remove(hitObject);
-    //            Destroy(hitObject);
+                VapeItems.Remove(hitObject);
+                Destroy(hitObject);
 
-    //            DestroyedItems++;
-    //            GameSessionData.PointsEarnedValue += 50;
-    //        }
-    //    } else {
-    //        sliceTrailRenderer.time = 0f;
-    //        sliceFrameCounter = 0;
-    //    }
+                DestroyedItems++;
+                GameSessionData.PointsEarnedValue += 50;
+            }
+        } else {
+            sliceTrailRenderer.time = 0f;
+            sliceFrameCounter = 0;
+        }
 
-    //    // Spawn vape items periodically
-    //    itemSpawnTimer += Time.deltaTime;
-    //    if (itemSpawnTimer >= itemSpawnRate) {
-    //        StartCoroutine(SpawnVapeItems( ));
-    //        itemSpawnTimer -= itemSpawnRate;
-    //    }
-    //}
+        // Spawn vape items periodically
+        itemSpawnTimer += Time.deltaTime;
+        if (itemSpawnTimer >= itemSpawnRate) {
+            StartCoroutine(SpawnVapeItems( ));
+            itemSpawnTimer -= itemSpawnRate;
+        }
+    }
 
-    ///// <summary>
-    ///// Spawn a burst of vape items that arc onto the screen
-    ///// </summary>
-    ///// <returns></returns>
-    //private IEnumerator SpawnVapeItems( ) {
-    //    int itemSpawnCount = Random.Range(itemSpawnBurstMin, itemSpawnBurstMax);
-    //    for (int i = 0; i < itemSpawnCount; i++) {
-    //        Vector2 spawnPosition = new Vector2(cameraHalfWidth * 1.5f, -cameraHalfHeight * 0.5f);
-    //        if (Random.Range(0f, 1f) > 0.5f) {
-    //            spawnPosition.x *= -1f;
-    //        }
-    //        Quaternion spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
-    //        VapeItems.Add(Instantiate(vapeItemPrefab, spawnPosition, spawnRotation));
+    /// <summary>
+    /// Spawn a burst of vape items that arc onto the screen
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator SpawnVapeItems( ) {
+        int itemSpawnCount = Random.Range(itemSpawnBurstMin, itemSpawnBurstMax);
+        for (int i = 0; i < itemSpawnCount; i++) {
+            Vector2 spawnPosition = new Vector2(cameraHalfWidth * 1.5f, -cameraHalfHeight * 0.5f);
+            if (Random.Range(0f, 1f) > 0.5f) {
+                spawnPosition.x *= -1f;
+            }
+            Quaternion spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+            VapeItems.Add(Instantiate(vapeItemPrefab, spawnPosition, spawnRotation, objectContainer));
 
-    //        yield return new WaitForSeconds(itemSpawnBurstDelay);
-    //    }
+            yield return new WaitForSeconds(itemSpawnBurstDelay);
+        }
 
-    //    yield return null;
-    //}
+        yield return null;
+    }
 }

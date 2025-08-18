@@ -215,7 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1511081831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &276330533
 TrailRenderer:
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9e552d6f68a043bb62a0de2049843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 2129265791}
   backgroundGradient:
     serializedVersion: 2
     key0: {r: 0.20392157, g: 0.11764706, b: 0.972549, a: 1}
@@ -423,9 +424,9 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  mainCamera: {fileID: 2129265791}
   confettiParticlePrefab: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
   pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
+  objectContainer: {fileID: 1511081831}
   tutorialVisual: {fileID: 0}
   tutorialText: Protect your lungs by knocking away 25 of the harmful objects!
   vapeItemPrefab: {fileID: 2567073745258421220, guid: 1043916232ec95349af2b367043b60fc, type: 3}
@@ -441,6 +442,96 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _destroyedItems: 0
+--- !u!1001 &1109244547
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909549227052156520, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150402292235590003, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+      propertyPath: m_Name
+      value: App Loader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 628a4574d51d75e4aacbe59dc62afa26, type: 3}
+--- !u!1 &1511081830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511081831}
+  m_Layer: 0
+  m_Name: Objects Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1511081831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511081830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 276330532}
+  - {fileID: 1793836692}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793836691
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,11 +560,11 @@ Transform:
   m_GameObject: {fileID: 1793836691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1511081831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1793836693
 SpriteRenderer:
@@ -544,9 +635,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1793836693}
   polygonCollider2D: {fileID: 1793836695}
   healthStages:
-  - {fileID: 21300000, guid: b2016cdd52d08b449b2cff98bd5509fe, type: 3}
+  - {fileID: 21300000, guid: c675e4a8c117ad5439afd569393381c4, type: 3}
   - {fileID: 21300000, guid: acd63d5338bb20240b2afff3776df33d, type: 3}
-  - {fileID: 21300000, guid: f46b31b101d800c4c9ca9ad1c004e223, type: 3}
+  - {fileID: 21300000, guid: 9fece1d0ac9c8df43b1add7cf7a3cd3c, type: 3}
+  puffDodgeController: {fileID: 0}
   healthRegainSeconds: 4
   walkSpeed: 2
   minWalkSeconds: 2
@@ -794,8 +886,8 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1109244547}
   - {fileID: 2129265792}
   - {fileID: 576956274}
   - {fileID: 207987996}
-  - {fileID: 276330532}
-  - {fileID: 1793836692}
+  - {fileID: 1511081831}

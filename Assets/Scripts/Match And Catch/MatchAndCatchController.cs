@@ -72,12 +72,13 @@ public class MatchAndCatchController : GameController {
         float cardSize = ((cameraHalfWidth * 2f) - ((gridWidth + 1) * cardSpacing)) / gridWidth;
         float gridWorldHeight = (gridHeight * (cardSize + cardSpacing)) - cardSpacing;
         float gridWorldWidth = (gridWidth * (cardSize + cardSpacing)) - cardSpacing;
+
         for (int x = 0; x < gridWidth; x++) {
             for (int y = 0; y < gridHeight; y++) {
                 float cardPositionX = (x * (cardSize + cardSpacing)) - (gridWorldWidth / 2f) + (cardSize / 2f);
                 float cardPositionY = (y * (cardSize + cardSpacing)) - (gridWorldHeight / 2f) + (cardSize / 2f);
 
-                Card card = Instantiate(cardPrefab, new Vector2(cardPositionX, cardPositionY), Quaternion.identity).GetComponent<Card>( );
+                Card card = Instantiate(cardPrefab, new Vector2(cardPositionX, cardPositionY), Quaternion.identity, objectContainer).GetComponent<Card>( );
                 card.CardFront = cardFrontSprites[cardMatchIndices[x + (gridWidth * y)]];
                 card.Size = cardSize;
 
@@ -120,7 +121,7 @@ public class MatchAndCatchController : GameController {
             AddPoints(Vector3.zero, 100);
 
             if (FlippedCards.Count == cards.Count) {
-                DelayAction(( ) => { DisplayScreen(winScreen); }, WIN_DELAY_SECONDS);
+                WinGame( );
             }
         }
 

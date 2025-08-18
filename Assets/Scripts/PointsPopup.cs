@@ -30,7 +30,7 @@ public class PointsPopup : MonoBehaviour {
 
             textComponent.text = $"+{_points}";
             textComponent.color = pointGradient.Evaluate(i);
-            transform.localScale = Mathf.Lerp(0.5f, 2f, i) * Vector2.one;
+            transform.localScale = Mathf.Lerp(0.5f, 1.5f, i) * Vector2.one;
         }
     }
 

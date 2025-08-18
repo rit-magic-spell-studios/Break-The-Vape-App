@@ -9,6 +9,7 @@ public abstract class GameController : UIController {
     [Header("GameController")]
     [SerializeField] private GameObject confettiParticlePrefab;
     [SerializeField] private GameObject pointsPopupPrefab;
+    [SerializeField] protected Transform objectContainer;
     [SerializeField] private RenderTexture tutorialVisual;
     [SerializeField, TextArea] private string tutorialText;
 
@@ -58,10 +59,10 @@ public abstract class GameController : UIController {
         // Create a new game session data entry for this game
         GameSessionData = new GameSessionData(name, DataManager.AppSessionData.RITchCode, DataManager.AppSessionData.TotalPointsEarned);
         DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
-            float secondsRemaining = Mathf.Max(0, PLAY_GOAL_SECONDS - DataManager.AppSessionData.TotalTimeSeconds);
+            float secondsRemaining = Mathf.Max(0, playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
             string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
             ui.Q<Label>("RadialProgressBarLabel").text = timerString;
-            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
+            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
         };
         GameSessionData.OnPointsEarnedChange += ( ) => {
             scoreLabel.text = $"Score: <b>{GameSessionData.PointsEarned} pts</b>";
@@ -95,6 +96,12 @@ public abstract class GameController : UIController {
     public void AddPoints(Vector3 position, int points) {
         GameSessionData.PointsEarnedValue += points;
         SpawnPointsPopup(position, points);
+    }
+
+    public void WinGame( ) {
+        DelayAction(( ) => {
+            DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject); });
+        }, gameWinDelaySeconds);
     }
 
     /// <summary>

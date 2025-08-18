@@ -8,6 +8,7 @@ public class LungCharacter : MonoBehaviour {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
     [SerializeField] private List<Sprite> healthStages;
+    [SerializeField] private PuffDodgeController puffDodgeController;
     [Space]
     [SerializeField, Range(0.5f, 10f)] private float healthRegainSeconds;
     [SerializeField, Range(0f, 5f)] private float walkSpeed;
@@ -41,6 +42,8 @@ public class LungCharacter : MonoBehaviour {
     }
 
     private void Awake( ) {
+        puffDodgeController = FindFirstObjectByType<PuffDodgeController>();
+
         cameraHalfHeight = Camera.main.orthographicSize;
         cameraHalfWidth = cameraHalfHeight * Camera.main.aspect;
 
@@ -50,7 +53,12 @@ public class LungCharacter : MonoBehaviour {
         walkDirection = 1;
         isWalking = true;
     }
+
     private void Update( ) {
+        if (!puffDodgeController.IsPlayingGame) {
+            return;
+        }
+
         // Regain health over time
         healthRegainTimer += Time.deltaTime;
         if (healthRegainTimer >= healthRegainSeconds) {

@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ae1c0f3223bad4dbdfed416bc66a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 519420031}
   backgroundGradient:
     serializedVersion: 2
     key0: {r: 0.95686275, g: 0.972549, b: 0.11764706, a: 1}
@@ -347,9 +348,9 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  mainCamera: {fileID: 519420031}
   confettiParticlePrefab: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
   pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
+  objectContainer: {fileID: 1442781500}
   tutorialVisual: {fileID: 8400000, guid: 93f91963009a75644944a18b24dfed4e, type: 2}
   tutorialText: Tap the craving monster quickly to defeat your craving!
 --- !u!1 &735481395
@@ -557,11 +558,11 @@ Transform:
   m_GameObject: {fileID: 1309461601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1442781500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1309461604
 BoxCollider2D:
@@ -631,6 +632,38 @@ MonoBehaviour:
   clickDamage: 4
   baseClickPoints: 5
   healSpeed: 10
+--- !u!1 &1442781499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1442781500}
+  m_Layer: 0
+  m_Name: Object Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1442781500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442781499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1309461603}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -639,4 +672,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 710957788}
   - {fileID: 735481397}
-  - {fileID: 1309461603}
+  - {fileID: 1442781500}

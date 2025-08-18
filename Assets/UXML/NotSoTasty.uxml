@@ -1,184 +1,23 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="GameBar" src="project://database/Assets/UXML/Templates/GameBar.uxml?fileID=9197481963319205126&amp;guid=44a2d20bd69f40c47afe90cab3c4380d&amp;type=3#GameBar" />
-    <engine:Template name="GameTutorialSubscreen" src="project://database/Assets/UXML/Templates/GameTutorialSubscreen.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialSubscreen" />
-    <engine:Template name="GameWinScreen" src="project://database/Assets/UXML/Templates/GameWinScreen.uxml?fileID=9197481963319205126&amp;guid=1d6928190cee2694fba334f48fdf52f5&amp;type=3#GameWinScreen" />
-    <engine:Template name="GamePauseScreen" src="project://database/Assets/UXML/Templates/GamePauseScreen.uxml?fileID=9197481963319205126&amp;guid=2bacc1f092c8dd5469eacb2e23ea4ea1&amp;type=3#GamePauseScreen" />
+    <engine:Template name="GameTutorialPopup" src="project://database/Assets/UXML/Templates/GameTutorialPopup.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialPopup" />
+    <engine:Template name="GameWinScreen" src="project://database/Assets/UXML/Templates/Screens/GameWinScreen.uxml?fileID=9197481963319205126&amp;guid=1d6928190cee2694fba334f48fdf52f5&amp;type=3#GameWinScreen" />
+    <engine:Template name="GamePauseScreen" src="project://database/Assets/UXML/Templates/Screens/GamePauseScreen.uxml?fileID=9197481963319205126&amp;guid=2bacc1f092c8dd5469eacb2e23ea4ea1&amp;type=3#GamePauseScreen" />
+    <engine:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Screens/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <Style src="project://database/Assets/USS/NotSoTasty.uss?fileID=7433441132597879392&amp;guid=c1de2e30a96aa13449d8208949f8c78a&amp;type=3#NotSoTasty" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" style="flex-grow: 1;">
             <engine:Instance template="GameBar" />
-            <engine:VisualElement style="flex-grow: 1;">
-                <engine:Instance template="GameTutorialSubscreen" name="TutorialSubscreen" style="display: none; flex-grow: 1;" />
-                <engine:VisualElement name="GameSubscreen" class="uofr-padding" style="display: flex;">
-                    <engine:Label text="6 secret tiles left!" name="SecretLabel" class="uofr-title-medium uofr-title-header" style="-unity-font-style: normal;" />
-                    <engine:VisualElement style="overflow: hidden;">
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                        <engine:VisualElement style="flex-direction: row;">
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                            <engine:VisualElement name="Tile" class="nst-tile">
-                                <engine:VisualElement name="Fruit" class="nst-fruit" />
-                            </engine:VisualElement>
-                        </engine:VisualElement>
-                    </engine:VisualElement>
-                    <engine:VisualElement name="LineElementContainer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
+            <engine:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+                <engine:Label text="3 secret tiles left!" name="SecretLabel" class="uofr-title-medium uofr-container" style="-unity-font-style: normal; -unity-text-align: lower-center; border-left-color: rgba(238, 238, 238, 0); border-right-color: rgba(238, 238, 238, 0); border-top-color: rgba(238, 238, 238, 0); border-bottom-color: rgba(238, 238, 238, 0); background-color: rgba(255, 255, 255, 0);" />
+                <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay">
+                    <engine:Instance template="GameTutorialPopup" name="GameTutorialPopup" />
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:Instance template="GameWinScreen" name="WinScreen" style="display: none; flex-grow: 1;" />
         <engine:Instance template="GamePauseScreen" name="PauseScreen" style="display: none; flex-grow: 1;" />
+        <engine:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: none; flex-grow: 1;" />
+        <engine:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="background-color: rgb(255, 255, 255); display: none;" />
     </engine:VisualElement>
 </engine:UXML>

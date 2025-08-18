@@ -9,6 +9,6 @@ public class CraveSmashController : GameController {
     /// </summary>
     public void OnMonsterDestroyed( ) {
         SpawnConfettiParticles(transform.position);
-        DelayAction(( ) => { DisplayScreen(winScreen); }, WIN_DELAY_SECONDS);
+        WinGame( );
     }
 }

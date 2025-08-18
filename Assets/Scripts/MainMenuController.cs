@@ -23,7 +23,7 @@ public class MainMenuController : UIController {
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
-        ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
+        //ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
         ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { GoToScene("PuffDodge"); };
 
         ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
@@ -62,14 +62,14 @@ public class MainMenuController : UIController {
                 return;
             }
 
-            float secondsRemaining = Mathf.Max(0, PLAY_GOAL_SECONDS - DataManager.AppSessionData.TotalTimeSeconds);
+            float secondsRemaining = Mathf.Max(0, playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
             if (secondsRemaining == 0) {
                 isPlayGoalComplete = true;
                 DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"));
             } else {
                 string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
                 ui.Q<Label>("RadialProgressBarLabel").text = timerString;
-                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
+                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
             }
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
