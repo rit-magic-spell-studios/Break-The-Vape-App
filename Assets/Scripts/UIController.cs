@@ -123,16 +123,16 @@ public abstract class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="popup">The popup to display</param>
     /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
-    protected void DisplayBasicPopup(VisualElement popup, bool checkForAnimations = true) {
-        DisplayPopup(popup, Vector2.zero, new Vector2(0, Screen.height), checkForAnimations: checkForAnimations);
+    protected void DisplayBasicPopup(VisualElement popup, bool checkForAnimations = true, Action onComplete = null) {
+        DisplayPopup(popup, Vector2.zero, new Vector2(0, Screen.height), checkForAnimations: checkForAnimations, onComplete: onComplete);
     }
 
     /// <summary>
     /// Hide the currently displayed popup
     /// </summary>
     /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
-    protected void HideCurrentPopup(bool checkForAnimations = true) {
-        DisplayPopup(null, checkForAnimations: checkForAnimations);
+    protected void HideCurrentPopup(bool checkForAnimations = true, Action onComplete = null) {
+        DisplayPopup(null, checkForAnimations: checkForAnimations, onComplete: onComplete);
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="onScreen">The translation position of the popup where it should be when it is on the screen</param>
     /// <param name="offScreen">The translation position of the popup where it should be when it is off the screen</param>
     /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
-    protected void DisplayPopup(VisualElement popup, Vector2 onScreen = default, Vector2 offScreen = default, bool checkForAnimations = true) {
+    protected void DisplayPopup(VisualElement popup, Vector2 onScreen = default, Vector2 offScreen = default, bool checkForAnimations = true, Action onComplete = null) {
         // Stop new transitions if there is a transition currently happening
         if ((checkForAnimations && animatingVisualElements.Count > 0) || popup == CurrentPopup) {
             return;
@@ -153,17 +153,17 @@ public abstract class UIController : MonoBehaviour {
             // if the new popup is not null and there is a current popup, then transition the current popup out and the new popup in without touching the background
             if (CurrentPopup == null) {
                 AnimateElementOpacity(popupOverlay, 0f, 1f, popupTransitionSeconds);
-                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds);
+                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds, onComplete: onComplete);
             } else {
                 AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true);
-                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds);
+                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds, onComplete: onComplete);
             }
         } else {
             // If the new popup is null and there is a current popup, then transition the current popup out as well as the background because there will be no more popup visible
             // If the new popup is nulla nd there is not a current popup, then do nothing because no popup is visible
             if (CurrentPopup != null) {
                 AnimateElementOpacity(popupOverlay, 1f, 0f, popupTransitionSeconds, disableOnComplete: true);
-                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true, onComplete: onComplete);
             }
         }
 
@@ -183,7 +183,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
     /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
     /// <returns>A reference to the Tween that is animating the visual element</returns>
-    private Tween AnimateElementTranslation(VisualElement element, Vector2 startTranslation, Vector2 endTranslation, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true) {
+    private Tween AnimateElementTranslation(VisualElement element, Vector2 startTranslation, Vector2 endTranslation, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
         Action onStart = ( ) => {
             element.style.display = DisplayStyle.Flex;
             element.style.translate = new StyleTranslate(new Translate(startTranslation.x, startTranslation.y));
@@ -210,6 +210,7 @@ public abstract class UIController : MonoBehaviour {
                     element.style.display = DisplayStyle.None;
                 }
                 animatingVisualElements.Remove(element);
+                onComplete?.Invoke( );
             });
     }
 
@@ -223,7 +224,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
     /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
     /// <returns>A reference to the Tween that is animating the visual element</returns>
-    private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true) {
+    private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
         Action onStart = ( ) => {
             element.style.display = DisplayStyle.Flex;
             element.style.backgroundColor = new StyleColor(startColor);
@@ -250,6 +251,7 @@ public abstract class UIController : MonoBehaviour {
                     element.style.display = DisplayStyle.None;
                 }
                 animatingVisualElements.Remove(element);
+                onComplete?.Invoke( );
             });
     }
 
@@ -263,7 +265,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
     /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
     /// <returns>A reference to the Tween that is animating the visual element</returns>
-    private Tween AnimateElementOpacity(VisualElement element, float startOpacity, float endOpacity, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true) {
+    private Tween AnimateElementOpacity(VisualElement element, float startOpacity, float endOpacity, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
         Action onStart = ( ) => {
             element.style.display = DisplayStyle.Flex;
             element.style.opacity = startOpacity;
@@ -290,6 +292,7 @@ public abstract class UIController : MonoBehaviour {
                     element.style.display = DisplayStyle.None;
                 }
                 animatingVisualElements.Remove(element);
+                onComplete?.Invoke( );
             });
     }
 

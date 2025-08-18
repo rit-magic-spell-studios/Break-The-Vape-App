@@ -1,0 +1,20 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
+    <engine:VisualElement>
+        <engine:SliderInt high-value="5" name="CravingIntensitySlider" class="uofr-slider-int" />
+        <engine:VisualElement class="uofr-space-small" />
+        <engine:VisualElement style="flex-direction: row; justify-content: space-between; padding-right: 20px; padding-left: 20px;">
+            <engine:Label text="0" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+            <engine:Label text="1" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+            <engine:Label text="2" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+            <engine:Label text="3" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+            <engine:Label text="4" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+            <engine:Label text="5" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+        </engine:VisualElement>
+        <engine:VisualElement class="uofr-space-small" />
+        <engine:VisualElement style="flex-direction: row; justify-content: space-between;">
+            <engine:Label text="No&#10;Craving" class="uofr-title-small" style="color: rgb(97, 97, 97); -unity-font-style: normal;" />
+            <engine:Label text="Extreme&#10;Craving" class="uofr-title-small" style="color: rgb(97, 97, 97); -unity-font-style: normal;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

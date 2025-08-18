@@ -1,50 +1,104 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="CravingIntensityContainer" src="project://database/Assets/UXML/Templates/CravingIntensityContainer.uxml?fileID=9197481963319205126&amp;guid=22ca84ebdece898448606eee2861edfa&amp;type=3#CravingIntensityContainer" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="CheckInScreen" class="uofr-padding" style="display: flex; opacity: 1; justify-content: flex-end;">
-            <engine:VisualElement class="uofr-container" style="min-height: 50%; justify-content: space-between;">
-                <engine:VisualElement>
-                    <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
-                    <engine:Label name="CheckInSubtitle" text="Subtitle text" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
-                </engine:VisualElement>
-                <engine:VisualElement class="uofr-space-medium" />
-                <engine:VisualElement name="CravingCauseContainer" style="flex-direction: row; display: flex;">
-                    <engine:VisualElement style="width: 50%;">
-                        <engine:Button text="Stress" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
-                        <engine:VisualElement class="uofr-space-small" />
-                        <engine:Button text="Friends" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
-                        <engine:VisualElement class="uofr-space-small" />
-                        <engine:Button text="Social Media" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+        <engine:VisualElement name="SplashScreen" class="uofr-padding" style="flex-grow: 1; justify-content: space-around; display: flex;">
+            <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/URM_horiz_2C.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#URM_horiz_2C&quot;); height: 10%; -unity-background-scale-mode: scale-to-fit;" />
+            <engine:Label text="Break The Vape" class="uofr-title-large" />
+            <engine:VisualElement>
+                <engine:Button text="RITch Code Entry" name="RITchCodeLoginButton" class="uofr-button uofr-button-highlight" />
+                <engine:VisualElement class="uofr-space-small" />
+                <engine:Button text="Continue as Guest" name="GuestButton" class="uofr-button" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="CheckInScreen" class="uofr-padding" style="display: none; opacity: 1; justify-content: flex-end;">
+            <engine:Label text="Check In" class="uofr-title-large uofr-title-header" />
+            <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: flex; justify-content: flex-end;">
+                <engine:VisualElement name="CheckInPopup" class="uofr-container" style="min-height: 50%; justify-content: space-between; max-height: 75%;">
+                    <engine:VisualElement>
+                        <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
+                        <engine:Label name="CheckInSubtitle" text="Subtitle text" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
                     </engine:VisualElement>
-                    <engine:VisualElement class="uofr-space-small" />
-                    <engine:VisualElement style="width: 50%;">
-                        <engine:Button text="Habit" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                    <engine:VisualElement class="uofr-space-large" />
+                    <engine:VisualElement name="CravingCauseContainer" style="flex-direction: row; display: none;">
+                        <engine:VisualElement style="width: 50%;">
+                            <engine:Button text="Stress" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                            <engine:VisualElement class="uofr-space-small" />
+                            <engine:Button text="Friends" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                            <engine:VisualElement class="uofr-space-small" />
+                            <engine:Button text="Social Media" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                        </engine:VisualElement>
                         <engine:VisualElement class="uofr-space-small" />
-                        <engine:Button text="Boredom" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                        <engine:VisualElement style="width: 50%;">
+                            <engine:Button text="Habit" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                            <engine:VisualElement class="uofr-space-small" />
+                            <engine:Button text="Boredom" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                            <engine:VisualElement class="uofr-space-small" />
+                            <engine:Button text="Other" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    <engine:Instance template="CravingIntensityContainer" name="CravingIntensityContainer" style="display: none;" />
+                    <engine:VisualElement name="DemographicInfoContainer" style="display: none;">
+                        <engine:RadioButtonGroup label="Age" choices="Youth (&lt; 18),Emerging Adult (18 - 25),Adult (25 +)" name="AgeButtonGroup" value="-1" class="uofr-radio-button-group" />
+                        <engine:VisualElement class="uofr-space-large" />
+                        <engine:RadioButtonGroup label="Environment" choices="Rural,Non-rural" name="EnvironmentButtonGroup" class="uofr-radio-button-group" />
+                        <engine:VisualElement class="uofr-space-large" />
+                        <engine:Label text="Number of days vaped in the last week" class="uofr-text-medium" />
                         <engine:VisualElement class="uofr-space-small" />
-                        <engine:Button text="Other" class="uofr-button uofr-button-discreet" style="flex-grow: 1;" />
+                        <engine:SliderInt high-value="7" name="VapeFrequencySlider" class="uofr-slider-int" />
+                        <engine:VisualElement class="uofr-space-small" />
+                        <engine:VisualElement style="flex-direction: row; justify-content: space-between; padding-right: 30px; padding-left: 30px;">
+                            <engine:Label text="0" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="1" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="2" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="3" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="4" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="5" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="6" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                            <engine:Label text="7" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                        </engine:VisualElement>
                     </engine:VisualElement>
-                </engine:VisualElement>
-                <engine:VisualElement name="CravingIntensityContainer" style="flex-grow: 1; display: none; margin-top: 50px; margin-right: 0; margin-bottom: 50px; margin-left: 0;">
-                    <engine:SliderInt value="3" high-value="5" name="CravingIntensitySlider" class="uofr-slider-int" />
-                    <engine:VisualElement class="uofr-space-small" />
-                    <engine:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between; padding-right: 25px; padding-left: 25px;">
-                        <engine:Label text="0" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
-                        <engine:Label text="1" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
-                        <engine:Label text="2" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
-                        <engine:Label text="3" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
-                        <engine:Label text="4" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
-                        <engine:Label text="5" class="uofr-title-small" style="color: rgb(15, 51, 134);" />
+                    <engine:VisualElement class="uofr-space-large" />
+                    <engine:VisualElement style="justify-content: space-between; flex-direction: row;">
+                        <engine:Label text="2/3" name="FormPageNumber" class="uofr-text-medium" style="-unity-text-align: middle-left; color: rgb(79, 130, 255);" />
+                        <engine:Button name="NextButton" class="uofr-button uofr-button-square">
+                            <engine:VisualElement name="NextButtonIcon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Right.png?fileID=21300000&amp;guid=bc5e017b8f0b13247baafa8890d8df3e&amp;type=3#Arrow_Right&quot;);" />
+                        </engine:Button>
                     </engine:VisualElement>
-                </engine:VisualElement>
-                <engine:VisualElement class="uofr-space-medium" />
-                <engine:VisualElement style="justify-content: space-between; flex-direction: row;">
-                    <engine:Button text="Skip" name="SkipButton" class="uofr-button uofr-button-none" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&amp;guid=1580f011331101848ad6e3f659545f69&amp;type=2#Geologica-Light SDF&quot;); font-size: 40px; -unity-font-style: normal;" />
-                    <engine:Button name="NextButton" class="uofr-button uofr-button-square">
-                        <engine:VisualElement name="NextButtonIcon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Arrow_Right.png?fileID=21300000&amp;guid=bc5e017b8f0b13247baafa8890d8df3e&amp;type=3#Arrow_Right&quot;);" />
-                    </engine:Button>
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
+        <engine:VisualElement name="RITchCodeScreen" style="display: none; background-color: rgb(255, 255, 255); flex-grow: 1;">
+            <engine:VisualElement class="uofr-container" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
+                <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <engine:Button name="RITchCodeBackButton" class="uofr-button uofr-button-square">
+                        <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
+                    </engine:Button>
+                    <engine:Label text="RITch Code" class="uofr-title-medium" style="flex-grow: 1;" />
+                    <engine:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement class="uofr-padding" style="justify-content: space-around;">
+                <engine:VisualElement>
+                    <engine:Label text="Enter your 6-digit RITch code to link your play record." class="uofr-text-medium" style="-unity-font-style: bold; -unity-text-align: upper-center;" />
+                    <engine:VisualElement class="uofr-space-medium" />
+                    <engine:VisualElement style="justify-content: space-between; flex-direction: row;">
+                        <engine:TextField max-length="1" class="uofr-textfield" />
+                        <engine:TextField max-length="1" class="uofr-textfield" />
+                        <engine:TextField max-length="1" class="uofr-textfield" />
+                        <engine:TextField max-length="1" class="uofr-textfield" />
+                        <engine:TextField max-length="1" class="uofr-textfield" />
+                        <engine:TextField max-length="1" class="uofr-textfield" />
+                    </engine:VisualElement>
+                    <engine:VisualElement class="uofr-space-medium" />
+                    <engine:Button name="RITchCodeClearButton" class="uofr-button uofr-button-none" style="flex-direction: row; align-items: center; align-self: flex-end;">
+                        <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Clear.png?fileID=21300000&amp;guid=5f6cc36a8ae234f4fa8de5bb248c961d&amp;type=3#Clear&quot;); width: 60px; height: 60px;" />
+                        <engine:Label text="Clear Entry" class="uofr-title-small" style="color: rgb(232, 0, 0);" />
+                    </engine:Button>
+                </engine:VisualElement>
+                <engine:Button text="Submit" name="RITchCodeSubmitButton" class="uofr-button uofr-button-highlight" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="background-color: rgb(255, 255, 255); display: none;" />
     </engine:VisualElement>
 </engine:UXML>

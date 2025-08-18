@@ -10,7 +10,7 @@
         <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
             <engine:Instance template="GameTitleBar" />
             <engine:VisualElement style="flex-grow: 1; justify-content: flex-end;">
-                <engine:Label text="Motivatonal Message Here" name="MessageLabel" class="uofr-title-medium uofr-container" style="background-color: rgba(255, 255, 255, 0); border-left-color: rgba(238, 238, 238, 0); border-right-color: rgba(238, 238, 238, 0); border-top-color: rgba(238, 238, 238, 0); border-bottom-color: rgba(238, 238, 238, 0);" />
+                <engine:Label name="MessageLabel" class="uofr-title-medium uofr-container" style="background-color: rgba(255, 255, 255, 0); border-left-color: rgba(238, 238, 238, 0); border-right-color: rgba(238, 238, 238, 0); border-top-color: rgba(238, 238, 238, 0); border-bottom-color: rgba(238, 238, 238, 0);" />
                 <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="flex-grow: 1;">
                     <engine:Instance template="GameTutorialSubscreen" name="GameTutorialPopup" style="display: flex;" />
                 </engine:VisualElement>

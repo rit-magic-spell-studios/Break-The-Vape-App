@@ -204,7 +204,7 @@
 }
 
 .uofr-slider-int .unity-base-slider__tracker {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(255, 255, 255);
     height: 80px;
     border-top-width: 3px;
     border-right-width: 3px;
@@ -301,6 +301,104 @@
     -unity-text-align: middle-center;
     font-size: 90px;
     -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+}
+
+.uofr-radio-button-group {
+    font-size: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/Fonts/Geologica/Geologica-Light%20SDF.asset?fileID=11400000&guid=1580f011331101848ad6e3f659545f69&type=2#Geologica-Light SDF");
+    flex-direction: column;
+}
+
+.uofr-radio-button-group > .unity-label {
+    -unity-font-style: bold;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.uofr-radio-button-group .unity-radio-button {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.uofr-radio-button-group .unity-radio-button__text {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.uofr-radio-button-group .unity-radio-button__checkmark-background {
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-right: 10px;
+    background-color: rgb(255, 255, 255);
+    border-left-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-top-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.uofr-radio-button-group .unity-radio-button__checkmark {
+    width: 40px;
+    height: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgb(80, 131, 255);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .uofr-button {
@@ -594,14 +692,6 @@
     color: rgb(0, 0, 0);
 }
 
-.uofr-title-header {
-    top: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    height: 15%;
-}
-
 .uofr-container {
     border-left-color: rgb(238, 238, 238);
     border-right-color: rgb(238, 238, 238);
@@ -656,4 +746,12 @@
     align-self: center;
     -unity-font-style: bold;
     color: rgb(0, 0, 0);
+}
+
+.uofr-title-header {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    height: 15%;
 }

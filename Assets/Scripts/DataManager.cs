@@ -9,7 +9,7 @@ using UnityEngine;
 public class DataManager : Singleton<DataManager> {
     [SerializeField] private bool saveDataLocally = false;
     [SerializeField] private bool sendAzureData = false;
-    [SerializeField] private string defaultRITchCode = "NONE00";
+    [SerializeField] public string DefaultRITchCode = "NONE00";
 
     private AzureFunctionClient client;
     private Action<IRestResponse<string>> action;
@@ -19,11 +19,15 @@ public class DataManager : Singleton<DataManager> {
     protected override void Awake( ) {
         base.Awake( );
 
-        // When the app starts, set default values
-        AppSessionData = new AppSessionData(defaultRITchCode);
-
-        // Initialize the Azure client
+        ResetAppSessionData( );
         client = AzureFunctionClient.Create("RitchSRA");
+    }
+
+    /// <summary>
+    /// Reset the app session data back to its original state
+    /// </summary>
+    public void ResetAppSessionData( ) {
+        AppSessionData = new AppSessionData(DefaultRITchCode);
     }
 
     /// <summary>
@@ -33,7 +37,7 @@ public class DataManager : Singleton<DataManager> {
     public void UploadSessionData(SessionData sessionData) {
         string json = JsonUtility.ToJson(sessionData);
         string identifier = GetSessionFileIdentifier(sessionData.ToString( ));
-        
+
         if (sendAzureData) {
             AzureCall(json, identifier);
             Debug.Log($"Sent data to Azure: {json}");
@@ -51,7 +55,7 @@ public class DataManager : Singleton<DataManager> {
     /// Set the current RITch code. This will automatically load the user data as well (if it exists)
     /// </summary>
     /// <param name="ritchCode">The RITch code to set</param>
-    public void SetRITchCode (string ritchCode) {
+    public void SetRITchCode(string ritchCode) {
         AppSessionData.RITchCode = ritchCode;
         AppSessionData.UserData = LoadUserData(ritchCode);
     }
@@ -106,6 +110,10 @@ public class DataManager : Singleton<DataManager> {
         return null;
     }
 
+    private void SaveUserData(string ritchCode) {
+
+    }
+
     /// <summary>
     /// Main call function that sends data to Azure
     /// </summary>
@@ -152,7 +160,7 @@ public class DataManager : Singleton<DataManager> {
     /// </summary>
     /// <param name="ritchCode">The RITch code to check</param>
     /// <returns>true if the RITch code is 6 characters long, is not the default RITch code, and has only alphanumeric characters, false otherwise</returns>
-    public bool CheckForValidRITchCode (string ritchCode) {
-        return (ritchCode.Length == 6 && ritchCode != defaultRITchCode && ritchCode.All(x => char.IsLetterOrDigit(x)));
+    public bool CheckForValidRITchCode(string ritchCode) {
+        return (ritchCode.Length == 6 && ritchCode != DefaultRITchCode && ritchCode.All(x => char.IsLetterOrDigit(x)));
     }
 }
