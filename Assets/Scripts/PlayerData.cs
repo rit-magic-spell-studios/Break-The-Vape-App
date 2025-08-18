@@ -31,8 +31,7 @@ public class AppSessionData : SessionData {
         }
     }
 
-    public AppSessionData(string ritchCode) : base(ritchCode) {
-        TotalPointsEarned = 0;
+    public AppSessionData( ) : base( ) {
     }
 
     public override void ClearAllDelegates( ) {
@@ -45,6 +44,12 @@ public class AppSessionData : SessionData {
         OnTotalPointsEarnedChange?.Invoke( );
     }
 
+    public override void ResetData( ) {
+        base.ResetData( );
+
+        TotalPointsEarned = 0;
+    }
+
     public override string ToString( ) {
         return "AppSession";
     }
@@ -55,7 +60,12 @@ public class CheckInSessionData : SessionData {
     public int CravingIntensity;
     public List<string> CravingTriggers;
 
-    public CheckInSessionData(string ritchCode) : base(ritchCode) {
+    public CheckInSessionData() : base( ) {
+    }
+
+    public override void ResetData( ) {
+        base.ResetData( );
+
         CravingIntensity = -1;
         CravingTriggers = new List<string>( );
     }
@@ -85,12 +95,12 @@ public class GameSessionData : SessionData {
         }
     }
 
-    public GameSessionData(string gameName, string ritchCode, int initialTotalPoints) : base(ritchCode) {
+    public GameSessionData(string gameName, int initialTotalPoints) : base( ) {
+        ResetData( );
+
         GameName = gameName;
-        PointsEarned = 0;
-        this.initialTotalPoints = initialTotalPoints;
         TotalPointsEarned = initialTotalPoints;
-        CravingIntensity = -1;
+        this.initialTotalPoints = initialTotalPoints;
     }
 
     public override void ClearAllDelegates( ) {
@@ -101,6 +111,15 @@ public class GameSessionData : SessionData {
     public override void InvokeAllDelegates( ) {
         base.InvokeAllDelegates( );
         OnPointsEarnedChange?.Invoke( );
+    }
+
+    public override void ResetData( ) {
+        base.ResetData( );
+
+        GameName = "NA";
+        PointsEarned = 0;
+        TotalPointsEarned = 0;
+        CravingIntensity = -1;
     }
 
     public override string ToString( ) {
@@ -127,13 +146,8 @@ public class SessionData {
         }
     }
 
-    public SessionData(string ritchCode) {
-        UserData = null;
-        RITchCode = ritchCode;
-        AppVersion = Application.version;
-        SessionID = Guid.NewGuid( ).ToString( );
-        StartTimeUTC = DateTime.UtcNow.ToString("o");
-        TotalTimeSeconds = 0;
+    public SessionData( ) {
+        ResetData( );
     }
 
     public virtual void ClearAllDelegates( ) {
@@ -142,6 +156,15 @@ public class SessionData {
 
     public virtual void InvokeAllDelegates( ) {
         OnTotalTimeSecondsChange?.Invoke( );
+    }
+
+    public virtual void ResetData( ) {
+        UserData = new UserData( );
+        RITchCode = "NONE00";
+        AppVersion = Application.version;
+        SessionID = Guid.NewGuid( ).ToString( );
+        StartTimeUTC = DateTime.UtcNow.ToString("o");
+        TotalTimeSeconds = 0;
     }
 
     public override string ToString( ) {

@@ -2,8 +2,7 @@
     <engine:Template name="AppStats" src="project://database/Assets/UXML/Templates/AppStats.uxml?fileID=9197481963319205126&amp;guid=caad3bf1ebe1538408ef86943b012b4b&amp;type=3#AppStats" />
     <engine:Template name="CravingIntensityContainer" src="project://database/Assets/UXML/Templates/CravingIntensityContainer.uxml?fileID=9197481963319205126&amp;guid=22ca84ebdece898448606eee2861edfa&amp;type=3#CravingIntensityContainer" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement class="uofr-padding" style="justify-content: flex-end;">
-        <engine:Label text="Final Score" class="uofr-title-large uofr-title-header" />
+    <engine:VisualElement class="uofr-padding">
         <engine:VisualElement class="uofr-container">
             <engine:Label text="Points Earned" class="uofr-text-medium" style="color: rgb(97, 97, 97); -unity-text-align: middle-center;" />
             <engine:Label text="+123 pts" name="FinalScoreLabel" class="uofr-title-medium" style="-unity-font-style: bold;" />

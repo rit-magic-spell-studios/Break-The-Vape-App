@@ -17,7 +17,9 @@ public class MainMenuController : UIController {
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
+        mainScreen.style.display = DisplayStyle.None;
         playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
+        playGoalInfoScreen.style.display = DisplayStyle.None;
 
         ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
 
@@ -35,17 +37,22 @@ public class MainMenuController : UIController {
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
         ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
-            DataManager.Instance.ResetAppSessionData( );
+            DataManager.AppSessionData.ResetData( );
             GoToScene("CheckIn");
         };
         ui.Q<Button>("CancelLogOutButton").clicked += ( ) => { HideCurrentPopup( ); };
 
-        ui.Q<Button>("DeleteUserDataButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("DeleteUserDataPopup")); };
-        ui.Q<Button>("ConfirmDeleteUserDataButton").clicked += ( ) => {
-            HideCurrentPopup( );
-            DataManager.Instance.RemoveUserData(DataManager.AppSessionData.RITchCode);
+        ui.Q<Button>("RestartSessionButton").clicked += ( ) => {
+            isPlayGoalComplete = false;
+            DataManager.AppSessionData.TotalPointsEarnedValue = 0;
+            DataManager.AppSessionData.TotalTimeSecondsValue = 0;
+            GoToScene("MainMenu");
+            HideCurrentPopup(checkForAnimations: false);
         };
-        ui.Q<Button>("CancelDeleteUserDataButton").clicked += ( ) => { HideCurrentPopup( ); };
+        ui.Q<Button>("FinishSessionButton").clicked += ( ) => {
+            DataManager.AppSessionData.ResetData( );
+            GoToScene("CheckIn");
+        };
 
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
@@ -62,24 +69,29 @@ public class MainMenuController : UIController {
                 return;
             }
 
-            float secondsRemaining = Mathf.Max(0, playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
+            float secondsRemaining = Mathf.Max(0, PLAY_GOAL_SECONDS - DataManager.AppSessionData.TotalTimeSeconds);
             if (secondsRemaining == 0) {
                 isPlayGoalComplete = true;
-                DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"));
+                DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"), checkForAnimations: false);
             } else {
                 string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
                 ui.Q<Label>("RadialProgressBarLabel").text = timerString;
-                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
+                ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
             }
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
             ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned} pts";
         };
-        DataManager.AppSessionData.InvokeAllDelegates( );
     }
 
     protected override void Start( ) {
         base.Start( );
-        DisplayScreen(mainScreen);
+
+        if (LastSceneName == "CheckIn") {
+            DisplayScreen(playGoalInfoScreen);
+        } else {
+            DisplayScreen(mainScreen);
+        }
+        DataManager.AppSessionData.InvokeAllDelegates( );
     }
 }

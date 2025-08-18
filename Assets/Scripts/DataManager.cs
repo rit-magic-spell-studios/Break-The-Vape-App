@@ -19,15 +19,8 @@ public class DataManager : Singleton<DataManager> {
     protected override void Awake( ) {
         base.Awake( );
 
-        ResetAppSessionData( );
+        AppSessionData = new AppSessionData( );
         client = AzureFunctionClient.Create("RitchSRA");
-    }
-
-    /// <summary>
-    /// Reset the app session data back to its original state
-    /// </summary>
-    public void ResetAppSessionData( ) {
-        AppSessionData = new AppSessionData(DefaultRITchCode);
     }
 
     /// <summary>
@@ -35,6 +28,10 @@ public class DataManager : Singleton<DataManager> {
     /// </summary>
     /// <param name="sessionData">The session data object to send</param>
     public void UploadSessionData(SessionData sessionData) {
+        // Update the session data with the current information in the app session
+        sessionData.RITchCode = AppSessionData.RITchCode;
+        sessionData.UserData = AppSessionData.UserData;
+
         string json = JsonUtility.ToJson(sessionData);
         string identifier = GetSessionFileIdentifier(sessionData.ToString( ));
 
@@ -49,69 +46,6 @@ public class DataManager : Singleton<DataManager> {
             streamWriter.Write(json);
             Debug.Log($"Saved data to {dataPath}: {json}");
         }
-    }
-
-    /// <summary>
-    /// Set the current RITch code. This will automatically load the user data as well (if it exists)
-    /// </summary>
-    /// <param name="ritchCode">The RITch code to set</param>
-    public void SetRITchCode(string ritchCode) {
-        AppSessionData.RITchCode = ritchCode;
-        AppSessionData.UserData = LoadUserData(ritchCode);
-    }
-
-    /// <summary>
-    /// Remove a locally saved user data file
-    /// </summary>
-    /// <param name="ritchCode">The RITch code of the user data to remove</param>
-    /// <returns>true if the file was successfully deleted, false otherwise</returns>
-    public bool RemoveUserData(string ritchCode) {
-        if (!CheckForValidRITchCode(ritchCode)) {
-            return false;
-        }
-
-        // Make sure the file exists before deleting it
-        string dataPath = $"{GetDataPath(ritchCode)}.json";
-        if (File.Exists(dataPath)) {
-            File.Delete(dataPath);
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Load user data from a specific RITch code
-    /// </summary>
-    /// <param name="ritchCode">The RITch code to load</param>
-    /// <returns>UserData object if the file was successfully read and converted to the UserData class, null otherwise</returns>
-    private UserData LoadUserData(string ritchCode) {
-        if (!CheckForValidRITchCode(ritchCode)) {
-            return null;
-        }
-
-        // Make sure the file exists
-        string dataPath = $"{GetDataPath(ritchCode)}.json";
-        if (!File.Exists(dataPath)) {
-            return null;
-        }
-
-        // Read the text in the file
-        using StreamReader streamReader = new StreamReader(dataPath);
-        string fileText = streamReader.ReadToEnd( );
-
-        // Convert to a user data object if there is text within the file
-        if (fileText.Length > 0) {
-            UserData userData = JsonUtility.FromJson<UserData>(fileText);
-            Debug.Log($"Loaded data from {dataPath}: {fileText}");
-            return userData;
-        }
-
-        return null;
-    }
-
-    private void SaveUserData(string ritchCode) {
-
     }
 
     /// <summary>

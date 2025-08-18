@@ -12,11 +12,12 @@ public abstract class UIController : MonoBehaviour {
     [SerializeField] protected Camera mainCamera;
     [Space]
     [SerializeField] private Gradient backgroundGradient;
-    [Space]
-    [SerializeField, Range(0f, 2f)] public readonly float screenTransitionSeconds = 0.25f;
-    [SerializeField, Range(0f, 2f)] public readonly float popupTransitionSeconds = 0.5f;
-    [SerializeField, Range(0f, 2f)] public readonly float gameWinDelaySeconds = 1.5f;
-    [SerializeField, Min(0)] public readonly int playGoalSeconds = 900;
+
+    public const float SCREEN_TRANSITION_SECONDS = 0.25f;
+    public const float POPUP_TRANSITION_SECONDS = 0.5f;
+    public const float GAME_WIN_DELAY_SECONDS = 1.5f;
+    public const int PLAY_GOAL_SECONDS = 900;
+    public static string LastSceneName { get; private set; }
 
     protected float cameraHalfWidth;
     protected float cameraHalfHeight;
@@ -94,7 +95,7 @@ public abstract class UIController : MonoBehaviour {
             .OnComplete(( ) => { onComplete?.Invoke( ); });
 
         if (previousScreen != null) {
-            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 0f, 1f, screenTransitionSeconds));
+            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 0f, 1f, SCREEN_TRANSITION_SECONDS));
             transitionSequence.AppendCallback(( ) => { previousScreen.style.display = DisplayStyle.None; });
         }
 
@@ -102,7 +103,7 @@ public abstract class UIController : MonoBehaviour {
 
         if (CurrentScreen != null) {
             transitionSequence.AppendCallback(( ) => { CurrentScreen.style.display = DisplayStyle.Flex; });
-            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 1f, 0f, screenTransitionSeconds, disableOnComplete: true, setDefaultsBeforeTweenStart: previousScreen == null));
+            transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 1f, 0f, SCREEN_TRANSITION_SECONDS, disableOnComplete: true, setDefaultsBeforeTweenStart: previousScreen == null));
         }
     }
 
@@ -114,6 +115,7 @@ public abstract class UIController : MonoBehaviour {
         DisplayScreen(null, onComplete: ( ) => {
             DataManager.AppSessionData.ClearAllDelegates( );
             BackgroundBubbleManager.Instance.RandomizeBackgroundBubbles( );
+            LastSceneName = SceneManager.GetActiveScene( ).name;
             SceneManager.LoadScene(sceneName);
         });
     }
@@ -152,18 +154,18 @@ public abstract class UIController : MonoBehaviour {
             // If the new popup is not null and there is not a current popup, then transition the popup and the background in
             // if the new popup is not null and there is a current popup, then transition the current popup out and the new popup in without touching the background
             if (CurrentPopup == null) {
-                AnimateElementOpacity(popupOverlay, 0f, 1f, popupTransitionSeconds);
-                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds, onComplete: onComplete);
+                AnimateElementOpacity(popupOverlay, 0f, 1f, POPUP_TRANSITION_SECONDS);
+                AnimateElementTranslation(popup, offScreen, onScreen, POPUP_TRANSITION_SECONDS, onComplete: onComplete);
             } else {
-                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true);
-                AnimateElementTranslation(popup, offScreen, onScreen, popupTransitionSeconds, onComplete: onComplete);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
+                AnimateElementTranslation(popup, offScreen, onScreen, POPUP_TRANSITION_SECONDS, onComplete: onComplete);
             }
         } else {
             // If the new popup is null and there is a current popup, then transition the current popup out as well as the background because there will be no more popup visible
             // If the new popup is nulla nd there is not a current popup, then do nothing because no popup is visible
             if (CurrentPopup != null) {
-                AnimateElementOpacity(popupOverlay, 1f, 0f, popupTransitionSeconds, disableOnComplete: true);
-                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, popupTransitionSeconds, disableOnComplete: true, onComplete: onComplete);
+                AnimateElementOpacity(popupOverlay, 1f, 0f, POPUP_TRANSITION_SECONDS, disableOnComplete: true);
+                AnimateElementTranslation(CurrentPopup, currentPopupOnScreen, currentPopupOffScreen, POPUP_TRANSITION_SECONDS, disableOnComplete: true, onComplete: onComplete);
             }
         }
 

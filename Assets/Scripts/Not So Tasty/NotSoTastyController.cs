@@ -77,7 +77,8 @@ public class NotSoTastyController : GameController {
                 float tilePositionX = (x * tileSize) - (tileGridWidth * tileSize / 2f) + (tileSize / 2f);
                 float tilePositionY = (y * tileSize) - (tileGridHeight * tileSize / 2f) + (tileSize / 2f);
 
-                Tile tile = Instantiate(tilePrefab, new Vector2(tilePositionX, tilePositionY), Quaternion.identity, objectContainer).GetComponent<Tile>( );
+                Tile tile = Instantiate(tilePrefab, new Vector2(tilePositionX, tilePositionY), Quaternion.identity).GetComponent<Tile>( );
+                tile.transform.SetParent(objectContainer, false);
                 tile.BoardPosition = new Vector2Int(x, y);
                 tile.transform.localScale = new Vector2(tileSize, tileSize);
                 Debug.Log(tile.BoardPosition);

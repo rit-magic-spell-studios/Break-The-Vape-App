@@ -13,7 +13,6 @@ public class CheckInController : UIController {
 
     private Label checkInQuestion;
     private Label checkInSubtitle;
-    private Button nextButton;
     private Label formPageNumber;
 
     private VisualElement checkInPopup;
@@ -105,7 +104,7 @@ public class CheckInController : UIController {
     protected override void Start( ) {
         base.Start( );
         DisplayScreen(splashScreen);
-        checkInSessionData = new CheckInSessionData(DataManager.AppSessionData.RITchCode);
+        checkInSessionData = new CheckInSessionData( );
     }
 
     protected override void Update( ) {
@@ -151,11 +150,11 @@ public class CheckInController : UIController {
             newRITchCode += ritchCodeTextFields[i].value;
         }
 
-        if (newRITchCode.Length != 6) {
+        if (!DataManager.Instance.CheckForValidRITchCode(newRITchCode)) {
             return;
         }
 
-        DataManager.Instance.SetRITchCode(newRITchCode);
+        DataManager.AppSessionData.RITchCode = newRITchCode;
         SetupCheckInForm( );
     }
 
@@ -223,6 +222,12 @@ public class CheckInController : UIController {
     }
 
     protected override void GoToScene(string sceneName) {
+        DataManager.AppSessionData.UserData.Age = ageButtonGroup.choices.ToList( )[ageButtonGroup.value];
+        DataManager.AppSessionData.UserData.Environment = environmentButtonGroup.choices.ToList( )[environmentButtonGroup.value];
+        DataManager.AppSessionData.UserData.DaysVapedDuringPastWeek = vapeFrequencySlider.value;
+        checkInSessionData.CravingIntensity = cravingIntensitySlider.value;
+        checkInSessionData.CravingTriggers = selectedButtons.Select(button => button.text).ToList( );
+
         DataManager.Instance.UploadSessionData(checkInSessionData);
         base.GoToScene(sceneName);
     }

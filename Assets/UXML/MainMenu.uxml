@@ -1,11 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="AppStats" src="project://database/Assets/UXML/Templates/AppStats.uxml?fileID=9197481963319205126&amp;guid=caad3bf1ebe1538408ef86943b012b4b&amp;type=3#AppStats" />
-    <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
+    <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Screens/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <ui:VisualElement class="uofr-background">
-        <ui:VisualElement name="MainScreen" style="display: flex; flex-grow: 1;">
+        <ui:VisualElement name="MainScreen" style="display: none; flex-grow: 1;">
             <ui:VisualElement class="uofr-container" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement style="flex-direction: row;">
+                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;" />
+                    <ui:VisualElement class="uofr-space-small" />
                     <ui:Label text="Good afternoon!" name="GreetingLabel" class="uofr-title-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
                     <ui:Button name="MenuButton" class="uofr-button-square uofr-button">
                         <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Menu.png?fileID=21300000&amp;guid=de43547c6586e6f4a806bd0199879a62&amp;type=3#Menu&quot;); flex-grow: 1;" />
@@ -38,7 +40,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: none; flex-grow: 1;" />
+        <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: flex; flex-grow: 1;" />
         <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
             <ui:VisualElement name="LogOutPopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Are you sure?" class="uofr-title-medium" />
@@ -56,12 +58,6 @@
                     <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); width: 60px; height: 60px;" />
                     <ui:VisualElement class="uofr-space-small" />
                     <ui:Label text="Log Out" class="uofr-title-small" style="flex-grow: 1; -unity-text-align: middle-left;" />
-                </ui:Button>
-                <ui:VisualElement class="uofr-space-small" />
-                <ui:Button name="DeleteUserDataButton" class="uofr-button  uofr-button-discreet " style="flex-direction: row;">
-                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Clear.png?fileID=21300000&amp;guid=5f6cc36a8ae234f4fa8de5bb248c961d&amp;type=3#Clear&quot;); width: 60px; height: 60px;" />
-                    <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Delete User Data" class="uofr-title-small" style="flex-grow: 1; -unity-text-align: middle-left;" />
                 </ui:Button>
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Label text="vX.X.X | MAGIC Spell Studios" name="VersionLabel" class="uofr-text-small" />

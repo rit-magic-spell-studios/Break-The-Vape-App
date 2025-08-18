@@ -78,7 +78,8 @@ public class MatchAndCatchController : GameController {
                 float cardPositionX = (x * (cardSize + cardSpacing)) - (gridWorldWidth / 2f) + (cardSize / 2f);
                 float cardPositionY = (y * (cardSize + cardSpacing)) - (gridWorldHeight / 2f) + (cardSize / 2f);
 
-                Card card = Instantiate(cardPrefab, new Vector2(cardPositionX, cardPositionY), Quaternion.identity, objectContainer).GetComponent<Card>( );
+                Card card = Instantiate(cardPrefab, new Vector2(cardPositionX, cardPositionY), Quaternion.identity).GetComponent<Card>( );
+                card.transform.SetParent(objectContainer, false);
                 card.CardFront = cardFrontSprites[cardMatchIndices[x + (gridWidth * y)]];
                 card.Size = cardSize;
 

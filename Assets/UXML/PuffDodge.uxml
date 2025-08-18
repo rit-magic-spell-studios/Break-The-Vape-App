@@ -9,7 +9,7 @@
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
             <engine:Instance template="GameBar" />
-            <engine:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+            <engine:VisualElement style="flex-grow: 1;">
                 <engine:Label text="0 items destroyed!" name="DestroyedItemsLabel" class="uofr-title-medium uofr-container" style="-unity-font-style: normal; -unity-text-align: lower-center; border-left-color: rgba(238, 238, 238, 0); border-right-color: rgba(238, 238, 238, 0); border-top-color: rgba(238, 238, 238, 0); border-bottom-color: rgba(238, 238, 238, 0); background-color: rgba(255, 255, 255, 0);" />
                 <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay">
                     <engine:Instance template="GameTutorialPopup" name="GameTutorialPopup" />

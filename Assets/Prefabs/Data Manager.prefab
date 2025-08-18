@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveDataLocally: 0
   sendAzureData: 0
-  defaultRITchCode: NONE00
+  DefaultRITchCode: NONE00

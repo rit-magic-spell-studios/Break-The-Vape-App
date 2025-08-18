@@ -24,6 +24,8 @@ public abstract class GameController : UIController {
 
     protected VisualElement gameTutorialPopup;
 
+    private SliderInt cravingIntensitySlider;
+
     public GameSessionData GameSessionData { get; private set; }
     public bool IsPlayingGame => (CurrentScreen == gameScreen && CurrentPopup == null);
 
@@ -56,26 +58,28 @@ public abstract class GameController : UIController {
         ui.Q<Label>("TutorialLabel").text = tutorialText;
         ui.Q<Label>("TitleLabel").text = name;
 
+        cravingIntensitySlider = ui.Q<SliderInt>("CravingIntensitySlider");
+
         // Create a new game session data entry for this game
-        GameSessionData = new GameSessionData(name, DataManager.AppSessionData.RITchCode, DataManager.AppSessionData.TotalPointsEarned);
+        GameSessionData = new GameSessionData(name, DataManager.AppSessionData.TotalPointsEarned);
         DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
-            float secondsRemaining = Mathf.Max(0, playGoalSeconds - DataManager.AppSessionData.TotalTimeSeconds);
+            float secondsRemaining = Mathf.Max(0, PLAY_GOAL_SECONDS - DataManager.AppSessionData.TotalTimeSeconds);
             string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
             ui.Q<Label>("RadialProgressBarLabel").text = timerString;
-            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / playGoalSeconds * 100f;
+            ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
         };
         GameSessionData.OnPointsEarnedChange += ( ) => {
             scoreLabel.text = $"Score: <b>{GameSessionData.PointsEarned} pts</b>";
             finalScoreLabel.text = $"+ {GameSessionData.PointsEarned} pts";
             totalScoreLabel.text = $"{GameSessionData.TotalPointsEarned} pts";
         };
-        GameSessionData.InvokeAllDelegates( );
     }
 
     protected override void Start( ) {
         base.Start( );
         DisplayScreen(gameScreen);
         DisplayBasicPopup(gameTutorialPopup, checkForAnimations: false);
+        GameSessionData.InvokeAllDelegates( );
     }
 
     protected override void Update( ) {
@@ -84,6 +88,8 @@ public abstract class GameController : UIController {
     }
 
     protected override void GoToScene(string sceneName) {
+        GameSessionData.CravingIntensity = cravingIntensitySlider.value;
+
         DataManager.Instance.UploadSessionData(GameSessionData);
         DataManager.AppSessionData.TotalPointsEarnedValue = GameSessionData.TotalPointsEarned;
         base.GoToScene(sceneName);
@@ -101,7 +107,7 @@ public abstract class GameController : UIController {
     public void WinGame( ) {
         DelayAction(( ) => {
             DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject); });
-        }, gameWinDelaySeconds);
+        }, GAME_WIN_DELAY_SECONDS);
     }
 
     /// <summary>
