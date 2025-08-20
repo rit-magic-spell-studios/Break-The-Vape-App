@@ -19,11 +19,13 @@ public class MainMenuController : UIController {
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
-        mainScreen.style.display = DisplayStyle.None;
         playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
+        aboutScreen = ui.Q<VisualElement>("AboutScreen");
+        mainScreen.style.display = DisplayStyle.None;
         playGoalInfoScreen.style.display = DisplayStyle.None;
+        aboutScreen.style.display = DisplayStyle.None;
 
-        ui.Q<Label>("VersionLabel").text = $"v{Application.version} | 8-18-25";
+        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 8-18-25";
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
@@ -34,7 +36,10 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
         isPlayGoalComplete = false;
 
-        ui.Q<Button>("AboutButton").clicked += ( ) => { DisplayScreen(aboutScreen); };
+        ui.Q<Button>("AboutButton").clicked += ( ) => {
+            DisplayScreen(aboutScreen);
+            HideCurrentPopup(checkForAnimations: false);
+        };
         ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
 
         popupOverlay.RegisterCallback<MouseDownEvent>((e) => { HideCurrentPopup( ); });

@@ -15,6 +15,7 @@ public class MatchAndCatchController : GameController {
 
     private List<Card> cards;
     private List<int> cardMatchIndices;
+    private int cardMatchCombo;
 
     private Label matchesLabel;
     private Coroutine checkMatchDelay;
@@ -32,6 +33,7 @@ public class MatchAndCatchController : GameController {
         // Get references to other important UI elements
         matchesLabel = ui.Q<Label>("MatchesLabel");
         matchesLabel.text = $"{(cards.Count - FlippedCards.Count) / 2} matches left!";
+        cardMatchCombo = 0;
     }
 
     /// <summary>
@@ -110,6 +112,7 @@ public class MatchAndCatchController : GameController {
         // If the sprites of the last two cards do not match, then flip them back over
         // If the sprites of the last two cards do match, then keep them flipped over
         if (card1.CardFront != card2.CardFront) {
+            cardMatchCombo = 0;
             yield return new WaitForSeconds(cardCheckDelay);
 
             card1.FlipCard( );
@@ -119,7 +122,7 @@ public class MatchAndCatchController : GameController {
             FlippedCards.Remove(card2);
         } else {
             matchesLabel.text = $"{(cards.Count - FlippedCards.Count) / 2} matches left!";
-            AddPoints(Vector3.zero, 100);
+            AddPoints(Vector3.zero, 100 * ++cardMatchCombo);
 
             if (FlippedCards.Count == cards.Count) {
                 WinGame( );

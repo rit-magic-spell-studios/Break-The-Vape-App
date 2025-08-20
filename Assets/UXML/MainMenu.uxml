@@ -18,25 +18,13 @@
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding">
                 <ui:VisualElement class="uofr-container" style="flex-grow: 1;">
-                    <ui:Button name="CraveSmashButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 244, 198); flex-grow: 1;">
-                        <ui:Label text="Crave Smash" class="uofr-title-medium" />
-                        <ui:Label text="v0.6.2" class="uofr-text-small" style="flex-grow: 0;" />
-                    </ui:Button>
+                    <ui:Button name="CraveSmashButton" text="Crave Smash" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 244, 198); flex-grow: 1;" />
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Button name="MatchAndCatchButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 215, 215); flex-grow: 1;">
-                        <ui:Label text="Match And Catch" class="uofr-title-medium" />
-                        <ui:Label text="v0.4.0" class="uofr-text-small" style="flex-grow: 0;" />
-                    </ui:Button>
+                    <ui:Button name="MatchAndCatchButton" text="Match And Catch" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 215, 215); flex-grow: 1;" />
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Button name="NotSoTastyButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(213, 255, 202); flex-grow: 1;">
-                        <ui:Label text="Not So Tasty" class="uofr-title-medium" />
-                        <ui:Label text="v0.3.0" class="uofr-text-small" style="flex-grow: 0;" />
-                    </ui:Button>
+                    <ui:Button name="NotSoTastyButton" text="Not So Tasty" class="uofr-button uofr-button-discreet" style="background-color: rgb(213, 255, 202); flex-grow: 1;" />
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Button name="PuffDodgeButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(193, 199, 255); flex-grow: 1;">
-                        <ui:Label text="Puff Dodge" class="uofr-title-medium" />
-                        <ui:Label text="v0.1.1" class="uofr-text-small" style="flex-grow: 0;" />
-                    </ui:Button>
+                    <ui:Button name="PuffDodgeButton" text="Puff Dodge" class="uofr-button uofr-button-discreet" style="background-color: rgb(193, 199, 255); flex-grow: 1;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -52,11 +40,15 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding" style="justify-content: flex-start;">
-                <ui:Label text="App name" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="App Name" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                 <ui:Label text="Break The Vape" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="App Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                 <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:Label text="CS v0.6.2&#x9;&#x9;| 8-18-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:Label text="M&amp;C v0.4.0&#x9;| 8-18-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:Label text="NST v0.3.0&#x9;| 8-18-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:Label text="PD v0.1.1&#x9;&#x9;| 8-18-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:Label text="Client" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                 <ui:Label text="URMC" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />

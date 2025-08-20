@@ -77,15 +77,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a10c6d41740c2bd42b86aae25e41bb1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &2715608086495196264
@@ -125,11 +125,11 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
@@ -146,7 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba007a2349fb25c49b48986aec1bb36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchAndCatchController: {fileID: 0}
   spriteRenderer: {fileID: 7092458290275010952}
   cardBack: {fileID: 21300000, guid: a10c6d41740c2bd42b86aae25e41bb1e, type: 3}
-  cardFlipSeconds: 0.25
+  cardFlipSeconds: 0.4
   cardFlipSizeIncrease: 1.25
+  cardFlipTranslateY: 0.5

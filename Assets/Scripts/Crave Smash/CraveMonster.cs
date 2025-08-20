@@ -12,8 +12,13 @@ public class CraveMonster : MonoBehaviour {
     [SerializeField, Range(0, 100)] private float clickDamage;
     [SerializeField, Range(0, 50)] private int baseClickPoints;
     [SerializeField, Range(0, 50)] private float healSpeed;
+    [SerializeField, Range(0f, 4f)] private float moveRadius;
+    [SerializeField, Range(0f, 1f)] private float moveSpeed;
 
     private float lastClickTime;
+    private Vector3 startingPosition;
+    private Vector3 toPosition;
+    private Vector3 positionVelocity;
 
     /// <summary>
     /// Whether or not this crave monster is dead
@@ -38,12 +43,20 @@ public class CraveMonster : MonoBehaviour {
         Health = 100f;
         lastClickTime = -1;
         IsDead = false;
+        startingPosition = transform.position;
+        toPosition = transform.position;
     }
 
     private void Update( ) {
         if (!craveSmashController.IsPlayingGame) {
             return;
         }
+
+        // Randomly move the crave monster around the screen within a certain radius
+        if ((transform.position - toPosition).magnitude <= 0.01f) {
+            toPosition = startingPosition + (Vector3) (Random.insideUnitCircle * moveRadius);
+        }
+        transform.position = Vector3.SmoothDamp(transform.position, toPosition, ref positionVelocity, moveSpeed);
 
         Health += Time.deltaTime * healSpeed;
     }
@@ -58,7 +71,7 @@ public class CraveMonster : MonoBehaviour {
         Health -= clickDamage;
 
         transform.DOKill(complete: true);
-        transform.DOShakePosition(0.3f, strength: 0.15f);
+        //transform.DOShakePosition(0.3f, strength: 0.15f);
         transform.DOShakeRotation(0.2f, strength: 20f);
 
         craveSmashController.UpdateTouchInput( );

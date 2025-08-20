@@ -632,6 +632,8 @@ MonoBehaviour:
   clickDamage: 4
   baseClickPoints: 5
   healSpeed: 10
+  moveRadius: 1.5
+  moveSpeed: 0.3
 --- !u!1 &1442781499
 GameObject:
   m_ObjectHideFlags: 0
