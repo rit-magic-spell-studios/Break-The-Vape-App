@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
 
 public abstract class GameController : UIController {
     [Header("GameController")]
     [SerializeField] private GameObject confettiParticlePrefab;
     [SerializeField] private GameObject pointsPopupPrefab;
     [SerializeField] protected Transform objectContainer;
+    [SerializeField] private VideoPlayer tutorialPlayer;
     [SerializeField] private RenderTexture tutorialVisual;
     [SerializeField, TextArea] private string tutorialText;
 
@@ -54,6 +56,8 @@ public abstract class GameController : UIController {
         ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(winScreen);
 
         // Set tutorial popup information
+        tutorialPlayer.url = Path.Combine(Application.streamingAssetsPath, name.Replace(" ", "") + "Tutorial.mp4");
+        tutorialPlayer.time = 0;
         ui.Q<VisualElement>("TutorialVisual").style.backgroundImage = new StyleBackground(Background.FromRenderTexture(tutorialVisual));
         ui.Q<Label>("TutorialLabel").text = tutorialText;
         ui.Q<Label>("TitleLabel").text = name;

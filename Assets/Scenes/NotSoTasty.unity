@@ -214,6 +214,7 @@ MonoBehaviour:
   confettiParticlePrefab: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
   pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
   objectContainer: {fileID: 1638797484}
+  tutorialPlayer: {fileID: 1765635767}
   tutorialVisual: {fileID: 8400000, guid: 8d9df1e2f2356f64e9967ca95601fd69, type: 2}
   tutorialText: Connect fruits to reveal the hidden messages. Reveal them all to
     win!
@@ -639,7 +640,7 @@ VideoPlayer:
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0

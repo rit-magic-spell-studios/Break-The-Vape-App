@@ -70,7 +70,7 @@ public class DataManager : Singleton<DataManager> {
     /// </summary>
     /// <param name="fileName">The file name to get the data path of</param>
     /// <returns>A string containing the full data path</returns>
-    private string GetDataPath(string fileName) {
+    public string GetDataPath(string fileName) {
         // Make sure the file name does not contain any characters that will lead to an error when saving the file
         fileName = fileName.Replace(":", " ").Replace(".", " ");
 

@@ -163,7 +163,7 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 93a7e88327f88174cad34281c1f0704e, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -180,7 +180,7 @@ VideoPlayer:
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -427,7 +427,8 @@ MonoBehaviour:
   confettiParticlePrefab: {fileID: 5000036781040298306, guid: bd4dcd553e4fa234eac263fbd33f25d5, type: 3}
   pointsPopupPrefab: {fileID: 3378767812377353867, guid: 3abd820a4ea00714a97beae6620282d8, type: 3}
   objectContainer: {fileID: 1511081831}
-  tutorialVisual: {fileID: 0}
+  tutorialPlayer: {fileID: 207987997}
+  tutorialVisual: {fileID: 8400000, guid: 93a7e88327f88174cad34281c1f0704e, type: 2}
   tutorialText: Protect your lungs by knocking away 25 of the harmful objects!
   vapeItemPrefab: {fileID: 2567073745258421220, guid: 1043916232ec95349af2b367043b60fc, type: 3}
   sliceTrailRenderer: {fileID: 276330533}
