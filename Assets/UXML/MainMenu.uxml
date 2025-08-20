@@ -41,11 +41,45 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: flex; flex-grow: 1;" />
+        <ui:VisualElement name="AboutScreen" style="display: none; background-color: rgb(255, 255, 255); flex-grow: 1;">
+            <ui:VisualElement class="uofr-padding" style="flex-grow: 0;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Button name="AboutBackButton" class="uofr-button uofr-button-square">
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
+                    </ui:Button>
+                    <ui:Label text="About" class="uofr-title-medium" style="flex-grow: 1;" />
+                    <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="uofr-padding" style="justify-content: flex-start;">
+                <ui:Label text="App name" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="Break The Vape" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="Client" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="URMC" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="Manufacturer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="MAGIC Spell Studios" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="Developer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="Frank Alfano" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="Art Assets" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="Farah Ahmad" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="UX/UI Designer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                <ui:Label text="Brendan Miron" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
             <ui:VisualElement name="LogOutPopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Are you sure?" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="Logging out will reset all of your current points and time played" class="uofr-text-small" style="-unity-text-align: upper-center;" />
+                <ui:Label text="Logging out will reset all of your current points and time played" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:Button text="Log Out" name="ConfirmLogOutButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />
@@ -55,32 +89,41 @@
                 <ui:Label text="Menu" class="uofr-title-medium" style="-unity-text-align: middle-left;" />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button name="LogOutButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
-                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); width: 60px; height: 60px;" />
+                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Log_out.png?fileID=21300000&amp;guid=5b84d8471b0bb0f41a417856b9089335&amp;type=3#Log_out&quot;); width: 60px; height: 60px;" />
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Log Out" class="uofr-title-small" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                    <ui:Label text="Log Out" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
                 </ui:Button>
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="vX.X.X | MAGIC Spell Studios" name="VersionLabel" class="uofr-text-small" />
-            </ui:VisualElement>
-            <ui:VisualElement name="DeleteUserDataPopup" class="uofr-container " style="display: none;">
-                <ui:Label text="Are you sure?" class="uofr-title-medium" />
+                <ui:Button name="TermsAndConditionsButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
+                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Terms_Conditions.png?fileID=21300000&amp;guid=a7ef6a6491c533341bd88ad9260b9590&amp;type=3#Terms_Conditions&quot;); width: 60px; height: 60px;" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Label text="Terms &amp; Conditions" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                </ui:Button>
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="This will remove all user-specific data saved to this device. This include the demographic data entered at the start of the check-in form when logging in for the first time. When logging back in, you will have to re-enter this data in order to use this app." class="uofr-text-small" style="-unity-text-align: upper-center;" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Button text="Delete User Data" name="ConfirmDeleteUserDataButton" class="uofr-button uofr-button-highlight " />
+                <ui:Button name="PrivacyPolicyButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
+                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Privacy.png?fileID=21300000&amp;guid=272a47c7efc8c00428aa3d004d036d3d&amp;type=3#Privacy&quot;); width: 60px; height: 60px;" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Label text="Privacy Policy" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                </ui:Button>
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Button text="Cancel" name="CancelDeleteUserDataButton" class="uofr-button " />
+                <ui:Button name="AboutButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
+                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Information.png?fileID=21300000&amp;guid=edad71fdeee63134495f4821d2ea841c&amp;type=3#Information&quot;); width: 60px; height: 60px;" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Label text="About" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="PlayGoalCompletePopup" class="uofr-container " style="display: none;">
+                <ui:Label text="Final Score" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
+                <ui:Label text="1021 pts" name="FinalScoreLabel" class="uofr-title-medium" />
+                <ui:VisualElement class="uofr-space-large" />
                 <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Big%20Smile.png?fileID=21300000&amp;guid=3a949132da27b894fad2fff1e5ca54e8&amp;type=3#Big Smile&quot;); height: 300px; -unity-background-scale-mode: scale-to-fit;" />
-                <ui:VisualElement class="uofr-space-small" />
+                <ui:VisualElement class="uofr-space-large" />
                 <ui:Label text="Congrats!" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="You completed your 15 minute play goal!" class="uofr-text-small" style="-unity-text-align: upper-center;" />
+                <ui:Label text="You completed your 15 minute play goal!" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="Distractions like this app contribute to lower levels of overall craving. Hopefully you saw the results for yourself!" class="uofr-text-small" style="-unity-text-align: upper-center;" />
+                <ui:Label text="Being distracted for stretches like this can help lower your cravings. Feel free to start again to see how many points you can earn, or finish this play session and enjoy healthy breathing!" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="You can restart the timer and play again, or you can finish this play session and take a deep breath of fresh air!" class="uofr-text-small" style="-unity-text-align: upper-center;" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:Button text="Restart" name="RestartSessionButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />

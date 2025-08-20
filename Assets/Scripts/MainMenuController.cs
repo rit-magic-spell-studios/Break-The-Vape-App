@@ -8,8 +8,10 @@ using UnityEngine.UIElements;
 public class MainMenuController : UIController {
     private VisualElement mainScreen;
     private VisualElement playGoalInfoScreen;
+    private VisualElement aboutScreen;
 
     private Label greetingLabel;
+
     private bool isPlayGoalComplete;
 
     protected override void Awake( ) {
@@ -21,7 +23,7 @@ public class MainMenuController : UIController {
         playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
         playGoalInfoScreen.style.display = DisplayStyle.None;
 
-        ui.Q<Label>("VersionLabel").text = $"v{Application.version} | MAGIC Spell Studios";
+        ui.Q<Label>("VersionLabel").text = $"v{Application.version} | 8-18-25";
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
@@ -31,6 +33,9 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => { DisplayScreen(playGoalInfoScreen); };
         ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
         isPlayGoalComplete = false;
+
+        ui.Q<Button>("AboutButton").clicked += ( ) => { DisplayScreen(aboutScreen); };
+        ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
 
         popupOverlay.RegisterCallback<MouseDownEvent>((e) => { HideCurrentPopup( ); });
         ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), Vector2.zero, new Vector2(Screen.width / 2f, 0)); };
@@ -80,7 +85,8 @@ public class MainMenuController : UIController {
             }
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
-            ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned} pts";
+            ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned:N0} pts";
+            ui.Q<Label>("FinalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned:N0} pts";
         };
     }
 

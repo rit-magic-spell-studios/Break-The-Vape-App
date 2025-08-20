@@ -13,10 +13,6 @@ public abstract class GameController : UIController {
     [SerializeField] private RenderTexture tutorialVisual;
     [SerializeField, TextArea] private string tutorialText;
 
-    protected Label scoreLabel;
-    protected Label finalScoreLabel;
-    protected Label totalScoreLabel;
-
     protected VisualElement gameScreen;
     protected VisualElement pauseScreen;
     protected VisualElement winScreen;
@@ -46,10 +42,6 @@ public abstract class GameController : UIController {
         ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
         ui.Q<Button>("HowToPlayButton").clicked += ( ) => { DisplayBasicPopup(gameTutorialPopup); };
 
-        scoreLabel = ui.Q<Label>("ScoreLabel");
-        finalScoreLabel = ui.Q<Label>("FinalScoreLabel");
-        totalScoreLabel = ui.Q<Label>("TotalScoreLabel");
-
         ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
         ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(winScreen);
 
@@ -69,9 +61,9 @@ public abstract class GameController : UIController {
             ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
         };
         GameSessionData.OnPointsEarnedChange += ( ) => {
-            scoreLabel.text = $"Score: <b>{GameSessionData.PointsEarned} pts</b>";
-            finalScoreLabel.text = $"+ {GameSessionData.PointsEarned} pts";
-            totalScoreLabel.text = $"{GameSessionData.TotalPointsEarned} pts";
+            ui.Q<Label>("ScoreLabel").text = $"Score: <b>{GameSessionData.PointsEarned:N0} pts</b>";
+            ui.Q<Label>("FinalScoreLabel").text = $"+ {GameSessionData.PointsEarned:N0} pts";
+            ui.Q<Label>("TotalScoreLabel").text = $"{GameSessionData.TotalPointsEarned:N0} pts";
         };
     }
 

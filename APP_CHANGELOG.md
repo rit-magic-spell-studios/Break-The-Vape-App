@@ -1,5 +1,9 @@
 # App Changelog
 
+## v0.5.1 - Unreleased
+* Added about page
+* Formatted point total to include commas
+
 ## v0.5.0 - August 18th, 2025
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent
   * Added new header that displays the time remaining and the points (which also appears in each of the minigames on the win screen)
