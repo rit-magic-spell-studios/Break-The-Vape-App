@@ -11,6 +11,7 @@ public class MainMenuController : UIController {
     private VisualElement aboutScreen;
 
     private Label greetingLabel;
+    private VisualElement menuPopup;
 
     private bool isPlayGoalComplete;
 
@@ -21,9 +22,9 @@ public class MainMenuController : UIController {
         mainScreen = ui.Q<VisualElement>("MainScreen");
         playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
         aboutScreen = ui.Q<VisualElement>("AboutScreen");
-        mainScreen.style.display = DisplayStyle.None;
-        playGoalInfoScreen.style.display = DisplayStyle.None;
-        aboutScreen.style.display = DisplayStyle.None;
+        mainScreen.style.visibility = Visibility.Hidden;
+        playGoalInfoScreen.style.visibility = Visibility.Hidden;
+        aboutScreen.style.visibility = Visibility.Hidden;
 
         ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 8-18-25";
 
@@ -42,8 +43,14 @@ public class MainMenuController : UIController {
         };
         ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
 
-        popupOverlay.RegisterCallback<MouseDownEvent>((e) => { HideCurrentPopup( ); });
-        ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), Vector2.zero, new Vector2(Screen.width / 2f, 0)); };
+        popupOverlay.RegisterCallback<ClickEvent>((e) => {
+            if ((VisualElement) e.target == popupOverlay) {
+                HideCurrentPopup( );
+            }
+        });
+        menuPopup = ui.Q<VisualElement>("MenuPopup");
+        menuPopup.RegisterCallback((GeometryChangedEvent e) => menuPopup.style.top = Mathf.Max(menuPopup.resolvedStyle.top, safeAreaTopPadding));
+        ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(menuPopup, Vector2.zero, new Vector2(Screen.width / 2f, 0)); };
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
         ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {

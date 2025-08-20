@@ -5,6 +5,7 @@
 * Formatted point total to include commas
 * Replaced sliders with buttons to ensure users are filling out the required forms during the check-in and on the post-game win screen
 * Azure data is now also sent on pause screen quit, but craving intensity data is not recorded
+* Added spacing at the top and bottom of certain UI screens to ensure all UI is within the safe area of the current device's screen
 
 ## v0.5.0 - August 18th, 2025
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent

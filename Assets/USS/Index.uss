@@ -512,7 +512,6 @@
 }
 
 .uofr-padding-overlay {
-    flex-grow: 1;
     justify-content: center;
     margin-left: 0;
     margin-right: 0;

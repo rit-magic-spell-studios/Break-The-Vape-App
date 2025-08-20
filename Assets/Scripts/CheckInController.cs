@@ -54,7 +54,7 @@ public class CheckInController : UIController {
 
     private List<TextField> ritchCodeTextFields;
 
-    private CheckInSessionData checkInSessionData;
+    public CheckInSessionData CheckInSessionData { get; private set; }
 
     protected override void Awake( ) {
         base.Awake( );
@@ -118,11 +118,11 @@ public class CheckInController : UIController {
     protected override void Start( ) {
         base.Start( );
         DisplayScreen(splashScreen);
-        checkInSessionData = new CheckInSessionData( );
+        CheckInSessionData = new CheckInSessionData( );
     }
 
     protected override void Update( ) {
-        checkInSessionData.TotalTimeSecondsValue += Time.deltaTime;
+        CheckInSessionData.TotalTimeSecondsValue += Time.deltaTime;
     }
 
     /// <summary>
@@ -241,10 +241,10 @@ public class CheckInController : UIController {
         DataManager.AppSessionData.UserData.Age = ageButtonGroup.choices.ToList( )[ageButtonGroup.value];
         DataManager.AppSessionData.UserData.Environment = environmentButtonGroup.choices.ToList( )[environmentButtonGroup.value];
         DataManager.AppSessionData.UserData.DaysVapedDuringPastWeek = int.Parse(selectedFrequencyButton.text);
-        checkInSessionData.CravingIntensity = int.Parse(selectedIntensityButton.text);
-        checkInSessionData.CravingTriggers = selectedCauseButtons.Select(button => button.text).ToList( );
+        CheckInSessionData.CravingIntensity = int.Parse(selectedIntensityButton.text);
+        CheckInSessionData.CravingTriggers = selectedCauseButtons.Select(button => button.text).ToList( );
 
-        DataManager.Instance.UploadSessionData(checkInSessionData);
+        DataManager.Instance.UploadSessionData(CheckInSessionData);
         base.GoToScene(sceneName);
     }
 }

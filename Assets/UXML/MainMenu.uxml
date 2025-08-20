@@ -3,8 +3,8 @@
     <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Screens/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <ui:VisualElement class="uofr-background">
-        <ui:VisualElement name="MainScreen" style="display: none; flex-grow: 1;">
-            <ui:VisualElement class="uofr-container" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
+        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
+            <ui:VisualElement class="uofr-container uofr-safe-area__top-padding" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;" />
                     <ui:VisualElement class="uofr-space-small" />
@@ -16,7 +16,7 @@
                 <ui:VisualElement class="uofr-hr" />
                 <ui:Instance template="AppStats" />
             </ui:VisualElement>
-            <ui:VisualElement class="uofr-padding">
+            <ui:VisualElement class="uofr-padding uofr-safe-area__bottom-padding">
                 <ui:VisualElement class="uofr-container" style="flex-grow: 1;">
                     <ui:Button name="CraveSmashButton" text="Crave Smash" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 244, 198); flex-grow: 1;" />
                     <ui:VisualElement class="uofr-space-small" />
@@ -28,16 +28,14 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: flex; flex-grow: 1;" />
-        <ui:VisualElement name="AboutScreen" style="display: none; background-color: rgb(255, 255, 255); flex-grow: 1;">
-            <ui:VisualElement class="uofr-padding" style="flex-grow: 0;">
-                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <ui:Button name="AboutBackButton" class="uofr-button uofr-button-square">
-                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
-                    </ui:Button>
-                    <ui:Label text="About" class="uofr-title-medium" style="flex-grow: 1;" />
-                    <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
-                </ui:VisualElement>
+        <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="display: flex; position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;" />
+        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;">
+            <ui:VisualElement class="uofr-padding uofr-safe-area__top-padding" style="flex-grow: 0; flex-direction: row;">
+                <ui:Button name="AboutBackButton" class="uofr-button uofr-button-square">
+                    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
+                </ui:Button>
+                <ui:Label text="About" class="uofr-title-medium" style="flex-grow: 1;" />
+                <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding" style="justify-content: flex-start;">
                 <ui:Label text="App Name" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
@@ -77,7 +75,7 @@
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button text="Cancel" name="CancelLogOutButton" class="uofr-button " />
             </ui:VisualElement>
-            <ui:VisualElement name="MenuPopup" class="uofr-container" style="position: absolute; top: 100px; left: auto; right: 0; bottom: auto; min-width: 50%; border-bottom-right-radius: 0; border-top-right-radius: 0; display: none;">
+            <ui:VisualElement name="MenuPopup" class="uofr-container" style="position: absolute; top: 40px; left: auto; right: 0; bottom: auto; min-width: 50%; border-bottom-right-radius: 0; border-top-right-radius: 0; display: none;">
                 <ui:Label text="Menu" class="uofr-title-medium" style="-unity-text-align: middle-left;" />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button name="LogOutButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">

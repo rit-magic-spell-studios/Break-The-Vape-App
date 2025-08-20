@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement class="uofr-container" style="justify-content: flex-end; border-top-left-radius: 0; border-top-right-radius: 0; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
+    <engine:VisualElement class="uofr-container uofr-safe-area__top-padding" style="justify-content: flex-end; border-top-left-radius: 0; border-top-right-radius: 0; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
         <engine:VisualElement style="flex-direction: row;">
             <engine:Button name="PauseButton" class="uofr-button uofr-button-square">
                 <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); flex-grow: 1;" />

@@ -3,6 +3,7 @@ using DG.Tweening.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -21,6 +22,8 @@ public abstract class UIController : MonoBehaviour {
 
     protected float cameraHalfWidth;
     protected float cameraHalfHeight;
+    protected float safeAreaTopPadding;
+    protected float safeAreaBottomPadding;
 
     protected VisualElement ui;
     private List<VisualElement> animatingVisualElements;
@@ -43,6 +46,14 @@ public abstract class UIController : MonoBehaviour {
 
     protected virtual void Awake( ) {
         ui = GetComponent<UIDocument>( ).rootVisualElement;
+        ui.Query(className: "uofr-safe-area__top-padding").ForEach(x => x.RegisterCallback((GeometryChangedEvent e) => {
+            VisualElement element = (VisualElement) e.target;
+            element.style.paddingTop = Mathf.Max(element.resolvedStyle.paddingTop, safeAreaTopPadding);
+        }));
+        ui.Query(className: "uofr-safe-area__bottom-padding").ForEach(x => x.RegisterCallback((GeometryChangedEvent e) => {
+            VisualElement element = (VisualElement) e.target;
+            element.style.paddingBottom = Mathf.Max(element.resolvedStyle.paddingBottom, safeAreaBottomPadding);
+        }));
 
         popupOverlay = ui.Q<VisualElement>("PopupOverlay");
         transitionOverlay = ui.Q<VisualElement>("TransitionOverlay");
@@ -50,6 +61,8 @@ public abstract class UIController : MonoBehaviour {
 
         cameraHalfHeight = mainCamera.orthographicSize;
         cameraHalfWidth = cameraHalfHeight * mainCamera.aspect;
+        safeAreaBottomPadding = Screen.safeArea.y;
+        safeAreaTopPadding = Screen.height - Screen.safeArea.height - safeAreaBottomPadding;
     }
 
     protected virtual void Start( ) {
@@ -96,13 +109,13 @@ public abstract class UIController : MonoBehaviour {
 
         if (previousScreen != null) {
             transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 0f, 1f, SCREEN_TRANSITION_SECONDS));
-            transitionSequence.AppendCallback(( ) => { previousScreen.style.display = DisplayStyle.None; });
+            transitionSequence.AppendCallback(( ) => { previousScreen.style.visibility = Visibility.Hidden; });
         }
 
         transitionSequence.AppendCallback(( ) => { onHalfway?.Invoke( ); });
 
         if (CurrentScreen != null) {
-            transitionSequence.AppendCallback(( ) => { CurrentScreen.style.display = DisplayStyle.Flex; });
+            transitionSequence.AppendCallback(( ) => { CurrentScreen.style.visibility = Visibility.Visible; });
             transitionSequence.Append(AnimateElementOpacity(transitionOverlay, 1f, 0f, SCREEN_TRANSITION_SECONDS, disableOnComplete: true, setDefaultsBeforeTweenStart: previousScreen == null));
         }
     }

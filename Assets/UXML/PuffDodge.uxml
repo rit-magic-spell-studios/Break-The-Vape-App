@@ -6,7 +6,7 @@
     <engine:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Screens/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
+        <engine:VisualElement name="GameScreen" style="visibility: visible; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
             <engine:Instance template="GameBar" />
             <engine:VisualElement style="flex-grow: 1;">
                 <engine:Label text="0 items destroyed!" name="DestroyedItemsLabel" class="uofr-title-medium uofr-container" style="-unity-font-style: normal; -unity-text-align: lower-center; border-left-color: rgba(238, 238, 238, 0); border-right-color: rgba(238, 238, 238, 0); border-top-color: rgba(238, 238, 238, 0); border-bottom-color: rgba(238, 238, 238, 0); background-color: rgba(255, 255, 255, 0);" />
@@ -15,9 +15,9 @@
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
-        <engine:Instance template="GameWinScreen" name="WinScreen" style="display: none; flex-grow: 1;" />
-        <engine:Instance template="GamePauseScreen" name="PauseScreen" style="display: none; flex-grow: 1;" />
-        <engine:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="flex-grow: 1; display: none;" />
+        <engine:Instance template="GameWinScreen" name="WinScreen" style="position: absolute; visibility: hidden; top: 0; left: 0; right: 0; bottom: 0;" />
+        <engine:Instance template="GamePauseScreen" name="PauseScreen" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;" />
+        <engine:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoScreen" style="visibility: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;" />
         <engine:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="background-color: rgb(255, 255, 255); display: none;" />
     </engine:VisualElement>
 </engine:UXML>

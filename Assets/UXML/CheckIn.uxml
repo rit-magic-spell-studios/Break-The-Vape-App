@@ -2,7 +2,7 @@
     <engine:Template name="CravingIntensityContainer" src="project://database/Assets/UXML/Templates/CravingIntensityContainer.uxml?fileID=9197481963319205126&amp;guid=22ca84ebdece898448606eee2861edfa&amp;type=3#CravingIntensityContainer" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
-        <engine:VisualElement name="SplashScreen" class="uofr-padding" style="flex-grow: 1; justify-content: space-around; display: flex;">
+        <engine:VisualElement name="SplashScreen" class="uofr-padding uofr-safe-area__top-padding uofr-safe-area__bottom-padding" style="justify-content: space-around; position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: visible;">
             <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/URM_horiz_2C.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#URM_horiz_2C&quot;); height: 10%; -unity-background-scale-mode: scale-to-fit;" />
             <engine:Label text="Break The Vape" class="uofr-title-large" />
             <engine:VisualElement>
@@ -11,9 +11,8 @@
                 <engine:Button text="Continue as Guest" name="GuestButton" class="uofr-button" />
             </engine:VisualElement>
         </engine:VisualElement>
-        <engine:VisualElement name="CheckInScreen" class="uofr-padding" style="display: none; opacity: 1; justify-content: flex-end;">
-            <engine:Label text="Check In" class="uofr-title-large uofr-title-header" />
-            <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: flex; justify-content: flex-end;">
+        <engine:VisualElement name="CheckInScreen" style="justify-content: flex-end; visibility: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+            <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay uofr-safe-area__bottom-padding" style="display: flex; justify-content: flex-end;">
                 <engine:VisualElement name="CheckInPopup" class="uofr-container" style="min-height: 50%; justify-content: space-between; max-height: 75%;">
                     <engine:VisualElement>
                         <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
@@ -66,15 +65,13 @@
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
-        <engine:VisualElement name="RITchCodeScreen" style="display: none; background-color: rgb(255, 255, 255); flex-grow: 1;">
-            <engine:VisualElement class="uofr-container" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
-                <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
-                    <engine:Button name="RITchCodeBackButton" class="uofr-button uofr-button-square">
-                        <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
-                    </engine:Button>
-                    <engine:Label text="RITch Code" class="uofr-title-medium" style="flex-grow: 1;" />
-                    <engine:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
-                </engine:VisualElement>
+        <engine:VisualElement name="RITchCodeScreen" style="background-color: rgb(255, 255, 255); visibility: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+            <engine:VisualElement class="uofr-padding uofr-safe-area__top-padding" style="flex-grow: 0; flex-direction: row;">
+                <engine:Button name="RITchCodeBackButton" class="uofr-button uofr-button-square">
+                    <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
+                </engine:Button>
+                <engine:Label text="RITch Code" class="uofr-title-medium" style="flex-grow: 1;" />
+                <engine:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
             </engine:VisualElement>
             <engine:VisualElement class="uofr-padding" style="justify-content: space-around;">
                 <engine:VisualElement>
