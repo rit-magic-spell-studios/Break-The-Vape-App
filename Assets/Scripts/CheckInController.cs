@@ -43,14 +43,14 @@ public class CheckInController : UIController {
     private VisualElement demographicInfoContainer;
     private RadioButtonGroup ageButtonGroup;
     private RadioButtonGroup environmentButtonGroup;
-    private SliderInt vapeFrequencySlider;
+    private Button selectedFrequencyButton;
 
     private VisualElement cravingIntensityContainer;
-    private SliderInt cravingIntensitySlider;
+    private Button selectedIntensityButton;
 
     private VisualElement cravingCauseContainer;
     private List<Button> cravingCauseButtons;
-    private List<Button> selectedButtons;
+    private List<Button> selectedCauseButtons;
 
     private List<TextField> ritchCodeTextFields;
 
@@ -78,17 +78,31 @@ public class CheckInController : UIController {
         demographicInfoContainer = ui.Q<VisualElement>("DemographicInfoContainer");
         ageButtonGroup = ui.Q<RadioButtonGroup>("AgeButtonGroup");
         environmentButtonGroup = ui.Q<RadioButtonGroup>("EnvironmentButtonGroup");
-        vapeFrequencySlider = ui.Q<SliderInt>("VapeFrequencySlider");
+        List<Button> vapeFrequencyButtons = ui.Q<VisualElement>("VapeFrequencyButtons").Query<Button>( ).ToList( );
+        for (int i = 0; i < vapeFrequencyButtons.Count; i++) {
+            vapeFrequencyButtons[i].RegisterCallback<ClickEvent>((e) => {
+                selectedFrequencyButton?.RemoveFromClassList("uofr-button-selected");
+                selectedFrequencyButton = (Button) e.target;
+                selectedFrequencyButton.AddToClassList("uofr-button-selected");
+            });
+        }
 
         cravingIntensityContainer = ui.Q<VisualElement>("CravingIntensityContainer");
-        cravingIntensitySlider = ui.Q<SliderInt>("CravingIntensitySlider");
+        List<Button> cravingIntensityButtons = ui.Q<VisualElement>("CravingIntensityButtons").Query<Button>( ).ToList( );
+        for (int i = 0; i < cravingIntensityButtons.Count; i++) {
+            cravingIntensityButtons[i].RegisterCallback<ClickEvent>((e) => {
+                selectedIntensityButton?.RemoveFromClassList("uofr-button-selected");
+                selectedIntensityButton = (Button) e.target;
+                selectedIntensityButton.AddToClassList("uofr-button-selected");
+            });
+        }
 
         cravingCauseContainer = ui.Q<VisualElement>("CravingCauseContainer");
         cravingCauseButtons = cravingCauseContainer.Query<Button>( ).ToList( );
         for (int i = 0; i < cravingCauseButtons.Count; i++) {
             cravingCauseButtons[i].RegisterCallback<ClickEvent>((e) => { ToggleSelectOption(cravingCauseButtons, cravingCauseButtons.IndexOf((Button) e.target)); });
         }
-        selectedButtons = new List<Button>( );
+        selectedCauseButtons = new List<Button>( );
 
         ui.Q<Button>("RITchCodeLoginButton").clicked += ( ) => { DisplayScreen(ritchCodeScreen); };
         ui.Q<Button>("GuestButton").clicked += SetupCheckInForm;
@@ -122,10 +136,10 @@ public class CheckInController : UIController {
         // Toggle the class on the option as well as remove/add it from the selected buttons list
         if (toggledOption.ClassListContains("uofr-button-selected")) {
             toggledOption.RemoveFromClassList("uofr-button-selected");
-            selectedButtons.Remove(toggledOption);
+            selectedCauseButtons.Remove(toggledOption);
         } else {
             toggledOption.AddToClassList("uofr-button-selected");
-            selectedButtons.Add(toggledOption);
+            selectedCauseButtons.Add(toggledOption);
         }
     }
 
@@ -213,9 +227,11 @@ public class CheckInController : UIController {
     /// <returns>true unless the current page is not filled out all the way, then it returns false</returns>
     private bool CheckForPageComplete( ) {
         if (checkInFormPages[CurrentFormPageIndex] == demographicInfoContainer) {
-            return (ageButtonGroup.value != -1 && environmentButtonGroup.value != -1);
+            return (ageButtonGroup.value != -1 && environmentButtonGroup.value != -1 && selectedFrequencyButton != null);
+        } else if (checkInFormPages[CurrentFormPageIndex] == cravingIntensityContainer) {
+            return (selectedIntensityButton != null);
         } else if (checkInFormPages[CurrentFormPageIndex] == cravingCauseContainer) {
-            return (selectedButtons.Count > 0);
+            return (selectedCauseButtons.Count > 0);
         }
 
         return true;
@@ -224,9 +240,9 @@ public class CheckInController : UIController {
     protected override void GoToScene(string sceneName) {
         DataManager.AppSessionData.UserData.Age = ageButtonGroup.choices.ToList( )[ageButtonGroup.value];
         DataManager.AppSessionData.UserData.Environment = environmentButtonGroup.choices.ToList( )[environmentButtonGroup.value];
-        DataManager.AppSessionData.UserData.DaysVapedDuringPastWeek = vapeFrequencySlider.value;
-        checkInSessionData.CravingIntensity = cravingIntensitySlider.value;
-        checkInSessionData.CravingTriggers = selectedButtons.Select(button => button.text).ToList( );
+        DataManager.AppSessionData.UserData.DaysVapedDuringPastWeek = int.Parse(selectedFrequencyButton.text);
+        checkInSessionData.CravingIntensity = int.Parse(selectedIntensityButton.text);
+        checkInSessionData.CravingTriggers = selectedCauseButtons.Select(button => button.text).ToList( );
 
         DataManager.Instance.UploadSessionData(checkInSessionData);
         base.GoToScene(sceneName);

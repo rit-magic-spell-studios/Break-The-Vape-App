@@ -5,7 +5,6 @@
     <engine:Template name="GameWinScreen" src="project://database/Assets/UXML/Templates/Screens/GameWinScreen.uxml?fileID=9197481963319205126&amp;guid=1d6928190cee2694fba334f48fdf52f5&amp;type=3#GameWinScreen" />
     <engine:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Screens/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <Style src="project://database/Assets/USS/CraveSmash.uss?fileID=7433441132597879392&amp;guid=8b9794395f2c32f46bbdabaed81ea606&amp;type=3#CraveSmash" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
             <engine:Instance template="GameTitleBar" />

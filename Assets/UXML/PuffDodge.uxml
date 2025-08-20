@@ -5,7 +5,6 @@
     <engine:Template name="GamePauseScreen" src="project://database/Assets/UXML/Templates/Screens/GamePauseScreen.uxml?fileID=9197481963319205126&amp;guid=2bacc1f092c8dd5469eacb2e23ea4ea1&amp;type=3#GamePauseScreen" />
     <engine:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Screens/PlayGoalInfoScreen.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoScreen" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <Style src="project://database/Assets/USS/MatchAndCatch.uss?fileID=7433441132597879392&amp;guid=f886bf6c8b7ff7d48b6c1fae2709657b&amp;type=3#MatchAndCatch" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" style="display: flex; flex-grow: 1;">
             <engine:Instance template="GameBar" />

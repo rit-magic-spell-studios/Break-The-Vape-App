@@ -3,6 +3,7 @@
 ## v0.5.1 - Unreleased
 * Added about page
 * Formatted point total to include commas
+* Replaced sliders with buttons to ensure users are filling out the required forms during the check-in and on the post-game win screen
 
 ## v0.5.0 - August 18th, 2025
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent

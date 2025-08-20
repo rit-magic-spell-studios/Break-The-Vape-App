@@ -20,7 +20,7 @@ public abstract class GameController : UIController {
 
     protected VisualElement gameTutorialPopup;
 
-    private SliderInt cravingIntensitySlider;
+    private Button selectedCravingButton;
 
     public GameSessionData GameSessionData { get; private set; }
     public bool IsPlayingGame => (CurrentScreen == gameScreen && CurrentPopup == null);
@@ -34,11 +34,19 @@ public abstract class GameController : UIController {
         winScreen = ui.Q<VisualElement>("WinScreen");
         playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
 
+        ui.Q<Button>("PauseButton").clicked += ( ) => { DisplayScreen(pauseScreen); };
         ui.Q<Button>("ResumeButton").clicked += ( ) => { DisplayScreen(gameScreen); };
         ui.Q<Button>("QuitButton").clicked += ( ) => { GoToScene("MainMenu"); };
-        ui.Q<Button>("HomeButton").clicked += ( ) => { GoToScene("MainMenu"); };
-        ui.Q<Button>("PlayAgainButton").clicked += ( ) => { GoToScene(SceneManager.GetActiveScene( ).name); };
-        ui.Q<Button>("PauseButton").clicked += ( ) => { DisplayScreen(pauseScreen); };
+        ui.Q<Button>("HomeButton").clicked += ( ) => {
+            if (selectedCravingButton != null) {
+                GoToScene("MainMenu");
+            }
+        };
+        ui.Q<Button>("PlayAgainButton").clicked += ( ) => {
+            if (selectedCravingButton != null) {
+                GoToScene(SceneManager.GetActiveScene( ).name);
+            }
+        };
         ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
         ui.Q<Button>("HowToPlayButton").clicked += ( ) => { DisplayBasicPopup(gameTutorialPopup); };
 
@@ -50,7 +58,15 @@ public abstract class GameController : UIController {
         ui.Q<Label>("TutorialLabel").text = tutorialText;
         ui.Q<Label>("TitleLabel").text = name;
 
-        cravingIntensitySlider = ui.Q<SliderInt>("CravingIntensitySlider");
+        // Set up the craving intensity buttons
+        List<Button> cravingIntensityButtons = ui.Q<VisualElement>("CravingIntensityButtons").Query<Button>( ).ToList( );
+        for (int i = 0; i < cravingIntensityButtons.Count; i++) {
+            cravingIntensityButtons[i].RegisterCallback<ClickEvent>((e) => {
+                selectedCravingButton?.RemoveFromClassList("uofr-button-selected");
+                selectedCravingButton = (Button) e.currentTarget;
+                selectedCravingButton.AddToClassList("uofr-button-selected");
+            });
+        }
 
         // Create a new game session data entry for this game
         GameSessionData = new GameSessionData(name, DataManager.AppSessionData.TotalPointsEarned);
@@ -80,7 +96,9 @@ public abstract class GameController : UIController {
     }
 
     protected override void GoToScene(string sceneName) {
-        GameSessionData.CravingIntensity = cravingIntensitySlider.value;
+        if (selectedCravingButton != null) {
+            GameSessionData.CravingIntensity = int.Parse(selectedCravingButton.text);
+        }
 
         DataManager.Instance.UploadSessionData(GameSessionData);
         DataManager.AppSessionData.TotalPointsEarnedValue = GameSessionData.TotalPointsEarned;

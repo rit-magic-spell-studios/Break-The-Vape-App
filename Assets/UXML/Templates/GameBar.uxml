@@ -3,11 +3,11 @@
     <engine:VisualElement class="uofr-container" style="justify-content: flex-end; border-top-left-radius: 0; border-top-right-radius: 0; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
         <engine:VisualElement style="flex-direction: row;">
             <engine:Button name="PauseButton" class="uofr-button uofr-button-square">
-                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Arrow_Left.png?fileID=2800000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); flex-grow: 1;" />
+                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;); flex-grow: 1;" />
             </engine:Button>
             <engine:Label text="Match And Catch" name="TitleLabel" class="uofr-title-medium" style="flex-grow: 1;" />
             <engine:Button name="HowToPlayButton" class="uofr-button uofr-button-square">
-                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Help.png?fileID=21300000&amp;guid=2ae2c2a252483b148bc6343c0adf7c18&amp;type=3#Help&quot;); flex-grow: 1;" />
+                <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Help.png?fileID=21300000&amp;guid=2ae2c2a252483b148bc6343c0adf7c18&amp;type=3#Help&quot;); flex-grow: 1;" />
             </engine:Button>
         </engine:VisualElement>
         <engine:VisualElement class="uofr-space-medium" style="flex-grow: 1;" />

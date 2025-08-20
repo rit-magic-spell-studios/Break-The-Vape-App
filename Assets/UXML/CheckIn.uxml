@@ -43,19 +43,17 @@
                         <engine:VisualElement class="uofr-space-large" />
                         <engine:RadioButtonGroup label="Environment" choices="Rural,Non-rural" name="EnvironmentButtonGroup" class="uofr-radio-button-group" />
                         <engine:VisualElement class="uofr-space-large" />
-                        <engine:Label text="Number of days vaped in the last week" class="uofr-text-medium" />
-                        <engine:VisualElement class="uofr-space-small" />
-                        <engine:SliderInt high-value="7" name="VapeFrequencySlider" class="uofr-slider-int" />
-                        <engine:VisualElement class="uofr-space-small" />
-                        <engine:VisualElement style="flex-direction: row; justify-content: space-between; padding-right: 30px; padding-left: 30px;">
-                            <engine:Label text="0" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="1" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="2" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="3" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="4" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="5" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="6" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
-                            <engine:Label text="7" class="uofr-title-small" style="color: rgb(15, 51, 134); -unity-font-style: normal;" />
+                        <engine:Label text="Number of days vaped in the last week" class="uofr-text-medium" style="-unity-font-style: bold;" />
+                        <engine:VisualElement class="uofr-space-medium" />
+                        <engine:VisualElement name="VapeFrequencyButtons" style="flex-direction: row; justify-content: space-between;">
+                            <engine:Button text="0" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="1" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="2" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="3" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="4" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="5" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="6" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
+                            <engine:Button text="7" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="uofr-space-large" />
