@@ -43,14 +43,22 @@ public class MainMenuController : UIController {
         };
         ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
 
+        greetingLabel = ui.Q<Label>("GreetingLabel");
+        DateTime currentTime = DateTime.Now;
+        if (currentTime.Hour >= 5 && currentTime.Hour < 12) {
+            greetingLabel.text = "Good morning!";
+        } else if (currentTime.Hour >= 12 && currentTime.Hour < 17) {
+            greetingLabel.text = "Good afternoon!";
+        } else {
+            greetingLabel.text = "Good evening!";
+        }
+
         popupOverlay.RegisterCallback<ClickEvent>((e) => {
             if ((VisualElement) e.target == popupOverlay) {
                 HideCurrentPopup( );
             }
         });
-        menuPopup = ui.Q<VisualElement>("MenuPopup");
-        menuPopup.RegisterCallback((GeometryChangedEvent e) => menuPopup.style.top = Mathf.Max(menuPopup.resolvedStyle.top, safeAreaTopPadding));
-        ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(menuPopup, Vector2.zero, new Vector2(Screen.width / 2f, 0)); };
+        ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), new Vector2(0, greetingLabel.worldBound.y), new Vector2(Screen.width / 2f, greetingLabel.worldBound.y)); };
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
         ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
@@ -70,16 +78,6 @@ public class MainMenuController : UIController {
             DataManager.AppSessionData.ResetData( );
             GoToScene("CheckIn");
         };
-
-        greetingLabel = ui.Q<Label>("GreetingLabel");
-        DateTime currentTime = DateTime.Now;
-        if (currentTime.Hour >= 5 && currentTime.Hour < 12) {
-            greetingLabel.text = "Good morning!";
-        } else if (currentTime.Hour >= 12 && currentTime.Hour < 17) {
-            greetingLabel.text = "Good afternoon!";
-        } else {
-            greetingLabel.text = "Good evening!";
-        }
 
         DataManager.AppSessionData.OnTotalTimeSecondsChange += ( ) => {
             if (isPlayGoalComplete) {

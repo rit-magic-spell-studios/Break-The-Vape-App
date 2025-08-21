@@ -48,5 +48,6 @@ public class Card : MonoBehaviour {
             .Append(transform.DOScaleX(0, cardFlipSeconds / 2f).SetEase(Ease.InOutQuad))
             .AppendCallback(( ) => { IsFlippedOver = !IsFlippedOver; })
             .Append(transform.DOScaleX(Size, cardFlipSeconds / 2f).SetEase(Ease.InOutQuad));
+        SoundManager.Instance.PlaySoundEffect(SoundEffectType.FLIP_CARD);
     }
 }

@@ -226,6 +226,7 @@ MonoBehaviour:
   minFruitChainLength: 2
   minSecretTileSize: 2
   maxSecretTileSize: 4
+  chainPitchUp: 0.05
   secretTileSprites:
   - {fileID: 21300000, guid: 069b3e429f7f71d45b9b6edbe0518af3, type: 3}
   - {fileID: 21300000, guid: 6133672cb8370be4e94445c77f51b1c1, type: 3}

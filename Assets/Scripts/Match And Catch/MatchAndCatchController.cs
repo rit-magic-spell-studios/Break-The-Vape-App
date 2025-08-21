@@ -11,6 +11,7 @@ public class MatchAndCatchController : GameController {
     [SerializeField, Range(0, 5)] private int cardGridWidth;
     [SerializeField, Range(0, 5)] private int cardGridHeight;
     [SerializeField, Range(0f, 3f)] private float cardSpacing;
+    [SerializeField, Range(0f, 0.5f)] private float comboPitchUp;
     [SerializeField] private List<Sprite> cardFrontSprites;
 
     private List<Card> cards;
@@ -112,8 +113,12 @@ public class MatchAndCatchController : GameController {
         // If the sprites of the last two cards do not match, then flip them back over
         // If the sprites of the last two cards do match, then keep them flipped over
         if (card1.CardFront != card2.CardFront) {
+            yield return new WaitForSeconds(cardCheckDelay / 2f);
+
             cardMatchCombo = 0;
-            yield return new WaitForSeconds(cardCheckDelay);
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.INCORRECT_MATCH);
+
+            yield return new WaitForSeconds(cardCheckDelay / 2f);
 
             card1.FlipCard( );
             FlippedCards.Remove(card1);
@@ -122,6 +127,7 @@ public class MatchAndCatchController : GameController {
             FlippedCards.Remove(card2);
         } else {
             matchesLabel.text = $"{(cards.Count - FlippedCards.Count) / 2} matches left!";
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.CORRECT, pitch: 1 + (cardMatchCombo * comboPitchUp));
             AddPoints(Vector3.zero, 100 * ++cardMatchCombo);
 
             if (FlippedCards.Count == cards.Count) {

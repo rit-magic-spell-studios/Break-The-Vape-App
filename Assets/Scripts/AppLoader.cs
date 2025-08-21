@@ -6,6 +6,7 @@ public class AppLoader : MonoBehaviour {
     [Header("App Loader")]
     [SerializeField] private GameObject dataManagerPrefab;
     [SerializeField] private GameObject backgroundBubbleManagerPrefab;
+    [SerializeField] private GameObject soundManagerPrefab;
 
     private void Awake( ) {
         if (DataManager.Instance == null) {
@@ -14,6 +15,10 @@ public class AppLoader : MonoBehaviour {
 
         if (BackgroundBubbleManager.Instance == null) {
             Instantiate(backgroundBubbleManagerPrefab);
+        }
+
+        if (SoundManager.Instance == null) {
+            Instantiate(soundManagerPrefab);
         }
     }
 }

@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataManagerPrefab: {fileID: 685593310277543766, guid: 43593e66f1bfebc47964d9e116830d0a, type: 3}
   backgroundBubbleManagerPrefab: {fileID: 4313944326833341292, guid: 3bfbd1c84d63d1646ac0162cdb0186d0, type: 3}
+  soundManagerPrefab: {fileID: 3192401527816149776, guid: 7ca09a8990092604e989339a1cf05b92, type: 3}

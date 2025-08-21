@@ -99,6 +99,7 @@ public class LungCharacter : MonoBehaviour {
             isWalking = true;
             stateSwitchTimer = 0f;
             lastObjectHit = collision.gameObject;
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.LUNG_DAMAGE);
         }
     }
 }

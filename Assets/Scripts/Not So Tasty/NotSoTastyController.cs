@@ -17,6 +17,7 @@ public class NotSoTastyController : GameController {
     [SerializeField, Min(0)] private int minFruitChainLength;
     [SerializeField, Range(1, 4)] private int minSecretTileSize;
     [SerializeField, Range(1, 4)] private int maxSecretTileSize;
+    [SerializeField, Range(0f, 0.5f)] private float chainPitchUp;
     [SerializeField] private List<Sprite> secretTileSprites;
 
     private Label remainingSecretTilesLabel;
@@ -176,6 +177,8 @@ public class NotSoTastyController : GameController {
                 ChainedTiles.Remove(ChainedTiles[^1]);
                 chainLineRenderer.positionCount = ChainedTiles.Count;
                 chainLineRenderer.SetPositions(ChainedTiles.Select(tile => tile.transform.position).ToArray( ));
+
+                SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_EXTEND, pitch: 1 + (ChainedTiles.Count * chainPitchUp));
             }
 
             return false;
@@ -188,6 +191,13 @@ public class NotSoTastyController : GameController {
         ChainedTiles.Add(tile);
         chainLineRenderer.positionCount = ChainedTiles.Count;
         chainLineRenderer.SetPositions(ChainedTiles.Select(tile => tile.transform.position).ToArray( ));
+
+        if (ChainedTiles.Count == 1) {
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_START);
+        } else {
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_EXTEND, pitch: 1 + (ChainedTiles.Count * chainPitchUp));
+        }
+
         return true;
     }
 
@@ -197,6 +207,8 @@ public class NotSoTastyController : GameController {
     public void ClearChain( ) {
         if (ChainedTiles.Count >= minFruitChainLength) {
             AddPoints(ChainedTiles[^1].transform.position, ChainedTiles.Count * 5);
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_END);
+
             UncoverSecretTiles( );
             UpdateBoard( );
         }
@@ -250,6 +262,7 @@ public class NotSoTastyController : GameController {
 
                     remainingSecretTilesLabel.text = $"{SecretTiles.Count} secret tiles left!";
                     AddPoints(ChainedTiles[i].transform.position, 50);
+                    SoundManager.Instance.PlaySoundEffect(SoundEffectType.CORRECT);
                 }
 
                 break;

@@ -91,7 +91,11 @@ public class CraveMonster : MonoBehaviour {
         if (Health <= 0) {
             spriteRenderer.color = Color.clear;
             IsDead = true;
+
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.MONSTER_DEFEATED);
             craveSmashController.OnMonsterDestroyed( );
+        } else {
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.MONSTER_HURT);
         }
     }
 }

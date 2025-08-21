@@ -75,7 +75,7 @@
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button text="Cancel" name="CancelLogOutButton" class="uofr-button " />
             </ui:VisualElement>
-            <ui:VisualElement name="MenuPopup" class="uofr-container" style="position: absolute; top: 40px; left: auto; right: 0; bottom: auto; min-width: 50%; border-bottom-right-radius: 0; border-top-right-radius: 0; display: none;">
+            <ui:VisualElement name="MenuPopup" class="uofr-container" style="position: absolute; top: 0; left: auto; right: 0; bottom: auto; min-width: 50%; border-bottom-right-radius: 0; border-top-right-radius: 0; display: none;">
                 <ui:Label text="Menu" class="uofr-title-medium" style="-unity-text-align: middle-left;" />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button name="LogOutButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">

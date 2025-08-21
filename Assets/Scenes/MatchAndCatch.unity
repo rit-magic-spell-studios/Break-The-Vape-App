@@ -376,6 +376,7 @@ MonoBehaviour:
   cardGridWidth: 3
   cardGridHeight: 4
   cardSpacing: 0.2
+  comboPitchUp: 0.05
   cardFrontSprites:
   - {fileID: 21300000, guid: 4cab62c1cb03cce4e849ae20d50803a4, type: 3}
   - {fileID: 21300000, guid: c75cc13953c8abd448dd686d5405387e, type: 3}

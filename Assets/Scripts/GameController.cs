@@ -120,7 +120,8 @@ public abstract class GameController : UIController {
 
     public void WinGame( ) {
         DelayAction(( ) => {
-            DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject); });
+            SoundManager.Instance.PlaySoundEffect(SoundEffectType.WIN);
+            DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject);});
         }, GAME_WIN_DELAY_SECONDS);
     }
 

@@ -46,6 +46,7 @@ public abstract class UIController : MonoBehaviour {
 
     protected virtual void Awake( ) {
         ui = GetComponent<UIDocument>( ).rootVisualElement;
+        
         ui.Query(className: "uofr-safe-area__top-padding").ForEach(x => x.RegisterCallback((GeometryChangedEvent e) => {
             VisualElement element = (VisualElement) e.target;
             element.style.paddingTop = Mathf.Max(element.resolvedStyle.paddingTop, safeAreaTopPadding);
@@ -54,6 +55,8 @@ public abstract class UIController : MonoBehaviour {
             VisualElement element = (VisualElement) e.target;
             element.style.paddingBottom = Mathf.Max(element.resolvedStyle.paddingBottom, safeAreaBottomPadding);
         }));
+
+        ui.Query<Button>( ).ForEach(x => x.clicked += ( ) => { SoundManager.Instance.PlaySoundEffect(SoundEffectType.BUTTON_CLICK); });
 
         popupOverlay = ui.Q<VisualElement>("PopupOverlay");
         transitionOverlay = ui.Q<VisualElement>("TransitionOverlay");

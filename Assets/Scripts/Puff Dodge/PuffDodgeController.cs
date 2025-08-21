@@ -71,6 +71,7 @@ public class PuffDodgeController : GameController {
             for (int i = 0; i < hits.Length; i++) {
                 GameObject hitObject = hits[i].transform.gameObject;
 
+                SoundManager.Instance.PlaySoundEffect(SoundEffectType.VAPE_BROKEN);
                 VapeItems.Remove(hitObject);
                 Destroy(hitObject);
 
