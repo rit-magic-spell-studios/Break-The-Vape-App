@@ -48,7 +48,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d4471b6f6ec4404f85ccb584eddca92, type: 3}
   - {fileID: 8300000, guid: 93d3571bbe4483a48991fd82b4a3ec11, type: 3}
   - {fileID: 8300000, guid: ea68fe6ec36195f41a155971e6947e1c, type: 3}
-  buttonClick: []
+  buttonClick:
+  - {fileID: 8300000, guid: 2f52c0703bcdc314f928d28b36a4da7d, type: 3}
   monsterHurt:
   - {fileID: 8300000, guid: 43da89e911fc7e04bb64e4e9c4c74f9a, type: 3}
   - {fileID: 8300000, guid: 7b2cfa165196ec64a804db7221f6f90c, type: 3}
