@@ -5,6 +5,7 @@
 * Added points popups when destroying a vape item
 * The player now gets 40 points per destroyed vape item
 * Added sound effects
+* Added confetti particle effect when winning the game
 
 ## v0.1.1 - August 18th, 2025
 * Replaced placeholder assets with new assets

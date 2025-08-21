@@ -4,6 +4,7 @@
 * Players now get more points for each consecutive match they make
 	* 100 points for the first match, 200 points for the next match in a row, etc.
 * Added sound effects
+* Added confetti particle effect when winning the game
 
 ## v0.4.0 - August 18th, 2025
 * Added point popup effects that display the amount of points the player gains per match

@@ -93,7 +93,7 @@ public class CraveMonster : MonoBehaviour {
             IsDead = true;
 
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.MONSTER_DEFEATED);
-            craveSmashController.OnMonsterDestroyed( );
+            craveSmashController.WinGame( );
         } else {
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.MONSTER_HURT);
         }
