@@ -8,6 +8,7 @@ public class PuffDodgeController : GameController {
     [Header("PuffDodgeController")]
     [SerializeField] private GameObject vapeItemPrefab;
     [SerializeField] private TrailRenderer sliceTrailRenderer;
+    [SerializeField] private GameObject vapePoofParticlesPrefab;
     [Space]
     [SerializeField, Range(0f, 3f)] private float itemSpawnRate;
     [SerializeField, Range(1, 5)] private int itemSpawnBurstMin;
@@ -33,11 +34,6 @@ public class PuffDodgeController : GameController {
 
             if (_destroyedItems >= targetDestroyedItems) {
                 WinGame( );
-
-                for (int i = 0; i < VapeItems.Count; i++) {
-                    Destroy(VapeItems[i]);
-                }
-                VapeItems.Clear( );
             }
         }
     }
@@ -69,14 +65,7 @@ public class PuffDodgeController : GameController {
             // For now, just destroy the vape item and increment the number of destroyed items
             RaycastHit2D[ ] hits = Physics2D.RaycastAll(LastTouchWorldPosition, Vector2.up, 0.05f, vapeItemLayer.value);
             for (int i = 0; i < hits.Length; i++) {
-                GameObject hitObject = hits[i].transform.gameObject;
-
-                SoundManager.Instance.PlaySoundEffect(SoundEffectType.VAPE_BROKEN);
-                VapeItems.Remove(hitObject);
-                Destroy(hitObject);
-
-                DestroyedItems++;
-                GameSessionData.PointsEarnedValue += 50;
+                hits[i].transform.GetComponent<VapeItem>( ).Slice( );
             }
         } else {
             sliceTrailRenderer.time = 0f;

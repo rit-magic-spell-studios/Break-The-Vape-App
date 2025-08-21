@@ -1,5 +1,8 @@
 # Not So Tasty Changelog
 
+## v0.3.1 - Unreleased
+* Added sound effects
+
 ## v0.3.0 - August 18th, 2025
 * Added point popup effects that display the amount of points the player gains per chain and secret tile uncovered
 * Optimized code and animations

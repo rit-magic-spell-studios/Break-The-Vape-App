@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4329249889822927471}
   - component: {fileID: 4088811778306012483}
   m_Layer: 0
-  m_Name: Confetti Particle System
+  m_Name: Vape Poof Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -221,7 +221,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 4
+      minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
@@ -980,7 +980,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 100
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1432,8 +1432,8 @@ ParticleSystem:
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 0.9999
+      minMaxState: 0
+      scalar: 0
       minScalar: 0.9999
       maxCurve:
         serializedVersion: 2
@@ -1485,8 +1485,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.6666667
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1545,7 +1545,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 0d5143224643377488f19cac1ff9add0, type: 3}
+    - sprite: {fileID: 8762414112188812531, guid: 2cd654a7ef61d5c4faa6136618b117b6, type: 3}
+    - sprite: {fileID: -8749042900611025895, guid: 2cd654a7ef61d5c4faa6136618b117b6, type: 3}
+    - sprite: {fileID: -8864182019584158449, guid: 2cd654a7ef61d5c4faa6136618b117b6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

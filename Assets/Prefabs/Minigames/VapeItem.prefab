@@ -235,12 +235,19 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8593721952098234018}
   polygonCollider2D: {fileID: 376481928241355242}
   puffDodgeController: {fileID: 0}
+  vapePoofParticlesPrefab: {fileID: 5000036781040298306, guid: c139b6f9a0856af468a4b74c8118c01d, type: 3}
   minLaunchVelocity: 7
   maxLaunchVelocity: 11
   minLaunchAngularVelocity: 70
   maxLaunchAngularVelocity: 120
+  vapeDestroyPoints: 40
   sprites:
   - {fileID: 21300000, guid: a5b3ef3f9656f414cbd9116fae1a89cb, type: 3}
   - {fileID: 21300000, guid: 71b24251bba0e294aba0cb8877331e77, type: 3}
   - {fileID: 21300000, guid: 2847eabed69f3fd41a3fe37f261f8c42, type: 3}
   - {fileID: 21300000, guid: 5b45b597ca2e02342b0420008d4523b3, type: 3}
+  colors:
+  - {r: 0.3019608, g: 0.5529412, b: 1, a: 1}
+  - {r: 1, g: 0.7921569, b: 0.90588236, a: 1}
+  - {r: 0.8039216, g: 0.8039216, b: 1, a: 1}
+  - {r: 0.95686275, g: 0.7490196, b: 0.09803922, a: 1}

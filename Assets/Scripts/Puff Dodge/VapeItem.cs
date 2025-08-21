@@ -8,18 +8,23 @@ public class VapeItem : MonoBehaviour {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
     [SerializeField] private PuffDodgeController puffDodgeController;
+    [SerializeField] private GameObject vapePoofParticlesPrefab;
     [SerializeField, Range(0f, 20f)] private float minLaunchVelocity;
     [SerializeField, Range(0f, 20f)] private float maxLaunchVelocity;
     [SerializeField, Range(0f, 360f)] private float minLaunchAngularVelocity;
     [SerializeField, Range(0f, 360f)] private float maxLaunchAngularVelocity;
+    [SerializeField, Range(0, 100)] private int vapeDestroyPoints;
     [SerializeField] private List<Sprite> sprites;
+    [SerializeField] private List<Color> colors;
 
-    float cameraHalfWidth, cameraHalfHeight;
+    private float cameraHalfWidth, cameraHalfHeight;
+    private int spriteIndex;
 
     private void Awake( ) {
         puffDodgeController = FindAnyObjectByType<PuffDodgeController>( );
 
-        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Count)];
+        spriteIndex = Random.Range(0, sprites.Count);
+        spriteRenderer.sprite = sprites[spriteIndex];
         Utils.UpdatePolygonColliderShape(polygonCollider2D, spriteRenderer);
     }
 
@@ -30,7 +35,7 @@ public class VapeItem : MonoBehaviour {
         float yDistance = transform.position.y + cameraHalfHeight;
 
         float launchVelocity = Random.Range(minLaunchVelocity, maxLaunchVelocity);
-        float launchAngle = CalculateLaunchAngle(xDistance, yDistance, launchVelocity);
+        float launchAngle = Utils.CalculateLaunchAngle(xDistance, yDistance, launchVelocity);
         if (transform.position.x > 0) {
             // Reflect the launch angle over the vertical axis
             launchAngle = Mathf.PI - launchAngle;
@@ -41,26 +46,27 @@ public class VapeItem : MonoBehaviour {
     }
 
     private void Update( ) {
+        // When the vape item is below the bottom of the screen, destroy it
         if (transform.position.y <= -cameraHalfHeight * 2f) {
             puffDodgeController.VapeItems.Remove(gameObject);
             Destroy(gameObject);
         }
     }
 
-    /// <summary>
-    /// Calculate the launch angle in radians based on a distance travelled, a starting height, and a starting velocity
-    /// </summary>
-    /// <param name="x">The distance that the object travelled</param>
-    /// <param name="h">The initial height the object started at</param>
-    /// <param name="vi">The initial velocity of the object</param>
-    /// <returns>An angle in radians that is the starting launch angle of the object</returns>
-    private float CalculateLaunchAngle(float x, float h, float vi) {
-        // https://www.youtube.com/watch?v=bqYtNrhdDAY
-        float a = (Mathf.Abs(Physics2D.gravity.y) * x * x) / (vi * vi);
-        float b = Mathf.Sqrt((h * h) + (x * x));
-        float c = Mathf.Acos(Mathf.Clamp((a - h) / b, -1, 1));
-        float d = Mathf.Atan(x / h);
-        float theta = (c + d) / 2f;
-        return theta;
+    public void Slice( ) {
+        // Update the controller variables
+        puffDodgeController.VapeItems.Remove(gameObject);
+        puffDodgeController.DestroyedItems++;
+        puffDodgeController.AddPoints(transform.position, vapeDestroyPoints);
+        SoundManager.Instance.PlaySoundEffect(SoundEffectType.VAPE_BROKEN);
+
+        // Spawn poof particles when this vape item is destroyed
+        ParticleSystem vapeParticles = Instantiate(vapePoofParticlesPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>( );
+        ParticleSystem.MainModule main = vapeParticles.main;
+        main.startColor = colors[spriteIndex];
+        vapeParticles.Play( );
+
+        // Destroy this object
+        Destroy(gameObject);
     }
 }

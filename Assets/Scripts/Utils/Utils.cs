@@ -32,4 +32,21 @@ public static class Utils {
             list[randomIndex] = tmp;
         }
     }
+
+    /// <summary>
+    /// Calculate the launch angle in radians based on a distance travelled, a starting height, and a starting velocity
+    /// </summary>
+    /// <param name="x">The distance that the object travelled</param>
+    /// <param name="h">The initial height the object started at</param>
+    /// <param name="vi">The initial velocity of the object</param>
+    /// <returns>An angle in radians that is the starting launch angle of the object</returns>
+    public static float CalculateLaunchAngle(float x, float h, float vi) {
+        // https://www.youtube.com/watch?v=bqYtNrhdDAY
+        float a = (Mathf.Abs(Physics2D.gravity.y) * x * x) / (vi * vi);
+        float b = Mathf.Sqrt((h * h) + (x * x));
+        float c = Mathf.Acos(Mathf.Clamp((a - h) / b, -1, 1));
+        float d = Mathf.Atan(x / h);
+        float theta = (c + d) / 2f;
+        return theta;
+    }
 }

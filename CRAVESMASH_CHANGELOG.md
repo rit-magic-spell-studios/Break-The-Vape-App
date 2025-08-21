@@ -2,6 +2,7 @@
 
 ## v0.6.3 - Unreleased
 * The crave monster now moves around randomly to make it harder to click on
+* Added sound effects
 
 ## v0.6.2 - August 18th, 2025
 * Added point popup effects that display the amount of points the player gains per click

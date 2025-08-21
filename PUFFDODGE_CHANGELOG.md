@@ -1,6 +1,10 @@
 # Puff Dodge Changelog
 
 ## v0.1.2 - Unreleased
+* Added puff particle effect when a vape item is destroyed
+* Added points popups when destroying a vape item
+* The player now gets 40 points per destroyed vape item
+* Added sound effects
 
 ## v0.1.1 - August 18th, 2025
 * Replaced placeholder assets with new assets

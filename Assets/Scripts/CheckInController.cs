@@ -245,11 +245,6 @@ public class CheckInController : UIController {
             if (selectedFrequencyButton == null) {
                 invalidLabels.Add(ui.Q<Label>("VapeFrequencyLabel"));
             }
-
-            if (invalidLabels.Count > 0) {
-                invalidLabels.Add(checkInQuestion);
-                invalidLabels.Add(checkInSubtitle);
-            }
         } else if (checkInFormPages[CurrentFormPageIndex] == cravingIntensityContainer) {
             if (selectedIntensityButton == null) {
                 invalidLabels.Add(checkInQuestion);
