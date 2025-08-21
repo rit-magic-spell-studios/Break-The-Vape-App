@@ -3,6 +3,7 @@ using DG.Tweening.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,7 +27,7 @@ public abstract class UIController : MonoBehaviour {
     protected float safeAreaBottomPadding;
 
     protected VisualElement ui;
-    private List<VisualElement> animatingVisualElements;
+    protected List<VisualElement> animatingVisualElements;
 
     protected VisualElement popupOverlay;
     private Vector2 currentPopupOnScreen;
@@ -46,7 +47,7 @@ public abstract class UIController : MonoBehaviour {
 
     protected virtual void Awake( ) {
         ui = GetComponent<UIDocument>( ).rootVisualElement;
-        
+
         ui.Query(className: "uofr-safe-area__top-padding").ForEach(x => x.RegisterCallback((GeometryChangedEvent e) => {
             VisualElement element = (VisualElement) e.target;
             element.style.paddingTop = Mathf.Max(element.resolvedStyle.paddingTop, safeAreaTopPadding);
@@ -90,6 +91,26 @@ public abstract class UIController : MonoBehaviour {
             IsTouchingScreen = true;
         } else {
             IsTouchingScreen = false;
+        }
+    }
+
+    /// <summary>
+    /// Flash text labels red when they are being validated
+    /// </summary>
+    /// <param name="labels">A list of all the labels to flash</param>
+    protected void FlashTextValidation(List<Label> labels) {
+        // Stop new transitions if there is a transition currently happening
+        if (animatingVisualElements.Count > 0 || labels.Count == 0) {
+            return;
+        }
+
+        List<Color> startColors = labels.Select(label => label.resolvedStyle.color).ToList( );
+        Color flashColor = new Color(1f, 0.61f, 0.61f);
+
+        Sequence validationFlashSequence = DOTween.Sequence( );
+        for (int i = 0; i < labels.Count; i++) {
+            validationFlashSequence.Insert(0f, AnimateElementColor(labels[i], startColors[i], flashColor, POPUP_TRANSITION_SECONDS / 2f));
+            validationFlashSequence.Insert(POPUP_TRANSITION_SECONDS / 2f, AnimateElementColor(labels[i], flashColor, startColors[i], POPUP_TRANSITION_SECONDS / 2f));
         }
     }
 
@@ -141,6 +162,7 @@ public abstract class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="popup">The popup to display</param>
     /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
+    /// <param name="onComplete">An optional callback for when the display sequence is completed</param>
     protected void DisplayBasicPopup(VisualElement popup, bool checkForAnimations = true, Action onComplete = null) {
         DisplayPopup(popup, Vector2.zero, new Vector2(0, Screen.height), checkForAnimations: checkForAnimations, onComplete: onComplete);
     }
@@ -149,6 +171,7 @@ public abstract class UIController : MonoBehaviour {
     /// Hide the currently displayed popup
     /// </summary>
     /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
+    /// <param name="onComplete">An optional callback for when the display sequence is completed</param>
     protected void HideCurrentPopup(bool checkForAnimations = true, Action onComplete = null) {
         DisplayPopup(null, checkForAnimations: checkForAnimations, onComplete: onComplete);
     }
@@ -160,6 +183,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="onScreen">The translation position of the popup where it should be when it is on the screen</param>
     /// <param name="offScreen">The translation position of the popup where it should be when it is off the screen</param>
     /// <param name="checkForAnimations">Whether or not to check for animations before displaying a new popup. If there are other animations playing and this is set to true, then the new popup will not be displayed</param>
+    /// <param name="onComplete">An optional callback for when the display sequence is completed</param>
     protected void DisplayPopup(VisualElement popup, Vector2 onScreen = default, Vector2 offScreen = default, bool checkForAnimations = true, Action onComplete = null) {
         // Stop new transitions if there is a transition currently happening
         if ((checkForAnimations && animatingVisualElements.Count > 0) || popup == CurrentPopup) {
@@ -200,6 +224,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
     /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
     /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <param name="onComplete">An optional callback for when this tween is completed</param>
     /// <returns>A reference to the Tween that is animating the visual element</returns>
     private Tween AnimateElementTranslation(VisualElement element, Vector2 startTranslation, Vector2 endTranslation, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
         Action onStart = ( ) => {
@@ -241,6 +266,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
     /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
     /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <param name="onComplete">An optional callback for when this tween is completed</param>
     /// <returns>A reference to the Tween that is animating the visual element</returns>
     private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
         Action onStart = ( ) => {
@@ -282,6 +308,7 @@ public abstract class UIController : MonoBehaviour {
     /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
     /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
     /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <param name="onComplete">An optional callback for when this tween is completed</param>
     /// <returns>A reference to the Tween that is animating the visual element</returns>
     private Tween AnimateElementOpacity(VisualElement element, float startOpacity, float endOpacity, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
         Action onStart = ( ) => {
@@ -298,6 +325,48 @@ public abstract class UIController : MonoBehaviour {
             ( ) => element.resolvedStyle.opacity,
             (v) => element.style.opacity = v,
             endOpacity,
+            durationSeconds)
+            .SetEase(Ease.InOutCubic)
+            .OnStart(( ) => {
+                if (!setDefaultsBeforeTweenStart) {
+                    onStart.Invoke( );
+                }
+            })
+            .OnComplete(( ) => {
+                if (disableOnComplete) {
+                    element.style.display = DisplayStyle.None;
+                }
+                animatingVisualElements.Remove(element);
+                onComplete?.Invoke( );
+            });
+    }
+
+    /// <summary>
+    /// Animate a visual element's color using DOTween
+    /// </summary>
+    /// <param name="element">The visual element to animate</param>
+    /// <param name="startOpacity">The starting color of the visual element</param>
+    /// <param name="endOpacity">The ending color of the visual element</param>
+    /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
+    /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
+    /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
+    /// <param name="onComplete">An optional callback for when this tween is completed</param>
+    /// <returns>A reference to the Tween that is animating the visual element</returns>
+    private Tween AnimateElementColor(VisualElement element, Color startColor, Color endColor, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
+        Action onStart = ( ) => {
+            element.style.display = DisplayStyle.Flex;
+            element.style.color = startColor;
+            animatingVisualElements.Add(element);
+        };
+
+        if (setDefaultsBeforeTweenStart) {
+            onStart.Invoke( );
+        }
+
+        return DOTween.To(
+            ( ) => element.resolvedStyle.color,
+            (v) => element.style.color = v,
+            endColor,
             durationSeconds)
             .SetEase(Ease.InOutCubic)
             .OnStart(( ) => {

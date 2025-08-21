@@ -12,8 +12,8 @@
         <engine:VisualElement class="uofr-space-large" />
         <engine:VisualElement class="uofr-container">
             <engine:VisualElement>
-                <engine:Label text="What is your craving level?" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
-                <engine:Label text="On a scale from 0 to 5, how much are you craving to vape?" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
+                <engine:Label text="What is your craving level?" name="CraveQuestionLabel" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
+                <engine:Label text="On a scale from 0 to 5, how much are you craving to vape?" name="CraveSubtitleLabel" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
             </engine:VisualElement>
             <engine:VisualElement class="uofr-space-large" />
             <engine:Instance template="CravingIntensityContainer" />

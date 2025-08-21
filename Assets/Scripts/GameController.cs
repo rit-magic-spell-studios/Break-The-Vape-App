@@ -40,13 +40,17 @@ public abstract class GameController : UIController {
         ui.Q<Button>("ResumeButton").clicked += ( ) => { DisplayScreen(gameScreen); };
         ui.Q<Button>("QuitButton").clicked += ( ) => { GoToScene("MainMenu"); };
         ui.Q<Button>("HomeButton").clicked += ( ) => {
-            if (selectedCravingButton != null) {
+            if (selectedCravingButton != null && animatingVisualElements.Count == 0) {
                 GoToScene("MainMenu");
+            } else {
+                FlashTextValidation(new List<Label>( ) { ui.Q<Label>("CraveQuestionLabel"), ui.Q<Label>("CraveSubtitleLabel") });
             }
         };
         ui.Q<Button>("PlayAgainButton").clicked += ( ) => {
-            if (selectedCravingButton != null) {
+            if (selectedCravingButton != null && animatingVisualElements.Count == 0) {
                 GoToScene(SceneManager.GetActiveScene( ).name);
+            } else {
+                FlashTextValidation(new List<Label>( ) { ui.Q<Label>("CraveQuestionLabel"), ui.Q<Label>("CraveSubtitleLabel") });
             }
         };
         ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
@@ -121,7 +125,7 @@ public abstract class GameController : UIController {
     public void WinGame( ) {
         DelayAction(( ) => {
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.WIN);
-            DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject);});
+            DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject); });
         }, GAME_WIN_DELAY_SECONDS);
     }
 

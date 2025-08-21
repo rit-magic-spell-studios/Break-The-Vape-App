@@ -77,5 +77,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1285acb0501667a4fad0a8a29bee7ae2, type: 3}
   - {fileID: 8300000, guid: c441d44bb8f534944a4b3856c3f5c808, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 92714f13ba46b63489e809f7943d0894, type: 3}
-  backgroundMusicVolume: 0.5
-  soundEffectVolume: 0.75
+  backgroundMusicVolume: 0.25
+  soundEffectVolume: 0.5

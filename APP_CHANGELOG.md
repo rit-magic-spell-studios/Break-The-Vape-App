@@ -8,6 +8,8 @@
 * Added spacing at the top and bottom of certain UI screens to ensure all UI is within the safe area of the current device's screen
 * Game tutorial gifs now work on the WebGL build
 * Added sound effects and background music to gameplay
+* Text now flashes red when a form is not filled out completely/correctly
+	* This goes for the check in form as well as the post-game win screen form
 
 ## v0.5.0 - August 18th, 2025
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent

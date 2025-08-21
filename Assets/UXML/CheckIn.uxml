@@ -42,7 +42,7 @@
                         <engine:VisualElement class="uofr-space-large" />
                         <engine:RadioButtonGroup label="Environment" choices="Rural,Non-rural" name="EnvironmentButtonGroup" class="uofr-radio-button-group" />
                         <engine:VisualElement class="uofr-space-large" />
-                        <engine:Label text="Number of days vaped in the last week" class="uofr-text-medium" style="-unity-font-style: bold;" />
+                        <engine:Label text="Number of days vaped in the last week" name="VapeFrequencyLabel" class="uofr-text-medium" style="-unity-font-style: bold;" />
                         <engine:VisualElement class="uofr-space-medium" />
                         <engine:VisualElement name="VapeFrequencyButtons" style="flex-direction: row; justify-content: space-between;">
                             <engine:Button text="0" class="uofr-button uofr-button-discreet" style="min-width: 10%;" />
@@ -75,7 +75,7 @@
             </engine:VisualElement>
             <engine:VisualElement class="uofr-padding" style="justify-content: space-around;">
                 <engine:VisualElement>
-                    <engine:Label text="Enter your 6-digit RITch code to link your play record." class="uofr-text-medium" style="-unity-font-style: bold; -unity-text-align: upper-center;" />
+                    <engine:Label text="Enter your 6-digit RITch code to link your play record." name="RITchCodePrompt" class="uofr-text-medium" style="-unity-font-style: bold; -unity-text-align: upper-center;" />
                     <engine:VisualElement class="uofr-space-medium" />
                     <engine:VisualElement style="justify-content: space-between; flex-direction: row;">
                         <engine:TextField max-length="1" class="uofr-textfield" />

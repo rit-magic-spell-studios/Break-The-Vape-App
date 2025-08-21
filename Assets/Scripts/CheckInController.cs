@@ -27,8 +27,8 @@ public class CheckInController : UIController {
 
             // Set the question and subtitle based on the new form page
             if (checkInFormPages[_currentFormSection] == demographicInfoContainer) {
-                checkInQuestion.text = "Initial Information";
-                checkInSubtitle.text = "You will only have to enter this information once";
+                checkInQuestion.text = "Your Information";
+                checkInSubtitle.text = "";
             } else if (checkInFormPages[_currentFormSection] == cravingIntensityContainer) {
                 checkInQuestion.text = "What is your craving level?";
                 checkInSubtitle.text = "On a scale from 0 to 5, how much are you craving to vape?";
@@ -165,6 +165,11 @@ public class CheckInController : UIController {
         }
 
         if (!DataManager.Instance.CheckForValidRITchCode(newRITchCode)) {
+            FlashTextValidation(new List<Label>( ) { ui.Q<Label>("RITchCodePrompt") });
+            return;
+        }
+
+        if (animatingVisualElements.Count > 0) {
             return;
         }
 
@@ -226,15 +231,39 @@ public class CheckInController : UIController {
     /// </summary>
     /// <returns>true unless the current page is not filled out all the way, then it returns false</returns>
     private bool CheckForPageComplete( ) {
+        List<Label> invalidLabels = new List<Label>( );
+
         if (checkInFormPages[CurrentFormPageIndex] == demographicInfoContainer) {
-            return (ageButtonGroup.value != -1 && environmentButtonGroup.value != -1 && selectedFrequencyButton != null);
+            if (ageButtonGroup.value == -1) {
+                invalidLabels.Add(ageButtonGroup.Q<Label>( ));
+            }
+
+            if (environmentButtonGroup.value == -1) {
+                invalidLabels.Add(environmentButtonGroup.Q<Label>( ));
+            }
+
+            if (selectedFrequencyButton == null) {
+                invalidLabels.Add(ui.Q<Label>("VapeFrequencyLabel"));
+            }
+
+            if (invalidLabels.Count > 0) {
+                invalidLabels.Add(checkInQuestion);
+                invalidLabels.Add(checkInSubtitle);
+            }
         } else if (checkInFormPages[CurrentFormPageIndex] == cravingIntensityContainer) {
-            return (selectedIntensityButton != null);
+            if (selectedIntensityButton == null) {
+                invalidLabels.Add(checkInQuestion);
+                invalidLabels.Add(checkInSubtitle);
+            }
         } else if (checkInFormPages[CurrentFormPageIndex] == cravingCauseContainer) {
-            return (selectedCauseButtons.Count > 0);
+            if (selectedCauseButtons.Count == 0) {
+                invalidLabels.Add(checkInQuestion);
+                invalidLabels.Add(checkInSubtitle);
+            }
         }
 
-        return true;
+        FlashTextValidation(invalidLabels);
+        return (invalidLabels.Count == 0);
     }
 
     protected override void GoToScene(string sceneName) {
