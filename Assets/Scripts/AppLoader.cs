@@ -20,5 +20,9 @@ public class AppLoader : MonoBehaviour {
         if (SoundManager.Instance == null) {
             Instantiate(soundManagerPrefab);
         }
+
+        // Set framerate of the application to the native refresh rate of the display
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = (int) Screen.currentResolution.refreshRateRatio.value;
     }
 }
