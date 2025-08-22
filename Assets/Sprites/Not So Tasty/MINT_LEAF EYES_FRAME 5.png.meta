@@ -182,7 +182,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MINT_LEAF EYES_FRAME 5_0: 6888960528792318405
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

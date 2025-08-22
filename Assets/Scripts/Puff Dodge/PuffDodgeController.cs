@@ -57,6 +57,13 @@ public class PuffDodgeController : GameController {
         if (IsTouchingScreen) {
             sliceTrailRenderer.transform.position = LastTouchWorldPosition;
 
+            // Enqueue the current touch position
+            // Make sure the queue does not exceed the delay count
+            slicePositions.Add(LastTouchWorldPosition);
+            while (slicePositions.Count >= Mathf.FloorToInt((1 / Time.deltaTime) * sliceTrailTime / 2f)) {
+                slicePositions.RemoveAt(0);
+            }
+
             // This is to make sure there isn't a streak when the trail renderer's position gets set to a new location
             sliceFrameCounter++;
             if (sliceTrailRenderer.time == 0f && sliceFrameCounter >= sliceFrameDelay) {
@@ -74,6 +81,11 @@ public class PuffDodgeController : GameController {
             // Reset slice trail renderer variables
             sliceTrailRenderer.time = 0f;
             sliceFrameCounter = 0;
+
+            // Continue to clear the slice positions gradually
+            if (slicePositions.Count > 0) {
+                slicePositions.RemoveAt(0);
+            }
         }
 
         // Spawn vape items periodically
@@ -81,22 +93,6 @@ public class PuffDodgeController : GameController {
         if (itemSpawnTimer >= itemSpawnRate) {
             StartCoroutine(SpawnVapeItems( ));
             itemSpawnTimer -= itemSpawnRate;
-        }
-    }
-
-    private void FixedUpdate( ) {
-        if (IsTouchingScreen) {
-            // Enqueue the current touch position
-            // Make sure the queue does not exceed the delay count
-            slicePositions.Add(LastTouchWorldPosition);
-            if (slicePositions.Count == Mathf.FloorToInt((1 / Time.fixedDeltaTime) * sliceTrailTime / 2f)) {
-                slicePositions.RemoveAt(0);
-            }
-        } else {
-            // Continue to clear the slice positions gradually
-            if (slicePositions.Count > 0) {
-                slicePositions.RemoveAt(0);
-            }
         }
     }
 
