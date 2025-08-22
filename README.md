@@ -14,7 +14,7 @@ This is a repository for the MAGIC Spell Studios collaboration with the Universi
 
 ## Controls
 ### Crave Smash
-Tap the monster to make them smaller. Once the monster has disappeared, you win!
+Tap the monster to make them smaller. Over time the monster will gain back health and grow in size. Tap as fast as you can until the monster has disappeared, then you win!
 
 ### Not So Tasty
 Click on a fruit and drag to nearby, similar fruit to form a fruit chain. Lift up once 2 or more fruits have been chained together to clear them off the board. Secret tiles will be revealed in the background when a fruit chain is matched overtop of them. Once all parts of each secret tile have been revealed from matches, you win!
