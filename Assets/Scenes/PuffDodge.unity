@@ -432,6 +432,7 @@ MonoBehaviour:
   tutorialText: Protect your lungs by knocking away 25 of the harmful objects!
   vapeItemPrefab: {fileID: 2567073745258421220, guid: 1043916232ec95349af2b367043b60fc, type: 3}
   sliceTrailRenderer: {fileID: 276330533}
+  vapePoofParticlesPrefab: {fileID: 0}
   itemSpawnRate: 2
   itemSpawnBurstMin: 2
   itemSpawnBurstMax: 4
@@ -439,6 +440,7 @@ MonoBehaviour:
   targetDestroyedItems: 25
   sliceTrailTime: 0.2
   sliceFrameDelay: 3
+  slicePositionDelay: 10
   vapeItemLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -17,8 +17,6 @@ public class LungCharacter : MonoBehaviour {
     [SerializeField, Range(0f, 10f)] private float minIdleSeconds;
     [SerializeField, Range(0f, 10f)] private float maxIdleSeconds;
     [SerializeField] private LayerMask vapeItemLayer;
-    [Space]
-    [SerializeField] private int _health;
 
     private float healthRegainTimer;
     private GameObject lastObjectHit;
@@ -28,6 +26,11 @@ public class LungCharacter : MonoBehaviour {
     private bool isWalking;
 
     private float cameraHalfWidth, cameraHalfHeight;
+
+    /// <summary>
+    /// The total number of hits the lungs have taken
+    /// </summary>
+    public int TotalHits { get; private set; }
 
     /// <summary>
     /// The current health of the lungs
@@ -40,6 +43,7 @@ public class LungCharacter : MonoBehaviour {
             Utils.UpdatePolygonColliderShape(polygonCollider2D, spriteRenderer);
         }
     }
+    private int _health;
 
     private void Awake( ) {
         puffDodgeController = FindFirstObjectByType<PuffDodgeController>();
@@ -95,6 +99,7 @@ public class LungCharacter : MonoBehaviour {
         // When a vape item has collided with the lungs, damage its health
         if ((vapeItemLayer & (1 << collision.gameObject.layer)) > 0 && collision.gameObject != lastObjectHit) {
             Health--;
+            TotalHits++;
             healthRegainTimer = 0f;
             isWalking = true;
             stateSwitchTimer = 0f;

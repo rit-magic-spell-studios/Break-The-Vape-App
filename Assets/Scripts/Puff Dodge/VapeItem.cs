@@ -8,12 +8,16 @@ public class VapeItem : MonoBehaviour {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
     [SerializeField] private PuffDodgeController puffDodgeController;
+    [SerializeField] private LungCharacter lungCharacter;
     [SerializeField] private GameObject vapePoofParticlesPrefab;
     [SerializeField, Range(0f, 20f)] private float minLaunchVelocity;
     [SerializeField, Range(0f, 20f)] private float maxLaunchVelocity;
     [SerializeField, Range(0f, 360f)] private float minLaunchAngularVelocity;
     [SerializeField, Range(0f, 360f)] private float maxLaunchAngularVelocity;
     [SerializeField, Range(0, 100)] private int vapeDestroyPoints;
+    [SerializeField, Range(0, 20)] private int vapeMinPoints;
+    [SerializeField, Range(0, 20)] private int lungHitPointDecrease;
+    [SerializeField, Range(0f, 5f)] private float doublePointsDistance;
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private List<Color> colors;
 
@@ -22,6 +26,7 @@ public class VapeItem : MonoBehaviour {
 
     private void Awake( ) {
         puffDodgeController = FindAnyObjectByType<PuffDodgeController>( );
+        lungCharacter = FindAnyObjectByType<LungCharacter>( );
 
         spriteIndex = Random.Range(0, sprites.Count);
         spriteRenderer.sprite = sprites[spriteIndex];
@@ -57,8 +62,15 @@ public class VapeItem : MonoBehaviour {
         // Update the controller variables
         puffDodgeController.VapeItems.Remove(gameObject);
         puffDodgeController.DestroyedItems++;
-        puffDodgeController.AddPoints(transform.position, vapeDestroyPoints);
         SoundManager.Instance.PlaySoundEffect(SoundEffectType.VAPE_BROKEN);
+
+        // Give double points for destroying a vape item close to the lung character
+        int pointMult = 1;
+        if (Vector2.Distance(lungCharacter.transform.position, transform.position) <= doublePointsDistance) {
+            pointMult = 2;
+        }
+        int gainedPoints = Mathf.Max((vapeDestroyPoints - (lungCharacter.TotalHits * lungHitPointDecrease)) * pointMult, vapeMinPoints);
+        puffDodgeController.AddPoints(transform.position, gainedPoints);
 
         // Spawn poof particles when this vape item is destroyed
         ParticleSystem vapeParticles = Instantiate(vapePoofParticlesPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>( );
