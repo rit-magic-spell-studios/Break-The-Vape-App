@@ -23,6 +23,7 @@ public class AppLoader : MonoBehaviour {
 
         // Set framerate of the application to the native refresh rate of the display
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = (int) Screen.currentResolution.refreshRateRatio.value;
+        //Application.targetFrameRate = Mathf.CeilToInt((float) Screen.currentResolution.refreshRateRatio.value);
+        Application.targetFrameRate = 60;
     }
 }

@@ -7,11 +7,10 @@ using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
     private VisualElement mainScreen;
-    private VisualElement playGoalInfoScreen;
     private VisualElement aboutScreen;
 
     private Label greetingLabel;
-    private VisualElement menuPopup;
+    private VisualElement playGoalInfoPopup;
 
     private bool isPlayGoalComplete;
 
@@ -20,29 +19,9 @@ public class MainMenuController : UIController {
 
         // Get all screens within the game
         mainScreen = ui.Q<VisualElement>("MainScreen");
-        playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
-        aboutScreen = ui.Q<VisualElement>("AboutScreen");
         mainScreen.style.visibility = Visibility.Hidden;
-        playGoalInfoScreen.style.visibility = Visibility.Hidden;
-        aboutScreen.style.visibility = Visibility.Hidden;
 
-        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 8-18-25";
-
-        ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
-        ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
-        ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
-        ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { GoToScene("PuffDodge"); };
-
-        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => { DisplayScreen(playGoalInfoScreen); };
-        ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
-        isPlayGoalComplete = false;
-
-        ui.Q<Button>("AboutButton").clicked += ( ) => {
-            DisplayScreen(aboutScreen);
-            HideCurrentPopup(checkForAnimations: false);
-        };
-        ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
-
+        // Set the greeting label text based on the time of day
         greetingLabel = ui.Q<Label>("GreetingLabel");
         DateTime currentTime = DateTime.Now;
         if (currentTime.Hour >= 5 && currentTime.Hour < 12) {
@@ -58,7 +37,27 @@ public class MainMenuController : UIController {
                 HideCurrentPopup( );
             }
         });
+
+        ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
+        ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
+        ui.Q<Button>("NotSoTastyButton").clicked += ( ) => { GoToScene("NotSoTasty"); };
+        ui.Q<Button>("PuffDodgeButton").clicked += ( ) => { GoToScene("PuffDodge"); };
+
+        playGoalInfoPopup = ui.Q<VisualElement>("PlayGoalInfoPopup");
+        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => { DisplayBasicPopup(playGoalInfoPopup); };
+        ui.Q<Button>("PlayGoalInfoContinueButton").clicked += ( ) => { HideCurrentPopup( ); };
+        isPlayGoalComplete = false;
+
         ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), new Vector2(0, greetingLabel.worldBound.y), new Vector2(Screen.width / 2f, greetingLabel.worldBound.y)); };
+
+        aboutScreen = ui.Q<VisualElement>("AboutScreen");
+        aboutScreen.style.visibility = Visibility.Hidden;
+        ui.Q<Button>("AboutButton").clicked += ( ) => {
+            DisplayScreen(aboutScreen);
+            HideCurrentPopup(checkForAnimations: false);
+        };
+        ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
+        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 8-22-25";
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
         ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
@@ -103,11 +102,11 @@ public class MainMenuController : UIController {
     protected override void Start( ) {
         base.Start( );
 
+        DisplayScreen(mainScreen);
         if (LastSceneName == "CheckIn") {
-            DisplayScreen(playGoalInfoScreen);
-        } else {
-            DisplayScreen(mainScreen);
+            DisplayBasicPopup(playGoalInfoPopup, checkForAnimations: false);
         }
+
         DataManager.AppSessionData.InvokeAllDelegates( );
     }
 }

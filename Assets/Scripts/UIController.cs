@@ -105,13 +105,15 @@ public abstract class UIController : MonoBehaviour {
         }
 
         List<Color> startColors = labels.Select(label => label.resolvedStyle.color).ToList( );
-        Color flashColor = new Color(1f, 0.61f, 0.61f);
+        Color flashColor = new Color(0.91f, 0f, 0f);
 
         Sequence validationFlashSequence = DOTween.Sequence( );
         for (int i = 0; i < labels.Count; i++) {
             validationFlashSequence.Insert(0f, AnimateElementColor(labels[i], startColors[i], flashColor, POPUP_TRANSITION_SECONDS / 2f));
             validationFlashSequence.Insert(POPUP_TRANSITION_SECONDS / 2f, AnimateElementColor(labels[i], flashColor, startColors[i], POPUP_TRANSITION_SECONDS / 2f));
         }
+
+        SoundManager.Instance.PlaySoundEffect(SoundEffectType.INCORRECT_MATCH);
     }
 
     /// <summary>

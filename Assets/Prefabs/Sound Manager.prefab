@@ -48,8 +48,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d4471b6f6ec4404f85ccb584eddca92, type: 3}
   - {fileID: 8300000, guid: 93d3571bbe4483a48991fd82b4a3ec11, type: 3}
   - {fileID: 8300000, guid: ea68fe6ec36195f41a155971e6947e1c, type: 3}
-  buttonClick:
-  - {fileID: 8300000, guid: 2f52c0703bcdc314f928d28b36a4da7d, type: 3}
+  buttonClick: []
   monsterHurt:
   - {fileID: 8300000, guid: 43da89e911fc7e04bb64e4e9c4c74f9a, type: 3}
   - {fileID: 8300000, guid: 7b2cfa165196ec64a804db7221f6f90c, type: 3}
@@ -69,13 +68,11 @@ MonoBehaviour:
   chainExtend:
   - {fileID: 8300000, guid: bcc55a98845b6274cadfd626c7870e25, type: 3}
   chainEnd:
-  - {fileID: 8300000, guid: e3fe0e71098a8694ea70e36717fab6a3, type: 3}
+  - {fileID: 8300000, guid: 747905b72a2bf064f990afa5e1116846, type: 3}
   flipCard:
   - {fileID: 8300000, guid: a95931b08112e0347926a7b433fc541c, type: 3}
   - {fileID: 8300000, guid: 822f1842fa33e0a4888375806d6dd7ac, type: 3}
   incorrectMatch:
-  - {fileID: 8300000, guid: ffb83f0f7fca01d428049dcd899f86ab, type: 3}
-  - {fileID: 8300000, guid: 1285acb0501667a4fad0a8a29bee7ae2, type: 3}
   - {fileID: 8300000, guid: c441d44bb8f534944a4b3856c3f5c808, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 92714f13ba46b63489e809f7943d0894, type: 3}
   backgroundMusicVolume: 0.25

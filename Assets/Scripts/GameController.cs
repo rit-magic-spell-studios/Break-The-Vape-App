@@ -18,8 +18,8 @@ public abstract class GameController : UIController {
     protected VisualElement gameScreen;
     protected VisualElement pauseScreen;
     protected VisualElement winScreen;
-    protected VisualElement playGoalInfoScreen;
 
+    protected VisualElement playGoalInfoPopup;
     protected VisualElement gameTutorialPopup;
 
     private Button selectedCravingButton;
@@ -30,15 +30,15 @@ public abstract class GameController : UIController {
     protected override void Awake( ) {
         base.Awake( );
 
-        gameTutorialPopup = ui.Q<VisualElement>("GameTutorialPopup");
         gameScreen = ui.Q<VisualElement>("GameScreen");
-        pauseScreen = ui.Q<VisualElement>("PauseScreen");
-        winScreen = ui.Q<VisualElement>("WinScreen");
-        playGoalInfoScreen = ui.Q<VisualElement>("PlayGoalInfoScreen");
-
         ui.Q<Button>("PauseButton").clicked += ( ) => { DisplayScreen(pauseScreen); };
+        ui.Q<Button>("HowToPlayButton").clicked += ( ) => { DisplayBasicPopup(gameTutorialPopup); };
+
+        pauseScreen = ui.Q<VisualElement>("PauseScreen");
         ui.Q<Button>("ResumeButton").clicked += ( ) => { DisplayScreen(gameScreen); };
         ui.Q<Button>("QuitButton").clicked += ( ) => { GoToScene("MainMenu"); };
+
+        winScreen = ui.Q<VisualElement>("WinScreen");
         ui.Q<Button>("HomeButton").clicked += ( ) => {
             if (selectedCravingButton != null && animatingVisualElements.Count == 0) {
                 GoToScene("MainMenu");
@@ -53,18 +53,6 @@ public abstract class GameController : UIController {
                 FlashTextValidation(new List<Label>( ) { ui.Q<Label>("CraveQuestionLabel"), ui.Q<Label>("CraveSubtitleLabel") });
             }
         };
-        ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
-        ui.Q<Button>("HowToPlayButton").clicked += ( ) => { DisplayBasicPopup(gameTutorialPopup); };
-
-        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayScreen(playGoalInfoScreen);
-        ui.Q<Button>("PlayGoalInfoBackButton").clicked += ( ) => DisplayScreen(winScreen);
-
-        // Set tutorial popup information
-        tutorialPlayer.url = Path.Combine(Application.streamingAssetsPath, name.Replace(" ", "") + "Tutorial.mp4");
-        tutorialPlayer.time = 0;
-        ui.Q<VisualElement>("TutorialVisual").style.backgroundImage = new StyleBackground(Background.FromRenderTexture(tutorialVisual));
-        ui.Q<Label>("TutorialLabel").text = tutorialText;
-        ui.Q<Label>("TitleLabel").text = name;
 
         // Set up the craving intensity buttons
         List<Button> cravingIntensityButtons = ui.Q<VisualElement>("CravingIntensityButtons").Query<Button>( ).ToList( );
@@ -75,6 +63,26 @@ public abstract class GameController : UIController {
                 selectedCravingButton.AddToClassList("uofr-button-selected");
             });
         }
+
+        popupOverlay.RegisterCallback<ClickEvent>((e) => {
+            if ((VisualElement) e.target == popupOverlay) {
+                HideCurrentPopup( );
+            }
+        });
+
+        gameTutorialPopup = ui.Q<VisualElement>("GameTutorialPopup");
+        ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
+
+        // Set tutorial popup information
+        tutorialPlayer.url = Path.Combine(Application.streamingAssetsPath, name.Replace(" ", "") + "Tutorial.mp4");
+        tutorialPlayer.time = 0;
+        ui.Q<VisualElement>("TutorialVisual").style.backgroundImage = new StyleBackground(Background.FromRenderTexture(tutorialVisual));
+        ui.Q<Label>("TutorialLabel").text = tutorialText;
+        ui.Q<Label>("TitleLabel").text = name;
+
+        playGoalInfoPopup = ui.Q<VisualElement>("PlayGoalInfoPopup");
+        ui.Q<Button>("PlayGoalInfoButton").clicked += ( ) => DisplayBasicPopup(playGoalInfoPopup);
+        ui.Q<Button>("PlayGoalInfoContinueButton").clicked += ( ) => HideCurrentPopup( );
 
         // Create a new game session data entry for this game
         GameSessionData = new GameSessionData(name, DataManager.AppSessionData.TotalPointsEarned);
@@ -93,8 +101,10 @@ public abstract class GameController : UIController {
 
     protected override void Start( ) {
         base.Start( );
+
         DisplayScreen(gameScreen);
         DisplayBasicPopup(gameTutorialPopup, checkForAnimations: false);
+
         GameSessionData.InvokeAllDelegates( );
     }
 

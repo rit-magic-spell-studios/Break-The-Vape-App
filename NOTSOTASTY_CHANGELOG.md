@@ -1,8 +1,9 @@
 # Not So Tasty Changelog
 
-## v0.3.1 - Unreleased
+## v0.3.1 - August 22nd, 2025
 * Added sound effects
 * Added confetti particle effect when winning the game
+* Updated onboarding tutorial gif
 
 ## v0.3.0 - August 18th, 2025
 * Added point popup effects that display the amount of points the player gains per chain and secret tile uncovered

@@ -1,6 +1,6 @@
 # App Changelog
 
-## v0.5.1 - Unreleased
+## v0.5.1 - August 22nd, 2025
 * Added about page
 * Formatted point total to include commas
 * Replaced sliders with buttons to ensure users are filling out the required forms during the check-in and on the post-game win screen
@@ -10,6 +10,12 @@
 * Added sound effects and background music
 * Text now flashes red when a form is not filled out completely/correctly
 	* This goes for the check in form as well as the post-game win screen form
+* The app now runs at 60fps on mobile platforms (Android/iOS)
+* **Game Versions**
+  * Crave Smash [v0.6.3](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
+  * Puff Dodge [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 22nd, 2025)
+  * Not So Tasty [v0.3.1](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 22nd, 2025)
+  * Match And Catch [v0.4.1](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 22nd, 2025)
 
 ## v0.5.0 - August 18th, 2025
 * Reworked UI styles and formatting to make the look of the app cleaner and consistent

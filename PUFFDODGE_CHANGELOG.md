@@ -1,6 +1,6 @@
 # Puff Dodge Changelog
 
-## v0.2.0 - Unreleased
+## v0.2.0 - August 22nd, 2025
 * Added puff particle effect when a vape item is destroyed
 * Added points popups when destroying a vape item
 * The player now gets 30 points per destroyed vape item
@@ -10,6 +10,7 @@
 * The slice is now more forgiving about its positioning, making it easier to slice vape items
 * Added sound effects
 * Added confetti particle effect when winning the game
+* Updated onboarding tutorial gif
 
 ## v0.1.1 - August 18th, 2025
 * Replaced placeholder assets with new assets

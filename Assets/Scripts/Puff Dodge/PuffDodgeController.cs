@@ -22,7 +22,7 @@ public class PuffDodgeController : GameController {
     private int sliceFrameCounter;
     private List<Vector2> slicePositions;
 
-    public List<GameObject> VapeItems { get; private set; }
+    public List<VapeItem> VapeItems { get; private set; }
 
     public int DestroyedItems {
         get => _destroyedItems;
@@ -31,6 +31,9 @@ public class PuffDodgeController : GameController {
             destroyedItemsLabel.text = $"{_destroyedItems} / {targetDestroyedItems} items destroyed!";
 
             if (_destroyedItems >= targetDestroyedItems) {
+                for (int i = VapeItems.Count - 1; i >= 0; i--) {
+                    VapeItems[i].Slice(givePoints: false);
+                }
                 WinGame( );
             }
         }
@@ -42,7 +45,7 @@ public class PuffDodgeController : GameController {
         base.Awake( );
 
         destroyedItemsLabel = ui.Q<Label>("DestroyedItemsLabel");
-        VapeItems = new List<GameObject>( );
+        VapeItems = new List<VapeItem>( );
         slicePositions = new List<Vector2>( );
         DestroyedItems = 0;
     }
@@ -59,8 +62,10 @@ public class PuffDodgeController : GameController {
 
             // Enqueue the current touch position
             // Make sure the queue does not exceed the delay count
+            // The delay count is gotten from the current length of the trail and the framerate of the game
             slicePositions.Add(LastTouchWorldPosition);
-            while (slicePositions.Count >= Mathf.FloorToInt((1 / Time.deltaTime) * sliceTrailTime / 2f)) {
+            int maxListLength = Mathf.FloorToInt((1 / Time.deltaTime) * sliceTrailTime * 0.5f);
+            while (slicePositions.Count >= maxListLength && slicePositions.Count > 0) {
                 slicePositions.RemoveAt(0);
             }
 
@@ -108,7 +113,7 @@ public class PuffDodgeController : GameController {
                 spawnPosition.x *= -1f;
             }
             Quaternion spawnRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
-            VapeItems.Add(Instantiate(vapeItemPrefab, spawnPosition, spawnRotation, objectContainer));
+            VapeItems.Add(Instantiate(vapeItemPrefab, spawnPosition, spawnRotation, objectContainer).GetComponent<VapeItem>( ));
 
             yield return new WaitForSeconds(itemSpawnBurstDelay);
         }
