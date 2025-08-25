@@ -1,0 +1,666 @@
+fileFormatVersion: 2
+guid: c3f3613cb1669114d9a412fe8c8090d2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1654764188671579577
+    second: MAIN SCREEN_NOT SO TASTY_0
+  - first:
+      213: -3595455303840813630
+    second: MAIN SCREEN_NOT SO TASTY_1
+  - first:
+      213: -708229279692092060
+    second: MAIN SCREEN_NOT SO TASTY_2
+  - first:
+      213: -6286781193204289688
+    second: MAIN SCREEN_NOT SO TASTY_3
+  - first:
+      213: 476415489729225829
+    second: MAIN SCREEN_NOT SO TASTY_4
+  - first:
+      213: -8169033666303173521
+    second: MAIN SCREEN_NOT SO TASTY_5
+  - first:
+      213: 8691523353000082586
+    second: MAIN SCREEN_NOT SO TASTY_6
+  - first:
+      213: -4400228822131505227
+    second: MAIN SCREEN_NOT SO TASTY_7
+  - first:
+      213: -3568963399306338697
+    second: MAIN SCREEN_NOT SO TASTY_8
+  - first:
+      213: -4804754721380501190
+    second: MAIN SCREEN_NOT SO TASTY_9
+  - first:
+      213: -8744878757071666917
+    second: MAIN SCREEN_NOT SO TASTY_10
+  - first:
+      213: 5526179274840333270
+    second: MAIN SCREEN_NOT SO TASTY_11
+  - first:
+      213: 1766217185702875305
+    second: MAIN SCREEN_NOT SO TASTY_12
+  - first:
+      213: 4517309765984734727
+    second: MAIN SCREEN_NOT SO TASTY_13
+  - first:
+      213: 7142262715959420434
+    second: MAIN SCREEN_NOT SO TASTY_14
+  - first:
+      213: 698173568563770755
+    second: MAIN SCREEN_NOT SO TASTY_15
+  - first:
+      213: -1591939920866104892
+    second: MAIN SCREEN_NOT SO TASTY_16
+  - first:
+      213: 2212388636677300889
+    second: MAIN SCREEN_NOT SO TASTY_17
+  - first:
+      213: 1678076809910777658
+    second: MAIN SCREEN_NOT SO TASTY_18
+  - first:
+      213: -789248274012662433
+    second: MAIN SCREEN_NOT SO TASTY_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2753
+        width: 828
+        height: 767
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74a613bdcb81909e0800000000000000
+      internalID: -1654764188671579577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1840
+        width: 863
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cd26c063706a1ec0800000000000000
+      internalID: -3595455303840813630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_2
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 2685
+        width: 760
+        height: 835
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46d0c64f83ddb26f0800000000000000
+      internalID: -708229279692092060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_3
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 2685
+        width: 814
+        height: 835
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86fa37640ddd0c8a0800000000000000
+      internalID: -6286781193204289688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_4
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 2743
+        width: 741
+        height: 777
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 564edce1d519c9600800000000000000
+      internalID: 476415489729225829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_5
+      rect:
+        serializedVersion: 2
+        x: 3311
+        y: 2743
+        width: 741
+        height: 777
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6cdac17923c1ae80800000000000000
+      internalID: -8169033666303173521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_6
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1840
+        width: 727
+        height: 775
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9cf49c907e7e9870800000000000000
+      internalID: 8691523353000082586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_7
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 1808
+        width: 814
+        height: 836
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b78a6e133f3fe2c0800000000000000
+      internalID: -4400228822131505227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_8
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 1909
+        width: 741
+        height: 777
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77e99ff82be787ec0800000000000000
+      internalID: -3568963399306338697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_9
+      rect:
+        serializedVersion: 2
+        x: 3311
+        y: 1910
+        width: 741
+        height: 777
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a39fb3f9905125db0800000000000000
+      internalID: -4804754721380501190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 922
+        width: 863
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1142e05a13f3a680800000000000000
+      internalID: -8744878757071666917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_11
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 927
+        width: 864
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbdbf185cee0bc40800000000000000
+      internalID: 5526179274840333270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_12
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 992
+        width: 727
+        height: 775
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0920e2c2dd28810800000000000000
+      internalID: 1766217185702875305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_13
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 966
+        width: 814
+        height: 836
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70e4ce56c45b0be30800000000000000
+      internalID: 4517309765984734727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_14
+      rect:
+        serializedVersion: 2
+        x: 3257
+        y: 1070
+        width: 829
+        height: 767
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 216274d491a6e1360800000000000000
+      internalID: 7142262715959420434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 863
+        height: 914
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3857fc9592960b900800000000000000
+      internalID: 698173568563770755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_16
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 4
+        width: 864
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c92301931b48e9e0800000000000000
+      internalID: -1591939920866104892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_17
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 81
+        width: 829
+        height: 767
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992e24a4ebbf3be10800000000000000
+      internalID: 2212388636677300889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_18
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 78
+        width: 829
+        height: 767
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a377d80c7f9b94710800000000000000
+      internalID: 1678076809910777658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MAIN SCREEN_NOT SO TASTY_19
+      rect:
+        serializedVersion: 2
+        x: 3347
+        y: 94
+        width: 759
+        height: 835
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5592eb50e60c05f0800000000000000
+      internalID: -789248274012662433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MAIN SCREEN_NOT SO TASTY_0: -1654764188671579577
+      MAIN SCREEN_NOT SO TASTY_1: -3595455303840813630
+      MAIN SCREEN_NOT SO TASTY_10: -8744878757071666917
+      MAIN SCREEN_NOT SO TASTY_11: 5526179274840333270
+      MAIN SCREEN_NOT SO TASTY_12: 1766217185702875305
+      MAIN SCREEN_NOT SO TASTY_13: 4517309765984734727
+      MAIN SCREEN_NOT SO TASTY_14: 7142262715959420434
+      MAIN SCREEN_NOT SO TASTY_15: 698173568563770755
+      MAIN SCREEN_NOT SO TASTY_16: -1591939920866104892
+      MAIN SCREEN_NOT SO TASTY_17: 2212388636677300889
+      MAIN SCREEN_NOT SO TASTY_18: 1678076809910777658
+      MAIN SCREEN_NOT SO TASTY_19: -789248274012662433
+      MAIN SCREEN_NOT SO TASTY_2: -708229279692092060
+      MAIN SCREEN_NOT SO TASTY_3: -6286781193204289688
+      MAIN SCREEN_NOT SO TASTY_4: 476415489729225829
+      MAIN SCREEN_NOT SO TASTY_5: -8169033666303173521
+      MAIN SCREEN_NOT SO TASTY_6: 8691523353000082586
+      MAIN SCREEN_NOT SO TASTY_7: -4400228822131505227
+      MAIN SCREEN_NOT SO TASTY_8: -3568963399306338697
+      MAIN SCREEN_NOT SO TASTY_9: -4804754721380501190
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

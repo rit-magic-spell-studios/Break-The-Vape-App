@@ -1,0 +1,516 @@
+fileFormatVersion: 2
+guid: abfb2d90a5a43bc488c3ecc282e92db8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3605559335568714521
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_0
+  - first:
+      213: -1935620316208618123
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_1
+  - first:
+      213: 966036490100484638
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_2
+  - first:
+      213: -3254287674973987454
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_3
+  - first:
+      213: 1672669608937287711
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_4
+  - first:
+      213: 4056024828635036935
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_5
+  - first:
+      213: -870370104237660741
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_6
+  - first:
+      213: 2629030603939242300
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_7
+  - first:
+      213: -6451884881350748066
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_8
+  - first:
+      213: -3787204009631400643
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_9
+  - first:
+      213: -9000213194252365310
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_10
+  - first:
+      213: 6741253406651283661
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_11
+  - first:
+      213: -5198995389138564293
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_12
+  - first:
+      213: 6002508026767210089
+    second: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_0
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1247
+        width: 729
+        height: 697
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91baa25dc15890230800000000000000
+      internalID: 3605559335568714521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_1
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 1223
+        width: 700
+        height: 725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5752b58e39b4325e0800000000000000
+      internalID: -1935620316208618123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_2
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 1270
+        width: 725
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a2188c11d086d00800000000000000
+      internalID: 966036490100484638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_3
+      rect:
+        serializedVersion: 2
+        x: 2416
+        y: 1318
+        width: 441
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d5e300a9276d2d0800000000000000
+      internalID: -3254287674973987454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_4
+      rect:
+        serializedVersion: 2
+        x: 2863
+        y: 1270
+        width: 789
+        height: 685
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f107c4ba524863710800000000000000
+      internalID: 1672669608937287711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 222
+        width: 781
+        height: 807
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70db4f68715e94830800000000000000
+      internalID: 4056024828635036935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_6
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 349
+        width: 669
+        height: 799
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb56bc96003dbe3f0800000000000000
+      internalID: -870370104237660741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_7
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 546
+        width: 547
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c31ed63b7613c7420800000000000000
+      internalID: 2629030603939242300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_8
+      rect:
+        serializedVersion: 2
+        x: 1966
+        y: 535
+        width: 641
+        height: 664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e58106b42ec4676a0800000000000000
+      internalID: -6451884881350748066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_9
+      rect:
+        serializedVersion: 2
+        x: 2451
+        y: 309
+        width: 837
+        height: 755
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d3cf9c406217bc0800000000000000
+      internalID: -3787204009631400643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_10
+      rect:
+        serializedVersion: 2
+        x: 3261
+        y: 151
+        width: 871
+        height: 878
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202ddc5f8c1d81380800000000000000
+      internalID: -9000213194252365310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_11
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 101
+        width: 264
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc87754b14ebd8d50800000000000000
+      internalID: 6741253406651283661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_12
+      rect:
+        serializedVersion: 2
+        x: 2020
+        y: 0
+        width: 86
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b80813d3579d7b0800000000000000
+      internalID: -5198995389138564293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_13
+      rect:
+        serializedVersion: 2
+        x: 2285
+        y: 134
+        width: 217
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 966f3e86f313d4350800000000000000
+      internalID: 6002508026767210089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_0: 3605559335568714521
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_1: -1935620316208618123
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_10: -9000213194252365310
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_11: 6741253406651283661
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_12: -5198995389138564293
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_13: 6002508026767210089
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_2: 966036490100484638
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_3: -3254287674973987454
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_4: 1672669608937287711
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_5: 4056024828635036935
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_6: -870370104237660741
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_7: 2629030603939242300
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_8: -6451884881350748066
+      BREAK THE VAPE_GAME TITLES_CRAVE SMASH (2)_9: -3787204009631400643
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

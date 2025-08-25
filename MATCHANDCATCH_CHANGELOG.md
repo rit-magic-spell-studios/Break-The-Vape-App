@@ -1,5 +1,9 @@
 # Match and Catch Changelog
 
+## v0.4.2 - Unreleased
+* Increased the speed of animations
+* Removed old card assets
+
 ## v0.4.1 - August 22nd, 2025
 * Players now get more points for each consecutive match they make
 	* 100 points for the first match, 200 points for the next match in a row, etc.

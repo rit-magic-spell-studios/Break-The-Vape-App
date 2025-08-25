@@ -1,0 +1,791 @@
+fileFormatVersion: 2
+guid: 804afd8f374123a4ba44b900fa6fdc92
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6575026871135535212
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_0
+  - first:
+      213: -7367125807058881387
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_1
+  - first:
+      213: 8434236193758047575
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_2
+  - first:
+      213: -3796198322563930004
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_3
+  - first:
+      213: 8880256509731708769
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_4
+  - first:
+      213: -2109190119816919283
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_5
+  - first:
+      213: 1425665278125685889
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_6
+  - first:
+      213: 2000746511957327718
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_7
+  - first:
+      213: 2804322716793093517
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_8
+  - first:
+      213: 2949323815319820556
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_9
+  - first:
+      213: 55880185917936278
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_10
+  - first:
+      213: -5899041079297098818
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_11
+  - first:
+      213: 2114825993878131244
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_12
+  - first:
+      213: -8011704295115155341
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_13
+  - first:
+      213: 371559333943011393
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_14
+  - first:
+      213: 3403369814996091723
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_15
+  - first:
+      213: 9069881202514970528
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_16
+  - first:
+      213: -8912004019115829974
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_17
+  - first:
+      213: 1806776494530769084
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_18
+  - first:
+      213: -6300213168390958173
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_19
+  - first:
+      213: -5828215664918747782
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_20
+  - first:
+      213: -7147923384786928133
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_21
+  - first:
+      213: 4461314404994427864
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_22
+  - first:
+      213: -9209121465749286436
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_23
+  - first:
+      213: -2452333888513897607
+    second: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_0
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 2203
+        width: 267
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f715d85efc0c4a0800000000000000
+      internalID: -6575026871135535212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_1
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 1875
+        width: 698
+        height: 722
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59474a67c16b2c990800000000000000
+      internalID: -7367125807058881387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_2
+      rect:
+        serializedVersion: 2
+        x: 2679
+        y: 1874
+        width: 700
+        height: 725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75de0b8b12d6c0570800000000000000
+      internalID: 8434236193758047575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_3
+      rect:
+        serializedVersion: 2
+        x: 3404
+        y: 1934
+        width: 790
+        height: 685
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c68a4ae1db1315bc0800000000000000
+      internalID: -3796198322563930004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_4
+      rect:
+        serializedVersion: 2
+        x: 4251
+        y: 1958
+        width: 725
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f98e8fe320d3b70800000000000000
+      internalID: 8880256509731708769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_5
+      rect:
+        serializedVersion: 2
+        x: 5025
+        y: 1933
+        width: 726
+        height: 771
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d078c80d2c6aab2e0800000000000000
+      internalID: -2109190119816919283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_6
+      rect:
+        serializedVersion: 2
+        x: 6104
+        y: 2048
+        width: 552
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c3a47540bf8c310800000000000000
+      internalID: 1425665278125685889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_7
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1837
+        width: 557
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f71da2a5414cb10800000000000000
+      internalID: 2000746511957327718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_8
+      rect:
+        serializedVersion: 2
+        x: 5520
+        y: 1615
+        width: 306
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8db20a27a4fae620800000000000000
+      internalID: 2804322716793093517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_9
+      rect:
+        serializedVersion: 2
+        x: 6399
+        y: 1818
+        width: 427
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c09dcb3426a1ee820800000000000000
+      internalID: 2949323815319820556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 534
+        width: 1833
+        height: 1076
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6921f97abb686c000800000000000000
+      internalID: 55880185917936278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_11
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 1103
+        width: 327
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebb3f019465622ea0800000000000000
+      internalID: -5899041079297098818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_12
+      rect:
+        serializedVersion: 2
+        x: 2583
+        y: 1029
+        width: 657
+        height: 725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c225ede590f595d10800000000000000
+      internalID: 2114825993878131244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_13
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 1046
+        width: 874
+        height: 691
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37890343465b0d090800000000000000
+      internalID: -8011704295115155341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_14
+      rect:
+        serializedVersion: 2
+        x: 4089
+        y: 1116
+        width: 790
+        height: 686
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14867a0ee3b082500800000000000000
+      internalID: 371559333943011393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_15
+      rect:
+        serializedVersion: 2
+        x: 5182
+        y: 919
+        width: 421
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b43012e90d23b3f20800000000000000
+      internalID: 3403369814996091723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_16
+      rect:
+        serializedVersion: 2
+        x: 5721
+        y: 620
+        width: 1635
+        height: 980
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a7c5ee36e0bedd70800000000000000
+      internalID: 9069881202514970528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_17
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 265
+        width: 279
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a255fbbff83325480800000000000000
+      internalID: -8912004019115829974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_18
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 0
+        width: 241
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb0380926a5f21910800000000000000
+      internalID: 1806776494530769084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_19
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 242
+        width: 441
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a391d8d0852198a0800000000000000
+      internalID: -6300213168390958173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_20
+      rect:
+        serializedVersion: 2
+        x: 2739
+        y: 238
+        width: 725
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75a6226bb40e1fa0800000000000000
+      internalID: -5828215664918747782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_21
+      rect:
+        serializedVersion: 2
+        x: 3512
+        y: 194
+        width: 700
+        height: 725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd31188d897dcc90800000000000000
+      internalID: -7147923384786928133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_22
+      rect:
+        serializedVersion: 2
+        x: 4236
+        y: 238
+        width: 790
+        height: 685
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dba60570d5c9ed30800000000000000
+      internalID: 4461314404994427864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_23
+      rect:
+        serializedVersion: 2
+        x: 5471
+        y: 154
+        width: 329
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1d694a1d0a23080800000000000000
+      internalID: -9209121465749286436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_24
+      rect:
+        serializedVersion: 2
+        x: 5859
+        y: 352
+        width: 376
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97b0a78425f87fdd0800000000000000
+      internalID: -2452333888513897607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_0: -6575026871135535212
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_1: -7367125807058881387
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_10: 55880185917936278
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_11: -5899041079297098818
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_12: 2114825993878131244
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_13: -8011704295115155341
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_14: 371559333943011393
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_15: 3403369814996091723
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_16: 9069881202514970528
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_17: -8912004019115829974
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_18: 1806776494530769084
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_19: -6300213168390958173
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_2: 8434236193758047575
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_20: -5828215664918747782
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_21: -7147923384786928133
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_22: 4461314404994427864
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_23: -9209121465749286436
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_24: -2452333888513897607
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_3: -3796198322563930004
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_4: 8880256509731708769
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_5: -2109190119816919283
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_6: 1425665278125685889
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_7: 2000746511957327718
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_8: 2804322716793093517
+      BREAK THE VAPE_GAME TITLES_MAIN TITLE (3)_9: 2949323815319820556
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

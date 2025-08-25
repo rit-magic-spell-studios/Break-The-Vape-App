@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="AppStats" src="project://database/Assets/UXML/Templates/AppStats.uxml?fileID=9197481963319205126&amp;guid=caad3bf1ebe1538408ef86943b012b4b&amp;type=3#AppStats" />
-    <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/PlayGoalInfoPopup.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoPopup" />
+    <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Popups/PlayGoalInfoPopup.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoPopup" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <ui:VisualElement class="uofr-background">
-        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; visibility: hidden;">
+        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; visibility: visible;">
             <ui:VisualElement class="uofr-container uofr-safe-area__top-padding" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;" />
@@ -18,17 +18,29 @@
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding uofr-safe-area__bottom-padding">
                 <ui:VisualElement class="uofr-container" style="flex-grow: 1;">
-                    <ui:Button name="CraveSmashButton" text="Crave Smash" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 244, 198); flex-grow: 1;" />
+                    <ui:Button name="CraveSmashButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 244, 198); flex-grow: 1; flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Crave%20Smash/CraveSmash_Title.png?fileID=21300000&amp;guid=abfb2d90a5a43bc488c3ecc282e92db8&amp;type=3#CraveSmash_Title&quot;); -unity-background-scale-mode: scale-to-fit; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Crave%20Smash/CraveSmash_TitleArt.png?fileID=21300000&amp;guid=9b3f8cab22cad074d9af1b6f77b938b3&amp;type=3#CraveSmash_TitleArt&quot;); -unity-background-scale-mode: scale-and-crop;" />
+                    </ui:Button>
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Button name="MatchAndCatchButton" text="Match And Catch" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 215, 215); flex-grow: 1;" />
+                    <ui:Button name="MatchAndCatchButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(255, 215, 215); flex-grow: 1; flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Match%20And%20Catch/MatchAndCatch_TitleArt.png?fileID=21300000&amp;guid=7b503a98edb9f1048b0a996b52e4d15c&amp;type=3#MatchAndCatch_TitleArt&quot;); -unity-background-scale-mode: scale-and-crop;" />
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Match%20And%20Catch/MatchAndCatch_Title.png?fileID=21300000&amp;guid=6d97d056217d8b74b89217c6c6aa2d99&amp;type=3#MatchAndCatch_Title&quot;); -unity-background-scale-mode: scale-to-fit; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+                    </ui:Button>
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Button name="NotSoTastyButton" text="Not So Tasty" class="uofr-button uofr-button-discreet" style="background-color: rgb(213, 255, 202); flex-grow: 1;" />
+                    <ui:Button name="NotSoTastyButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(213, 255, 202); flex-grow: 1; flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Not%20So%20Tasty/NotSoTasty_Title.png?fileID=21300000&amp;guid=913c30b606a20a243b2f9804827ea42c&amp;type=3#NotSoTasty_Title&quot;); -unity-background-scale-mode: scale-to-fit; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Not%20So%20Tasty/NotSoTasty_TitleArt.png?fileID=21300000&amp;guid=c3f3613cb1669114d9a412fe8c8090d2&amp;type=3#NotSoTasty_TitleArt&quot;); -unity-background-scale-mode: scale-and-crop;" />
+                    </ui:Button>
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Button name="PuffDodgeButton" text="Puff Dodge" class="uofr-button uofr-button-discreet" style="background-color: rgb(193, 199, 255); flex-grow: 1;" />
+                    <ui:Button name="PuffDodgeButton" class="uofr-button uofr-button-discreet" style="background-color: rgb(193, 199, 255); flex-grow: 1; flex-direction: row; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Puff%20Dodge/PuffDodge_TitleArt.png?fileID=21300000&amp;guid=2ab744c76a6565243a22c3f83191cbe9&amp;type=3#PuffDodge_TitleArt&quot;); -unity-background-scale-mode: scale-and-crop;" />
+                        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Puff%20Dodge/PuffDodge_Title.png?fileID=21300000&amp;guid=98d0dbba47e64c64f95c9142412c2f85&amp;type=3#PuffDodge_Title&quot;); -unity-background-scale-mode: scale-to-fit; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: visible;">
+        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;">
             <ui:VisualElement class="uofr-padding uofr-safe-area__top-padding" style="flex-grow: 0; flex-direction: row;">
                 <ui:Button name="AboutBackButton" class="uofr-button uofr-button-square">
                     <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
@@ -36,32 +48,48 @@
                 <ui:Label text="About" class="uofr-title-medium" style="flex-grow: 1;" />
                 <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
             </ui:VisualElement>
-            <ui:VisualElement class="uofr-padding" style="justify-content: flex-start;">
-                <ui:Label text="App Name" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="Break The Vape" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="App Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:Label text="CS v0.6.3&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:Label text="M&amp;C v0.4.1&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:Label text="NST v0.3.1&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:Label text="PD v0.2.0&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="Client" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="URMC" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="Manufacturer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="MAGIC Spell Studios" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="Developer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="Frank Alfano" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="Art Assets" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="Farah Ahmad" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="UX/UI Designer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                <ui:Label text="Brendan Miron" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                <ui:VisualElement class="uofr-space-medium" />
+            <ui:VisualElement class="uofr-padding" style="justify-content: flex-start; display: flex;">
+                <ui:ScrollView class="uofr-scroll-view" style="flex-grow: 1;">
+                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); min-height: 10%; -unity-background-scale-mode: scale-to-fit; align-self: flex-start; min-width: 50%;" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="www.recoverycenterofexcellence.org" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Caroline Easton, Ph.D." class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="Sun Mi Kim, M.D., Ph.D." class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-hr" />
+                    <ui:Label text="Produced by students at" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:VisualElement style="min-height: 10%; background-image: url(&quot;project://database/Assets/Sprites/RITMAGIC_Logo.png?fileID=21300000&amp;guid=948a90759f372bc4b88658e9fce05a7b&amp;type=3#RITMAGIC_Logo&quot;); -unity-background-scale-mode: scale-to-fit; min-width: 50%; align-self: flex-start;" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Game Design and Development" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Frank Alfano" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Art" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Farah Ahmad" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="UI/UX" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Brendan Miron" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Sound Design" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Nicky Champlin" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Production" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Kevin McNulty" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Game Design and Development Advisors" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Jeongsoo Kim, David Negrin" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Producer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Aaron Neiboer" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="Project Director" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Diane C. Linnet" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97); text-overflow: ellipsis;" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:Label text="App Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="CS v0.6.3&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="M&amp;C v0.4.1&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="NST v0.3.1&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="PD v0.2.0&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
@@ -100,6 +128,26 @@
                     <ui:VisualElement class="uofr-space-small" />
                     <ui:Label text="About" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
                 </ui:Button>
+                <ui:VisualElement class="uofr-hr" />
+                <ui:VisualElement style="flex-direction: row; align-items: center;">
+                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Music.png?fileID=21300000&amp;guid=3017e2d1ddd42f54cb17f79eded2e408&amp;type=3#Music&quot;); width: 60px; height: 60px; -unity-background-image-tint-color: rgb(0, 0, 0);" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Label text="Music" class="uofr-text-medium" style="-unity-font-style: bold;" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Button name="MusicToggleButton" class="uofr-button uofr-button-square">
+                        <ui:VisualElement name="MusicToggleIcon" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Volume_On.png?fileID=21300000&amp;guid=3fd2cfd63d8c78b448686ed0f062e43c&amp;type=3#Volume_On&quot;); flex-grow: 1; -unity-background-image-tint-color: rgb(79, 130, 255);" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement class="uofr-space-small" />
+                <ui:VisualElement style="flex-direction: row; align-items: center;">
+                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Music.png?fileID=21300000&amp;guid=3017e2d1ddd42f54cb17f79eded2e408&amp;type=3#Music&quot;); width: 60px; height: 60px; -unity-background-image-tint-color: rgb(0, 0, 0);" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Label text="Sound Effects" class="uofr-text-medium" style="-unity-font-style: bold;" />
+                    <ui:VisualElement class="uofr-space-small" />
+                    <ui:Button name="SoundEffectToggleButton" class="uofr-button uofr-button-square">
+                        <ui:VisualElement name="SoundEffectToggleIcon" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Volume_On.png?fileID=21300000&amp;guid=3fd2cfd63d8c78b448686ed0f062e43c&amp;type=3#Volume_On&quot;); flex-grow: 1; -unity-background-image-tint-color: rgb(79, 130, 255);" />
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="PlayGoalCompletePopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Final Score" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
@@ -118,8 +166,9 @@
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button text="Finish" name="FinishSessionButton" class="uofr-button " />
             </ui:VisualElement>
-            <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoPopup" style="display: none; min-height: 65%;" />
+            <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoPopup" style="display: none; min-height: 60%;" />
         </ui:VisualElement>
         <ui:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="flex-grow: 1; background-color: rgb(255, 255, 255); display: none;" />
     </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1;" />
 </ui:UXML>

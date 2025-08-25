@@ -29,6 +29,27 @@ public class SoundManager : Singleton<SoundManager> {
     private List<AudioSource> soundEffectSources;
     private List<List<AudioClip>> soundEffects;
 
+    public bool IsPlayingBackgroundMusic {
+        get => _isPlayingBackgroundMusic;
+        set {
+            _isPlayingBackgroundMusic = value;
+            backgroundMusicSource.volume = _isPlayingBackgroundMusic ? backgroundMusicVolume : 0f;
+        }
+    }
+    private bool _isPlayingBackgroundMusic;
+
+    public bool IsPlayingSoundEffects {
+        get => _isPlayingSoundEffects;
+        set {
+            _isPlayingSoundEffects = value;
+            foreach (AudioSource effectAudioSource in soundEffectSources) {
+                effectAudioSource.volume = _isPlayingSoundEffects ? soundEffectVolume : 0f;
+            }
+        }
+    }
+    private bool _isPlayingSoundEffects;
+
+
     protected override void Awake( ) {
         base.Awake( );
 
@@ -51,6 +72,9 @@ public class SoundManager : Singleton<SoundManager> {
             source.playOnAwake = false;
             soundEffectSources.Add(source);
         }
+
+        IsPlayingBackgroundMusic = true;
+        IsPlayingSoundEffects = true;
     }
 
     /// <summary>

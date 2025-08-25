@@ -110,14 +110,13 @@ public class MatchAndCatchController : GameController {
         Card card1 = FlippedCards[^1];
         Card card2 = FlippedCards[^2];
 
+        yield return new WaitForSeconds(cardCheckDelay / 2f);
+
         // If the sprites of the last two cards do not match, then flip them back over
         // If the sprites of the last two cards do match, then keep them flipped over
         if (card1.CardFront != card2.CardFront) {
-            yield return new WaitForSeconds(cardCheckDelay / 2f);
-
             cardMatchCombo = 0;
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.INCORRECT_MATCH);
-
             yield return new WaitForSeconds(cardCheckDelay / 2f);
 
             card1.FlipCard( );
@@ -128,7 +127,7 @@ public class MatchAndCatchController : GameController {
         } else {
             matchesLabel.text = $"{(cards.Count - FlippedCards.Count) / 2} matches left!";
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.CORRECT, pitch: 1 + (cardMatchCombo * comboPitchUp));
-            AddPoints(Vector3.zero, 100 * ++cardMatchCombo);
+            AddPoints(card1.transform.position, 100 * ++cardMatchCombo);
 
             if (FlippedCards.Count == cards.Count) {
                 WinGame( );

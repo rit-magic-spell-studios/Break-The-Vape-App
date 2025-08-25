@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f7866a2e3136a514fb2f00199333b82a
+guid: b892acab2df29584f90bf9d145177e33
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6888960528792318405
-    second: MINT_LEAF EYES_FRAME 5_0
+      213: -4889962877956362499
+    second: MINT_LEAF EYES (3)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MINT_LEAF EYES_FRAME 5_0
+      name: MINT_LEAF EYES (3)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1163
-        height: 1179
+        width: 1106
+        height: 1158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c17a560a118a9f50800000000000000
-      internalID: 6888960528792318405
+      spriteID: dfe609eabac532cb0800000000000000
+      internalID: -4889962877956362499
       vertices: []
       indices: 
       edges: []
@@ -175,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MINT_LEAF EYES_FRAME 5_0: 6888960528792318405
+      MINT_LEAF EYES (3)_0: -4889962877956362499
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

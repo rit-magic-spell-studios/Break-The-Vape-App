@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9169ff03498931b4eb9cd0c3fae1bfb0
+guid: 3017e2d1ddd42f54cb17f79eded2e408
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1863178418853213049
-    second: Medal_1_0
+      213: 3952392024310007418
+    second: Music_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Medal_1_0
+      name: Music_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 144
-        height: 174
+        x: 7
+        y: 7
+        width: 82
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78c841f7919a426e0800000000000000
-      internalID: -1863178418853213049
+      spriteID: a76c51efa97b9d630800000000000000
+      internalID: 3952392024310007418
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Medal_1_0: -1863178418853213049
+      Music_0: 3952392024310007418
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

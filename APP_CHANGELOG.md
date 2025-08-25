@@ -1,5 +1,10 @@
 # App Changelog
 
+## v0.5.2 - Unreleased
+* Added music and sound effect mute buttons on the main menu
+* Updated the game buttons on the main menu with art assets
+* Miscellaneous other UI updates
+
 ## v0.5.1 - August 22nd, 2025
 * Added about page
 * Formatted point total to include commas

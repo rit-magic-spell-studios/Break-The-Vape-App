@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cfd2c9549c72442ad3509d03229905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 144598073}
   backgroundGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.2509804, b: 0.6117647, a: 1}
@@ -347,8 +348,8 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  mainCamera: {fileID: 144598073}
-  playGoalSeconds: 900
+  volumeOnSprite: {fileID: 21300000, guid: 3fd2cfd63d8c78b448686ed0f062e43c, type: 3}
+  volumeOffSprite: {fileID: 21300000, guid: e6dab4fd32d912f4cbae549dff64190c, type: 3}
 --- !u!1001 &5745348023424609814
 PrefabInstance:
   m_ObjectHideFlags: 0

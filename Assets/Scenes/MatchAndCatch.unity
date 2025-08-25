@@ -372,7 +372,7 @@ MonoBehaviour:
   tutorialVisual: {fileID: 8400000, guid: 9909043ee77a22b47841281176de3c9f, type: 2}
   tutorialText: Tap to reveal cards. See if you can find all the matching pairs!
   cardPrefab: {fileID: 1428677354421896839, guid: 31730618350455247941a78a3f4444c9, type: 3}
-  cardCheckDelay: 1
+  cardCheckDelay: 0.75
   cardGridWidth: 3
   cardGridHeight: 4
   cardSpacing: 0.2
@@ -383,7 +383,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d0ad26a69fe75c148a2e4810e3461dc0, type: 3}
   - {fileID: 21300000, guid: d35ab295c9d14ad4dad241b68f07638a, type: 3}
   - {fileID: 21300000, guid: a7d78263aeb3dc74eb158e6f4da2e28d, type: 3}
-  - {fileID: 21300000, guid: 8e7fbcf87c9d5dd49a316d9e176a4abf, type: 3}
   - {fileID: 21300000, guid: 470b3bbd1f7cec145bb7295ac5cfdbcb, type: 3}
   - {fileID: 21300000, guid: dfe4ce45405d48a469f364d7ae3c2aa3, type: 3}
   - {fileID: 21300000, guid: afaceb39864f35540b38c7a88f52c14b, type: 3}

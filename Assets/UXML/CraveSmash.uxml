@@ -2,8 +2,8 @@
     <engine:Template name="GameTitleBar" src="project://database/Assets/UXML/Templates/GameBar.uxml?fileID=9197481963319205126&amp;guid=44a2d20bd69f40c47afe90cab3c4380d&amp;type=3#GameBar" />
     <engine:Template name="GamePauseScreen" src="project://database/Assets/UXML/Templates/Screens/GamePauseScreen.uxml?fileID=9197481963319205126&amp;guid=2bacc1f092c8dd5469eacb2e23ea4ea1&amp;type=3#GamePauseScreen" />
     <engine:Template name="GameWinScreen" src="project://database/Assets/UXML/Templates/Screens/GameWinScreen.uxml?fileID=9197481963319205126&amp;guid=1d6928190cee2694fba334f48fdf52f5&amp;type=3#GameWinScreen" />
-    <engine:Template name="GameTutorialSubscreen" src="project://database/Assets/UXML/Templates/GameTutorialPopup.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialPopup" />
-    <engine:Template name="PlayGoalInfoPopup" src="project://database/Assets/UXML/Templates/PlayGoalInfoPopup.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoPopup" />
+    <engine:Template name="GameTutorialSubscreen" src="project://database/Assets/UXML/Templates/Popups/GameTutorialPopup.uxml?fileID=9197481963319205126&amp;guid=c5581797c5c74cc40847c79385ef8dce&amp;type=3#GameTutorialPopup" />
+    <engine:Template name="PlayGoalInfoPopup" src="project://database/Assets/UXML/Templates/Popups/PlayGoalInfoPopup.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoPopup" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="GameScreen" style="position: absolute; visibility: visible; top: 0; left: 0; right: 0; bottom: 0;">
@@ -14,7 +14,7 @@
         <engine:Instance template="GameWinScreen" name="WinScreen" style="visibility: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;" />
         <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.75); display: none;">
             <engine:Instance template="GameTutorialSubscreen" name="GameTutorialPopup" style="display: none;" />
-            <engine:Instance template="PlayGoalInfoPopup" name="PlayGoalInfoPopup" style="min-height: 65%; display: none;" />
+            <engine:Instance template="PlayGoalInfoPopup" name="PlayGoalInfoPopup" style="min-height: 60%; display: none;" />
         </engine:VisualElement>
         <engine:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="background-color: rgb(255, 255, 255); display: none;" />
     </engine:VisualElement>

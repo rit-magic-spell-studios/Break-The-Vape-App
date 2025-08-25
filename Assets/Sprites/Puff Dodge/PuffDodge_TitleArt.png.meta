@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ce28ef26e63668641a05fd7603502272
+guid: 2ab744c76a6565243a22c3f83191cbe9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2311008343756031843
-    second: Medal_2_0
+      213: -4744810096311070753
+    second: MAIN SCREEN_PUFF DODGE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Medal_2_0
+      name: MAIN SCREEN_PUFF DODGE_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 144
-        height: 174
+        y: 0
+        width: 1963
+        height: 2242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 367ca8a28d9521020800000000000000
-      internalID: 2311008343756031843
+      spriteID: fdf01b24b5c072eb0800000000000000
+      internalID: -4744810096311070753
       vertices: []
       indices: 
       edges: []
@@ -183,7 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Medal_2_0: 2311008343756031843
+      MAIN SCREEN_PUFF DODGE_0: -4744810096311070753
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

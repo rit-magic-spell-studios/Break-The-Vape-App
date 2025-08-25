@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class MainMenuController : UIController {
+    [Header("MainMenuController")]
+    [SerializeField] private Sprite volumeOnSprite;
+    [SerializeField] private Sprite volumeOffSprite;
+
     private VisualElement mainScreen;
     private VisualElement aboutScreen;
 
@@ -49,6 +53,15 @@ public class MainMenuController : UIController {
         isPlayGoalComplete = false;
 
         ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), new Vector2(0, greetingLabel.worldBound.y), new Vector2(Screen.width / 2f, greetingLabel.worldBound.y)); };
+
+        ui.Q<Button>("MusicToggleButton").clicked += ( ) => {
+            SoundManager.Instance.IsPlayingBackgroundMusic = !SoundManager.Instance.IsPlayingBackgroundMusic;
+            ui.Q<VisualElement>("MusicToggleIcon").style.backgroundImage = new StyleBackground(SoundManager.Instance.IsPlayingBackgroundMusic ? volumeOnSprite : volumeOffSprite);
+        };
+        ui.Q<Button>("SoundEffectToggleButton").clicked += ( ) => {
+            SoundManager.Instance.IsPlayingSoundEffects = !SoundManager.Instance.IsPlayingSoundEffects;
+            ui.Q<VisualElement>("SoundEffectToggleIcon").style.backgroundImage = new StyleBackground(SoundManager.Instance.IsPlayingSoundEffects ? volumeOnSprite : volumeOffSprite);
+        };
 
         aboutScreen = ui.Q<VisualElement>("AboutScreen");
         aboutScreen.style.visibility = Visibility.Hidden;

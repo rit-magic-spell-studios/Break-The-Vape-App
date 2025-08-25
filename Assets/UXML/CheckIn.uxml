@@ -3,8 +3,8 @@
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <engine:VisualElement class="uofr-background">
         <engine:VisualElement name="SplashScreen" class="uofr-padding uofr-safe-area__top-padding uofr-safe-area__bottom-padding" style="justify-content: space-around; position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: visible;">
-            <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/URM_horiz_2C.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#URM_horiz_2C&quot;); height: 10%; -unity-background-scale-mode: scale-to-fit;" />
-            <engine:Label text="Break The Vape" class="uofr-title-large" />
+            <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); height: 5%; -unity-background-scale-mode: scale-to-fit;" />
+            <engine:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/BreakTheVape_Title.png?fileID=21300000&amp;guid=804afd8f374123a4ba44b900fa6fdc92&amp;type=3#BreakTheVape_Title&quot;); height: 30%; -unity-background-scale-mode: scale-to-fit;" />
             <engine:VisualElement>
                 <engine:Button text="RITch Code Entry" name="RITchCodeLoginButton" class="uofr-button uofr-button-highlight" />
                 <engine:VisualElement class="uofr-space-small" />

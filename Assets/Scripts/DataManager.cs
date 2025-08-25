@@ -58,8 +58,8 @@ public class DataManager : Singleton<DataManager> {
             return;
         }
 
-        // Create AzureFunction, RecieveGameDataFunction is the name of the function we are targeting on azure
-        AzureFunction azureFunction = new AzureFunction("RecieveGameDataFunction", client, "");
+        // Create AzureFunction, ReceiveGameDataFunction is the name of the function we are targeting on azure
+        AzureFunction azureFunction = new AzureFunction("ReceiveGameDataFunction", client, "");
 
         // Simple Azure post request to send the data
         StartCoroutine(azureFunction.Post(message, action, fileIdentifier, null));

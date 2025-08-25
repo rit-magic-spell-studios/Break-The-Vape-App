@@ -149,6 +149,4 @@ MonoBehaviour:
   matchAndCatchController: {fileID: 0}
   spriteRenderer: {fileID: 7092458290275010952}
   cardBack: {fileID: 21300000, guid: a10c6d41740c2bd42b86aae25e41bb1e, type: 3}
-  cardFlipSeconds: 0.4
-  cardFlipSizeIncrease: 1.25
-  cardFlipTranslateY: 0.5
+  cardFlipSeconds: 0.25

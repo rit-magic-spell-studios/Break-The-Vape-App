@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: 913c30b606a20a243b2f9804827ea42c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8523551594372415720
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_0
+  - first:
+      213: 4227743974203531525
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_1
+  - first:
+      213: 4726699052196303812
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_2
+  - first:
+      213: -4409546013506302243
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_3
+  - first:
+      213: -3390305220681285797
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_4
+  - first:
+      213: -2050761625700586769
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_5
+  - first:
+      213: 2044535118018426830
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_6
+  - first:
+      213: -6801544227976882790
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_7
+  - first:
+      213: -6598822709195673462
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_8
+  - first:
+      213: -5179798709494465556
+    second: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 709
+        height: 775
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e0484fe30db94670800000000000000
+      internalID: 8523551594372415720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_1
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 843
+        width: 794
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50123b7beb6fbaa30800000000000000
+      internalID: 4227743974203531525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_2
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 915
+        width: 657
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c3165eaebb989140800000000000000
+      internalID: 4726699052196303812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_3
+      rect:
+        serializedVersion: 2
+        x: 2330
+        y: 864
+        width: 866
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde873473452ec2c0800000000000000
+      internalID: -4409546013506302243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_4
+      rect:
+        serializedVersion: 2
+        x: 3169
+        y: 843
+        width: 794
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5fb3294d5733f0d0800000000000000
+      internalID: -3390305220681285797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_5
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 38
+        width: 657
+        height: 723
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fea2d15ba2b3a83e0800000000000000
+      internalID: -2050761625700586769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_6
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 42
+        width: 725
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec7bc408bd5af5c10800000000000000
+      internalID: 2044535118018426830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_7
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 0
+        width: 821
+        height: 753
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95545f8f8f0c91a0800000000000000
+      internalID: -6801544227976882790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_8
+      rect:
+        serializedVersion: 2
+        x: 2384
+        y: 52
+        width: 658
+        height: 725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a807c9245b54c64a0800000000000000
+      internalID: -6598822709195673462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_9
+      rect:
+        serializedVersion: 2
+        x: 3019
+        y: 71
+        width: 540
+        height: 658
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb3e887488ad18b0800000000000000
+      internalID: -5179798709494465556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_0: 8523551594372415720
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_1: 4227743974203531525
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_2: 4726699052196303812
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_3: -4409546013506302243
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_4: -3390305220681285797
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_5: -2050761625700586769
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_6: 2044535118018426830
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_7: -6801544227976882790
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_8: -6598822709195673462
+      BREAK THE VAPE_GAME TITLES_NOT SO TASTY (2)_9: -5179798709494465556
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
