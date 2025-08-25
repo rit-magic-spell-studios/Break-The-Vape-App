@@ -70,7 +70,7 @@ public class MainMenuController : UIController {
             HideCurrentPopup(checkForAnimations: false);
         };
         ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
-        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 8-22-25";
+        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| Unreleased";
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
         ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
