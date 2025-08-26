@@ -20,7 +20,7 @@ public class DataManager : Singleton<DataManager> {
         base.Awake( );
 
         AppSessionData = new AppSessionData( );
-        client = AzureFunctionClient.Create("RitchSRA");
+        client = AzureFunctionClient.Create("RitchSIRA");
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class DataManager : Singleton<DataManager> {
         string identifier = GetSessionFileIdentifier(sessionData.ToString( ));
 
         if (sendAzureData) {
-            AzureCall(json, identifier);
+            AzureCall(json, GetDataPath(identifier));
             Debug.Log($"Sent data to Azure: {json}");
         }
 
@@ -58,10 +58,7 @@ public class DataManager : Singleton<DataManager> {
             return;
         }
 
-        // Create AzureFunction, ReceiveGameDataFunction is the name of the function we are targeting on azure
-        AzureFunction azureFunction = new AzureFunction("ReceiveGameDataFunction", client, "");
-
-        // Simple Azure post request to send the data
+        AzureFunction azureFunction = new AzureFunction("RecieveGameDataFunction", client, "");
         StartCoroutine(azureFunction.Post(message, action, fileIdentifier, null));
     }
 
@@ -72,7 +69,7 @@ public class DataManager : Singleton<DataManager> {
     /// <returns>A string containing the full data path</returns>
     public string GetDataPath(string fileName) {
         // Make sure the file name does not contain any characters that will lead to an error when saving the file
-        fileName = fileName.Replace(":", " ").Replace(".", " ");
+        fileName = fileName.Replace(":", "-").Replace(".", "-").Replace(" ", "-");
 
         if (Directory.Exists(Application.persistentDataPath)) {
             return Path.Combine(Application.persistentDataPath, fileName);
