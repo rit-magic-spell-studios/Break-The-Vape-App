@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -184,7 +185,7 @@ public class NotSoTastyController : GameController {
             return false;
         }
 
-        if (ChainedTiles.Count > 0 && ChainedTiles[^1].FruitSprite != tile.FruitSprite) {
+        if (ChainedTiles.Count > 0 && ChainedTiles[^1].FruitType != tile.FruitType) {
             return false;
         }
 
@@ -208,10 +209,21 @@ public class NotSoTastyController : GameController {
         if (ChainedTiles.Count >= minFruitChainLength) {
             AddPoints(ChainedTiles[^1].transform.position, ChainedTiles.Count * 5);
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_END);
-
-            UncoverSecretTiles( );
-            UpdateBoard( );
+            StartCoroutine(ResolveBoard( ));
+        } else {
+            ChainedTiles.Clear( );
+            chainLineRenderer.positionCount = 0;
+            chainLineRenderer.SetPositions(new Vector3[0]);
         }
+    }
+
+    private IEnumerator ResolveBoard( ) {
+        UncoverSecretTiles( );
+        yield return new WaitUntil(( ) => {
+            Debug.Log(CanMatchFruit);
+            return CanMatchFruit;
+        });
+        UpdateBoard( );
 
         ChainedTiles.Clear( );
         chainLineRenderer.positionCount = 0;
@@ -223,55 +235,57 @@ public class NotSoTastyController : GameController {
     /// </summary>
     public void UncoverSecretTiles( ) {
         for (int i = 0; i < ChainedTiles.Count; i++) {
-            ChainedTiles[i].NeedsUpdating = true;
+            ChainedTiles[i].FruitSpriteType = FruitSpriteType.ROTTEN;
+            ChainedTiles[i].UpdateFruitVisual( );
+        }
+    }
 
-            if (ChainedTiles[i].IsUncovered) {
+    public Sprite GetSecretTileAtPosition(Tile tile) {
+        Sprite tileSprite = null;
+
+        for (int j = 0; j < SecretTiles.Count; j++) {
+            if (!SecretTiles[j].Contains(tile.BoardPosition)) {
                 continue;
             }
-            ChainedTiles[i].IsUncovered = true;
 
-            for (int j = 0; j < SecretTiles.Count; j++) {
-                if (!SecretTiles[j].Contains(ChainedTiles[i].BoardPosition)) {
-                    continue;
-                }
+            // Get secret tile variables
+            float secretTileSize = SecretTiles[j].width;
+            Vector2 secretTilePosition = SecretTiles[j].position;
 
-                // Get secret tile variables
-                float secretTileSize = SecretTiles[j].width;
-                Vector2 secretTilePosition = SecretTiles[j].position;
+            // Get the position and size of the new texture
+            int textureWidth = Mathf.FloorToInt(secretTileSprites[0].texture.width / secretTileSize);
+            int textureHeight = Mathf.FloorToInt(secretTileSprites[0].texture.height / secretTileSize);
+            int textureX = (tile.BoardPosition.x - (int) secretTilePosition.x) * textureWidth;
+            // Texture's have (0, 0) in the bottom left corner (so confusing)
+            int textureY = ((int) (secretTilePosition.y + secretTileSize - 1) - tile.BoardPosition.y) * textureHeight;
 
-                // Get the position and size of the new texture
-                int textureWidth = Mathf.FloorToInt(secretTileSprites[0].texture.width / secretTileSize);
-                int textureHeight = Mathf.FloorToInt(secretTileSprites[0].texture.height / secretTileSize);
-                int textureX = (ChainedTiles[i].BoardPosition.x - (int) secretTilePosition.x) * textureWidth;
-                // Texture's have (0, 0) in the bottom left corner (so confusing)
-                int textureY = ((int) (secretTilePosition.y + secretTileSize - 1) - ChainedTiles[i].BoardPosition.y) * textureHeight;
+            // Create the new texture that is a chunk of the secret tile image based on the fruit's position
+            Texture2D secretTileTexture = new Texture2D(textureWidth, textureHeight);
+            secretTileTexture.SetPixels(currentSecretTileSprites[j].texture.GetPixels(textureX, textureY, textureWidth, textureHeight));
+            secretTileTexture.Apply( );
 
-                // Create the new texture that is a chunk of the secret tile image based on the fruit's position
-                Texture2D secretTileTexture = new Texture2D(textureWidth, textureHeight);
-                secretTileTexture.SetPixels(currentSecretTileSprites[j].texture.GetPixels(textureX, textureY, textureWidth, textureHeight));
-                secretTileTexture.Apply( );
+            // Set the style of the tile background
+            tileSprite = Sprite.Create(secretTileTexture, new Rect(0, 0, secretTileTexture.width, secretTileTexture.height), new Vector2(0.5f, 0.5f), secretTileTexture.width);
 
-                // Set the style of the tile background
-                ChainedTiles[i].TileSprite = Sprite.Create(secretTileTexture, new Rect(0, 0, secretTileTexture.width, secretTileTexture.height), new Vector2(0.5f, 0.5f), secretTileTexture.width);
+            // Remove the secret tile if it has been fully uncovered
+            if (++secretTileClearCount[j] >= secretTileSize * secretTileSize) {
+                SecretTiles.RemoveAt(j);
+                secretTileClearCount.RemoveAt(j);
+                currentSecretTileSprites.RemoveAt(j);
 
-                // Remove the secret tile if it has been fully uncovered
-                if (++secretTileClearCount[j] >= secretTileSize * secretTileSize) {
-                    SecretTiles.RemoveAt(j);
-                    secretTileClearCount.RemoveAt(j);
-                    currentSecretTileSprites.RemoveAt(j);
-
-                    remainingSecretTilesLabel.text = $"{SecretTiles.Count} secret tiles left!";
-                    AddPoints(ChainedTiles[i].transform.position, 50);
-                    SoundManager.Instance.PlaySoundEffect(SoundEffectType.CORRECT);
-                }
-
-                break;
+                remainingSecretTilesLabel.text = $"{SecretTiles.Count} secret tiles left!";
+                AddPoints(tile.transform.position, 50);
+                SoundManager.Instance.PlaySoundEffect(SoundEffectType.CORRECT);
             }
+
+            break;
         }
 
         if (SecretTiles.Count == 0) {
             WinGame( );
         }
+
+        return tileSprite;
     }
 
     /// <summary>
@@ -287,7 +301,7 @@ public class NotSoTastyController : GameController {
                 if (!Tiles[x, y].NeedsUpdating) {
                     if (needsUpdatingTiles.Count > 0) {
                         // Get the earliest missing fruit in the queue
-                        needsUpdatingTiles.Dequeue( ).AnimateFruit(y, Tiles[x, y].FruitSprite);
+                        needsUpdatingTiles.Dequeue( ).AnimateFruitFalling(y, Tiles[x, y].FruitType);
 
                         // Since this fruit has been transferred to another tile, this tile is now missing
                         needsUpdatingTiles.Enqueue(Tiles[x, y]);
@@ -304,7 +318,7 @@ public class NotSoTastyController : GameController {
             // If there are still fruits left in the missing queue, then that means new fruits need to be generated above the board
             int i = 0;
             while (needsUpdatingTiles.Count > 0) {
-                needsUpdatingTiles.Dequeue( ).AnimateFruit(-i - 4);
+                needsUpdatingTiles.Dequeue( ).AnimateFruitFalling(-i - 4, FruitType.NONE);
                 i++;
             }
         }

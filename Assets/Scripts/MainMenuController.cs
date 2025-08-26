@@ -52,7 +52,7 @@ public class MainMenuController : UIController {
         ui.Q<Button>("PlayGoalInfoContinueButton").clicked += ( ) => { HideCurrentPopup( ); };
         isPlayGoalComplete = false;
 
-        ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), new Vector2(0, greetingLabel.worldBound.y), new Vector2(Screen.width / 2f, greetingLabel.worldBound.y)); };
+        ui.Q<Button>("MenuButton").clicked += ( ) => { DisplayPopup(ui.Q<VisualElement>("MenuPopup"), new Vector2(0, greetingLabel.worldBound.y), new Vector2(Screen.width, greetingLabel.worldBound.y)); };
 
         ui.Q<Button>("MusicToggleButton").clicked += ( ) => {
             SoundManager.Instance.IsPlayingBackgroundMusic = !SoundManager.Instance.IsPlayingBackgroundMusic;

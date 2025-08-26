@@ -103,16 +103,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSpriteRenderer: {fileID: 5910820164824216469}
   fruitSpriteRenderer: {fileID: 7101956893538531089}
-  fruitSprites:
+  fruitTransform: {fileID: 1981969261371602334}
+  normalFruitSprites:
   - {fileID: 21300000, guid: a4f25286c4731034ba7ae310dc4682da, type: 3}
   - {fileID: 21300000, guid: fed7e12bd94ba5e4e8653d9e3ea757c6, type: 3}
   - {fileID: 21300000, guid: c18006296daff4440b115dd3e9f57f41, type: 3}
   - {fileID: 21300000, guid: db5c6cb5fc038c74f95a17f1e1c14b4f, type: 3}
   - {fileID: 21300000, guid: 1e1af1a9d14edcb49bdb4f43aeac7ba2, type: 3}
   - {fileID: 21300000, guid: 875c054979f607845b1977dfc4ab70ad, type: 3}
+  eyesFruitSprites:
+  - {fileID: 21300000, guid: 6d69084ae3b930944921b7275246096d, type: 3}
+  - {fileID: 21300000, guid: b892acab2df29584f90bf9d145177e33, type: 3}
+  - {fileID: 21300000, guid: 3ab125d4d0a921943b6563dd25c4a084, type: 3}
+  - {fileID: 21300000, guid: 3be78875deb6e5b4ca99f2daa2dd9d74, type: 3}
+  - {fileID: 21300000, guid: 0506f6607ea9d3c41af1ad1f76fd8251, type: 3}
+  - {fileID: 21300000, guid: b383f9e8c752a6040bb79f0708a41595, type: 3}
+  rottenFruitSprites:
+  - {fileID: 21300000, guid: 4c9db774f6f87f94c87370950a17437d, type: 3}
+  - {fileID: 21300000, guid: f7866a2e3136a514fb2f00199333b82a, type: 3}
+  - {fileID: 21300000, guid: ee7a602c132ab9f49a9b19673b6f3f26, type: 3}
+  - {fileID: 21300000, guid: c1a3aeb3de57b7e45bb024621a4e1da5, type: 3}
+  - {fileID: 21300000, guid: bf2091f5aac1cce4d84eac2173bfbe83, type: 3}
+  - {fileID: 21300000, guid: caf28118253836a43af4f74ce7a92ab9, type: 3}
   notSoTastyController: {fileID: 0}
   fruitFallSpeed: 0.15
-  _boardPosition: {x: 0, y: 0}
+  fruitEnlargedScale: 1.1
+  fruitShrunkScale: 0.9
+  fruitStateAnimationSpeed: 0.5
 --- !u!61 &2946580820874685410
 BoxCollider2D:
   m_ObjectHideFlags: 0

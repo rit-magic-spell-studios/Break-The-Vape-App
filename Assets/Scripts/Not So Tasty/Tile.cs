@@ -1,17 +1,40 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FruitType {
+    MANGO, MINT, PEACH, RASPBERRY, STRAWBERRY, WATERMELON, NONE = -1
+}
+
+public enum FruitSpriteType {
+    NORMAL, EYES, ROTTEN
+}
+
 public class Tile : MonoBehaviour {
     [SerializeField] private SpriteRenderer tileSpriteRenderer;
     [SerializeField] private SpriteRenderer fruitSpriteRenderer;
-    [SerializeField] private List<Sprite> fruitSprites;
+    [SerializeField] private Transform fruitTransform;
+    [SerializeField] private List<Sprite> normalFruitSprites;
+    [SerializeField] private List<Sprite> eyesFruitSprites;
+    [SerializeField] private List<Sprite> rottenFruitSprites;
     [SerializeField] private NotSoTastyController notSoTastyController;
+    [Space]
     [SerializeField, Range(0f, 2f)] private float fruitFallSpeed;
-    [SerializeField] private Vector2Int _boardPosition;
+    [SerializeField, Range(0f, 2f)] private float fruitEnlargedScale;
+    [SerializeField, Range(0f, 2f)] private float fruitShrunkScale;
+    [SerializeField, Range(0f, 2f)] private float fruitStateAnimationSpeed;
 
-    public Sprite FruitSprite { get => fruitSpriteRenderer.sprite; set => fruitSpriteRenderer.sprite = value; }
+    private Sequence stateAnimationSequence;
+
+    public FruitType FruitType { get; private set; }
+    public FruitSpriteType FruitSpriteType { get; set; }
+    public bool IsAnimating { get; private set; }
+    public bool IsUncovered { get; set; }
+    public bool NeedsUpdating { get; set; }
+    public Vector2Int BoardPosition { get; set; }
+
     public Sprite TileSprite {
         get => tileSpriteRenderer.sprite;
         set {
@@ -19,15 +42,13 @@ public class Tile : MonoBehaviour {
             tileSpriteRenderer.color = (value == null ? Color.clear : Color.white);
         }
     }
-    public bool IsAnimating { get; private set; }
-    public bool IsUncovered { get; set; }
-    public bool NeedsUpdating { get; set; }
-    public Vector2Int BoardPosition { get => _boardPosition; set => _boardPosition = value; }
 
     private void Awake( ) {
         notSoTastyController = FindFirstObjectByType<NotSoTastyController>( );
 
-        FruitSprite = fruitSprites[Random.Range(0, fruitSprites.Count)];
+        FruitType = (FruitType) UnityEngine.Random.Range(0, normalFruitSprites.Count);
+        FruitSpriteType = FruitSpriteType.NORMAL;
+        UpdateFruitVisual(skipAnimation: true);
     }
 
     private void OnMouseDown( ) {
@@ -57,17 +78,69 @@ public class Tile : MonoBehaviour {
         notSoTastyController.ClearChain( );
     }
 
+    public void UpdateFruitVisual(bool skipAnimation = false) {
+        if (!skipAnimation) {
+            stateAnimationSequence?.Kill( );
+            IsAnimating = true;
+        }
+
+        switch (FruitSpriteType) {
+            case FruitSpriteType.NORMAL:
+                if (skipAnimation) {
+                    fruitSpriteRenderer.sprite = normalFruitSprites[(int) FruitType];
+                } else {
+                    stateAnimationSequence = DOTween.Sequence( )
+                        .Append(fruitTransform.DOScale(Vector3.one, fruitStateAnimationSpeed))
+                        .InsertCallback(fruitStateAnimationSpeed / 2f, ( ) => {fruitSpriteRenderer.sprite = normalFruitSprites[(int) FruitType];})
+                        .OnComplete(( ) => { IsAnimating = false; });
+                }
+
+                break;
+            case FruitSpriteType.EYES:
+                if (skipAnimation) {
+                    fruitSpriteRenderer.sprite = eyesFruitSprites[(int) FruitType];
+                } else {
+                    stateAnimationSequence = DOTween.Sequence( )
+                        .Append(fruitTransform.DOScale(new Vector3(fruitEnlargedScale, fruitEnlargedScale, 1f), fruitStateAnimationSpeed))
+                        .InsertCallback(fruitStateAnimationSpeed / 2f, ( ) => {fruitSpriteRenderer.sprite = eyesFruitSprites[(int) FruitType];})
+                        .OnComplete(( ) => { IsAnimating = false; });
+                }
+
+                break;
+            case FruitSpriteType.ROTTEN:
+                if (skipAnimation) {
+                    fruitSpriteRenderer.sprite = rottenFruitSprites[(int) FruitType];
+                } else {
+                    stateAnimationSequence = DOTween.Sequence( )
+                        .Append(fruitTransform.DOScale(new Vector3(fruitShrunkScale, fruitShrunkScale, 1f), fruitStateAnimationSpeed / 2f))
+                        .InsertCallback(fruitStateAnimationSpeed / 2f, ( ) => {
+                            NeedsUpdating = true;
+                            fruitSpriteRenderer.sprite = rottenFruitSprites[(int) FruitType];
+
+                            if (IsUncovered) {
+                                return;
+                            }
+                            IsUncovered = true;
+                            TileSprite = notSoTastyController.GetSecretTileAtPosition(this);
+                        })
+                        .Append(fruitTransform.DOScale(new Vector3(fruitEnlargedScale, fruitEnlargedScale, 1f), fruitStateAnimationSpeed / 2f))
+                        .Append(fruitSpriteRenderer.DOFade(0f, fruitStateAnimationSpeed / 2f))
+                        .OnComplete(( ) => { IsAnimating = false; });
+                }
+
+                break;
+        }
+    }
+
     /// <summary>
     /// Animate this tile's fruit falling a certain height
     /// </summary>
-    /// <param name="fruitFallHeight">The height in world units the the fruit should fall</param>
-    /// <param name="newFruitSprite">The new fruit sprite to be set to this tile. If no image is given, a random fruit sprite will be assigned</param>
-    public void AnimateFruit(float fruitFallHeight, Sprite newFruitSprite = null) {
+    public void AnimateFruitFalling(float fruitFallHeight, FruitType newFruitType) {
         // Set the new fruit sprite
-        if (newFruitSprite == null) {
-            FruitSprite = fruitSprites[Random.Range(0, fruitSprites.Count)];
+        if (newFruitType == FruitType.NONE) {
+            FruitType = (FruitType) UnityEngine.Random.Range(0, normalFruitSprites.Count);
         } else {
-            FruitSprite = newFruitSprite;
+            FruitType = newFruitType;
         }
 
         IsAnimating = true;
