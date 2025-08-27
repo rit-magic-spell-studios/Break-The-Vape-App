@@ -28,7 +28,7 @@ public class Tile : MonoBehaviour {
 
     private Sequence stateAnimationSequence;
 
-    public FruitType FruitType { get; private set; }
+    public FruitType FruitType { get; set; }
     public FruitSpriteType FruitSpriteType { get; set; }
     public bool IsAnimating { get; private set; }
     public bool IsUncovered { get; set; }
@@ -75,13 +75,12 @@ public class Tile : MonoBehaviour {
             return;
         }
 
-        notSoTastyController.ClearChain( );
+        notSoTastyController.ResolveBoard( );
     }
 
     public void UpdateFruitVisual(bool skipAnimation = false) {
         if (!skipAnimation) {
             stateAnimationSequence?.Kill( );
-            IsAnimating = true;
         }
 
         switch (FruitSpriteType) {
@@ -91,8 +90,10 @@ public class Tile : MonoBehaviour {
                 } else {
                     stateAnimationSequence = DOTween.Sequence( )
                         .Append(fruitTransform.DOScale(Vector3.one, fruitStateAnimationSpeed))
-                        .InsertCallback(fruitStateAnimationSpeed / 2f, ( ) => {fruitSpriteRenderer.sprite = normalFruitSprites[(int) FruitType];})
-                        .OnComplete(( ) => { IsAnimating = false; });
+                        .InsertCallback(0f, ( ) => { 
+                            fruitSpriteRenderer.sprite = normalFruitSprites[(int) FruitType];
+                            fruitSpriteRenderer.color = Color.white;
+                        });
                 }
 
                 break;
@@ -102,8 +103,10 @@ public class Tile : MonoBehaviour {
                 } else {
                     stateAnimationSequence = DOTween.Sequence( )
                         .Append(fruitTransform.DOScale(new Vector3(fruitEnlargedScale, fruitEnlargedScale, 1f), fruitStateAnimationSpeed))
-                        .InsertCallback(fruitStateAnimationSpeed / 2f, ( ) => {fruitSpriteRenderer.sprite = eyesFruitSprites[(int) FruitType];})
-                        .OnComplete(( ) => { IsAnimating = false; });
+                        .InsertCallback(0f, ( ) => { 
+                            fruitSpriteRenderer.sprite = eyesFruitSprites[(int) FruitType];
+                            fruitSpriteRenderer.color = Color.white;
+                        });
                 }
 
                 break;
@@ -111,11 +114,13 @@ public class Tile : MonoBehaviour {
                 if (skipAnimation) {
                     fruitSpriteRenderer.sprite = rottenFruitSprites[(int) FruitType];
                 } else {
+                    IsAnimating = true;
                     stateAnimationSequence = DOTween.Sequence( )
                         .Append(fruitTransform.DOScale(new Vector3(fruitShrunkScale, fruitShrunkScale, 1f), fruitStateAnimationSpeed / 2f))
                         .InsertCallback(fruitStateAnimationSpeed / 2f, ( ) => {
                             NeedsUpdating = true;
                             fruitSpriteRenderer.sprite = rottenFruitSprites[(int) FruitType];
+                            fruitSpriteRenderer.color = Color.white;
 
                             if (IsUncovered) {
                                 return;
@@ -142,6 +147,7 @@ public class Tile : MonoBehaviour {
         } else {
             FruitType = newFruitType;
         }
+        UpdateFruitVisual(skipAnimation: true);
 
         IsAnimating = true;
         float fallDistance = BoardPosition.y - fruitFallHeight;

@@ -129,7 +129,7 @@ MonoBehaviour:
   fruitFallSpeed: 0.15
   fruitEnlargedScale: 1.1
   fruitShrunkScale: 0.9
-  fruitStateAnimationSpeed: 0.5
+  fruitStateAnimationSpeed: 0.4
 --- !u!61 &2946580820874685410
 BoxCollider2D:
   m_ObjectHideFlags: 0

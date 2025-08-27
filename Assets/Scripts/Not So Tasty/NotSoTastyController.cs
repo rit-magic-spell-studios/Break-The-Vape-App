@@ -175,6 +175,9 @@ public class NotSoTastyController : GameController {
             // If the last tile in the chain is hovered over, remove it from the list
             // This will allow the player to backtrack and redo their chain
             if (ChainedTiles.Count > 1 && ChainedTiles[^2] == tile) {
+                ChainedTiles[^1].FruitSpriteType = FruitSpriteType.NORMAL;
+                ChainedTiles[^1].UpdateFruitVisual( );
+
                 ChainedTiles.Remove(ChainedTiles[^1]);
                 chainLineRenderer.positionCount = ChainedTiles.Count;
                 chainLineRenderer.SetPositions(ChainedTiles.Select(tile => tile.transform.position).ToArray( ));
@@ -188,6 +191,9 @@ public class NotSoTastyController : GameController {
         if (ChainedTiles.Count > 0 && ChainedTiles[^1].FruitType != tile.FruitType) {
             return false;
         }
+
+        tile.FruitSpriteType = FruitSpriteType.EYES;
+        tile.UpdateFruitVisual( );
 
         ChainedTiles.Add(tile);
         chainLineRenderer.positionCount = ChainedTiles.Count;
@@ -205,38 +211,42 @@ public class NotSoTastyController : GameController {
     /// <summary>
     /// Clear the current chain of tiles, score points, and update the board
     /// </summary>
-    public void ClearChain( ) {
+    public void ResolveBoard( ) {
+        StartCoroutine(ResolveBoardSequence( ));
+    }
+
+    private IEnumerator ResolveBoardSequence( ) {
+        chainLineRenderer.positionCount = 0;
+        chainLineRenderer.SetPositions(new Vector3[0]);
+
         if (ChainedTiles.Count >= minFruitChainLength) {
             AddPoints(ChainedTiles[^1].transform.position, ChainedTiles.Count * 5);
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_END);
-            StartCoroutine(ResolveBoard( ));
-        } else {
-            ChainedTiles.Clear( );
-            chainLineRenderer.positionCount = 0;
-            chainLineRenderer.SetPositions(new Vector3[0]);
+
+            for (int i = 0; i < ChainedTiles.Count; i++) {
+                ChainedTiles[i].FruitSpriteType = FruitSpriteType.ROTTEN;
+                ChainedTiles[i].UpdateFruitVisual( );
+            }
+
+            // Wait for all fruits to be done updating before trying to update the board
+            yield return new WaitUntil(( ) => {
+                foreach (Tile tile in ChainedTiles) {
+                    if (tile.IsAnimating) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+
+            UpdateBoard( );
         }
-    }
 
-    private IEnumerator ResolveBoard( ) {
-        UncoverSecretTiles( );
-        yield return new WaitUntil(( ) => {
-            Debug.Log(CanMatchFruit);
-            return CanMatchFruit;
-        });
-        UpdateBoard( );
-
-        ChainedTiles.Clear( );
-        chainLineRenderer.positionCount = 0;
-        chainLineRenderer.SetPositions(new Vector3[0]);
-    }
-
-    /// <summary>
-    /// Uncover secret tiles on the board based on where the chained tiles were matched
-    /// </summary>
-    public void UncoverSecretTiles( ) {
-        for (int i = 0; i < ChainedTiles.Count; i++) {
-            ChainedTiles[i].FruitSpriteType = FruitSpriteType.ROTTEN;
-            ChainedTiles[i].UpdateFruitVisual( );
+        // Remove and reset all of the chained tiles
+        while (ChainedTiles.Count > 0) {
+            ChainedTiles[0].FruitSpriteType = FruitSpriteType.NORMAL;
+            ChainedTiles[0].UpdateFruitVisual( );
+            ChainedTiles.RemoveAt(0);
         }
     }
 

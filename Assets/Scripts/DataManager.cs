@@ -29,14 +29,14 @@ public class DataManager : Singleton<DataManager> {
     /// <param name="sessionData">The session data object to send</param>
     public void UploadSessionData(SessionData sessionData) {
         // Update the session data with the current information in the app session
+        string identifier = GetSessionFileIdentifier(sessionData.ToString( ));
         sessionData.RITchCode = AppSessionData.RITchCode;
         sessionData.UserData = AppSessionData.UserData;
-
+        sessionData.ID = GetSessionFileIdentifier(identifier);
         string json = JsonUtility.ToJson(sessionData);
-        string identifier = GetSessionFileIdentifier(sessionData.ToString( ));
 
         if (sendAzureData) {
-            AzureCall(json, GetDataPath(identifier));
+            AzureCall(json);
             Debug.Log($"Sent data to Azure: {json}");
         }
 
@@ -52,14 +52,13 @@ public class DataManager : Singleton<DataManager> {
     /// Main call function that sends data to Azure
     /// </summary>
     /// <param name="message">The message to send to the Azure server to be stored there. Most likely will be some json data</param>
-    /// <param name="fileIdentifier">An identifier for the file that will be stored on Azure</param>
-	private void AzureCall(string message, string fileIdentifier) {
+	private void AzureCall(string message) {
         if (message == null) {
             return;
         }
 
         AzureFunction azureFunction = new AzureFunction("RecieveGameDataFunction", client, "");
-        StartCoroutine(azureFunction.Post(message, action, fileIdentifier, null));
+        StartCoroutine(azureFunction.Post(message, action, "", null));
     }
 
     /// <summary>
@@ -69,7 +68,7 @@ public class DataManager : Singleton<DataManager> {
     /// <returns>A string containing the full data path</returns>
     public string GetDataPath(string fileName) {
         // Make sure the file name does not contain any characters that will lead to an error when saving the file
-        fileName = fileName.Replace(":", "-").Replace(".", "-").Replace(" ", "-");
+        fileName = fileName.Replace(":", " ").Replace(".", " ");
 
         if (Directory.Exists(Application.persistentDataPath)) {
             return Path.Combine(Application.persistentDataPath, fileName);

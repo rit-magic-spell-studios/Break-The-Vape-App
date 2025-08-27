@@ -1,5 +1,8 @@
 # Not So Tasty Changelog
 
+## v0.3.2 - Unreleased
+* Added new animations for matching and destroying fruit
+
 ## v0.3.1 - August 22nd, 2025
 * Added sound effects
 * Added confetti particle effect when winning the game

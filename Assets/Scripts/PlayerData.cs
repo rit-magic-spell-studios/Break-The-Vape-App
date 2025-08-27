@@ -129,10 +129,11 @@ public class GameSessionData : SessionData {
 
 [Serializable]
 public class SessionData {
+    public string ID;
     public UserData UserData;
     public string RITchCode;
     public string AppVersion;
-    public string SessionID;
+    public string SessionGUID;
     public string StartTimeUTC;
     public float TotalTimeSeconds;
 
@@ -162,7 +163,7 @@ public class SessionData {
         UserData = new UserData( );
         RITchCode = "NONE00";
         AppVersion = Application.version;
-        SessionID = Guid.NewGuid( ).ToString( );
+        SessionGUID = Guid.NewGuid( ).ToString( );
         StartTimeUTC = DateTime.UtcNow.ToString("o");
         TotalTimeSeconds = 0;
     }
