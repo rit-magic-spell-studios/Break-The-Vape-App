@@ -8,7 +8,8 @@
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;" />
                     <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Good afternoon!" name="GreetingLabel" class="uofr-title-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
+                    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/BreakTheVape_Title_Horizontal.png?fileID=21300000&amp;guid=476d1730456791a42bb152ce263ca302&amp;type=3#BreakTheVape_Title_Horizontal&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:VisualElement class="uofr-space-large" />
                     <ui:Button name="MenuButton" class="uofr-button-square uofr-button">
                         <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Menu.png?fileID=21300000&amp;guid=de43547c6586e6f4a806bd0199879a62&amp;type=3#Menu&quot;); flex-grow: 1;" />
                     </ui:Button>
@@ -50,14 +51,15 @@
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding" style="justify-content: flex-start; display: flex;">
                 <ui:ScrollView class="uofr-scroll-view" style="flex-grow: 1;">
-                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); min-height: 10%; -unity-background-scale-mode: scale-to-fit; align-self: flex-start; min-width: 50%;" />
+                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); -unity-background-scale-mode: scale-to-fit; min-height: 100px;" />
                     <ui:VisualElement class="uofr-space-medium" />
-                    <ui:Label text="www.recoverycenterofexcellence.org" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="RCORP - Rural Center of Excellence on SUD Prevention" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Caroline Easton, Ph.D." class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="Sun Mi Kim, M.D., Ph.D." class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:VisualElement class="uofr-hr" />
                     <ui:Label text="Produced by students at" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                    <ui:VisualElement style="min-height: 10%; background-image: url(&quot;project://database/Assets/Sprites/RITMAGIC_Logo.png?fileID=21300000&amp;guid=948a90759f372bc4b88658e9fce05a7b&amp;type=3#RITMAGIC_Logo&quot;); -unity-background-scale-mode: scale-to-fit; min-width: 50%; align-self: flex-start;" />
+                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:VisualElement style="min-height: 100px; background-image: url(&quot;project://database/Assets/Sprites/RITMAGIC_Logo.png?fileID=21300000&amp;guid=948a90759f372bc4b88658e9fce05a7b&amp;type=3#RITMAGIC_Logo&quot;); -unity-background-scale-mode: scale-to-fit;" />
                     <ui:VisualElement class="uofr-space-medium" />
                     <ui:Label text="Game Design and Development" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Frank Alfano" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
@@ -111,18 +113,6 @@
                     <ui:Label text="Log Out" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
                 </ui:Button>
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Button name="TermsAndConditionsButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
-                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Terms_Conditions.png?fileID=21300000&amp;guid=a7ef6a6491c533341bd88ad9260b9590&amp;type=3#Terms_Conditions&quot;); width: 60px; height: 60px;" />
-                    <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Terms &amp; Conditions" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
-                </ui:Button>
-                <ui:VisualElement class="uofr-space-small" />
-                <ui:Button name="PrivacyPolicyButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
-                    <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Privacy.png?fileID=21300000&amp;guid=272a47c7efc8c00428aa3d004d036d3d&amp;type=3#Privacy&quot;); width: 60px; height: 60px;" />
-                    <ui:VisualElement class="uofr-space-small" />
-                    <ui:Label text="Privacy Policy" class="uofr-text-medium" style="flex-grow: 1; -unity-text-align: middle-left;" />
-                </ui:Button>
-                <ui:VisualElement class="uofr-space-small" />
                 <ui:Button name="AboutButton" class="uofr-button uofr-button-discreet" style="flex-direction: row;">
                     <ui:VisualElement class="" style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Information.png?fileID=21300000&amp;guid=edad71fdeee63134495f4821d2ea841c&amp;type=3#Information&quot;); width: 60px; height: 60px;" />
                     <ui:VisualElement class="uofr-space-small" />
@@ -155,7 +145,7 @@
                 <ui:VisualElement class="uofr-space-large" />
                 <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Big%20Smile.png?fileID=21300000&amp;guid=3a949132da27b894fad2fff1e5ca54e8&amp;type=3#Big Smile&quot;); height: 300px; -unity-background-scale-mode: scale-to-fit;" />
                 <ui:VisualElement class="uofr-space-large" />
-                <ui:Label text="Congrats!" class="uofr-title-medium" />
+                <ui:Label text="Congratulations!" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Label text="You completed your 15 minute play goal!" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
                 <ui:VisualElement class="uofr-space-small" />
@@ -166,7 +156,7 @@
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Button text="Finish" name="FinishSessionButton" class="uofr-button " />
             </ui:VisualElement>
-            <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoPopup" style="display: none; min-height: 60%;" />
+            <ui:Instance template="PlayGoalInfoScreen" name="PlayGoalInfoPopup" style="display: none;" />
         </ui:VisualElement>
         <ui:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="flex-grow: 1; background-color: rgb(255, 255, 255); display: none;" />
     </ui:VisualElement>

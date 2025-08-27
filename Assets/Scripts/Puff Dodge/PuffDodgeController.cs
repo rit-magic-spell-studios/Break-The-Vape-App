@@ -32,9 +32,9 @@ public class PuffDodgeController : GameController {
 
             if (_destroyedItems >= targetDestroyedItems) {
                 for (int i = VapeItems.Count - 1; i >= 0; i--) {
-                    VapeItems[i].Slice(givePoints: false);
+                    Destroy(VapeItems[i], 1f);
                 }
-                WinGame( );
+                DelayAction(WinGame, 1.5f);
             }
         }
     }

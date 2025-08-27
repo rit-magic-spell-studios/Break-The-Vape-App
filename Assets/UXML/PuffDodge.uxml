@@ -14,7 +14,7 @@
         <engine:Instance template="GamePauseScreen" name="PauseScreen" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;" />
         <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.75); display: none;">
             <engine:Instance template="GameTutorialSubscreen" name="GameTutorialPopup" style="display: none;" />
-            <engine:Instance template="PlayGoalInfoPopup" name="PlayGoalInfoPopup" style="min-height: 60%; display: none;" />
+            <engine:Instance template="PlayGoalInfoPopup" name="PlayGoalInfoPopup" style="display: none;" />
         </engine:VisualElement>
         <engine:VisualElement name="TransitionOverlay" class="uofr-padding-overlay" style="background-color: rgb(255, 255, 255); display: none;" />
     </engine:VisualElement>

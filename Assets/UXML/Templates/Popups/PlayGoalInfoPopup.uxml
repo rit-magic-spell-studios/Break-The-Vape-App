@@ -1,9 +1,9 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
-    <engine:VisualElement class="uofr-container" style="flex-grow: 1;">
+    <engine:VisualElement class="uofr-container">
         <engine:Label text="15 Minutes of Distraction" class="uofr-title-medium" style="-unity-font-style: bold; flex-grow: 0;" />
         <engine:VisualElement class="uofr-space-medium" />
-        <engine:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PlayGoal_Art.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PlayGoal_Art&quot;); -unity-background-scale-mode: scale-and-crop; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; flex-grow: 1;" />
+        <engine:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PlayGoal_Art.png?fileID=21300000&amp;guid=750025fdfd97b16449817e2b41e86221&amp;type=3#PlayGoal_Art&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; -unity-background-scale-mode: scale-and-crop; padding-top: 60%; padding-bottom: 0; align-self: center; width: 60%;" />
         <engine:VisualElement class="uofr-space-medium" />
         <engine:Label text="Research shows that 15 to 20 minutes of relaxation and distraction can help the brain lose craving sensations." class="uofr-text-medium" style="flex-grow: 0;" />
         <engine:VisualElement class="uofr-space-small" />

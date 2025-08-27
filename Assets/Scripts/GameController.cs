@@ -136,11 +136,11 @@ public abstract class GameController : UIController {
         DelayAction(( ) => {
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.WIN);
             SpawnConfettiParticles(Vector3.zero);
-        }, GAME_WIN_DELAY_SECONDS);
+        }, GAME_WIN_DELAY_SECONDS / 2f);
 
         DelayAction(( ) => {
             DisplayScreen(winScreen, onHalfway: ( ) => { Destroy(objectContainer.gameObject); });
-        }, GAME_WIN_DELAY_SECONDS * 1.5f);
+        }, GAME_WIN_DELAY_SECONDS);
     }
 
     /// <summary>

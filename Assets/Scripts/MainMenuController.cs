@@ -25,17 +25,6 @@ public class MainMenuController : UIController {
         mainScreen = ui.Q<VisualElement>("MainScreen");
         mainScreen.style.visibility = Visibility.Hidden;
 
-        // Set the greeting label text based on the time of day
-        greetingLabel = ui.Q<Label>("GreetingLabel");
-        DateTime currentTime = DateTime.Now;
-        if (currentTime.Hour >= 5 && currentTime.Hour < 12) {
-            greetingLabel.text = "Good morning!";
-        } else if (currentTime.Hour >= 12 && currentTime.Hour < 17) {
-            greetingLabel.text = "Good afternoon!";
-        } else {
-            greetingLabel.text = "Good evening!";
-        }
-
         popupOverlay.RegisterCallback<ClickEvent>((e) => {
             if ((VisualElement) e.target == popupOverlay) {
                 HideCurrentPopup( );

@@ -1,5 +1,9 @@
 # Puff Dodge Changelog
 
+## v0.2.1 - Unreleased
+* Made vape items that the player did not destroy at the end of the game delay when they disappear
+	* This makes it clearer to the player what vape they actually got points from
+
 ## v0.2.0 - August 22nd, 2025
 * Added puff particle effect when a vape item is destroyed
 * Added points popups when destroying a vape item

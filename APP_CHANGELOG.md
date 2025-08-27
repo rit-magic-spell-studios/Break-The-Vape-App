@@ -3,7 +3,8 @@
 ## v0.5.2 - Unreleased
 * Added music and sound effect mute buttons on the main menu
 * Updated the game buttons on the main menu with art assets
-* Miscellaneous other UI updates
+* Miscellaneous other UI updates and tweaks
+* Updated some sound effects
 
 ## v0.5.1 - August 22nd, 2025
 * Added about page

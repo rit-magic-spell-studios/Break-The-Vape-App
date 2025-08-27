@@ -58,32 +58,33 @@ public class VapeItem : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Destroy this vape item with a slice. This spawns particle effects and gives points to the player
-    /// </summary>
-    /// <param name="givePoints">Whether or not to give points to the player in this function</param>
-    public void Slice(bool givePoints = true) {
-        puffDodgeController.VapeItems.Remove(this);
-        if (givePoints) {
-            puffDodgeController.DestroyedItems++;
-            SoundManager.Instance.PlaySoundEffect(SoundEffectType.VAPE_BROKEN);
-
-            // Give double points for destroying a vape item close to the lung character
-            int pointMult = 1;
-            if (Vector2.Distance(lungCharacter.transform.position, transform.position) <= doublePointsDistance) {
-                pointMult = 2;
-            }
-            int gainedPoints = Mathf.Max((vapeDestroyPoints - (lungCharacter.TotalHits * lungHitPointDecrease)) * pointMult, vapeMinPoints);
-            puffDodgeController.AddPoints(transform.position, gainedPoints);
-        }
-
+    private void OnDestroy( ) {
         // Spawn poof particles when this vape item is destroyed
+        spriteRenderer.color = Color.clear;
+        polygonCollider2D.enabled = false;
         ParticleSystem vapeParticles = Instantiate(vapePoofParticlesPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>( );
         ParticleSystem.MainModule main = vapeParticles.main;
         main.startColor = colors[spriteIndex];
         vapeParticles.Play( );
 
-        // Destroy this object
+        puffDodgeController.VapeItems.Remove(this);
+    }
+
+    /// <summary>
+    /// Destroy this vape item with a slice. This spawns particle effects and gives points to the player
+    /// </summary>
+    public void Slice( ) {
+        puffDodgeController.DestroyedItems++;
+        SoundManager.Instance.PlaySoundEffect(SoundEffectType.VAPE_BROKEN);
+
+        // Give double points for destroying a vape item close to the lung character
+        int pointMult = 1;
+        if (Vector2.Distance(lungCharacter.transform.position, transform.position) <= doublePointsDistance) {
+            pointMult = 2;
+        }
+        int gainedPoints = Mathf.Max((vapeDestroyPoints - (lungCharacter.TotalHits * lungHitPointDecrease)) * pointMult, vapeMinPoints);
+        puffDodgeController.AddPoints(transform.position, gainedPoints);
+
         Destroy(gameObject);
     }
 }
