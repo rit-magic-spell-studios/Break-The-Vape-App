@@ -18,7 +18,7 @@ public abstract class UIController : MonoBehaviour {
     public const float SCREEN_TRANSITION_SECONDS = 0.25f;
     public const float POPUP_TRANSITION_SECONDS = 0.5f;
     public const float GAME_WIN_DELAY_SECONDS = 1.5f;
-    public const int PLAY_GOAL_SECONDS = 15;
+    public const int PLAY_GOAL_SECONDS = 900;
     public static string LastSceneName { get; private set; }
 
     protected float cameraHalfWidth;

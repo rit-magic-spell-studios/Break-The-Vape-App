@@ -52,6 +52,7 @@ public class CheckInController : UIController {
     private List<Button> cravingCauseButtons;
     private List<Button> selectedCauseButtons;
 
+    private Button ritchCodeClearButton;
     private List<TextField> ritchCodeTextFields;
 
     public CheckInSessionData CheckInSessionData { get; private set; }
@@ -59,15 +60,20 @@ public class CheckInController : UIController {
     protected override void Awake( ) {
         base.Awake( );
 
+        // Get a reference to all of the screens in the check in scene
         splashScreen = ui.Q<VisualElement>("SplashScreen");
         checkInScreen = ui.Q<VisualElement>("CheckInScreen");
         ritchCodeScreen = ui.Q<VisualElement>("RITchCodeScreen");
 
+        // Get a reference to all of the check in elements
         checkInPopup = ui.Q<VisualElement>("CheckInPopup");
         checkInQuestion = ui.Q<Label>("CheckInQuestion");
         checkInSubtitle = ui.Q<Label>("CheckInSubtitle");
         formPageNumber = ui.Q<Label>("FormPageNumber");
+
+        // Set up the next button on the check in form
         ui.Q<Button>("NextButton").clicked += ( ) => {
+            // If the page is not complete, then do not proceed to the next form page
             if (!CheckForPageComplete( )) {
                 return;
             }
@@ -75,6 +81,7 @@ public class CheckInController : UIController {
             HideCurrentPopup(onComplete: ( ) => { GoToNextFormPage( ); });
         };
 
+        // Setup all demographic information buttons and elements
         demographicInfoContainer = ui.Q<VisualElement>("DemographicInfoContainer");
         ageButtonGroup = ui.Q<RadioButtonGroup>("AgeButtonGroup");
         environmentButtonGroup = ui.Q<RadioButtonGroup>("EnvironmentButtonGroup");
@@ -87,6 +94,7 @@ public class CheckInController : UIController {
             });
         }
 
+        // Setup all craving intensity buttons and elements
         cravingIntensityContainer = ui.Q<VisualElement>("CravingIntensityContainer");
         List<Button> cravingIntensityButtons = ui.Q<VisualElement>("CravingIntensityButtons").Query<Button>( ).ToList( );
         for (int i = 0; i < cravingIntensityButtons.Count; i++) {
@@ -97,6 +105,7 @@ public class CheckInController : UIController {
             });
         }
 
+        // Setup all craving cause buttons and elements
         cravingCauseContainer = ui.Q<VisualElement>("CravingCauseContainer");
         cravingCauseButtons = cravingCauseContainer.Query<Button>( ).ToList( );
         for (int i = 0; i < cravingCauseButtons.Count; i++) {
@@ -104,23 +113,79 @@ public class CheckInController : UIController {
         }
         selectedCauseButtons = new List<Button>( );
 
-        ui.Q<Button>("RITchCodeLoginButton").clicked += ( ) => { DisplayScreen(ritchCodeScreen); };
+        // Setup RITch code login and screen buttons
         ui.Q<Button>("GuestButton").clicked += SetupCheckInForm;
+        ui.Q<Button>("RITchCodeLoginButton").clicked += ( ) => {
+            DisplayScreen(ritchCodeScreen, onComplete: ( ) => {
+                ritchCodeTextFields[0].Focus( );
+                ritchCodeClearButton.style.visibility = Visibility.Hidden;
+            });
+        };
         ui.Q<Button>("RITchCodeBackButton").clicked += ( ) => { DisplayScreen(splashScreen); };
-        ui.Q<Button>("RITchCodeClearButton").clicked += ClearRITchCodeTextFields;
-        ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
+        ritchCodeClearButton = ui.Q<Button>("RITchCodeClearButton");
+        ritchCodeClearButton.clicked += ( ) => {
+            // Set the value of all the RITch code text fields to an empty string
+            for (int i = 0; i < ritchCodeTextFields.Count; i++) {
+                ritchCodeTextFields[i].value = "";
+            }
+
+            // Focus the leftmost text field
+            ritchCodeTextFields[0].Focus( );
+        };
+        ui.Q<Button>("RITchCodeSubmitButton").clicked += ( ) => {
+            // Add all text to a single string for the RITch code
+            string newRITchCode = "";
+            for (int i = 0; i < ritchCodeTextFields.Count; i++) {
+                newRITchCode += ritchCodeTextFields[i].value;
+            }
+
+            // Make sure the RITch code is valid
+            // If it is not, flash the prompt text to let the user know they have entered something wrong
+            if (!DataManager.Instance.CheckForValidRITchCode(newRITchCode)) {
+                FlashTextValidation(new List<Label>( ) { ui.Q<Label>("RITchCodePrompt") });
+                return;
+            }
+
+            // If there are currently elements animating, also do nothing
+            if (animatingVisualElements.Count > 0) {
+                return;
+            }
+
+            // Set the app session RITch code and start the check in form
+            DataManager.AppSessionData.RITchCode = newRITchCode;
+            SetupCheckInForm( );
+        };
+
+        // Setup RITch code text fields
+        // There is an individual text field for every character of the RITch code
         ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
         for (int i = 0; i < ritchCodeTextFields.Count; i++) {
             ritchCodeTextFields[i].RegisterValueChangedCallback((e) => {
+                // Check to see if any RITch code text field has a value in it
+                // If so, enable the clear RITch code button
+                bool textFieldsHaveValue = false;
+                for (int j = 0; j < ritchCodeTextFields.Count; j++) {
+                    if (ritchCodeTextFields[j].value.Length > 0) {
+                        textFieldsHaveValue = true;
+                        break;
+                    }
+                }
+                ritchCodeClearButton.style.visibility = (textFieldsHaveValue ? Visibility.Visible : Visibility.Hidden);
+
+                // Get a reference to the current text field that had its value changed
                 TextField textField = (TextField) e.currentTarget;
                 int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
 
+                // If the new value is a blank string, then the user just deleted whatever they had in the text field
+                // Focus the text field to the left of this one
                 if (e.newValue == "") {
-                    TextField previousTextField = ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)];
-                    previousTextField.Focus( );
+                    ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
                     return;
                 }
 
+                // If the new value is not a blank string, check to see if it is alphanumeric
+                // If it is, then focus the text field to the right of this one
+                // If not, then set this text field's value back to a blank string
                 if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
                     ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
                 } else {
@@ -128,7 +193,6 @@ public class CheckInController : UIController {
                 }
             });
         }
-        ritchCodeTextFields[0].Focus( );
     }
 
     protected override void Start( ) {
@@ -157,40 +221,6 @@ public class CheckInController : UIController {
             toggledOption.AddToClassList("uofr-button-selected");
             selectedCauseButtons.Add(toggledOption);
         }
-    }
-
-
-    /// <summary>
-    /// Clear all of the RITch code text fields
-    /// </summary>
-    private void ClearRITchCodeTextFields( ) {
-        for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-            ritchCodeTextFields[i].value = "";
-        }
-
-        ritchCodeTextFields[0].Focus( );
-    }
-
-    /// <summary>
-    /// Submit the currently typed RITch code and load its data
-    /// </summary>
-    private void SubmitRITchCode( ) {
-        string newRITchCode = "";
-        for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-            newRITchCode += ritchCodeTextFields[i].value;
-        }
-
-        if (!DataManager.Instance.CheckForValidRITchCode(newRITchCode)) {
-            FlashTextValidation(new List<Label>( ) { ui.Q<Label>("RITchCodePrompt") });
-            return;
-        }
-
-        if (animatingVisualElements.Count > 0) {
-            return;
-        }
-
-        DataManager.AppSessionData.RITchCode = newRITchCode;
-        SetupCheckInForm( );
     }
 
     private void SetupCheckInForm( ) {

@@ -55,10 +55,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f5c9064c36c8cd642b6c555256b5b664, type: 3}
   - {fileID: 8300000, guid: 8a6cba9d41c8341468ad668a6b0bf1ef, type: 3}
   monsterDefeated:
-  - {fileID: 8300000, guid: 19b9e884f0c302e41bd95a8e541cdde8, type: 3}
-  - {fileID: 8300000, guid: 8b887d8c3249b2d4dba8237e79bb0920, type: 3}
+  - {fileID: 8300000, guid: d23e09b7a7c019d41ae7e6b0049952b6, type: 3}
+  - {fileID: 8300000, guid: f57e7e10afd79ae49877b0f7b9f629c2, type: 3}
+  - {fileID: 8300000, guid: 4f33e871cdf19be46a828ec1d5888367, type: 3}
+  - {fileID: 8300000, guid: 5843d9c8c723be141a38d70e16c0b9b8, type: 3}
   lungDamage:
-  - {fileID: 8300000, guid: 3b224ff4813d0a042a7b88f54b7afd16, type: 3}
+  - {fileID: 8300000, guid: 3e126c99e0f9d31459eacd2226f3a07d, type: 3}
+  - {fileID: 8300000, guid: bff1742bb07d1674687e171d59c6ebe1, type: 3}
+  - {fileID: 8300000, guid: 505c53c630f95474e9034544b4fa901f, type: 3}
   vapeBroken:
   - {fileID: 8300000, guid: b0ffab1aa21c5ae4ebe11ef5f87d4f3b, type: 3}
   correct:
@@ -68,7 +72,7 @@ MonoBehaviour:
   chainExtend:
   - {fileID: 8300000, guid: bcc55a98845b6274cadfd626c7870e25, type: 3}
   chainEnd:
-  - {fileID: 8300000, guid: 747905b72a2bf064f990afa5e1116846, type: 3}
+  - {fileID: 8300000, guid: 415a51eaf680ee740969a5c3dd73da00, type: 3}
   flipCard:
   - {fileID: 8300000, guid: a95931b08112e0347926a7b433fc541c, type: 3}
   - {fileID: 8300000, guid: 822f1842fa33e0a4888375806d6dd7ac, type: 3}

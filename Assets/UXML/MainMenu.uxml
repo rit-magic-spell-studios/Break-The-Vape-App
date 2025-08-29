@@ -3,7 +3,7 @@
     <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Popups/PlayGoalInfoPopup.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoPopup" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <ui:VisualElement class="uofr-background">
-        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; visibility: hidden;">
+        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; visibility: visible;">
             <ui:VisualElement class="uofr-container uofr-safe-area__top-padding" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/BreakTheVape_Title_Horizontal.png?fileID=21300000&amp;guid=476d1730456791a42bb152ce263ca302&amp;type=3#BreakTheVape_Title_Horizontal&quot;); -unity-background-scale-mode: scale-to-fit;" />
@@ -39,7 +39,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: visible;">
+        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;">
             <ui:VisualElement class="uofr-padding uofr-safe-area__top-padding" style="flex-grow: 0; flex-direction: row;">
                 <ui:Button name="AboutBackButton" class="uofr-button uofr-button-square">
                     <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
@@ -95,7 +95,7 @@
                 </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
+        <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: flex; background-color: rgba(0, 0, 0, 0.75);">
             <ui:VisualElement name="LogOutPopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Are you sure?" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-small" />
@@ -140,19 +140,17 @@
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="PlayGoalCompletePopup" class="uofr-container " style="display: none;">
-                <ui:Label text="Final Score" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
-                <ui:Label text="1021 pts" name="FinalScoreLabel" class="uofr-title-medium" />
-                <ui:VisualElement class="uofr-space-large" />
+            <ui:VisualElement name="PlayGoalCompletePopup" class="uofr-container " style="display: flex;">
+                <ui:Label text="You were distracted for 15 minutes!" class="uofr-title-medium" />
+                <ui:VisualElement class="uofr-space-medium" />
                 <ui:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PlayGoalComplete_Art.jpg?fileID=21300000&amp;guid=5ed1fa0832702b443ab05cbb02370187&amp;type=3#PlayGoalComplete_Art&quot;); -unity-background-scale-mode: scale-and-crop; width: 60%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-top: 60%; padding-bottom: 0; align-self: center;" />
-                <ui:VisualElement class="uofr-space-large" />
-                <ui:Label text="Congratulations!" class="uofr-title-medium" />
-                <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="You completed your 15 minute play goal!" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
-                <ui:VisualElement class="uofr-space-small" />
+                <ui:VisualElement class="uofr-space-medium" />
                 <ui:Label text="Well done! Being distracted for stretches of time like this can help lower your cravings." class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Label text="Start again to see how many points you can earn, or go enjoy some healthy breathing!" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
+                <ui:VisualElement class="uofr-space-medium" />
+                <ui:Label text="Final Score" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
+                <ui:Label text="1021 pts" name="FinalScoreLabel" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:Button text="Restart" name="RestartSessionButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />
