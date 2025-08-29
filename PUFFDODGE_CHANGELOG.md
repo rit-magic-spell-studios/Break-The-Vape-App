@@ -1,6 +1,6 @@
 # Puff Dodge Changelog
 
-## v0.2.1 - Unreleased
+## v0.2.1 - August 27th, 2025
 * Made vape items that the player did not destroy at the end of the game delay when they disappear
 	* This makes it clearer to the player what vape they actually got points from
 

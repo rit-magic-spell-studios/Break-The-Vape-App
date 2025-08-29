@@ -1,10 +1,21 @@
 # App Changelog
 
-## v0.5.2 - Unreleased
+## v0.5.2 - August 29th, 2025
 * Added music and sound effect mute buttons on the main menu
 * Updated the game buttons on the main menu with art assets
 * Miscellaneous other UI updates and tweaks
-* Updated some sound effects
+	* Changed wording and layout of about page
+	* Changed wording and layout of the play goal complete popup
+	* Other miscellaneous changes
+* Updated sound effects
+	* New monster defeat sounds
+	* New chain complete sound for Not So Tasty
+	* Other miscellaneous changes
+* **Game Versions**
+  * Crave Smash [v0.6.3](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
+  * Puff Dodge [v0.2.1](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 27th, 2025)
+  * Not So Tasty [v0.3.2](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 29th, 2025)
+  * Match And Catch [v0.4.2](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 27th, 2025)
 
 ## v0.5.1 - August 22nd, 2025
 * Added about page
