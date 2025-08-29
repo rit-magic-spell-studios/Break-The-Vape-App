@@ -95,7 +95,7 @@
                 </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: flex; background-color: rgba(0, 0, 0, 0.75);">
+        <ui:VisualElement name="PopupOverlay" class="uofr-padding-overlay" style="display: none; background-color: rgba(0, 0, 0, 0.75);">
             <ui:VisualElement name="LogOutPopup" class="uofr-container " style="display: none;">
                 <ui:Label text="Are you sure?" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-small" />
@@ -140,7 +140,7 @@
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="PlayGoalCompletePopup" class="uofr-container " style="display: flex;">
+            <ui:VisualElement name="PlayGoalCompletePopup" class="uofr-container " style="display: none;">
                 <ui:Label text="You were distracted for 15 minutes!" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PlayGoalComplete_Art.jpg?fileID=21300000&amp;guid=5ed1fa0832702b443ab05cbb02370187&amp;type=3#PlayGoalComplete_Art&quot;); -unity-background-scale-mode: scale-and-crop; width: 60%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-top: 60%; padding-bottom: 0; align-self: center;" />

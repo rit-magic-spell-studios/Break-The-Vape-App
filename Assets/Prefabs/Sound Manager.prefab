@@ -60,9 +60,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f33e871cdf19be46a828ec1d5888367, type: 3}
   - {fileID: 8300000, guid: 5843d9c8c723be141a38d70e16c0b9b8, type: 3}
   lungDamage:
-  - {fileID: 8300000, guid: 3e126c99e0f9d31459eacd2226f3a07d, type: 3}
-  - {fileID: 8300000, guid: bff1742bb07d1674687e171d59c6ebe1, type: 3}
-  - {fileID: 8300000, guid: 505c53c630f95474e9034544b4fa901f, type: 3}
+  - {fileID: 8300000, guid: af048b99f8592054b84717f523f84340, type: 3}
+  - {fileID: 8300000, guid: bbb70191f34733444a6719132a82e87d, type: 3}
+  - {fileID: 8300000, guid: ba8e149d160da9f438aa57b5e28e9d6e, type: 3}
   vapeBroken:
   - {fileID: 8300000, guid: b0ffab1aa21c5ae4ebe11ef5f87d4f3b, type: 3}
   correct:
