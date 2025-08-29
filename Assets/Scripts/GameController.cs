@@ -64,11 +64,7 @@ public abstract class GameController : UIController {
             });
         }
 
-        popupOverlay.RegisterCallback<ClickEvent>((e) => {
-            if ((VisualElement) e.target == popupOverlay) {
-                HideCurrentPopup( );
-            }
-        });
+        popupOverlay.RegisterCallback<ClickEvent>(OnPopupOverlayClick);
 
         gameTutorialPopup = ui.Q<VisualElement>("GameTutorialPopup");
         ui.Q<Button>("PlayButton").clicked += ( ) => { HideCurrentPopup( ); };
@@ -91,6 +87,11 @@ public abstract class GameController : UIController {
             string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
             ui.Q<Label>("RadialProgressBarLabel").text = timerString;
             ui.Q<RadialProgress>("RadialProgressBar").Progress = DataManager.AppSessionData.TotalTimeSeconds / PLAY_GOAL_SECONDS * 100f;
+            
+            if (secondsRemaining == 0) {
+                ui.Q<Button>("PlayAgainButton").style.display = DisplayStyle.None;
+                ui.Q<VisualElement>("ButtonSpacer").style.display = DisplayStyle.None;
+            }
         };
         GameSessionData.OnPointsEarnedChange += ( ) => {
             ui.Q<Label>("ScoreLabel").text = $"Score: <b>{GameSessionData.PointsEarned:N0} pts</b>";

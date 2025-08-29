@@ -111,8 +111,24 @@ public class CheckInController : UIController {
         ui.Q<Button>("RITchCodeSubmitButton").clicked += SubmitRITchCode;
         ritchCodeTextFields = ritchCodeScreen.Query<TextField>( ).ToList( );
         for (int i = 0; i < ritchCodeTextFields.Count; i++) {
-            ritchCodeTextFields[i].RegisterValueChangedCallback(CheckTextFieldForAlphanumericValue);
+            ritchCodeTextFields[i].RegisterValueChangedCallback((e) => {
+                TextField textField = (TextField) e.currentTarget;
+                int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
+
+                if (e.newValue == "") {
+                    TextField previousTextField = ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)];
+                    previousTextField.Focus( );
+                    return;
+                }
+
+                if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
+                    ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
+                } else {
+                    textField.value = "";
+                }
+            });
         }
+        ritchCodeTextFields[0].Focus( );
     }
 
     protected override void Start( ) {
@@ -175,26 +191,6 @@ public class CheckInController : UIController {
 
         DataManager.AppSessionData.RITchCode = newRITchCode;
         SetupCheckInForm( );
-    }
-
-    /// <summary>
-    /// Check a text field to ensure it has an alphanumeric value. If not, then clear its value. If yes, then move focus the new RITch code text field
-    /// </summary>
-    /// <param name="e">Event information about the changed value of the text field</param>
-    private void CheckTextFieldForAlphanumericValue(ChangeEvent<string> e) {
-        TextField textField = (TextField) e.currentTarget;
-        int textFieldIndex = ritchCodeTextFields.IndexOf(textField);
-
-        if (e.newValue == "") {
-            ritchCodeTextFields[Mathf.Max(textFieldIndex - 1, 0)].Focus( );
-            return;
-        }
-
-        if (e.newValue.All(x => char.IsLetterOrDigit(x))) {
-            ritchCodeTextFields[Mathf.Min(textFieldIndex + 1, ritchCodeTextFields.Count - 1)].Focus( );
-        } else {
-            textField.value = "";
-        }
     }
 
     private void SetupCheckInForm( ) {

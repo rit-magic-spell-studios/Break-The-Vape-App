@@ -3,11 +3,9 @@
     <ui:Template name="PlayGoalInfoScreen" src="project://database/Assets/UXML/Templates/Popups/PlayGoalInfoPopup.uxml?fileID=9197481963319205126&amp;guid=e3355d632383fd5498b23a69579374f6&amp;type=3#PlayGoalInfoPopup" />
     <Style src="project://database/Assets/USS/Index.uss?fileID=7433441132597879392&amp;guid=e757f35284332504fb6b859fbd123015&amp;type=3#Index" />
     <ui:VisualElement class="uofr-background">
-        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; visibility: visible;">
+        <ui:VisualElement name="MainScreen" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; visibility: hidden;">
             <ui:VisualElement class="uofr-container uofr-safe-area__top-padding" style="border-top-left-radius: 0; border-top-right-radius: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0;">
                 <ui:VisualElement style="flex-direction: row;">
-                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Smile.png?fileID=21300000&amp;guid=5a16d8e1dac92f140b4fcacab18b650a&amp;type=3#Smile&quot;); -unity-background-scale-mode: scale-to-fit; width: 100px;" />
-                    <ui:VisualElement class="uofr-space-small" />
                     <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/BreakTheVape_Title_Horizontal.png?fileID=21300000&amp;guid=476d1730456791a42bb152ce263ca302&amp;type=3#BreakTheVape_Title_Horizontal&quot;); -unity-background-scale-mode: scale-to-fit;" />
                     <ui:VisualElement class="uofr-space-large" />
                     <ui:Button name="MenuButton" class="uofr-button-square uofr-button">
@@ -41,7 +39,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: hidden;">
+        <ui:VisualElement name="AboutScreen" style="background-color: rgb(255, 255, 255); position: absolute; top: 0; left: 0; right: 0; bottom: 0; visibility: visible;">
             <ui:VisualElement class="uofr-padding uofr-safe-area__top-padding" style="flex-grow: 0; flex-direction: row;">
                 <ui:Button name="AboutBackButton" class="uofr-button uofr-button-square">
                     <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/Icons/Arrow_Left.png?fileID=21300000&amp;guid=5b789818d6bdc46438b2fef401a23024&amp;type=3#Arrow_Left&quot;);" />
@@ -50,16 +48,17 @@
                 <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding" style="justify-content: flex-start; display: flex;">
-                <ui:ScrollView class="uofr-scroll-view" style="flex-grow: 1;">
-                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); -unity-background-scale-mode: scale-to-fit; min-height: 100px;" />
+                <ui:ScrollView mouse-wheel-scroll-size="6" class="uofr-scroll-view" style="flex-grow: 1;">
+                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/BreakTheVape_Title.png?fileID=21300000&amp;guid=804afd8f374123a4ba44b900fa6fdc92&amp;type=3#BreakTheVape_Title&quot;); height: 300px; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:VisualElement class="uofr-hr" />
+                    <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); -unity-background-scale-mode: scale-to-fit; min-height: 150px;" />
                     <ui:VisualElement class="uofr-space-medium" />
                     <ui:Label text="RCORP - Rural Center of Excellence on SUD Prevention" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Caroline Easton, Ph.D." class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="Sun Mi Kim, M.D., Ph.D." class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:VisualElement class="uofr-hr" />
-                    <ui:Label text="Produced by students at" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
-                    <ui:VisualElement class="uofr-space-medium" />
-                    <ui:VisualElement style="min-height: 100px; background-image: url(&quot;project://database/Assets/Sprites/RITMAGIC_Logo.png?fileID=21300000&amp;guid=948a90759f372bc4b88658e9fce05a7b&amp;type=3#RITMAGIC_Logo&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label text="Produced by students at" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold; -unity-text-align: upper-center;" />
+                    <ui:VisualElement style="min-height: 150px; background-image: url(&quot;project://database/Assets/Sprites/RITMAGIC_Logo.png?fileID=21300000&amp;guid=948a90759f372bc4b88658e9fce05a7b&amp;type=3#RITMAGIC_Logo&quot;); -unity-background-scale-mode: scale-to-fit;" />
                     <ui:VisualElement class="uofr-space-medium" />
                     <ui:Label text="Game Design and Development" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Frank Alfano" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
@@ -75,8 +74,10 @@
                     <ui:VisualElement class="uofr-space-medium" />
                     <ui:Label text="Production" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Kevin McNulty" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:VisualElement class="uofr-hr" />
+                    <ui:Label text="Advisors" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold; -unity-text-align: upper-center;" />
                     <ui:VisualElement class="uofr-space-medium" />
-                    <ui:Label text="Game Design and Development Advisors" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
+                    <ui:Label text="Game Design and Development" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Jeongsoo Kim, David Negrin" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:VisualElement class="uofr-space-medium" />
                     <ui:Label text="Producer" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
@@ -84,11 +85,11 @@
                     <ui:VisualElement class="uofr-space-medium" />
                     <ui:Label text="Project Director" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="Diane C. Linnet" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97); text-overflow: ellipsis;" />
-                    <ui:VisualElement class="uofr-space-medium" />
+                    <ui:VisualElement class="uofr-hr" />
                     <ui:Label text="App Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="CS v0.6.3&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                    <ui:Label text="M&amp;C v0.4.1&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="M&amp;C v0.4.2&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="NST v0.3.1&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="PD v0.2.0&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                 </ui:ScrollView>
@@ -143,14 +144,15 @@
                 <ui:Label text="Final Score" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:Label text="1021 pts" name="FinalScoreLabel" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-large" />
-                <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/Icons/Big%20Smile.png?fileID=21300000&amp;guid=3a949132da27b894fad2fff1e5ca54e8&amp;type=3#Big Smile&quot;); height: 300px; -unity-background-scale-mode: scale-to-fit;" />
+                <ui:VisualElement class="uofr-container" style="background-image: url(&quot;project://database/Assets/Sprites/PlayGoalComplete_Art.jpg?fileID=21300000&amp;guid=5ed1fa0832702b443ab05cbb02370187&amp;type=3#PlayGoalComplete_Art&quot;); -unity-background-scale-mode: scale-and-crop; width: 60%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-top: 60%; padding-bottom: 0; align-self: center;" />
                 <ui:VisualElement class="uofr-space-large" />
                 <ui:Label text="Congratulations!" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Label text="You completed your 15 minute play goal!" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
                 <ui:VisualElement class="uofr-space-small" />
-                <ui:Label text="Being distracted for stretches like this can help lower your cravings. Feel free to start again to see how many points you can earn, or finish this play session and enjoy healthy breathing!" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
+                <ui:Label text="Well done! Being distracted for stretches of time like this can help lower your cravings." class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-small" />
+                <ui:Label text="Start again to see how many points you can earn, or go enjoy some healthy breathing!" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:Button text="Restart" name="RestartSessionButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />

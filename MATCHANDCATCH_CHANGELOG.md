@@ -1,6 +1,6 @@
 # Match and Catch Changelog
 
-## v0.4.2 - Unreleased
+## v0.4.2 - August 28th, 2025
 * Increased the speed of animations
 * Removed old card assets
 

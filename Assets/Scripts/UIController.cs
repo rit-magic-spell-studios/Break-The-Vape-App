@@ -18,7 +18,7 @@ public abstract class UIController : MonoBehaviour {
     public const float SCREEN_TRANSITION_SECONDS = 0.25f;
     public const float POPUP_TRANSITION_SECONDS = 0.5f;
     public const float GAME_WIN_DELAY_SECONDS = 1.5f;
-    public const int PLAY_GOAL_SECONDS = 900;
+    public const int PLAY_GOAL_SECONDS = 15;
     public static string LastSceneName { get; private set; }
 
     protected float cameraHalfWidth;
@@ -260,48 +260,6 @@ public abstract class UIController : MonoBehaviour {
     }
 
     /// <summary>
-    /// Animate a visual element's background color style variable using DOTween
-    /// </summary>
-    /// <param name="element">The visual element to animate</param>
-    /// <param name="startColor">The starting background color of the visual element</param>
-    /// <param name="endColor">The ending background color of the visual element</param>
-    /// <param name="durationSeconds">The time in seconds it takes to complete the animation</param>
-    /// <param name="disableOnComplete">Whether or not to disable the visual element when the animation is completed</param>
-    /// <param name="setDefaultsBeforeTweenStart">Whether or not to set default values of the visual element inside this function or inside the tween's OnStart function</param>
-    /// <param name="onComplete">An optional callback for when this tween is completed</param>
-    /// <returns>A reference to the Tween that is animating the visual element</returns>
-    private Tween AnimateElementBackgroundColor(VisualElement element, Color startColor, Color endColor, float durationSeconds, bool disableOnComplete = false, bool setDefaultsBeforeTweenStart = true, Action onComplete = null) {
-        Action onStart = ( ) => {
-            element.style.display = DisplayStyle.Flex;
-            element.style.backgroundColor = new StyleColor(startColor);
-            animatingVisualElements.Add(element);
-        };
-
-        if (setDefaultsBeforeTweenStart) {
-            onStart.Invoke( );
-        }
-
-        return DOTween.To(
-            ( ) => element.resolvedStyle.backgroundColor,
-            (v) => element.style.backgroundColor = new StyleColor(v),
-            endColor,
-            durationSeconds)
-            .SetEase(Ease.InOutCubic)
-            .OnStart(( ) => {
-                if (!setDefaultsBeforeTweenStart) {
-                    onStart.Invoke( );
-                }
-            })
-            .OnComplete(( ) => {
-                if (disableOnComplete) {
-                    element.style.display = DisplayStyle.None;
-                }
-                animatingVisualElements.Remove(element);
-                onComplete?.Invoke( );
-            });
-    }
-
-    /// <summary>
     /// Animate a visual element's opacity style variable using DOTween
     /// </summary>
     /// <param name="element">The visual element to animate</param>
@@ -383,6 +341,12 @@ public abstract class UIController : MonoBehaviour {
                 animatingVisualElements.Remove(element);
                 onComplete?.Invoke( );
             });
+    }
+
+    protected void OnPopupOverlayClick(EventBase e) {
+        if ((VisualElement) e.target == popupOverlay) {
+            HideCurrentPopup( );
+        }
     }
 
     /// <summary>

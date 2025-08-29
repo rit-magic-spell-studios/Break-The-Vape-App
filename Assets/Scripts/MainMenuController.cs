@@ -25,11 +25,7 @@ public class MainMenuController : UIController {
         mainScreen = ui.Q<VisualElement>("MainScreen");
         mainScreen.style.visibility = Visibility.Hidden;
 
-        popupOverlay.RegisterCallback<ClickEvent>((e) => {
-            if ((VisualElement) e.target == popupOverlay) {
-                HideCurrentPopup( );
-            }
-        });
+        popupOverlay.RegisterCallback<ClickEvent>(OnPopupOverlayClick);
 
         ui.Q<Button>("CraveSmashButton").clicked += ( ) => { GoToScene("CraveSmash"); };
         ui.Q<Button>("MatchAndCatchButton").clicked += ( ) => { GoToScene("MatchAndCatch"); };
@@ -89,6 +85,7 @@ public class MainMenuController : UIController {
             if (secondsRemaining == 0) {
                 isPlayGoalComplete = true;
                 DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"), checkForAnimations: false);
+                popupOverlay.UnregisterCallback<ClickEvent>(OnPopupOverlayClick);
             } else {
                 string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
                 ui.Q<Label>("RadialProgressBarLabel").text = timerString;

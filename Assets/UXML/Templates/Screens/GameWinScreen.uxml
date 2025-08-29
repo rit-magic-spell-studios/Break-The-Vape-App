@@ -22,7 +22,7 @@
             <engine:VisualElement class="uofr-space-large" />
             <engine:VisualElement>
                 <engine:Button text="Play Again" name="PlayAgainButton" class="uofr-button uofr-button-highlight" />
-                <engine:VisualElement class="uofr-space-small" style="flex-grow: 1;" />
+                <engine:VisualElement name="ButtonSpacer" class="uofr-space-small" style="flex-grow: 1;" />
                 <engine:Button text="Home" name="HomeButton" class="uofr-button" />
             </engine:VisualElement>
         </engine:VisualElement>
