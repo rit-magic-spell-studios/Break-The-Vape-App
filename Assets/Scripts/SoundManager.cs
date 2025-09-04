@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 public enum SoundEffectType {
-    WIN, BUTTON_CLICK, MONSTER_HURT, MONSTER_DEFEATED, LUNG_DAMAGE, VAPE_BROKEN, CORRECT, CHAIN_START, CHAIN_EXTEND, CHAIN_END, FLIP_CARD, INCORRECT_MATCH
+    WIN, BUTTON_CLICK, MONSTER_HURT, MONSTER_DEFEATED, LUNG_DAMAGE, VAPE_BROKEN, CORRECT, CHAIN_START, CHAIN_EXTEND, CHAIN_END, FLIP_CARD, INCORRECT_MATCH, PLAY_GOAL_COMPLETE
 }
 
 public class SoundManager : Singleton<SoundManager> {
@@ -20,6 +19,7 @@ public class SoundManager : Singleton<SoundManager> {
     [SerializeField] private List<AudioClip> chainEnd;
     [SerializeField] private List<AudioClip> flipCard;
     [SerializeField] private List<AudioClip> incorrectMatch;
+    [SerializeField] private List<AudioClip> playGoalComplete;
     [SerializeField] private AudioClip backgroundMusic;
     [Space]
     [SerializeField, Range(0f, 2f)] private float backgroundMusicVolume = 1;
@@ -62,7 +62,7 @@ public class SoundManager : Singleton<SoundManager> {
 
         // Uses the same order as the SoundEffectType enum
         soundEffects = new List<List<AudioClip>>( ) {
-            win, buttonClick, monsterHurt, monsterDefeated, lungDamage, vapeBroken, correct, chainStart, chainExtend, chainEnd, flipCard, incorrectMatch
+            win, buttonClick, monsterHurt, monsterDefeated, lungDamage, vapeBroken, correct, chainStart, chainExtend, chainEnd, flipCard, incorrectMatch, playGoalComplete
         };
 
         soundEffectSources = new List<AudioSource>( );

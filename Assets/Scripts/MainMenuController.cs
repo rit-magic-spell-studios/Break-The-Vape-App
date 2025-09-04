@@ -86,6 +86,7 @@ public class MainMenuController : UIController {
                 isPlayGoalComplete = true;
                 DisplayBasicPopup(ui.Q<VisualElement>("PlayGoalCompletePopup"), checkForAnimations: false);
                 popupOverlay.UnregisterCallback<ClickEvent>(OnPopupOverlayClick);
+                SoundManager.Instance.PlaySoundEffect(SoundEffectType.PLAY_GOAL_COMPLETE);
             } else {
                 string timerString = string.Format("{0:0}:{1:00}", (int) secondsRemaining / 60, (int) secondsRemaining % 60);
                 ui.Q<Label>("RadialProgressBarLabel").text = timerString;
