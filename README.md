@@ -12,7 +12,7 @@ This is a repository for the MAGIC Spell Studios collaboration with the Universi
 * Y: Significant or major update
 * Z: Bug fix or small update
 
-## Controls
+## How To Play
 ### Crave Smash
 Tap the monster to make them smaller. Over time the monster will gain back health and grow in size. Tap as fast as you can until the monster has disappeared, then you win!
 
@@ -24,3 +24,11 @@ Tap cards to flip them over. Once two cards are flipped over, they are checked t
 
 ### Puff Dodge
 Hazardous items will fly in from the sides of the screen that you can swipe across the screen to destroy. Destroy the items to protect your lungs at the bottom of the screen. Once 25 items are destroyed, you win!
+
+## Game Design Document
+https://docs.google.com/document/d/1s2heE0qHemPLkq0krbFDS80EHPxYFJep6Y7QegCWt68/edit?usp=sharing
+
+## Build Information
+* Web Build: Under the "docs" folder in the root of this repository. This is because the web version is being hosted through GitHub Pages
+* Android Build: Under the "Android Build" folder in the root of this repository
+* iOS Build: Under the "iOS Build" folder in the root of this repository

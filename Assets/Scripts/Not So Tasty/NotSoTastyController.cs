@@ -220,9 +220,8 @@ public class NotSoTastyController : GameController {
         chainLineRenderer.SetPositions(new Vector3[0]);
 
         if (ChainedTiles.Count >= minFruitChainLength) {
-            int linearPoints = ChainedTiles.Count * 5;
-            int expPoints = Mathf.RoundToInt(Mathf.Exp(0.69f * (ChainedTiles.Count - 1f)) + 4f);
-            AddPoints(ChainedTiles[^1].transform.position, Mathf.Min(1000, Mathf.Max(expPoints, linearPoints)));
+            int expPoints = Mathf.RoundToInt(5f * Mathf.Pow(2, ChainedTiles.Count - 1));
+            AddPoints(ChainedTiles[^1].transform.position, Mathf.Min(2000, expPoints));
             SoundManager.Instance.PlaySoundEffect(SoundEffectType.CHAIN_END);
 
             for (int i = 0; i < ChainedTiles.Count; i++) {

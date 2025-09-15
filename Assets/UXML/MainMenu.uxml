@@ -48,7 +48,7 @@
                 <ui:Button class="uofr-button uofr-button-square" style="visibility: hidden;" />
             </ui:VisualElement>
             <ui:VisualElement class="uofr-padding" style="justify-content: flex-start; display: flex;">
-                <ui:ScrollView mouse-wheel-scroll-size="6" class="uofr-scroll-view" style="flex-grow: 1;">
+                <ui:ScrollView mouse-wheel-scroll-size="0.1" class="uofr-scroll-view" style="flex-grow: 1;">
                     <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/BreakTheVape_Title.png?fileID=21300000&amp;guid=804afd8f374123a4ba44b900fa6fdc92&amp;type=3#BreakTheVape_Title&quot;); height: 300px; -unity-background-scale-mode: scale-to-fit;" />
                     <ui:VisualElement class="uofr-hr" />
                     <ui:VisualElement style="background-image: url(&quot;project://database/Assets/Sprites/UofR_Logo.png?fileID=21300000&amp;guid=3011425f7516df54082f0b2c642a696b&amp;type=3#UofR_Logo&quot;); -unity-background-scale-mode: scale-to-fit; min-height: 150px;" />
@@ -90,7 +90,7 @@
                     <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="CS v1.0.0&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="M&amp;C v1.0.0&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                    <ui:Label text="NST v1.0.0&#x9;&#x9;| 8-29-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="NST v1.0.0&#x9;| 8-29-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                     <ui:Label text="PD v1.0.0&#x9;&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                 </ui:ScrollView>
             </ui:VisualElement>

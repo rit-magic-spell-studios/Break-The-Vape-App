@@ -61,7 +61,7 @@ sysinfo.txt
 
 # Builds
 /.utmp/*
-*.apk
+# *.apk
 *.unitypackage
 *.aab
 *.app
