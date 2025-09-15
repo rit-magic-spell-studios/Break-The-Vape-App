@@ -42,6 +42,7 @@ public class CheckInController : UIController {
 
     private VisualElement demographicInfoContainer;
     private RadioButtonGroup ageButtonGroup;
+    private RadioButtonGroup genderButtonGroup;
     private RadioButtonGroup environmentButtonGroup;
     private Button selectedFrequencyButton;
 
@@ -84,6 +85,7 @@ public class CheckInController : UIController {
         // Setup all demographic information buttons and elements
         demographicInfoContainer = ui.Q<VisualElement>("DemographicInfoContainer");
         ageButtonGroup = ui.Q<RadioButtonGroup>("AgeButtonGroup");
+        genderButtonGroup = ui.Q<RadioButtonGroup>("GenderButtonGroup");
         environmentButtonGroup = ui.Q<RadioButtonGroup>("EnvironmentButtonGroup");
         List<Button> vapeFrequencyButtons = ui.Q<VisualElement>("VapeFrequencyButtons").Query<Button>( ).ToList( );
         for (int i = 0; i < vapeFrequencyButtons.Count; i++) {
@@ -116,10 +118,10 @@ public class CheckInController : UIController {
         // Setup RITch code login and screen buttons
         ui.Q<Button>("GuestButton").clicked += SetupCheckInForm;
         ui.Q<Button>("RITchCodeLoginButton").clicked += ( ) => {
-            DisplayScreen(ritchCodeScreen, onComplete: ( ) => {
-                ritchCodeTextFields[0].Focus( );
-                ritchCodeClearButton.style.visibility = Visibility.Hidden;
-            });
+            DisplayScreen(ritchCodeScreen,
+                onHalfway: ( ) => { ritchCodeClearButton.style.visibility = Visibility.Hidden; },
+                onComplete: ( ) => { ritchCodeTextFields[0].Focus( ); }
+            );
         };
         ui.Q<Button>("RITchCodeBackButton").clicked += ( ) => { DisplayScreen(splashScreen); };
         ritchCodeClearButton = ui.Q<Button>("RITchCodeClearButton");
@@ -236,7 +238,7 @@ public class CheckInController : UIController {
         checkInFormPages.Add(cravingCauseContainer);
         CurrentFormPageIndex = 0;
 
-        DisplayScreen(checkInScreen);
+        DisplayScreen(checkInScreen, onHalfway: ( ) => { ritchCodeClearButton.style.visibility = Visibility.Hidden; });
         DisplayBasicPopup(checkInPopup, checkForAnimations: false);
     }
 
@@ -264,6 +266,10 @@ public class CheckInController : UIController {
                 invalidLabels.Add(ageButtonGroup.Q<Label>( ));
             }
 
+            if (genderButtonGroup.value == -1) {
+                invalidLabels.Add(genderButtonGroup.Q<Label>( ));
+            }
+
             if (environmentButtonGroup.value == -1) {
                 invalidLabels.Add(environmentButtonGroup.Q<Label>( ));
             }
@@ -289,6 +295,7 @@ public class CheckInController : UIController {
 
     protected override void GoToScene(string sceneName) {
         DataManager.AppSessionData.UserData.Age = ageButtonGroup.choices.ToList( )[ageButtonGroup.value];
+        DataManager.AppSessionData.UserData.Gender = genderButtonGroup.choices.ToList( )[genderButtonGroup.value];
         DataManager.AppSessionData.UserData.Environment = environmentButtonGroup.choices.ToList( )[environmentButtonGroup.value];
         DataManager.AppSessionData.UserData.DaysVapedDuringPastWeek = int.Parse(selectedFrequencyButton.text);
         CheckInSessionData.CravingIntensity = int.Parse(selectedIntensityButton.text);

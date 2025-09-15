@@ -88,10 +88,10 @@
                     <ui:VisualElement class="uofr-hr" />
                     <ui:Label text="App Version" class="uofr-text-medium" style="flex-grow: 0; -unity-font-style: bold;" />
                     <ui:Label text="vX.X.X" name="VersionLabel" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                    <ui:Label text="CS v0.6.3&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                    <ui:Label text="M&amp;C v0.4.2&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                    <ui:Label text="NST v0.3.2&#x9;&#x9;| 8-29-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
-                    <ui:Label text="PD v0.2.1&#x9;&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="CS v1.0.0&#x9;&#x9;| 8-22-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="M&amp;C v1.0.0&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="NST v1.0.0&#x9;&#x9;| 8-29-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
+                    <ui:Label text="PD v1.0.0&#x9;&#x9;| 8-27-25" class="uofr-text-medium" style="flex-grow: 0; color: rgb(97, 97, 97);" />
                 </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -149,8 +149,7 @@
                 <ui:VisualElement class="uofr-space-small" />
                 <ui:Label text="Start again to see how many points you can earn, or go enjoy some healthy breathing!" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
                 <ui:VisualElement class="uofr-space-medium" />
-                <ui:Label text="Final Score" class="uofr-text-small" style="-unity-text-align: upper-center; color: rgb(97, 97, 97);" />
-                <ui:Label text="1021 pts" name="FinalScoreLabel" class="uofr-title-medium" />
+                <ui:Label text="Final Score: 1021 pts" name="FinalScoreLabel" class="uofr-title-medium" />
                 <ui:VisualElement class="uofr-space-medium" />
                 <ui:Button text="Restart" name="RestartSessionButton" class="uofr-button uofr-button-highlight " />
                 <ui:VisualElement class="uofr-space-small" />

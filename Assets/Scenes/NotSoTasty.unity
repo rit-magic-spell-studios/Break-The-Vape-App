@@ -216,8 +216,8 @@ MonoBehaviour:
   objectContainer: {fileID: 1638797484}
   tutorialPlayer: {fileID: 1765635767}
   tutorialVisual: {fileID: 8400000, guid: 8d9df1e2f2356f64e9967ca95601fd69, type: 2}
-  tutorialText: Connect fruits to reveal the hidden messages. Reveal them all to
-    win!
+  tutorialText: Connect 2 or more matching flavors to reveal hidden messages. Find
+    them all to win!
   chainLineRenderer: {fileID: 1000730420}
   tilePrefab: {fileID: 2663188817094848554, guid: dc616593069210547961393910400d33, type: 3}
   tileGridWidth: 6

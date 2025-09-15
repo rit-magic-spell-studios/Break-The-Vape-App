@@ -78,6 +78,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 822f1842fa33e0a4888375806d6dd7ac, type: 3}
   incorrectMatch:
   - {fileID: 8300000, guid: c441d44bb8f534944a4b3856c3f5c808, type: 3}
+  playGoalComplete:
+  - {fileID: 8300000, guid: 1b7f97e63becf7a479d6daf08d675db0, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 92714f13ba46b63489e809f7943d0894, type: 3}
   backgroundMusicVolume: 0.25
   soundEffectVolume: 0.5

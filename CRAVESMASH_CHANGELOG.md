@@ -1,6 +1,6 @@
 # Crave Smash Changelog
 
-## v0.6.3 - August 22nd, 2025
+## v1.0.0 - August 22nd, 2025
 * The crave monster now moves around randomly to make it harder to click on
 * Added sound effects
 * Updated onboarding tutorial gif

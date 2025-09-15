@@ -1,5 +1,16 @@
 # App Changelog
 
+## v1.0.0 - September 15th, 2025
+* Fixed minor UI bugs
+* Added gender demographic info to the check in form
+	* Gender was also added to the information that is data tracked
+* Added sound effect when the player completes their play goal
+* **Game Versions**
+  * Crave Smash [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
+  * Puff Dodge [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 27th, 2025)
+  * Not So Tasty [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 29th, 2025)
+  * Match And Catch [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 27th, 2025)
+
 ## v0.5.2 - August 29th, 2025
 * Added music and sound effect mute buttons on the main menu
 * Updated the game buttons on the main menu with art assets
@@ -12,10 +23,10 @@
 	* New chain complete sound for Not So Tasty
 	* Other miscellaneous changes
 * **Game Versions**
-  * Crave Smash [v0.6.3](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
-  * Puff Dodge [v0.2.1](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 27th, 2025)
-  * Not So Tasty [v0.3.2](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 29th, 2025)
-  * Match And Catch [v0.4.2](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 27th, 2025)
+  * Crave Smash [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
+  * Puff Dodge [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 27th, 2025)
+  * Not So Tasty [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 29th, 2025)
+  * Match And Catch [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 27th, 2025)
 
 ## v0.5.1 - August 22nd, 2025
 * Added about page
@@ -29,7 +40,7 @@
 	* This goes for the check in form as well as the post-game win screen form
 * The app now runs at 60fps on mobile platforms (Android/iOS)
 * **Game Versions**
-  * Crave Smash [v0.6.3](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
+  * Crave Smash [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
   * Puff Dodge [v0.2.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 22nd, 2025)
   * Not So Tasty [v0.3.1](https://github.com/qusr08/UofR-Games/blob/main/NOTSOTASTY_CHANGELOG.md) (August 22nd, 2025)
   * Match And Catch [v0.4.1](https://github.com/qusr08/UofR-Games/blob/main/MATCHANDCATCH_CHANGELOG.md) (August 22nd, 2025)

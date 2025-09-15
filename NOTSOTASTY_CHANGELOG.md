@@ -1,6 +1,6 @@
 # Not So Tasty Changelog
 
-## v0.3.2 - August 29th, 2025
+## v1.0.0 - August 29th, 2025
 * Added new animations for matching and destroying fruit
 * Player's score per fruit chain now goes up exponentially based on the length of the chain
 	* Takes the maximum of linearly increasing the score per fruit and the exponential gain

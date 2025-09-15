@@ -13,7 +13,7 @@
         </engine:VisualElement>
         <engine:VisualElement name="CheckInScreen" style="justify-content: flex-end; visibility: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
             <engine:VisualElement name="PopupOverlay" class="uofr-padding-overlay uofr-safe-area__bottom-padding" style="display: flex; justify-content: flex-end;">
-                <engine:VisualElement name="CheckInPopup" class="uofr-container" style="min-height: 50%; justify-content: space-between; max-height: 75%;">
+                <engine:VisualElement name="CheckInPopup" class="uofr-container" style="min-height: 50%; justify-content: space-between;">
                     <engine:VisualElement>
                         <engine:Label text="Question text?" name="CheckInQuestion" class="uofr-text-medium" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
                         <engine:Label name="CheckInSubtitle" text="Subtitle text" class="uofr-text-small" style="color: rgb(97, 97, 97); -unity-text-align: upper-center;" />
@@ -39,6 +39,8 @@
                     <engine:Instance template="CravingIntensityContainer" name="CravingIntensityContainer" style="display: none;" />
                     <engine:VisualElement name="DemographicInfoContainer" style="display: none;">
                         <engine:RadioButtonGroup label="Age" choices="Youth (&lt; 18),Emerging Adult (18 - 25),Adult (25 +)" name="AgeButtonGroup" value="-1" class="uofr-radio-button-group" />
+                        <engine:VisualElement class="uofr-space-large" />
+                        <engine:RadioButtonGroup label="Gender" choices="Male,Female" name="GenderButtonGroup" value="-1" class="uofr-radio-button-group" />
                         <engine:VisualElement class="uofr-space-large" />
                         <engine:RadioButtonGroup label="Environment" choices="Rural,Non-rural" name="EnvironmentButtonGroup" class="uofr-radio-button-group" />
                         <engine:VisualElement class="uofr-space-large" />

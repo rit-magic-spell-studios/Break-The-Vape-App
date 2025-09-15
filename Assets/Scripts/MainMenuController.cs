@@ -55,7 +55,7 @@ public class MainMenuController : UIController {
             HideCurrentPopup(checkForAnimations: false);
         };
         ui.Q<Button>("AboutBackButton").clicked += ( ) => { DisplayScreen(mainScreen); };
-        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 8-29-25";
+        ui.Q<Label>("VersionLabel").text = $"v{Application.version}\t\t| 9-15-25";
 
         ui.Q<Button>("LogOutButton").clicked += ( ) => { DisplayBasicPopup(ui.Q<VisualElement>("LogOutPopup")); };
         ui.Q<Button>("ConfirmLogOutButton").clicked += ( ) => {
@@ -95,7 +95,7 @@ public class MainMenuController : UIController {
         };
         DataManager.AppSessionData.OnTotalPointsEarnedChange += ( ) => {
             ui.Q<Label>("TotalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned:N0} pts";
-            ui.Q<Label>("FinalScoreLabel").text = $"{DataManager.AppSessionData.TotalPointsEarned:N0} pts";
+            ui.Q<Label>("FinalScoreLabel").text = $"Final Score: {DataManager.AppSessionData.TotalPointsEarned:N0} pts";
         };
     }
 

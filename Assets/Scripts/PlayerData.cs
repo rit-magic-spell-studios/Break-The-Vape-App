@@ -7,11 +7,13 @@ public delegate void ValueChangeEvent( );
 [Serializable]
 public class UserData {
     public string Age;
+    public string Gender;
     public string Environment;
     public int DaysVapedDuringPastWeek;
 
     public UserData( ) {
         Age = "NA";
+        Gender = "NA";
         Environment = "NA";
         DaysVapedDuringPastWeek = -1;
     }
