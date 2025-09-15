@@ -1,6 +1,11 @@
 # Break The Vape
 This is a repository for the MAGIC Spell Studios collaboration with the University of Rochester for developing anti-vaping minigames for children in middle school and high school.
 
+## App Builds
+https://drive.google.com/drive/folders/11ztvTd-FSxUw0zjPgPQcg4Q5TT2EsQAd?usp=sharing
+
+Inside the Google Drive folder linked above, there is a WebGL build, an Android build, and an iOS build of the latest version of the app.
+
 ## App Version [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/APP_CHANGELOG.md) (September 15th, 2025)
 * Crave Smash [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/CRAVESMASH_CHANGELOG.md) (August 22nd, 2025)
 * Puff Dodge [v1.0.0](https://github.com/qusr08/UofR-Games/blob/main/PUFFDODGE_CHANGELOG.md) (August 27th, 2025)
@@ -28,7 +33,4 @@ Hazardous items will fly in from the sides of the screen that you can swipe acro
 ## Game Design Document
 https://docs.google.com/document/d/1s2heE0qHemPLkq0krbFDS80EHPxYFJep6Y7QegCWt68/edit?usp=sharing
 
-## Build Information
-* Web Build: Under the "docs" folder in the root of this repository. This is because the web version is being hosted through GitHub Pages
-* Android Build: Under the "Android Build" folder in the root of this repository
-* iOS Build: Under the "iOS Build" folder in the root of this repository
+This game design document highlights the development of the app as well as more in-depth information about each of the minigames.
